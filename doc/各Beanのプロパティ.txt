@@ -1,0 +1,39 @@
+User.java:
+String user_id
+String password
+String user_name
+String language
+String purpose
+String career
+String certification
+
+Article.java:
+int    article_id
+String article_title
+String user_id
+String article_create
+String article_update
+String article_tag
+int    article_favs
+String article_link
+
+Comment.java:
+int    comment_id
+int    article_id
+String user_id
+String comment_date
+String comment_text
+
+Community.java
+int    community_id
+String community_date
+String community_name
+String community_tag
+String community_summary
+
+Remark.java
+int    remark_id
+String community_id
+String user_id
+String remark_text
+String remark_date
