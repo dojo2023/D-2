@@ -1,67 +1,67 @@
 package model;
 import java.io.Serializable;
 public class Remark implements Serializable{
-    private int    remark_id;
-    private String community_id;
-    private String user_id;
-    private String remark_text;
-    private String remark_date;
+    private int    remarkId;
+    private String communityId;
+    private String userId;
+    private String remarkText;
+    private String remarkDate;
 
-        public Remark(int remark_id, String community_id, String user_id, String remark_text, String remark_date) {
+        public Remark(int remarkId, String communityId, String userId, String remarkText, String remarkDate) {
 		super();
-		this.remark_id = remark_id;
-		this.community_id = community_id;
-		this.user_id = user_id;
-		this.remark_text = remark_text;
-		this.remark_date = remark_date;
+		this.remarkId = remarkId;
+		this.communityId = communityId;
+		this.userId = userId;
+		this.remarkText = remarkText;
+		this.remarkDate = remarkDate;
 		}
 
 		public Remark() {
 			super();
-			this.remark_id =0;
-			this.community_id = "";
-			this.user_id = "";
-			this.remark_text = "";
-			this.remark_date ="";
+			this.remarkId =0;
+			this.communityId = "";
+			this.userId = "";
+			this.remarkText = "";
+			this.remarkDate ="";
 	}
 
-        public int getRemark_id() {
-			return remark_id;
+        public int getRemarkId() {
+			return remarkId;
 		}
 
-		public void setRemark_id(int remark_id) {
-			this.remark_id = remark_id;
+		public void setRemarkId(int remarkId) {
+			this.remarkId = remarkId;
 		}
 
-         public String getCommunity_id() {
-			return community_id;
+         public String getCommunityId() {
+			return communityId;
 		}
 
-		public void setCommunity_id(String community_id) {
-			this.community_id = community_id;
+		public void setCommunityId(String communityId) {
+			this.communityId = communityId;
 		}
 
-         public String getUser_id() {
-			return user_id;
+         public String getUserId() {
+			return userId;
 		}
 
-		public void setUser_id(String user_id) {
-			this.user_id = user_id;
+		public void setUserId(String userId) {
+			this.userId = userId;
 		}
 
-         public String getRemark_text() {
-			return remark_text;
+         public String getRemarkText() {
+			return remarkText;
 		}
 
-		public void setRemark_text(String remark_text) {
-			this.remark_text = remark_text;
+		public void setRemarkText(String remarkText) {
+			this.remarkText = remarkText;
 		}
 
-         public String getRemark_date() {
-			return remark_date;
+         public String getRemarkDate() {
+			return remarkDate;
 		}
 
-		public void setRemark_date(String remark_date) {
-			this.remark_date = remark_date;
+		public void setRemarkDate(String remarkDate) {
+			this.remarkDate = remarkDate;
 		}
 }
