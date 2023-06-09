@@ -1,39 +1,39 @@
 User.java:
-String user_id
+String userId
 String password
-String user_name
+String userName
 String language
 String purpose
 String career
 String certification
 
 Article.java:
-int    article_id
-String article_title
-String user_id
-String article_create
-String article_update
-String article_tag
-int    article_favs
-String article_link
+int    articleId
+String articleTitle
+String userId
+String articleCreate
+String articleUpdate
+String articleTag
+int    articleFavs
+String articleLink
 
 Comment.java:
-int    comment_id
-int    article_id
-String user_id
-String comment_date
-String comment_text
+int    commentId
+int    articleId
+String userId
+String commentDate
+String commentText
 
 Community.java
-int    community_id
-String community_date
-String community_name
-String community_tag
-String community_summary
+int    communityId
+String communityDate
+String communityName
+String communityTag
+String communitySummary
 
 Remark.java
-int    remark_id
-String community_id
-String user_id
-String remark_text
-String remark_date
+int    remarkId
+String communityId
+String userId
+String remarkText
+String remarkDate
