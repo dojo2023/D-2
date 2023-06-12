@@ -7,15 +7,23 @@ public class Community implements Serializable{
 	private int communityId;
 	private String communityDate;
 	private String communityName;
-	private String communityTag;
+	private String[] communityLanguage;
+	private String[] communityPurpose;
+	private String communityCareer;
+	private String[] communityCertification;
 	private String communitySummary;
 
-	public Community(int communityId,String communityDate,String communityName,String communityTag,String communitySummary){
+	public Community(int communityId,String communityDate,String communityName,
+			String[] communityLanguage, String[] communityPurpose,
+			String communityCareer,String[] communityCertification,String communitySummary){
 
 	this.communityId=communityId;
 	this.communityDate=communityDate;
 	this.communityName=communityName;
-	this.communityTag=communityTag;
+	this.communityLanguage=communityLanguage;
+	this.communityPurpose=communityPurpose;
+	this.communityCareer=communityCareer;
+	this.communityCertification=communityCertification;
 	this.communitySummary=communitySummary;
 	}
 
@@ -23,7 +31,10 @@ public class Community implements Serializable{
 		this.communityId=0;
 		this.communityDate="";
 		this.communityName="";
-		this.communityTag="";
+		this.communityLanguage=null;
+		this.communityPurpose=null;
+		this.communityCareer="";
+		this.communityCertification=null;
 		this.communitySummary="";
 	}
 
@@ -51,12 +62,36 @@ public class Community implements Serializable{
 		this.communityName = communityName;
 	}
 
-	public String getCommunityTag() {
-		return communityTag;
+	public String[] getCommunityLanguage() {
+		return communityLanguage;
 	}
 
-	public void setCommunityTag(String communityTag) {
-		this.communityTag = communityTag;
+	public void setCommnunityLanguage(String[] communityLanguage) {
+		this.communityLanguage = communityLanguage;
+	}
+
+	public String[] getCommnunityPurpose() {
+		return communityPurpose;
+	}
+
+	public void setCommnunityPurpose(String[] communityPurpose) {
+		this.communityPurpose = communityPurpose;
+	}
+
+	public String getCommnunityCareer() {
+		return communityCareer;
+	}
+
+	public void setCommnunityCareer(String communityCareer) {
+		this.communityCareer = communityCareer;
+	}
+
+	public String[] getCommnunityCertification() {
+		return communityCertification;
+	}
+
+	public void setCommnunityCertification(String[] communityCertification) {
+		this.communityCertification = communityCertification;
 	}
 
 	public String getCommunitySummary() {

@@ -6,19 +6,19 @@ public class User implements Serializable {
 	private String userId;
 	private String password;
 	private String userName;
-	private String language;
-	private String purpose;
+	private String[] language;
+	private String[] purpose;
 	private String career;
-	private String certification;
+	private String[] certification;
 
 	public User() {
 		this.userId = "";
 		this.password = "";
 		this.userName = "";
-		this.language = "";
-		this.purpose = "";
+		this.language = null;
+		this.purpose = null;
 		this.career = "";
-		this.certification = "";
+		this.certification = null;
 	}
 
 	public User(String userId, String password) {
@@ -26,8 +26,8 @@ public class User implements Serializable {
 		this.password = password;
 	}
 
-	public User(String userId, String password, String userName, String language,
-			String purpose, String career, String certification) {
+	public User(String userId, String password, String userName, String[] language,
+			String[] purpose, String career, String[] certification) {
 		this.userId = userId;
 		this.password = password;
 		this.userName = userName;
@@ -61,19 +61,19 @@ public class User implements Serializable {
 		return userName;
 	}
 
-	public void setLanguage(String language) {
+	public void setLanguage(String[] language) {
 		this.language = language;
 	}
 
-	public String getLanguage() {
+	public String[] getLanguage() {
 		return language;
 	}
 
-	public void setPurpose(String purpose) {
+	public void setPurpose(String[] purpose) {
 		this.purpose = purpose;
 	}
 
-	public String getPurpose() {
+	public String[] getPurpose() {
 		return purpose;
 	}
 
@@ -85,11 +85,11 @@ public class User implements Serializable {
 		return career;
 	}
 
-	public void setCertification(String certification) {
+	public void setCertification(String[] certification) {
 		this.certification = certification;
 	}
 
-	public String getCertification() {
+	public String[] getCertification() {
 		return certification;
 	}
 }

@@ -9,17 +9,25 @@ public class Article  implements Serializable{
 	private String userId;
 	private String articleCreate;
 	private String articleUpdate;
-	private String articleTag;
+	private String[] articleLanguage;
+	private String[] articlePurpose;
+	private String articleCareer;
+	private String[] articleCertification;
 	private int articleFavs;
 	private String articleLink;
 
-	public Article(int articleId,String articleTitle,String userId,String articleCreate,String articleUpdate,String articleTag,int articleFavs,String articleLink) {
+	public Article(int articleId,String articleTitle,String userId,String articleCreate,String articleUpdate,
+			String[] articleLanguage,String[] articlePurpose, String articleCareer,
+			String[] articleCertification,int articleFavs,String articleLink) {
 		this.articleId=articleId;
 		this.articleTitle=articleTitle;
 		this.userId=userId;
 		this.articleCreate=articleCreate;
 		this.articleUpdate=articleUpdate;
-		this.articleTag=articleTag;
+		this.articleLanguage=articleLanguage;
+		this.articlePurpose=articlePurpose;
+		this.articleCareer=articleCareer;
+		this.articleCertification=articleCertification;
 		this.articleFavs=articleFavs;
 		this.articleLink=articleLink;
 	}
@@ -30,7 +38,10 @@ public class Article  implements Serializable{
 		this.userId="";
 		this.articleCreate="";
 		this.articleUpdate="";
-		this.articleTag="";
+		this.articleLanguage=null;
+		this.articlePurpose=null;
+		this.articleCareer="";
+		this.articleCertification=null;
 		this.articleFavs=0;
 		this.articleLink="";
 	}
@@ -75,12 +86,36 @@ public class Article  implements Serializable{
 		this.articleUpdate = articleUpdate;
 	}
 
-	public String getArticleTag() {
-		return articleTag;
+	public String[] getArticleLanguage() {
+		return articleLanguage;
 	}
 
-	public void setArticleTag(String articleTag) {
-		this.articleTag = articleTag;
+	public void setArticleLanguage(String[] articleLanguage) {
+		this.articleLanguage = articleLanguage;
+	}
+
+	public String[] getArticlePurpose() {
+		return articlePurpose;
+	}
+
+	public void setArticlePurpose(String[] articlePurpose) {
+		this.articlePurpose = articlePurpose;
+	}
+
+	public String getArticleCareer() {
+		return articleCareer;
+	}
+
+	public void setArticleCareer(String articleCareer) {
+		this.articleCareer = articleCareer;
+	}
+
+	public String[] getArticleCertification() {
+		return articleCertification;
+	}
+
+	public void setArticleCertification(String[] articleCertification) {
+		this.articleCertification = articleCertification;
 	}
 
 	public int getArticleFavs() {
