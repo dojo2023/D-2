@@ -8,7 +8,7 @@ public class Remark implements Serializable{
     private String remarkDate;
 
         public Remark(int remarkId, String communityId, String userId, String remarkText, String remarkDate) {
-		super();
+
 		this.remarkId = remarkId;
 		this.communityId = communityId;
 		this.userId = userId;
@@ -17,7 +17,7 @@ public class Remark implements Serializable{
 		}
 
 		public Remark() {
-			super();
+
 			this.remarkId =0;
 			this.communityId = "";
 			this.userId = "";
