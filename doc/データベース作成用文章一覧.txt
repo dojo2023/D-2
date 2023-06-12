@@ -19,7 +19,10 @@ create table article (
  user_id varchar (16) not null,
  article_create timestamp not null,
  article_update timestamp not null,
- article_tag char (43) not null,
+ article_language char (15) not null,
+ article_purpose char (10) not null,
+ article_career char (5) not null,
+ article_certification char (13) not null,
  article_favs int not null,
  article_link varchar (20) not null
 );
@@ -40,7 +43,10 @@ create table community (
  community_id int auto_increment primary key not null,
  community_date timestamp not null,
  community_name varchar (30) not null,
- community_tag char (43) not null,
+ community_language char (15) not null,
+ community_purpose char (10) not null,
+ community_career char (5) not null,
+ community_certification char (13) not null,
  community_summary varchar (100) not null
 );
 
@@ -90,3 +96,57 @@ create table tag_list (
  tag_id char (1) primary key not null,
  tag_item varchar (20) not null
 );
+
+
+/*以下データ*/
+/*language_list, purpose_list, certification_listは中身が固定のため以下のデータを格納しておく*/
+
+language_list
+insert into language_list (language_id, language_item) 
+ values
+ (1, 'Java'),
+ (2, 'JavaScript'),
+ (3, 'TypeScript'),
+ (4, 'C++(C)'),
+ (5, 'C#'),
+ (6, 'Python'),
+ (7, 'SQL'),
+ (8, 'HTML&CSS'),
+ (9, 'PHP'),
+ ('A', 'Scala'),
+ ('B', 'Swift'),
+ ('C', 'Ruby'),
+ ('D', 'R言語'),
+ ('E', 'Kotlin'),
+ ('F', 'Go');
+
+purpose_list
+insert into purpose_list (purpose_id, purpose_item) 
+ values
+ (1, 'プログラミング'),
+ (2, '資格'),
+ (3, 'システム開発'),
+ (4, '業界研究'),
+ (5, 'ITニュース'),
+ (6, 'キャリア'),
+ (7, 'データベース'),
+ (8, 'Officeスキル'),
+ (9, 'セキュリティ'),
+ ('A', 'OS');
+ 
+certification_list
+insert into certification_list (certification_id, certification_item) 
+ values
+ (1, 'ITパスポート'),
+ (2, '情報セキュリティマネジメント試験'),
+ (3, '基本情報技術者試験'),
+ (4, '応用情報技術者試験'),
+ (5, 'ITストラテジスト試験'),
+ (6, 'システムアーキテクト試験'),
+ (7, 'プロジェクトマネージャ試験'),
+ (8, 'ネットワークスペシャリスト試験'),
+ (9, 'データベーススペシャリスト試験'),
+ ('A', 'エンベデッドシステムスペシャリスト試験'),
+ ('B', 'ITサービスマネージャ試験'),
+ ('C', 'システム監査技術者試験'),
+ ('D', '情報処理安全確保支援士試験');
