@@ -2,10 +2,10 @@ User.java:
 String userId
 String password
 String userName
-String language
-String purpose
+String[] language
+String[] purpose
 String career
-String certification
+String[] certification
 
 Article.java:
 int    articleId
@@ -13,7 +13,10 @@ String articleTitle
 String userId
 String articleCreate
 String articleUpdate
-String articleTag
+String[] articleLanguage
+Srring[] articlePurpose
+String articleCareer
+String[] articleCertificaiton
 int    articleFavs
 String articleLink
 
@@ -28,7 +31,10 @@ Community.java
 int    communityId
 String communityDate
 String communityName
-String communityTag
+String[] communityLanguage
+String[] communityPurpose
+String communityCareer
+String[] communityCertification
 String communitySummary
 
 Remark.java
