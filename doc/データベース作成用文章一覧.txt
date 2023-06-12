@@ -1,0 +1,92 @@
+H2データベース作成用文章一覧
+
+JDBC URL: jdbc:h2:file:C:/dojo6/src/Data
+ユーザー名: sa
+パスワード: なし
+
+
+userデータベース
+create table user( user_id varchar(16) primary key not null, 
+ password varchar(16) not null, user_name varchar(16) not null,
+ language char(16) not null,  purpose char(11) not null,
+ career varchar(20) not null, certification char(14) not null);
+
+
+articleデータベース
+create table article (
+ article_id int auto_increment primary key not null,
+ article_title varchar (50) not null,
+ user_id varchar (16) not null,
+ article_create timestamp not null,
+ article_update timestamp not null,
+ article_tag char (43) not null,
+ article_favs int not null,
+ article_link varchar (20) not null
+);
+
+
+commentデータベース
+create table comment (
+ comment_id int auto_increment primary key not null,
+ article_id int not null,
+ user_id varchar (16) not null,
+ comment_date timestamp not null,
+ comment_text varchar (200) not null
+);
+
+
+communityデータベース
+create table community (
+ community_id int auto_increment primary key not null,
+ community_date timestamp not null,
+ community_name varchar (30) not null,
+ community_tag char (43) not null,
+ community_summary varchar (100) not null
+);
+
+
+memberデータベース
+create table member (
+ participation_id int auto_increment primary key not null
+ community_id (int) not null,
+ user_id varchar (16) not null
+);
+
+
+chatデータベース
+create table chat (
+ remark_id int auto_increment primary key not null,
+ community_id int not null,
+ user_id varchar (16) not null,
+ remark_text varchar (500) not null,
+ remark_date timestamp not null
+);
+
+
+language_listデータベース
+create table language_list (
+ language_id char (1) primary key not null,
+ language_item varchar (10) not null
+);
+
+
+
+purpose_listデータベース
+create table purpose_list (
+ purpose_id char (1) primary key not null,
+ purpose_item varchar (20) not null
+);
+
+
+certification_listデータベース
+create table certification_list (
+ certification_id char (1) primary key not null,
+ certification_item varchar (20) not null
+);
+
+
+tag_listデータベース
+create table tag_list (
+ tag_id char (1) primary key not null,
+ tag_item varchar (20) not null
+);
