@@ -70,27 +70,27 @@ public class Community implements Serializable{
 		this.communityLanguage = communityLanguage;
 	}
 
-	public String[] getCommnunityPurpose() {
+	public String[] getCommunityPurpose() {
 		return communityPurpose;
 	}
 
-	public void setCommnunityPurpose(String[] communityPurpose) {
+	public void setCommunityPurpose(String[] communityPurpose) {
 		this.communityPurpose = communityPurpose;
 	}
 
-	public String getCommnunityCareer() {
+	public String getCommunityCareer() {
 		return communityCareer;
 	}
 
-	public void setCommnunityCareer(String communityCareer) {
+	public void setCommunityCareer(String communityCareer) {
 		this.communityCareer = communityCareer;
 	}
 
-	public String[] getCommnunityCertification() {
+	public String[] getCommunityCertification() {
 		return communityCertification;
 	}
 
-	public void setCommnunityCertification(String[] communityCertification) {
+	public void setCommunityCertification(String[] communityCertification) {
 		this.communityCertification = communityCertification;
 	}
 
