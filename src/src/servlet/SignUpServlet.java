@@ -8,14 +8,15 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import model.User;
 
 /**
- * Servlet implementation class LoginServlet
+ * Servlet implementation class SignUpServlet
  */
-@WebServlet("/login")
-public class LoginServlet extends HttpServlet {
+@WebServlet("/sign_up")
+public class SignUpServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
@@ -23,7 +24,7 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/login.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/sign_up.jsp");
 		dispatcher.forward(request, response);
 	}
 
@@ -33,20 +34,19 @@ public class LoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("UTF-8");
-		String id = request.getParameter("id");
-		String pw = request.getParameter("pw");
-		User user = new User(id, pw);
-		/*
-		if (iDao.isLoginOK(user)) {
-			HttpSession session = request.getSession();
-			session.setAttribute("user", user);
-			response.sendRedirect("/product_sample/menu");
-		} else {
-			request.setAttribute("user", user);
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/login.jsp");
-			dispatcher.forward(request, response);
-		}
-*/
+		String userId = request.getParameter("userid");
+		String password = request.getParameter("password");
+		String userName = request.getParameter("username");
+		String[] language = request.getParameterValues("language");
+		String[] purpose = request.getParameterValues("purpose");
+		String career = request.getParameter("career");
+		String[] certification = request.getParameterValues("certification");
+		User user = new User(userId, password, userName, language,
+				purpose, career, certification);
+		HttpSession session = request.getSession();
+		session.setAttribute("user", user);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/sign_up_confirm.jsp");
+		dispatcher.forward(request, response);
 	}
 
 }
