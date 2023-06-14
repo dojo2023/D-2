@@ -14,11 +14,12 @@ public class Article  implements Serializable{
 	private String articleCareer;
 	private String[] articleCertification;
 	private int articleFavs;
-	private String articleLink;
+	private String articleText;
+	private String articleImg;
 
 	public Article(int articleId,String articleTitle,String userId,String articleCreate,String articleUpdate,
 			String[] articleLanguage,String[] articlePurpose, String articleCareer,
-			String[] articleCertification,int articleFavs,String articleLink) {
+			String[] articleCertification,int articleFavs,String articleText,String articleImg) {
 		this.articleId=articleId;
 		this.articleTitle=articleTitle;
 		this.userId=userId;
@@ -29,7 +30,8 @@ public class Article  implements Serializable{
 		this.articleCareer=articleCareer;
 		this.articleCertification=articleCertification;
 		this.articleFavs=articleFavs;
-		this.articleLink=articleLink;
+		this.articleText=articleText;
+		this.articleImg=articleImg;
 	}
 
 	public Article() {
@@ -43,7 +45,8 @@ public class Article  implements Serializable{
 		this.articleCareer="";
 		this.articleCertification=null;
 		this.articleFavs=0;
-		this.articleLink="";
+		this.articleText="";
+		this.articleImg="";
 	}
 
 	public int getArticleId() {
@@ -126,12 +129,20 @@ public class Article  implements Serializable{
 		this.articleFavs = articleFavs;
 	}
 
-	public String getArticleLink() {
-		return articleLink;
+	public String getArticleText() {
+		return articleText;
 	}
 
-	public void setArticleLink(String articleLink) {
-		this.articleLink = articleLink;
+	public void setArticleText(String articleText) {
+		this.articleText = articleText;
+	}
+
+	public String getArticleImg() {
+		return articleImg;
+	}
+
+	public void setArticleImg(String articleImg) {
+		this.articleImg = articleImg;
 	}
 
 
