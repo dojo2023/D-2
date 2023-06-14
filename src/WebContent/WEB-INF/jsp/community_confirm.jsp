@@ -14,17 +14,22 @@
         </p>
 
         <p>タグ<br>
-
+			<c:set var="sendLang" value="" />
             <c:forEach var="e" items="${language}">
             ${e}<br>
+            <c:set var="sendLang" value="${sendLang},${lang} "/>
             </c:forEach><br>
 
+			<c:set var="sendPurp" value="" />
             <c:forEach var="e" items="${porpuse}">
             ${e}<br>
+            <c:set var="sendPurp" value="${sendPurp},${e} "/>
             </c:forEach><br>
 
+			<c:set var="sendCert" value="" />
             <c:forEach var="e" items="${certification}">
             ${e}<br>
+            <c:set var="sendCert" value="${sendCert},${e} "/>
             </c:forEach><br>
 
             ${career}
@@ -37,10 +42,12 @@
 		<!--  confirmServletへ送信 -->
      	<form method="POST" action="/product_D2/CommunityCreateConfirmServlet.java">
 
-		<input type="hidden" name="community_name" value="${name}" style="display:none">
-		<input type="hidden" name="language" value="${language}" style="display:none">
-		<input type="hidden" name="porpuse" value="${porpose}" style="display:none">
-		<input type="hidden" name="certification" value="${certification}" style="display:none">
+		<input type="hidden" name="community_name" value="${name}">
+		<input type="hidden" name="sendLang" value="${sendLang}" >
+		<input type="hidden" name="sendPurp" value="${sendPurp}" >
+		<input type="hidden" name="sendCert" value="${sendCert}" >
+		<input type="hidden" name="career" value="${career}">
+		<input type="hidden" name="summary" value="${summary}">
 		<input type="hidden" name="SUBMIT" value="作成して会話を開始"><br>
 		</form>
 
