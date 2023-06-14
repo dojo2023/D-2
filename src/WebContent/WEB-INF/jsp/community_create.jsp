@@ -20,21 +20,22 @@
             <td><input type="checkbox" name="language" value="Java">Java</td>
             <td><input type="checkbox" name="language" value="JavaScript">JavaScript</td>
             <td><input type="checkbox" name="language" value="TypeScript">TypeScript</td>
-            <td><input type="checkbox" name="language" value="">C++(C)</td>
+            <td><input type="checkbox" name="language" value="C++(C)">C++(C)</td>
             </tr>
             <tr>
             <td><input type="checkbox" name="language" value="C#">C#</td>
             <td><input type="checkbox" name="language" value="Python">Python</td>
             <td><input type="checkbox" name="language" value="SQL">SQL</td>
-            <td><input type="checkbox" name="language" value="HTML&CSSPHP">HTML&CSSPHP</td>
+            <td><input type="checkbox" name="language" value="HTML&CSS">HTML&amp;CSS</td>
             </tr>
             <tr>
+            <td><input type="checkbox" name="language" value="PHP">PHP</td>
             <td><input type="checkbox" name="language" value="Scala">Scala</td>
             <td><input type="checkbox" name="language" value="Swift">Swift</td>
             <td><input type="checkbox" name="language" value="Ruby">Ruby</td>
-            <td><input type="checkbox" name="language" value="R言語">R言語</td>
             </tr>
             <tr>
+            <td><input type="checkbox" name="language" value="R言語">R言語</td>
             <td><input type="checkbox" name="language" value="Kotlin">Kotlin</td>
             <td><input type="checkbox" name="language" value="Go">Go</td>
             <td><input type="checkbox" name="language" value="その他">その他</td>
@@ -63,23 +64,30 @@
             </table>
 
             <br>取りたい資格<br>
-            <input type="checkbox" name="certification" value="ITパスポート">ITパスポート
-            <input type="checkbox" name="certification" value="情報セキュリティマネジメント試験">情報セキュリティマネジメント試験
-            <input type="checkbox" name="certification" value="基本情報技術者試験">基本情報技術者試験
-            <input type="checkbox" name="certification" value="応用情報技術者試験">応用情報技術者試験
-            <br>
-            <input type="checkbox" name="certification" value="ストラテジスト試験">ITストラテジスト試験
-            <input type="checkbox" name="certification" value="システムアーキテクト試験">システムアーキテクト試験
-            <input type="checkbox" name="certification" value="プロジェクトマネージャ試験">プロジェクトマネージャ試験
-            <input type="checkbox" name="certification" value="ネットワークスペシャリスト試験">ネットワークスペシャリスト試験
-            <br>
-            <input type="checkbox" name="certification" value="データベーススペシャリスト試験">データベーススペシャリスト試験
-            <input type="checkbox" name="certification" value="エンベデッドシステムスペシャリスト試験">エンベデッドシステムスペシャリスト試験
-            <input type="checkbox" name="certification" value="ITサービスマネージャ試験">ITサービスマネージャ試験
-            <input type="checkbox" name="certification" value="システム監査技術者試験">システム監査技術者試験
-            <br>
-            <input type="checkbox" name="certification" value="情報処理安全確保支援士試験">情報処理安全確保支援士試験
-            <input type="checkbox" name="certification" value="その他">その他
+            <table>
+            <tr>
+            <td><input type="checkbox" name="certification" value="ITパスポート">ITパスポート</td>
+            <td><input type="checkbox" name="certification" value="情報セキュリティマネジメント試験">情報セキュリティマネジメント試験</td>
+            <td><input type="checkbox" name="certification" value="基本情報技術者試験">基本情報技術者試験</td>
+            <td><input type="checkbox" name="certification" value="応用情報技術者試験">応用情報技術者試験</td>
+            </tr>
+            <tr>
+            <td><input type="checkbox" name="certification" value="ストラテジスト試験">ITストラテジスト試験</td>
+            <td><input type="checkbox" name="certification" value="システムアーキテクト試験">システムアーキテクト試験</td>
+            <td><input type="checkbox" name="certification" value="プロジェクトマネージャ試験">プロジェクトマネージャ試験</td>
+            <td><input type="checkbox" name="certification" value="ネットワークスペシャリスト試験">ネットワークスペシャリスト試験</td>
+            </tr>
+            <tr>
+            <td><input type="checkbox" name="certification" value="データベーススペシャリスト試験">データベーススペシャリスト試験</td>
+            <td><input type="checkbox" name="certification" value="エンベデッドシステムスペシャリスト試験">エンベデッドシステムスペシャリスト試験</td>
+            <td><input type="checkbox" name="certification" value="ITサービスマネージャ試験">ITサービスマネージャ試験</td>
+            <td><input type="checkbox" name="certification" value="システム監査技術者試験">システム監査技術者試験</td>
+            </tr>
+            <tr>
+            <td><input type="checkbox" name="certification" value="情報処理安全確保支援士試験">情報処理安全確保支援士試験</td>
+            <td><input type="checkbox" name="certification" value="その他">その他</td>
+			</tr>
+			</table>
 
             <br>プログラミング歴<br>
             <select name="career">
@@ -89,7 +97,7 @@
                 <option value="上級">上級：上流工程の仕事も担当できる</option>
                 <option value="エキスパート">エキスパート：リーダーとして開発できる</option>
             </select>
-        </p>
+
 
         <p>コミュニティの概要<br>
         <input type="text" name="community_summary"></p>
