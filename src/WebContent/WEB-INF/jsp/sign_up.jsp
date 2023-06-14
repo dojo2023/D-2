@@ -25,7 +25,7 @@ ID<br><input type="text" name="userid" placeholder="ID"><br>
 	<td><input type="checkbox" name="language" value="C#">C#</td>
 	<td><input type="checkbox" name="language" value="Python">Python</td>
 	<td><input type="checkbox" name="language" value="SQL">SQL</td>
-	<td><input type="checkbox" name="language" value="HTML&CSS">HTML&CSS</td>
+	<td><input type="checkbox" name="language" value="HTML&CSS">HTML&amp;CSS</td>
 </tr>
 <tr>
 	<td><input type="checkbox" name="language" value="PHP">PHP</td>
@@ -97,5 +97,4 @@ ID<br><input type="text" name="userid" placeholder="ID"><br>
 <input type="submit" formaction="/product_D2/sign_up" value="確認">
 </form>
 </body>
-</html>
 </html>
