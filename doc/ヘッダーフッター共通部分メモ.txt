@@ -1,0 +1,130 @@
+【ヘッダー部分HTML（検索欄・タブ選択あり）】
+
+<div class="header">
+	<a href="/product_D2/TopServlet"><img src="image/logo.png" class="logo_contents" width="10%" height="10%"></a>
+</div>
+</header>
+<div class="header_bottom">
+	<a href="/product_D2/ArticleServlet"><h1 class="tab_article">記事</h1></a>
+	<a href="/product_D2/CommunityServlet"><h1 class="tab_community">コミュニティ</h1></a>
+	<div class="search">
+		<form action="サイトURL" method="get">
+			<input type="search" name="search" placeholder="キーワードを入力">
+				<input class="article_search" type="submit" name="article_search" value="記事検索">
+				<input class="community_search" type="submit" name="community_search" value="コミュニティ検索">
+		</form></div>
+</div>
+
+
+【ヘッダー部分HTML（ロゴのみ）】
+
+<div class="header">
+	<a href="/product_D2/TopServlet"><img src="image/logo.png" class="logo_contents" width="10%" height="10%"></a>
+</div>
+</header>
+
+
+【フッター部分HTML】
+<div class="footer_all">
+<footer class="footer">
+	<img class="footer_logo" src="image/logo.png"  width="10%" height="10%">
+	<div class="footer_contents">
+		<b><p>コンテンツ</p></b>
+		<ul>
+			<li>投稿</li>
+			<li>コミュニティ</li>
+			<li>ログイン</li>
+			<li>ログアウト</li>
+			<li>新規作成</li>
+			<li>トップページ</li>
+		</ul>
+		</div>
+</footer>
+<div class="footer_bottom">
+	<p>ヘルプはこちらから</p>
+	<p>&copy;2023 Sakuraiya. All rights reserved.</p>
+</div>
+</div>
+
+ーーーーーーーーーーーーーーーーーーーーーーーーーー
+以下はcommon.cssの内容なのでそちらをJSPに読み込めばOKです。
+参考までに↓
+
+【ヘッダー部分CSS】
+/* 共通部分ヘッダー(ロゴのみ) */
+.header {
+    /*background-color: #4472c4;*/
+    background: linear-gradient(-225deg, rgba(27, 77, 184, 0.7) 0%, rgba(70, 236, 254, 0.7) 100%), url(../image/texture.jpg);
+    text-align: center;
+}
+
+/* 検索部分 */
+.search {
+    display: inline-block;
+    float: right;
+
+}
+.article_search {
+    transition: 0.2s;
+    display: inline;
+    background-color: #e1e8eb;
+    border-radius: 0.5em;
+    color: #4472c4;
+}
+.article_search:active {
+    transform: translateY(2px);
+}
+.community_search {
+    transition: 0.2s;
+    display: inline;
+    background-color: #e1e8eb;
+    border-radius: 0.5em;
+    color: #4472c4;
+}
+.community_search_active {
+    transform: translateY(2px);
+}
+/* おすすめ記事・コミュニティタブ選択 */
+.header_bottom {
+    background-color:  #77cbff;
+}
+.header_bottom  h1{
+    font-size: 20px;
+    display: inline-block;
+    color: rgb(205, 234, 255);
+}
+.header_bottom h1:hover {
+    color: white;
+}
+.tab_article {
+    margin: 0 100px;
+}
+.tab_community {
+    margin: 0 100px;
+}
+
+【フッター部分CSS】
+/* 共通部分フッター */
+.footer_all {
+    /*background-color: #4472c4;*/
+    background: linear-gradient(-225deg, rgba(27, 77, 184, 0.7) 0%, rgba(70, 236, 254, 0.7) 100%), url(../image/texture.jpg);
+}
+.footer {
+    color: white;
+    display: flex;
+}
+
+.footer_contents{
+    margin: 0 20px 0 650px;
+    width: 50%;
+    display: inline;
+    font-size: 15px;
+}
+.footer_contents li{
+    font-size: 13px;
+}
+.footer_bottom p{
+    color: white;
+    text-align: center;
+    font-size: 10px;
+}

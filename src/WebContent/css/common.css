@@ -1,0 +1,84 @@
+@charset "UTF-8";
+
+/* 共通部分ヘッダー(ロゴのみ) */
+.header {
+    /*background-color: #4472c4;*/
+    background: linear-gradient(-225deg, rgba(27, 77, 184, 0.7) 0%, rgba(70, 236, 254, 0.7) 100%), url(../image/texture.jpg);
+    text-align: center;
+}
+
+/* 検索部分 */
+.search {
+    display: inline-block;
+    float: right;
+
+}
+.article_search {
+    transition: 0.2s;
+    display: inline;
+    background-color: #e1e8eb;
+    border-radius: 0.5em;
+    color: #4472c4;
+}
+.article_search:active {
+    transform: translateY(2px);
+}
+.community_search {
+    transition: 0.2s;
+    display: inline;
+    background-color: #e1e8eb;
+    border-radius: 0.5em;
+    color: #4472c4;
+}
+.community_search_active {
+    transform: translateY(2px);
+}
+/* おすすめ記事・コミュニティタブ選択 */
+.header_bottom {
+    background-color:  #77cbff;
+}
+.header_bottom  h1{
+    font-size: 20px;
+    display: inline-block;
+    color: rgb(205, 234, 255);
+}
+.header_bottom h1:hover {
+    color: white;
+}
+.tab_article {
+    margin: 0 100px;
+}
+.tab_community {
+    margin: 0 100px;
+}
+
+
+/* 共通部分フッター */
+.footer_all {
+    /*background-color: #4472c4;*/
+    background: linear-gradient(-225deg, rgba(27, 77, 184, 0.7) 0%, rgba(70, 236, 254, 0.7) 100%), url(../image/texture.jpg);
+}
+.footer {
+    color: white;
+    display: flex;
+}
+
+.footer_contents{
+    margin: 0 20px 0 650px;
+    width: 50%;
+    display: inline;
+    font-size: 15px;
+}
+.footer_contents li{
+    font-size: 13px;
+}
+.footer_bottom p{
+    color: white;
+    text-align: center;
+    font-size: 10px;
+}
+
+/* とりあえずプレビュー（後で移動） */
+body {
+    background-color: #e1e8eb;
+}
