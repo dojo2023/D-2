@@ -34,6 +34,16 @@ let pulldown='';
 		summary_red.style.outline="3px red solid";
 		event.preventDefault();
 	}
+	/**再度ボタンを押したときに注意書きと外の枠線が消える */
+	if(name!==''){
+		document.getElementById('output1').textContent=null;
+		name_red.style.outline="none";
+	}
+	if(summary!==''){
+		document.getElementById('output2').textContent=null;
+		summary_red.style.outline="none";
+	}
+
 
 	/** 全てのタグから1個以上選択*/
 	pulldown=document.getElementById('tag').value;
