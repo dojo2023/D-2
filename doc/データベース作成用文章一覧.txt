@@ -30,7 +30,9 @@ create table article (
  article_certification char (13) not null,
  article_favs int not null,
  article_text varchar (10000) not null,
- article_img varchar (30)
+ article_img1 varchar (30),
+ article_img2 varchar (30),
+ article_img3 varchar (30)
 );
 
 

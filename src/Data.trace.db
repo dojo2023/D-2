@@ -140,3 +140,52 @@ insert into language_list (language_id, language_item)
 	at org.h2.server.web.WebThread.process(WebThread.java:178)
 	at org.h2.server.web.WebThread.run(WebThread.java:94)
 	at java.base/java.lang.Thread.run(Thread.java:834)
+2023-06-15 10:22:27 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "CREATE TABLE ARTICLE (
+ ARTICLE_ID INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+ ARTICLE_TITLE VARCHAR (50) NOT NULL,
+ USER_ID VARCHAR (16) NOT NULL,
+ ARTICLE_CREATE TIMESTAMP NOT NULL,
+ ARTICLE_UPDATE TIMESTAMP NOT NULL,
+ ARTICLE_LANGUAGE CHAR (15) NOT NULL,
+ ARTICLE_PURPOSE CHAR (10) NOT NULL,
+ ARTICLE_CAREER VARCHAR (20) NOT NULL,
+ ARTICLE_CERTIFICATION CHAR (13) NOT NULL,
+ ARTICLE_FAVS INT NOT NULL,
+ ARTICLE_TEXT VARCHAR (10000) NOT NULL,
+ ARTICLE_IMG1 VARCHAR (30),
+ ARTICLE_IMG2 VARCHAR (30),
+ ARTICLE_IMG3 VARCHAR (30),
+)[*]"; 期待されるステートメント "identifier"
+Syntax error in SQL statement "CREATE TABLE ARTICLE (
+ ARTICLE_ID INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+ ARTICLE_TITLE VARCHAR (50) NOT NULL,
+ USER_ID VARCHAR (16) NOT NULL,
+ ARTICLE_CREATE TIMESTAMP NOT NULL,
+ ARTICLE_UPDATE TIMESTAMP NOT NULL,
+ ARTICLE_LANGUAGE CHAR (15) NOT NULL,
+ ARTICLE_PURPOSE CHAR (10) NOT NULL,
+ ARTICLE_CAREER VARCHAR (20) NOT NULL,
+ ARTICLE_CERTIFICATION CHAR (13) NOT NULL,
+ ARTICLE_FAVS INT NOT NULL,
+ ARTICLE_TEXT VARCHAR (10000) NOT NULL,
+ ARTICLE_IMG1 VARCHAR (30),
+ ARTICLE_IMG2 VARCHAR (30),
+ ARTICLE_IMG3 VARCHAR (30),
+)[*]"; expected "identifier"; SQL statement:
+create table article (
+ article_id int auto_increment primary key not null,
+ article_title varchar (50) not null,
+ user_id varchar (16) not null,
+ article_create timestamp not null,
+ article_update timestamp not null,
+ article_language char (15) not null,
+ article_purpose char (10) not null,
+ article_career varchar (20) not null,
+ article_certification char (13) not null,
+ article_favs int not null,
+ article_text varchar (10000) not null,
+ article_img1 varchar (30),
+ article_img2 varchar (30),
+ article_img3 varchar (30),
+) [42001-200]
