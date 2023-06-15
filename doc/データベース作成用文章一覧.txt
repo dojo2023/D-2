@@ -23,7 +23,7 @@ create table article (
  article_title varchar (50) not null,
  user_id varchar (16) not null,
  article_create timestamp not null,
- article_update timestamp not null,
+ article_update timestamp not null on update current_timestamp,
  article_language char (15) not null,
  article_purpose char (10) not null,
  article_career varchar (20) not null,
@@ -126,7 +126,8 @@ insert into language_list (language_id, language_item)
  ('C', 'Ruby'),
  ('D', 'R言語'),
  ('E', 'Kotlin'),
- ('F', 'Go');
+ ('F', 'Go'),
+ ('G', 'その他');
 
 purpose_list
 insert into purpose_list (purpose_id, purpose_item) 
@@ -140,7 +141,8 @@ insert into purpose_list (purpose_id, purpose_item)
  (7, 'データベース'),
  (8, 'Officeスキル'),
  (9, 'セキュリティ'),
- ('A', 'OS');
+ ('A', 'OS'),
+ ('B', 'その他');
  
 certification_list
 insert into certification_list (certification_id, certification_item) 
@@ -157,4 +159,5 @@ insert into certification_list (certification_id, certification_item)
  ('A', 'エンベデッドシステムスペシャリスト試験'),
  ('B', 'ITサービスマネージャ試験'),
  ('C', 'システム監査技術者試験'),
- ('D', '情報処理安全確保支援士試験');
+ ('D', '情報処理安全確保支援士試験'),
+ ('E', 'その他');
