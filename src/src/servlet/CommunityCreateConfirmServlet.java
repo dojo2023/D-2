@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.Community;
+
 /**
  * Servlet implementation class CommunityCreateConfirmServlet
  */
@@ -31,17 +33,22 @@ public class CommunityCreateConfirmServlet extends HttpServlet {
 
 		request.setCharacterEncoding("UTF-8");
 		String name = request.getParameter("community_name");
-		String[] language = request.getParameterValues("language");
-		String[] purpose = request.getParameterValues("purpose");
-		String[] certification = request.getParameterValues("certification");
+		String sendLang = request.getParameter("sendLang");
+		String[] language = sendLang.substring(1).split(",");
+		String sendPurp = request.getParameter("sendPurp");
+		String[] purpose = sendPurp.substring(1).split(",");
+		String sendCert = request.getParameter("sendCert");
+		String[] certification = sendCert.substring(1).split(",");
 		String career = request.getParameter("career");
 		String summary = request.getParameter("community_summary");
 
-		//CommunityDao cDao=new CommunityDao();
-		//List<community> cardList=cDao.select();
+		Community community=new Community(name,language,purpose,career,certification,summary);
+		CommunityDao cyDao=new CommunityDao();
+		String communityId= cyDao.addCommunity(community);
 
 
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/community_xxxx.jsp");
+
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/community_"+communityId+".jsp");
 		dispatcher.forward(request, response);
 
 
