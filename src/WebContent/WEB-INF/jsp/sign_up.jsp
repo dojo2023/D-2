@@ -8,12 +8,16 @@
 </head>
 <body>
 <h1>ユーザー登録</h1>
-<form method="POST" action="?">
-ID<br><input type="text" name="userid" placeholder="ID"><br>
-パスワード<br><input type="password" name="pw_first" placeholder="パスワード"><br>
-パスワード（確認）<br><input type="password" name="password" placeholder="パスワード(確認)"><br>
-ユーザー名<br><input type="text" name="username" placeholder="ユーザー名"><br>
-使用中または興味のある言語<br>
+<form method="POST" action="/product_D2/sign_up" name="suForm" id="su_form">
+ID <span id="userid_error"></span><br>
+<input type="text" name="userid" id="user_id" placeholder="ID"><br>
+パスワード <span id="password_error"></span><br>
+<input type="password" name="pw_first" id="pw_first" placeholder="パスワード"><br>
+パスワード（確認）<span id="password_confirm_error"></span><br>
+<input type="password" name="password" id="password" placeholder="パスワード(確認)"><br>
+ユーザー名 <span id="username_error"></span><br>
+<input type="text" name="username" id="user_name" placeholder="ユーザー名"><br>
+使用中または興味のある言語 <span id="language_error"></span><br>
 <table>
 <tr>
 	<td><input type="checkbox" name="language" value="Java">Java</td>
@@ -40,7 +44,7 @@ ID<br><input type="text" name="userid" placeholder="ID"><br>
 	<td><input type="checkbox" name="language" value="その他">その他</td>
 </tr>
 </table>
-学びたいこと<br>
+学びたいこと <span id="purpose_error"></span><br>
 <table>
 <tr>
 	<td><input type="checkbox" name="purpose" value="プログラミング">プログラミング</td>
@@ -68,7 +72,7 @@ ID<br><input type="text" name="userid" placeholder="ID"><br>
 	<option value="上級：上流工程の仕事も担当できる">上級：上流工程の仕事も担当できる</option>
 	<option value="エキスパート：リーダーとして開発できる">エキスパート：リーダーとして開発できる</option>
 </select><br>
-取りたい資格<br>
+取りたい資格 <span id="certification_error"></span><br>
 <table>
 <tr>
 	<td><input type="checkbox" name="certification" value="ITパスポート">ITパスポート</td>
@@ -93,8 +97,9 @@ ID<br><input type="text" name="userid" placeholder="ID"><br>
 	<td><input type="checkbox" name="certification" value="その他">その他</td>
 </tr>
 </table>
-<button type="submit" formaction="/product_D2/login">戻る</button>
-<input type="submit" formaction="/product_D2/sign_up" value="確認">
+<input type="button" onclick="location.href='/product_D2/login'" value="戻る">
+<input type="submit" value="確認">
 </form>
+<script src="/product_D2/js/sign_up.js"></script>
 </body>
 </html>
