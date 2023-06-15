@@ -16,26 +16,25 @@
         <p>タグ<br>
 			<c:set var="sendLang" value="" />
             <c:forEach var="e" items="${language}">
-            ${e}<br>
+            ${e},
             <c:set var="sendLang" value="${sendLang},${lang} "/>
-            </c:forEach><br>
+            </c:forEach>
 
 			<c:set var="sendPurp" value="" />
-            <c:forEach var="e" items="${porpuse}">
-            ${e}<br>
+            <c:forEach var="e" items="${purpose}">
+            ${e},
             <c:set var="sendPurp" value="${sendPurp},${e} "/>
-            </c:forEach><br>
+            </c:forEach>
 
 			<c:set var="sendCert" value="" />
             <c:forEach var="e" items="${certification}">
-            ${e}<br>
+            ${e},
             <c:set var="sendCert" value="${sendCert},${e} "/>
-            </c:forEach><br>
-
+            </c:forEach>
             ${career}
         </p>
 
-        <p>概要<br>
+        <p>コミュニティの概要<br>
             ${summary}
         </p>
 
@@ -48,7 +47,7 @@
 		<input type="hidden" name="sendCert" value="${sendCert}" >
 		<input type="hidden" name="career" value="${career}">
 		<input type="hidden" name="summary" value="${summary}">
-		<input type="hidden" name="SUBMIT" value="作成して会話を開始"><br>
+		<input type="submit" name="SUBMIT" value="作成して会話を開始"><br>
 		</form>
 
 		<!-- 前のページに戻る -->
