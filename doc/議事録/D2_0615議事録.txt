@@ -35,7 +35,9 @@ SignUpResultServlet.java,sign_up_confirm.jspが完成
 
 ・残っているプログラミング作業の続き
 
-・DAO,servletなどの機能の確認
+・DAO,servletなどの機能の確認、説明
+
+
 
 
 
