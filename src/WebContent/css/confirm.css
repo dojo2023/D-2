@@ -1,0 +1,61 @@
+@charset "UTF-8";
+
+/* メインコンテンツすべてに適用 */
+
+h1 {
+    font-size: 20px;
+    color: white;
+    background: linear-gradient(to right, #52c2cf, #ffd83a);
+    border-radius: 1em;
+    padding: 10px;
+    display: flex;
+    margin: 3px;
+}
+h4 {
+    display: inline;
+    color: #35416b;
+}
+p {
+    display: inline;
+}
+.confirm_main {
+    margin: 10px;
+}
+.confirm_contents{
+    background-color: white;
+    border-radius: 2em;
+    text-align: center;
+    color: #3d9d8f;
+    width: 450px;
+    margin: 20 auto;
+}
+.confirm_msg {
+    text-align: center;
+    margin: 20px;
+    color:#f33333;
+}
+
+/* インプット｜ボタン */
+.btn {
+    background: linear-gradient(to bottom, #52639c, #35416b);
+    color: #ffffff;
+    border: none;
+    text-shadow: none;
+    border-radius: 0.25em;
+    height: 35px;
+    width: 150px;
+}
+.btn:hover {
+    background: linear-gradient(to bottom, #52c2cf, #369ca0);
+}
+.btn:active {
+    transform: translateY(2px);
+}
+.btn_wrap {
+    text-align: center;
+}
+
+/* community_confirm.jspにのみ適用 */
+.no {
+    background: linear-gradient(to bottom, #8a8383, #535050);
+}
