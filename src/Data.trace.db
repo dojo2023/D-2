@@ -189,3 +189,24 @@ create table article (
  article_img2 varchar (30),
  article_img3 varchar (30),
 ) [42001-200]
+2023-06-15 16:08:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: テーブル "LANGUAGE_LIST" が見つかりません
+Table "LANGUAGE_LIST" not found; SQL statement:
+insert into language_list (language_id, language_item) 
+ values
+ (1, 'Java'),
+ (2, 'JavaScript'),
+ (3, 'TypeScript'),
+ (4, 'C++(C)'),
+ (5, 'C#'),
+ (6, 'Python'),
+ (7, 'SQL'),
+ (8, 'HTML&CSS'),
+ (9, 'PHP'),
+ ('A', 'Scala'),
+ ('B', 'Swift'),
+ ('C', 'Ruby'),
+ ('D', 'R言語'),
+ ('E', 'Kotlin'),
+ ('F', 'Go'),
+ ('G', 'その他') [42102-200]

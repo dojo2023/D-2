@@ -23,11 +23,11 @@ create table article (
  article_title varchar (50) not null,
  user_id varchar (16) not null,
  article_create timestamp not null,
- article_update timestamp not null,
- article_language char (15) not null,
- article_purpose char (10) not null,
+ article_update timestamp not null on update current_timestamp,
+ article_language char (16) not null,
+ article_purpose char (11) not null,
  article_career varchar (20) not null,
- article_certification char (13) not null,
+ article_certification char (14) not null,
  article_favs int not null,
  article_text varchar (10000) not null,
  article_img1 varchar (30),
@@ -51,10 +51,10 @@ create table community (
  community_id int auto_increment primary key not null,
  community_date timestamp not null,
  community_name varchar (30) not null,
- community_language char (15) not null,
- community_purpose char (10) not null,
+ community_language char (16) not null,
+ community_purpose char (11) not null,
  community_career varchar (20) not null,
- community_certification char (13) not null,
+ community_certification char (14) not null,
  community_summary varchar (100) not null
 );
 
@@ -126,7 +126,8 @@ insert into language_list (language_id, language_item)
  ('C', 'Ruby'),
  ('D', 'R言語'),
  ('E', 'Kotlin'),
- ('F', 'Go');
+ ('F', 'Go'),
+ ('G', 'その他');
 
 purpose_list
 insert into purpose_list (purpose_id, purpose_item) 
@@ -140,7 +141,8 @@ insert into purpose_list (purpose_id, purpose_item)
  (7, 'データベース'),
  (8, 'Officeスキル'),
  (9, 'セキュリティ'),
- ('A', 'OS');
+ ('A', 'OS'),
+ ('B', 'その他');
  
 certification_list
 insert into certification_list (certification_id, certification_item) 
@@ -157,4 +159,5 @@ insert into certification_list (certification_id, certification_item)
  ('A', 'エンベデッドシステムスペシャリスト試験'),
  ('B', 'ITサービスマネージャ試験'),
  ('C', 'システム監査技術者試験'),
- ('D', '情報処理安全確保支援士試験');
+ ('D', '情報処理安全確保支援士試験'),
+ ('E', 'その他');
