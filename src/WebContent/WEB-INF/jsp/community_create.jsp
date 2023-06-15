@@ -3,18 +3,28 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <link rel="stylesheet" href="/product_D2/css/create.css">
-        <title>コミュニティ作成</title>
+        <link rel="stylesheet" href="css/common.css">
+        <link rel="stylesheet" href="css/create.css">
+        <title>コミュニティ作成|with IT</title>
     </head>
     <body>
-
+<header>
+<div class="header">
+	<a href="/product_D2/TopServlet"><img src="image/logo.png" class="logo_contents" width="10%" height="10%"></a>
+</div>
+</header>
+<div class="create_main">
         <form method="POST" action="/product_D2/CommunityCreateServlet">
 
-        <p>コミュニティ名<br>
-        <input type="text" name="community_name"></p>
-
-        <p>タグ<br>
-            使用言語<br>
+        <hr>    
+        <h4>コミュニティ名</h4><br>
+        <input type="text"  class="textform" name="community_name" id="community_name" onkeyup="counter('community_name','count1')">
+        <span id="count1">0</span>/30</p>
+        
+        <hr>
+        <h4>タグ</h4><br>
+        <div class="contentA">   
+        使用言語<br>
             <table>
             <tr>
             <td><input type="checkbox" name="language" value="Java">Java</td>
@@ -41,7 +51,9 @@
             <td><input type="checkbox" name="language" value="その他">その他</td>
             </tr>
             </table>
+        </div> 
 
+        <div class="contentB">
             <br>使用理由<br>
             <table>
             <tr>
@@ -62,8 +74,10 @@
             <td><input type="checkbox" name="purpose" value="その他">その他</td>
             </tr>
             </table>
+        </div>
 
-            <br>取りたい資格<br>
+        <div class="contentC">  
+        <br>取りたい資格<br>
             <table>
             <tr>
             <td><input type="checkbox" name="certification" value="ITパスポート">ITパスポート</td>
@@ -88,23 +102,54 @@
             <td><input type="checkbox" name="certification" value="その他">その他</td>
 			</tr>
 			</table>
+        </div>  
 
-            <br>プログラミング歴<br>
-            <select name="career">
+        <div class="contentD">  
+        <br>プログラミング歴<br>
+            <select name="career" class="select">
                 <option value="入門">入門：文法を勉強中</option>
                 <option value="初級">初級：簡単なプログラムを書ける</option>
                 <option value="中級">中級：業務経験がある</option>
                 <option value="上級">上級：上流工程の仕事も担当できる</option>
                 <option value="エキスパート">エキスパート：リーダーとして開発できる</option>
             </select>
+        </div>  
 
+        <hr>
+        <h4>コミュニティの概要</h4><br>
+        <input type="text" name="community_summary" class= "textbox" id="community_summary" onkeyup="counter('community_summary','count2')">
+        <span id="count2">0</span>/100</p>
 
-        <p>コミュニティの概要<br>
-        <input type="text" name="community_summary"></p>
-
-        <input type="submit" name="REGIST" value="確認"><br>
+        <hr>
+        <div class="btn_wrap">
+        <input class="btn" type="submit" name="REGIST" value="入力した内容を確認する"><br>
+        </div>
         </form>
+    </div>
+    </div>
 
+<div class="footer_all">
+<footer class="footer">
+	<img class="footer_logo" src="image/logo.png"  width="10%" height="10%">
+	<div class="footer_contents">
+		<b><p>コンテンツ</p></b>
+		<ul>
+			<li>投稿</li>
+			<li>コミュニティ</li>
+			<li>ログイン</li>
+			<li>ログアウト</li>
+			<li>新規作成</li>
+			<li>トップページ</li>
+		</ul>
+		</div>
+</footer>
+<div class="footer_bottom">
+	<p>ヘルプはこちらから</p>
+	<p>&copy;2023 Sakuraiya. All rights reserved.</p>
+</div>
+</div>
+
+<script src="/product_D2/js/community_create.js"></script>
 
     </body>
 </html>
