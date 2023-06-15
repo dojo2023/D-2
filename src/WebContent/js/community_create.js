@@ -7,13 +7,19 @@ function counter (target, result) {
   document.getElementById(result).innerText = len;
 }
 
-/**テキスト未入力処理 */
+
+/**テキスト処理用変数*/
 let name='';
 let summary='';
 let name_red;
 let summary_red;
+/** タグ処理用変数*/
+let checkbox=document.getElementsByClassName("tag");
+let count=0;
+let pulldown='';
 
-document.getElementById('form').onsubmit=function(event){
+	document.getElementById('form').onsubmit=function(event){
+	/**テキスト未入力処理 */
 	name=document.getElementById('form').community_name.value;
 	summary=document.getElementById('form').community_summary.value;
 	if(name===''){
@@ -29,6 +35,23 @@ document.getElementById('form').onsubmit=function(event){
 		event.preventDefault();
 	}
 
+	/** 全てのタグから1個以上選択*/
+	pulldown=document.getElementById('tag').value;
+	for (let i = 0; i < checkbox.length; i++) {
+		if (checkbox[i].checked) {
+			count++;
+		}
+	}
+	if(pulldown!==''){
+		count++;
+	}
+	if(count===0){
+		document.getElementById('outputTag').textContent='タグを一つ以上選択してください';
+		event.preventDefault();
+	}
+
+
+
 }
 
-/** */
+
