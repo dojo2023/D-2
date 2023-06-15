@@ -8,7 +8,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import dao.UserDao;
 import model.User;
 
 /**
@@ -23,6 +25,7 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		request.setAttribute("isError", "f");
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/login.jsp");
 		dispatcher.forward(request, response);
 	}
@@ -36,17 +39,16 @@ public class LoginServlet extends HttpServlet {
 		String id = request.getParameter("id");
 		String pw = request.getParameter("pw");
 		User user = new User(id, pw);
-		/*
-		if (iDao.isLoginOK(user)) {
+		UserDao uDao = new UserDao();
+		if (uDao.isLoginOK(user)) {
 			HttpSession session = request.getSession();
 			session.setAttribute("user", user);
-			response.sendRedirect("/product_sample/menu");
+			response.sendRedirect("/product_D2/top");
 		} else {
-			request.setAttribute("user", user);
+			request.setAttribute("isError", "t");
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/login.jsp");
 			dispatcher.forward(request, response);
 		}
-*/
 	}
 
 }

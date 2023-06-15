@@ -1,3 +1,17 @@
+【スタイルシート読み込み】※meta charsetの下の行にコピペ
+<link rel="stylesheet" href="css/common.css">
+
+ーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+
+【ヘッダー部分HTML（ロゴのみ）】
+
+<header>
+<div class="header">
+	<a href="/product_D2/TopServlet"><img src="image/logo.png" class="logo_contents" width="10%" height="10%"></a>
+</div>
+</header>
+
+
 【ヘッダー部分HTML（検索欄・タブ選択あり）】
 
 <div class="header">
@@ -14,14 +28,6 @@
 				<input class="community_search" type="submit" name="community_search" value="コミュニティ検索">
 		</form></div>
 </div>
-
-
-【ヘッダー部分HTML（ロゴのみ）】
-
-<div class="header">
-	<a href="/product_D2/TopServlet"><img src="image/logo.png" class="logo_contents" width="10%" height="10%"></a>
-</div>
-</header>
 
 
 【フッター部分HTML】
