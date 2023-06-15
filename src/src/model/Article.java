@@ -15,11 +15,14 @@ public class Article  implements Serializable{
 	private String[] articleCertification;
 	private int articleFavs;
 	private String articleText;
-	private String articleImg;
+	private String articleImg1;
+	private String articleImg2;
+	private String articleImg3;
 
 	public Article(int articleId,String articleTitle,String userId,String articleCreate,String articleUpdate,
 			String[] articleLanguage,String[] articlePurpose, String articleCareer,
-			String[] articleCertification,int articleFavs,String articleText,String articleImg) {
+			String[] articleCertification,int articleFavs,String articleText,String articleImg1,
+			String articleImg2, String articleImg3) {
 		this.articleId=articleId;
 		this.articleTitle=articleTitle;
 		this.userId=userId;
@@ -31,7 +34,9 @@ public class Article  implements Serializable{
 		this.articleCertification=articleCertification;
 		this.articleFavs=articleFavs;
 		this.articleText=articleText;
-		this.articleImg=articleImg;
+		this.articleImg1=articleImg1;
+		this.articleImg2=articleImg2;
+		this.articleImg3=articleImg3;
 	}
 
 	public Article() {
@@ -46,7 +51,9 @@ public class Article  implements Serializable{
 		this.articleCertification=null;
 		this.articleFavs=0;
 		this.articleText="";
-		this.articleImg="";
+		this.articleImg1="";
+		this.articleImg2="";
+		this.articleImg3="";
 	}
 
 	public int getArticleId() {
@@ -137,13 +144,31 @@ public class Article  implements Serializable{
 		this.articleText = articleText;
 	}
 
-	public String getArticleImg() {
-		return articleImg;
+	public String getArticleImg1() {
+		return articleImg1;
 	}
 
-	public void setArticleImg(String articleImg) {
-		this.articleImg = articleImg;
+	public void setArticleImg1(String articleImg1) {
+		this.articleImg1 = articleImg1;
 	}
+
+	public String getArticleImg2() {
+		return articleImg2;
+	}
+
+	public void setArticleImg2(String articleImg2) {
+		this.articleImg2 = articleImg2;
+	}
+
+	public String getArticleImg3() {
+		return articleImg3;
+	}
+
+	public void setArticleImg3(String articleImg3) {
+		this.articleImg3 = articleImg3;
+	}
+
+
 
 
 }
