@@ -53,7 +53,7 @@
 
 <div class="footer_all">
 <footer class="footer">
-	<img class="footer_logo" src="image/logo.png"  width="10%" height="10%">
+	<img class="footer_logo" src="image/logo2.png"  width="10%" height="10%">
 	<div class="footer_contents">
 		<b><p>コンテンツ</p></b>
 		<ul>
