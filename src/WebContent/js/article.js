@@ -24,7 +24,9 @@ document.getElementById('fav_form').onsubmit=function(){
 }
 
 
-/** ログイン状態でコメント欄の活性、日活性*/
+/** ログイン状態でコメント欄の活性、非活性*/
+/** jspでログイン状態を判別してvalueの値を変える、EL式でif文作って分岐、
+	valueにはユーザー名が入る、ログインしてなければnull*/
 var log=document.getElementById('comment').value;
 if(log===null){
 	document.getElementById('comment').setAttribute("disabled");
