@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import dao.UserDao;
 import model.User;
 
 /**
@@ -41,12 +42,19 @@ public class SignUpServlet extends HttpServlet {
 		String[] purpose = request.getParameterValues("purpose");
 		String career = request.getParameter("career");
 		String[] certification = request.getParameterValues("certification");
-		User user = new User(userId, password, userName, language,
+		UserDao uDao = new UserDao();
+		if (!uDao.isExistingId(userId)) {
+			User user = new User(userId, password, userName, language,
 				purpose, career, certification);
-		HttpSession session = request.getSession();
-		session.setAttribute("user", user);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/sign_up_confirm.jsp");
-		dispatcher.forward(request, response);
+			HttpSession session = request.getSession();
+			session.setAttribute("user", user);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/sign_up_confirm.jsp");
+			dispatcher.forward(request, response);
+		} else {
+			request.setAttribute("isExistingId", "t");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/sign_up.jsp");
+			dispatcher.forward(request, response);
+		}
 	}
 
 }
