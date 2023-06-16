@@ -24,10 +24,11 @@ document.getElementById('fav_form').onsubmit=function(){
 }
 
 
-
+/** ログイン状態でコメント欄の活性、日活性*/
 var log=document.getElementById('comment').value;
 if(log===null){
 	document.getElementById('comment').setAttribute("disabled");
+	document.getElementById('comment').placeholder="ログインしてください";
 }else{
 	document.getElementById('comment').removeAttribute("disabled");
 }
