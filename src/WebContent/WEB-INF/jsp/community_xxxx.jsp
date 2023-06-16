@@ -36,7 +36,7 @@
 <p class="message">トゥース</p><br><br><p class="message">トゥース</p><br><br><p class="message">トゥース</p><br><br><p class="message">トゥース</p><br><br><p class="message">トゥース</p><br><br><p class="message">トゥース</p>
 </div>
 <div class="b">
- <form method="POST" action="/product_D2mmm/CommunityServlet">
+ <form method="POST" action="/product_D2/CommunityServlet">
 <input type="textarea" name="REMARKTEXT" placeholder="メッセージを入力してください">
 <input class="btn" type="submit" name="SUBMIT" value="送　信">
 <br><br>
@@ -46,7 +46,7 @@
 
 <div class="footer_all">
 <footer class="footer">
-	<img class="footer_logo" src="image/logo.png"  width="10%" height="10%">
+	<img class="footer_logo" src="image/logo2.png"  width="10%" height="10%">
 	<div class="footer_contents">
 		<b><p>コンテンツ</p></b>
 		<ul>
@@ -67,7 +67,7 @@
 
 
 <style>.a{overflow-y: scroll;}</style>
-<script src="./jquery-3.6.4.min.js"></script>
-<script src="./community.js"></script>
+<script src="js/jquery-3.6.4.min.js"></script>
+<script src="js/community.js"></script>
 
 </html>
