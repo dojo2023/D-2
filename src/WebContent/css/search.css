@@ -1,0 +1,56 @@
+@charset "UTF-8";
+@charset "UTF-8";
+
+/* メインコンテンツすべてに適用 */
+
+h1 {
+    font-size: 20px;
+    color: white;
+    background: linear-gradient(to right, #52c2cf, #ffd83a);
+    border-radius: 1em;
+    padding: 10px;
+    display: flex;
+    margin: 3px;
+
+
+}
+
+.search_main p {
+    display: inline;
+}
+.search_main {
+    margin: 10px;
+}
+.search_contents{
+    background-color: white;
+    border-radius: 2em;
+    text-align: center;
+    color: #3d9d8f;
+    width: 450px;
+    margin: 20 auto;
+    padding: 10px 0;
+}
+
+/* インプット｜ボタン */
+.btn {
+    background: linear-gradient(to bottom, #52639c, #35416b);
+    color: #ffffff;
+    border: none;
+    text-shadow: none;
+    border-radius: 0.25em;
+    height: 35px;
+    width: 150px;
+}
+.btn:hover {
+    background: linear-gradient(to bottom, #52c2cf, #369ca0);
+}
+.btn:active {
+    transform: translateY(2px);
+}
+.btn_wrap {
+    text-align: center;
+}
+
+footer{
+margin-top:150px;
+}
