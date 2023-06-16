@@ -15,7 +15,7 @@ h4 {
     display: inline;
     color: #35416b;
 }
-p {
+.confirm_main p {
     display: inline;
 }
 .confirm_main {
@@ -28,6 +28,7 @@ p {
     color: #3d9d8f;
     width: 450px;
     margin: 20 auto;
+    padding: 10px 0;
 }
 .confirm_msg {
     text-align: center;
