@@ -18,7 +18,7 @@
 <div class="ctitle"><h1>コミュニティ名</h1></div>
 
 <button id="btn"class="btn">
-<img src="image/member.png"></button><div class="E">松本仁 浜田正敏 中島子太郎 矢羽々理央 石戸交流 パパイヤ鈴木 </div>
+<img src="image/member.png"></button><div class="E">参加者の一覧 </div>
 <hr>
 </div>
 <div class="a">
@@ -33,7 +33,7 @@
 	<hr>
 </c:forEach>
 <!-- サンプルテキスト -->
-<p class="message">トゥース</p><br><br><p class="message">トゥース</p><br><br><p class="message">トゥース</p><br><br><p class="message">トゥース</p><br><br><p class="message">トゥース</p><br><br><p class="message">トゥース</p>
+<p class="message">こんにちは（例文）</p><br><br><p class="message">こんにちは</p><br><br><p class="message">こんにちは</p><br><br><p class="message">こんにちは</p><br><br><p class="message">こんにちは</p><br><br><p class="message">こんにちは</p>
 </div>
 <div class="b">
  <form method="POST" action="/product_D2/CommunityServlet">
