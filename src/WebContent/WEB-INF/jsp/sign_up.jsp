@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -99,6 +100,12 @@ ID <span id="userid_error"></span><br>
 </table>
 <input type="button" onclick="location.href='/product_D2/login'" value="戻る">
 <input type="submit" value="確認">
+<c:if test="${isExistingId == 'f'}">
+<br>
+</c:if>
+<c:if test="${isExistingId == 't'}">
+すでに登録されているユーザーIDです<br>
+</c:if>
 </form>
 <script src="/product_D2/js/sign_up.js"></script>
 </body>
