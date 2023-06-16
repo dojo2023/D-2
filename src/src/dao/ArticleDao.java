@@ -231,7 +231,7 @@ public boolean insert(Article data) {
 	}
 
 //記事idから一致する記事のデータを持ってくる
-	public Article load(String id){
+	public Article load(int id){
 		String language, purpose, certification;
 		String lang_data[] = new String[16];
 		String purp_data[] = new String[11];
@@ -251,7 +251,7 @@ public boolean insert(Article data) {
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			//SQL文を完成させる
-			pStmt.setString(1,id);
+			pStmt.setInt(1,id);
 			ResultSet rs = pStmt.executeQuery();
 
 			//フラグ形式のデータをString型の変数に入れる
@@ -308,7 +308,7 @@ public boolean insert(Article data) {
 	}
 
 	//引数の記事idと一致する記事を削除する
-			public boolean deleat(String id){
+			public boolean delete(int id){
 				boolean result = false;
 				Connection conn = null;
 
