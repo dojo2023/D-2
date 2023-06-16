@@ -1,3 +1,5 @@
+<!-- 6/16 17:29update by yahaba -->
+
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -18,8 +20,8 @@
 	<div class="search">
 		<form action="サイトURL" method="get">
 			<input type="search" name="search" placeholder="キーワードを入力">
-				<input class="article_search" type="submit" name="article_search" value="記事検索">
-				<input class="community_search" type="submit" name="community_search" value="コミュニティ検索">
+				<input class="article_search" type="submit" name="search" value="記事検索">
+				<input class="community_search" type="submit" name="search" value="コミュニティ検索">
 		</form></div>
 </div>
 </header>
