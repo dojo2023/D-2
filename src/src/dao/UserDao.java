@@ -79,4 +79,33 @@ public class UserDao {
 		}
 		return addResult;
 	}
+
+	public String getUserNameById(String userId) {
+		Connection conn = null;
+		String userName = null;
+
+		try {
+			Class.forName("org.h2.Driver");
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/src/Data", "sa", "");
+			String sql = "select * from USER where user_id = ?";
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+			pStmt.setString(1, userId);
+			ResultSet rs = pStmt.executeQuery();
+			if (rs.next())
+				userName = rs.getString("user_name");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} finally {
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		return userName;
+	}
 }
