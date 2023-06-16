@@ -11,7 +11,7 @@
 		<!-- 確認の表示 -->
         <p>コミュニティ名<br>
             ${name}
-        </p>
+        </p><br>
 
         <p>タグ<br>
 			<c:set var="sendLang" value="" />
@@ -32,7 +32,7 @@
             <c:set var="sendCert" value="${sendCert},${e} "/>
             </c:forEach>
             ${career}
-        </p>
+        </p><br>
 
         <p>コミュニティの概要<br>
             ${summary}

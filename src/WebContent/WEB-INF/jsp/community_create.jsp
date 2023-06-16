@@ -110,11 +110,11 @@
         <br>プログラミング歴<br>
             <select name="career" class="select" id="tag">
                 <option value="">---</option>
-                <option value="入門">入門：文法を勉強中</option>
-                <option value="初級">初級：簡単なプログラムを書ける</option>
-                <option value="中級">中級：業務経験がある</option>
-                <option value="上級">上級：上流工程の仕事も担当できる</option>
-                <option value="エキスパート">エキスパート：リーダーとして開発できる</option>
+                <option value="入門：文法を勉強中">入門：文法を勉強中</option>
+                <option value="初級：簡単なプログラムを書ける">初級：簡単なプログラムを書ける</option>
+                <option value="中級：業務経験がある">中級：業務経験がある</option>
+                <option value="上級：上流工程の仕事も担当できる">上級：上流工程の仕事も担当できる</option>
+                <option value="エキスパート：リーダーとして開発できる">エキスパート：リーダーとして開発できる</option>
             </select>
         </div>
 		<p id=outputTag></p>
