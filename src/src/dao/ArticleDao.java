@@ -91,78 +91,78 @@ public class ArticleDao {
 		return cardList;
 	}
 
-}
-//引数ありでデータをデータベースに登録する。
-public boolean insert(Article data) {
-	String language;
-	String purpose;
-	String certification;
-	Connection conn = null;
-	boolean result = false;
+
+	//引数ありでデータをデータベースに登録する。
+	public boolean insert(Article data) {
+		String language;
+		String purpose;
+		String certification;
+		Connection conn = null;
+		boolean result = false;
 
 
-	try {
-		//JDBCドライバを読み込む
-		Class.forName("org.h2.Driver");
+		try {
+			//JDBCドライバを読み込む
+			Class.forName("org.h2.Driver");
 
-		//データベースに接続する
-		conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/mybc", "sa", "");
+			//データベースに接続する
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/mybc", "sa", "");
 
-		//配列になっている使用言語をフラグ形式に変換。
-		language = Flag.languageFlag(data.getArticleLanguage());
+			//配列になっている使用言語をフラグ形式に変換。
+			language = Flag.languageFlag(data.getArticleLanguage());
 
-		//配列になっている使用理由をフラグ形式に変換。
-		purpose = Flag.purposeFlag(data.getArticlePurpose());
+			//配列になっている使用理由をフラグ形式に変換。
+			purpose = Flag.purposeFlag(data.getArticlePurpose());
 
-		//配列になっている使用理由をフラグ形式に変換。
-		certification = Flag.certificationFlag(data.getArticleCertification());
+			//配列になっている使用理由をフラグ形式に変換。
+			certification = Flag.certificationFlag(data.getArticleCertification());
 
-		//SQL文を準備する
-		String sql = "insert into article( article_title, user_id, article_create, article_update, article_language, article_purpose, article_career, article_certification, article_favs, article_text, article_img1, article_img2, article_img3) values(?,?,?,?,?,?,?,?,?,?,?,?,?);";
-		PreparedStatement pStmt = conn.prepareStatement(sql);
+			//SQL文を準備する
+			String sql = "insert into article( article_title, user_id, article_create, article_update, article_language, article_purpose, article_career, article_certification, article_favs, article_text, article_img1, article_img2, article_img3) values(?,?,?,?,?,?,?,?,?,?,?,?,?);";
+			PreparedStatement pStmt = conn.prepareStatement(sql);
 
-		//SQL文を完成させる
-		pStmt.setString(1, data.getArticleTitle());
-		pStmt.setString(2, data.getUserId());
-		pStmt.setString(3, "current_timestamp");
-		pStmt.setString(4, "current_timestamp");
-		pStmt.setString(5, language);
-		pStmt.setString(6,  purpose);
-		pStmt.setString(7, data.getArticleCareer());
-		pStmt.setString(8, certification);
-		pStmt.setInt(9, data.getArticleFavs());
-		pStmt.setString(10, data.getArticleText());
-		pStmt.setString(11, data.getArticleImg1());
-		pStmt.setString(12, data.getArticleImg2());
-		pStmt.setString(13, data.getArticleImg3());
-		pStmt.executeUpdate();
-		result = true;
+			//SQL文を完成させる
+			pStmt.setString(1, data.getArticleTitle());
+			pStmt.setString(2, data.getUserId());
+			pStmt.setString(3, "current_timestamp");
+			pStmt.setString(4, "current_timestamp");
+			pStmt.setString(5, language);
+			pStmt.setString(6,  purpose);
+			pStmt.setString(7, data.getArticleCareer());
+			pStmt.setString(8, certification);
+			pStmt.setInt(9, data.getArticleFavs());
+			pStmt.setString(10, data.getArticleText());
+			pStmt.setString(11, data.getArticleImg1());
+			pStmt.setString(12, data.getArticleImg2());
+			pStmt.setString(13, data.getArticleImg3());
+			pStmt.executeUpdate();
+			result = true;
 
-	}
-	catch (SQLException e) {
-		e.printStackTrace();
-	}
-	catch(ClassNotFoundException e) {
-		e.printStackTrace();
-	}
-	finally {
-		//データベース切断
-		if(conn != null) {
-			try {
-				conn.close();
-			}
-			catch(SQLException e) {
-				e.printStackTrace();
-				result = false;
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
+		catch(ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		finally {
+			//データベース切断
+			if(conn != null) {
+				try {
+					conn.close();
+				}
+				catch(SQLException e) {
+					e.printStackTrace();
+					result = false;
+				}
 			}
 		}
+
+		//結果を返す
+		return result;
 	}
 
-	//結果を返す
-	return result;
-}
-
-//引数ありでデータをデータベースに登録する。
+	//引数ありでデータをデータベースに登録する。
 	public boolean update(Article data) {
 		String language;
 		String purpose;
@@ -230,7 +230,7 @@ public boolean insert(Article data) {
 		return result;
 	}
 
-//記事idから一致する記事のデータを持ってくる
+	//記事idから一致する記事のデータを持ってくる
 	public Article load(int id){
 		String language, purpose, certification;
 		String lang_data[] = new String[16];
@@ -308,46 +308,48 @@ public boolean insert(Article data) {
 	}
 
 	//引数の記事idと一致する記事を削除する
-			public boolean delete(int id){
-				boolean result = false;
-				Connection conn = null;
+	public boolean delete(int id){
+		boolean result = false;
+		Connection conn = null;
 
 
-				try {
-					//JDBCドライバを読み込む
-					Class.forName("org.h2.Driver");
+		try {
+			//JDBCドライバを読み込む
+			Class.forName("org.h2.Driver");
 
-					//データベースに接続する
-					conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/mybc", "sa", "");
+			//データベースに接続する
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/mybc", "sa", "");
 
-					//SQL文を準備する
-					String sql = "delete from article where article_id = ?";
-					PreparedStatement pStmt = conn.prepareStatement(sql);
+			//SQL文を準備する
+			String sql = "delete from article where article_id = ?";
+			PreparedStatement pStmt = conn.prepareStatement(sql);
 
-					//SQL文を完成させる
-					if(pStmt.executeUpdate()==1) {
-						result = true;
-					}
-				}
-				catch(SQLException e) {
-					e.printStackTrace();
-				}
-				catch(ClassNotFoundException e) {
-					e.printStackTrace();
-				}
-				finally {
-					//データベースを切断
-					if(conn != null) {
-						try {
-							conn.close();
-						} catch (SQLException e) {
-							e.printStackTrace();
-						}
-					}
-				}
-
-				//結果を返す
-				return result;
-
+			//SQL文を完成させる
+			if(pStmt.executeUpdate()==1) {
+				result = true;
 			}
+		}
+		catch(SQLException e) {
+			e.printStackTrace();
+		}
+		catch(ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		finally {
+			//データベースを切断
+			if(conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+
+		//結果を返す
+		return result;
+
+	}
+
+
 }
