@@ -23,12 +23,12 @@
         <div class="confirm_contents">
             <h4>コミュニティ名：</h4>
                 ${name}<br>
-            
+
             <h4>タグ：</h4>
                 <c:set var="sendLang" value="" />
                 <c:forEach var="e" items="${language}">
                 ${e},
-                <c:set var="sendLang" value="${sendLang},${lang} "/>
+                <c:set var="sendLang" value="${sendLang},${e} "/>
                 </c:forEach>
 
                 <c:set var="sendPurp" value="" />
@@ -46,7 +46,7 @@
 
             <h4>コミュニティの概要：</h4>
                 ${summary}<br>
-           
+
         </div>
         <div class="confirm_msg">
             <p>以上の内容でよろしいですか？</p><br>
