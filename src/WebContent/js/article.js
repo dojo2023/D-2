@@ -4,19 +4,22 @@
 /*いいねボタンを押したら色が変わる */
 
 var judge=true;
-var fav_pink;
+var fav_color;
 
 document.getElementById('fav_form').onsubmit=function(){
+
 	if(judge=true){
 		fav_color=document.getElementById('fav');
 		fav_color.style.backgroundColor="pink";
 		judge=false;
-
+		/**下を動かす場合この一文を削除 */
+		document.getElementById('fav').setAttribute("disabled");
 	/** 色がピンクの状態でもう一度押すと白になる
 	}else{
 		fav_color=document.getElementById('fav');
 		fav_color.style.backgroundColor=white;
 		judge=true;
+		document.getElementById('fav').removeAttribute("disabled");
 	*/
 	}
 

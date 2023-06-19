@@ -1,5 +1,3 @@
-<!-- 6/16 17:29update by yahaba -->
-
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -18,7 +16,7 @@
 	<a href="/product_D2/ArticleServlet"><h1 class="tab_article">記事</h1></a>
 	<a href="/product_D2/CommunityServlet"><h1 class="tab_community">コミュニティ</h1></a>
 	<div class="search">
-		<form action="サイトURL" method="get">
+		<form action="/product_D2/TopServlet" method="get">
 			<input type="search" name="search" placeholder="キーワードを入力">
 				<input class="article_search" type="submit" name="search" value="記事検索">
 				<input class="community_search" type="submit" name="search" value="コミュニティ検索">
@@ -29,7 +27,8 @@
 <div class="top_main">
 	<div class="contents_left">
 		<h2>おすすめ記事</h2>
-		<!-- ここにおすすめ記事を表示 -->
+		<h4>${article.articleTitle}</h4>
+		<p>by ${article.userId} ${article.articleCreate}</p>
 	</div>
 	<div class="contents_right">
 		<div class="contents_user">
@@ -38,7 +37,7 @@
 		</div>
 		<div class="contents_myarticle">
 			<h3>自分が投稿した記事</h3>
-			<!-- この行に自分の記事を挿入 -->
+			<p>${article.articleTitle}</p>
 			<a href="/product_D2/EditServlet"><p class="btn">編集</p></a>
 			<a href="/product_D2/ArticleServlet"><p class="btn">閲覧</p></a>
 			<a href="/product_D2/PostServlet"><p class="btn_post">→記事を新規投稿する</p></a>
