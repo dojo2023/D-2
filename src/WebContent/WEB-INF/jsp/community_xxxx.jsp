@@ -37,8 +37,8 @@
 </div>
 <div class="b">
  <form method="POST" action="/product_D2/CommunityServlet">
-<input type="textarea" name="REMARKTEXT" placeholder="メッセージを入力してください">
-<input class="btn" type="submit" name="SUBMIT" value="送　信">
+<input type="textarea" id="messagetext" name="REMARKTEXT" placeholder="メッセージを入力してください">
+<input class="btn" id="messagesubmit" type="submit" name="SUBMIT" value="送　信">
 <br><br>
 </form>
 </div>
