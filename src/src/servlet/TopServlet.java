@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -33,9 +34,9 @@ public class TopServlet extends HttpServlet {
 		User user;
 		ArticleDao aDao = new ArticleDao();
 		CommunityDao cDao = new CommunityDao();
-		Article[] recommendArticle = null;
-		Community[] recommendCommunity = null;
-		Article[] writtenArticle = null;
+		ArrayList<Article> recommendArticle = new ArrayList<Article>();
+		ArrayList<Community> recommendCommunity = new ArrayList<Community>();
+		ArrayList<Article> writtenArticle = new ArrayList<Article>();
 		try {
 			user = (User)session.getAttribute("user");
 			recommendArticle = aDao.getRecommendArticle(user);
@@ -66,12 +67,12 @@ public class TopServlet extends HttpServlet {
 		String target = request.getParameter("search");
 		if (target.equals("記事検索")) {
 			ArticleDao aDao = new ArticleDao();
-			Article[] articleResults = aDao.searchArticle(query);
+			ArrayList<Article> articleResults = aDao.searchArticle(query);
 			session.setAttribute("articleResults", articleResults);
 			response.sendRedirect("/WEB-INF/jsp/article_search.jsp");
 		} else if (target.equals("コミュニティ検索")) {
 			CommunityDao cDao = new CommunityDao();
-			Community[] communityResults = cDao.searchCommunity(query);
+			ArrayList<Community> communityResults = cDao.searchCommunity(query);
 			session.setAttribute("communityResults", communityResults);
 			response.sendRedirect("/WEB-INF/jsp/community_search.jsp");
 		}
