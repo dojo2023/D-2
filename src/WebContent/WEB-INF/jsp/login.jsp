@@ -5,8 +5,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="css/common.css?20230615">
-        <link rel="stylesheet" href="css/login.css?20230615">
+<link rel="stylesheet" href="css/common.css">
+        <link rel="stylesheet" href="css/login.css">
 <title>ログイン</title>
 </head>
 <body>
