@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.CommunityDAO;
+import dao.CommunityDao;
 import model.Remark;
 
 /**
@@ -43,7 +43,7 @@ public class CommunityServlet extends HttpServlet {
 		String remarkText = request.getParameter("REMARKTEXT");
 		//String remarkDate  = request.getParameter("REMARKDATE");
 
-		CommunityDAO bDao = new CommunityDAO();
+		CommunityDao bDao = new CommunityDao();
 		 //bDao.insert(new Remark(remarkId,communityId,userId,remarkText,remarkDate));
 		bDao.insert(new Remark(remarkText));
 		// メニューページにフォワードする

@@ -11,7 +11,7 @@ import java.util.List;
 
 import model.Community;
 
-public class CommunityDAO {
+public class CommunityDao {
 	// 引数paramで検索項目を指定し、検索結果のリストを返す
 	public List<Community> select(Community param) {
 		Connection conn = null;

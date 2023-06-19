@@ -21,6 +21,10 @@ public class User implements Serializable {
 		this.certification = null;
 	}
 
+	public User(String userName) {
+		this.userName = userName;
+	}
+
 	public User(String userId, String password) {
 		this.userId = userId;
 		this.password = password;
