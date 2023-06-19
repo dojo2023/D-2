@@ -7,13 +7,14 @@
 <title>記事編集</title>
 </head>
 <body>
-<h1 class="logo"><a href="http://localhost:8080/product_D2/TopServlet">ロゴ</a></h1>
+<h1>記事編集</h1>
 <main>
-<h1 class="article-title">記事タイトル</h1>
-<form method="POST" action="sampled2/EditConfirmServlet" id="form">
-<label><input type="text" name="title" value="${article.title}" placeholder="記事タイトル"></label>
-<h1 class=tag>タグ選択</h1>
-<h2>言語</h2>
+<!-- 編集前の記事（チェックボックス部分）をjsで持ってくる？ -->
+記事タイトル<br>
+<form method="POST" action="sampled2/EditResultServlet" id="form">
+<label><input type="text" name="title" value="${article.articleTitle}" placeholder="記事タイトル"></label>
+<h2>タグ選択</h2>
+言語<br>
 <table class=language-tag>
 <tr>
 <td>
@@ -73,7 +74,7 @@
 </tr>
 </table>
 
-<h2>使用理由</h2>
+使用理由<br>
 <table class="purpose-tag">
 <tr>
 <td>
@@ -116,7 +117,7 @@
 </tr>
 <label></table>
 
-<h2>資格</h2>
+資格<br>
 <table class="certification-tag">
 <tr>
 <td>
@@ -170,7 +171,7 @@
 </tr>
 <tr>
 <td>
-<label><h2>プログラミング歴</h2>
+プログラミング歴<br>
 <select name="career">
 <option value="">---</option>
 <option value="入門：文法を勉強中">入門：文法を勉強中</option>
@@ -183,7 +184,7 @@
 </tr>
 <tr>
 <td>
-<label><h1 class="article">本文</h1>
+<label>本文<br>
 <textarea name="text" placeholder="本文">${article.text}</textarea></label>
 </td>
 </tr>

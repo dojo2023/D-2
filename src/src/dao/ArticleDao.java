@@ -6,73 +6,251 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Arrays;
 
 import model.Article;
+import model.User;
 
 public class ArticleDao {
 	// 引数paramで検索項目を指定し、検索結果のリストを返す
-	public List<Article> select(Article param) {
+	public ArrayList<Article> select(String query) {
 		Connection conn = null;
-		List<Article> articleList = new ArrayList<Article>();
+		ArrayList<Article> result = new ArrayList<Article>();
+		String[] queryArray = query.split("[ 　]+");
 
 		try {
 			// JDBCドライバを読み込む
 			Class.forName("org.h2.Driver");
 
 			// データベースに接続する
-			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/myBC", "sa", "");
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/src/Data", "sa", "");
 
-			// SQL文を準備する
-			String sql = "select , article_title, article_creat, article_language, article_purpose, article_career, article_certification, article_favs, article_text from article_title like ? and article_creat like ? and article_language like ? and article_purpose like ? and article_career like ? and article_certification like ? and article_favs like ? and article_text like ? order by article_id";
+			//本文、タイトルで検索をかける
+
+			//sql文を準備
+			String sql = "select * from article where";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
-
-			/*検索キーワードをタグリストと一致するか調べる。
-			 * 一致すれば空の配列に1、一致しなければ0を足していきフラグを作成
-			 * 作成したフラグで検索*/
-
-
-			// SQL文を完成させる
-			if (param.getNumber() != null) {
-				pStmt.setString(1, "%" + param.getNumber() + "%");
-			}
-			else {
-				pStmt.setString(1, "%");
-			}
-			if (param.getName() != null) {
-				pStmt.setString(2, "%" + param.getName() + "%");
-			}
-			else {
-				pStmt.setString(2, "%");
-			}
-			if (param.getAddress() != null) {
-				pStmt.setString(3, "%" + param.getAddress() + "%");
-			}
-			else {
-				pStmt.setString(3, "%");
+			//sql文を完成させる
+			for(int i=0; i<queryArray.length; i++) {
+				sql += " concat(article_title, article_text) like %"+ queryArray[i] +"%";
+				if(i < queryArray.length-1) {
+					sql += " and";
+				}
 			}
 
-			// SQL文を実行し、結果表を取得する
+			//sql文を実行
 			ResultSet rs = pStmt.executeQuery();
 
-			// 結果表をコレクションにコピーする
-			while (rs.next()) {
-				Bc card = new Bc(
-				rs.getString("NUMBER"),
-				rs.getString("NAME"),
-				rs.getString("ADDRESS")
-				);
-				cardList.add(card);
+			//結果表をArticleに保存し、配列に順次入れていく
+			while(rs.next()) {
+				String language[] = new String[16];
+				String purpose[] = new String[11];
+				String certification[] = new String[14];
+				language = ReFlag.languageReFlag(rs.getString("article_language"));
+				purpose = ReFlag.purposeReFlag(rs.getString("article_purpose"));
+				certification = ReFlag.certificationReFlag(rs.getString("article_certification"));
+				Article data = new Article(
+						rs.getInt("article_id"),
+						rs.getString("artcile_title"),
+						rs.getString("user_id"),
+						rs.getString("article_create"),
+						rs.getString("article_update"),
+						language,
+						purpose,
+						rs.getString("article_career"),
+						certification,
+						rs.getInt("article_favs"),
+						rs.getString("article_text"),
+						rs.getString("article_img1"),
+						rs.getString("article_img2"),
+						rs.getString("article_img3")
+						);
+				result.add(data);
+			}
+
+			//タグで検索する
+			String[] langId= new String[queryArray.length], purpId=new String[queryArray.length], certId=new String[queryArray.length];
+			//検索ワードが含まれるタグが存在するかどうかから。
+
+			for(int i=0; i<queryArray.length; i++) {
+				sql = "select * from language_list where language_item like %" + queryArray[i] +"%";
+				pStmt = conn.prepareStatement(sql);
+				//sql文を実行
+				rs = pStmt.executeQuery();
+				while(rs.next()) {
+					langId[i] += rs.getString("language_id");
+				}
+
+				sql = "select * from purpose_list where purpose_item like %" + queryArray[i] +"%";
+				pStmt = conn.prepareStatement(sql);
+				//sql文を実行
+				rs = pStmt.executeQuery();
+				while(rs.next()) {
+					purpId[i] += rs.getString("purpose_id");
+				}
+
+				sql = "select * from certification_list where certification_item like %" + queryArray[i] +"%";
+				pStmt = conn.prepareStatement(sql);
+				//sql文を実行
+				rs = pStmt.executeQuery();
+				while(rs.next()) {
+					certId[i] += rs.getString("certification_id");
+				}
+			}
+
+			String langIdforSQL="", purpIdforSQL="", certIdforSQL="";
+			String comp = "123456789ABCDEFG";
+			for(int i=0; i<16; i++) {
+				for(int j=0; j<queryArray.length; j++) {
+					if(langId[j].indexOf(String.valueOf(comp.charAt(i)))!=-1) {
+						langIdforSQL += String.valueOf(comp.charAt(i));
+						break;
+					}
+					if(j==queryArray.length-1) {
+						langIdforSQL += "0";
+					}
+				}
+			}
+			for(int i=0; i<11; i++) {
+				for(int j=0; j<queryArray.length; j++) {
+					if(purpId[j].indexOf(String.valueOf(comp.charAt(i)))!=-1) {
+						purpIdforSQL += String.valueOf(comp.charAt(i));
+						break;
+					}
+					if(j==queryArray.length-1) {
+						purpIdforSQL += "0";
+					}
+				}
+			}
+			for(int i=0; i<14; i++) {
+				for(int j=0; j<queryArray.length; j++) {
+					if(certId[j].indexOf(String.valueOf(comp.charAt(i)))!=-1) {
+						certIdforSQL += String.valueOf(comp.charAt(i));
+						break;
+					}
+					if(j==queryArray.length-1) {
+						certIdforSQL += "0";
+					}
+				}
+			}
+
+			//SQL文を準備
+			sql = "select * from article where article_language like ?";
+
+			langIdforSQL = langIdforSQL.replaceAll("[1-9A-G]", "_");
+			pStmt.setString(1, langIdforSQL);
+			//SQL文を実行
+			rs = pStmt.executeQuery();
+			while(rs.next()) {
+				String language[] = new String[16];
+				String purpose[] = new String[11];
+				String certification[] = new String[14];
+				language = ReFlag.languageReFlag(rs.getString("article_language"));
+				purpose = ReFlag.purposeReFlag(rs.getString("article_purpose"));
+				certification = ReFlag.certificationReFlag(rs.getString("article_certification"));
+				Article data = new Article(
+						rs.getInt("article_id"),
+						rs.getString("artcile_title"),
+						rs.getString("user_id"),
+						rs.getString("article_create"),
+						rs.getString("article_update"),
+						language,
+						purpose,
+						rs.getString("article_career"),
+						certification,
+						rs.getInt("article_favs"),
+						rs.getString("article_text"),
+						rs.getString("article_img1"),
+						rs.getString("article_img2"),
+						rs.getString("article_img3")
+						);
+				result.add(data);
+			}
+
+
+			//SQL文を準備
+			sql = "select * from article where article_purpose like ?";
+
+			purpIdforSQL = purpIdforSQL.replaceAll("[1-9A-G]", "_");
+			pStmt.setString(1, purpIdforSQL);
+			//SQL文を実行
+			rs = pStmt.executeQuery();
+			while(rs.next()) {
+				String language[] = new String[16];
+				String purpose[] = new String[11];
+				String certification[] = new String[14];
+				language = ReFlag.languageReFlag(rs.getString("article_language"));
+				purpose = ReFlag.purposeReFlag(rs.getString("article_purpose"));
+				certification = ReFlag.certificationReFlag(rs.getString("article_certification"));
+				Article data = new Article(
+						rs.getInt("article_id"),
+						rs.getString("artcile_title"),
+						rs.getString("user_id"),
+						rs.getString("article_create"),
+						rs.getString("article_update"),
+						language,
+						purpose,
+						rs.getString("article_career"),
+						certification,
+						rs.getInt("article_favs"),
+						rs.getString("article_text"),
+						rs.getString("article_img1"),
+						rs.getString("article_img2"),
+						rs.getString("article_img3")
+						);
+				result.add(data);
+			}
+
+			//SQL文を準備
+			sql = "select * from article where article_certification like ?";
+
+			certIdforSQL = certIdforSQL.replaceAll("[1-9A-G]", "_");
+			pStmt.setString(1, certIdforSQL);
+			//SQL文を実行
+			rs = pStmt.executeQuery();
+			while(rs.next()) {
+				String language[] = new String[16];
+				String purpose[] = new String[11];
+				String certification[] = new String[14];
+				language = ReFlag.languageReFlag(rs.getString("article_language"));
+				purpose = ReFlag.purposeReFlag(rs.getString("article_purpose"));
+				certification = ReFlag.certificationReFlag(rs.getString("article_certification"));
+				Article data = new Article(
+						rs.getInt("article_id"),
+						rs.getString("artcile_title"),
+						rs.getString("user_id"),
+						rs.getString("article_create"),
+						rs.getString("article_update"),
+						language,
+						purpose,
+						rs.getString("article_career"),
+						certification,
+						rs.getInt("article_favs"),
+						rs.getString("article_text"),
+						rs.getString("article_img1"),
+						rs.getString("article_img2"),
+						rs.getString("article_img3")
+						);
+				result.add(data);
+			}
+
+			for(int i=0; i<result.size();i++) {
+				int articleId = result.get(i).getArticleId();
+				for(int j=i+1;j<result.size();j++) {
+					if(articleId == result.get(j).getArticleId()) {
+						result.remove(j);
+					}
+				}
 			}
 		}
 		catch (SQLException e) {
 			e.printStackTrace();
-			cardList = null;
+			result= null;
 		}
 		catch (ClassNotFoundException e) {
 			e.printStackTrace();
-			cardList = null;
+			result = null;
 		}
 		finally {
 			// データベースを切断
@@ -82,13 +260,13 @@ public class ArticleDao {
 				}
 				catch (SQLException e) {
 					e.printStackTrace();
-					cardList = null;
+					result = null;
 				}
 			}
 		}
 
 		// 結果を返す
-		return cardList;
+		return result;
 	}
 
 
@@ -106,7 +284,7 @@ public class ArticleDao {
 			Class.forName("org.h2.Driver");
 
 			//データベースに接続する
-			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/mybc", "sa", "");
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/src/Data", "sa", "");
 
 			//配列になっている使用言語をフラグ形式に変換。
 			language = Flag.languageFlag(data.getArticleLanguage());
@@ -176,7 +354,7 @@ public class ArticleDao {
 			Class.forName("org.h2.Driver");
 
 			//データベースに接続する
-			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/mybc", "sa", "");
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/src/Data", "sa", "");
 
 			//配列になっている使用言語をフラグ形式に変換。
 			language = Flag.languageFlag(data.getArticleLanguage());
@@ -244,7 +422,7 @@ public class ArticleDao {
 			Class.forName("org.h2.Driver");
 
 			//データベースに接続する
-			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/mybc", "sa", "");
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/src/Data", "sa", "");
 
 			//SQL文を準備する
 			String sql = "select * from article where article_id = ?";
@@ -318,7 +496,7 @@ public class ArticleDao {
 			Class.forName("org.h2.Driver");
 
 			//データベースに接続する
-			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/mybc", "sa", "");
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/src/Data", "sa", "");
 
 			//SQL文を準備する
 			String sql = "delete from article where article_id = ?";
@@ -351,5 +529,145 @@ public class ArticleDao {
 
 	}
 
+	//引数user_idで自分の記事の一覧を配列に入れて戻す。
+	public Article[] myArticle(int user_id) {
+		int i = 0;
+		Connection conn = null;
+		int number_of_row;
+		Article result[] = null;
 
+		try {
+			//JDBCドライバを読み込む
+			Class.forName("org.h2.Driver");
+
+			//データベースに接続する
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/src/Data", "sa", "");
+
+			//SQL文を準備する
+			String sql = "select * from article where user_id = ? order by article_id asc;";
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+
+			//SQL文を完成させる
+			pStmt.setInt(1, user_id);
+
+			//SQL文を実行する
+			ResultSet rs = pStmt.executeQuery();
+
+			//行数を得る
+			rs.last();						//最後の行に飛ぶ
+			number_of_row = rs.getRow();	//行の数をint型の変数に入れる
+			rs.beforeFirst();				//最初の行に戻す
+
+			//返す配列を宣言
+			result = new Article[number_of_row];
+
+			//結果表をArticleに保存し、配列に順次入れていく
+			while(rs.next()) {
+				String language[] = new String[16];
+				String purpose[] = new String[11];
+				String certification[] = new String[14];
+				language = ReFlag.languageReFlag(rs.getString("article_language"));
+				purpose = ReFlag.purposeReFlag(rs.getString("article_purpose"));
+				certification = ReFlag.certificationReFlag(rs.getString("article_certification"));
+				Article data = new Article(
+						rs.getInt("article_id"),
+						rs.getString("artcile_title"),
+						rs.getString("user_id"),
+						rs.getString("article_create"),
+						rs.getString("article_update"),
+						language,
+						purpose,
+						rs.getString("article_career"),
+						certification,
+						rs.getInt("article_favs"),
+						rs.getString("article_text"),
+						rs.getString("article_img1"),
+						rs.getString("article_img2"),
+						rs.getString("article_img3")
+						);
+				result[i] = data;
+				i++;
+			}
+		}
+			catch (SQLException e) {
+				e.printStackTrace();
+				Arrays.fill(result, null);
+			}
+			catch (ClassNotFoundException e) {
+				e.printStackTrace();
+			}
+			finally {
+				// データベースを切断
+				if (conn != null) {
+					try {
+						conn.close();
+						result = null;
+					}
+					catch (SQLException e) {
+						e.printStackTrace();
+						result = null;
+					}
+				}
+		}
+
+		//結果を返す
+		return result;
+
+	}
+
+
+	//引数User型で自分にオススメの記事をサイズ5の配列に入れて戻す。
+	public Article[] recommended(User data) {
+		Article result[] = new Article[5];
+
+	}
+
+	//引数(int)1をもらってfavを1増やす
+	public boolean addFavs(int article_id) {
+		Connection conn = null;
+		boolean result = false;
+
+		try {
+			//JDBCドライバを読み込む
+			Class.forName("org.h2.Driver");
+
+			//データベースに接続する
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/src/Data", "sa", "");
+
+			//SQL文を準備する
+			String sql = "update article set article_favs = article_favs+1 where ?";
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+
+			//SQL文を完成させる
+			pStmt.setInt(1, article_id);
+
+			//SQLを実行する
+			pStmt.executeUpdate();
+			result = true;
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+			result = false;
+		}
+		catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			result = false;
+		}
+		finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				}
+				catch (SQLException e) {
+					e.printStackTrace();
+					result = false;
+				}
+			}
+		}
+
+		return result;
+
+
+	}
 }
