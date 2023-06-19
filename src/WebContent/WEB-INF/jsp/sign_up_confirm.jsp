@@ -34,14 +34,14 @@
         <c:set var="sendLang" value="" />
         <c:forEach var="lang" items="${user.language}">
         <c:set var="sendLang" value="${sendLang},${lang}" />
-        <c:out value="${lang} " />
+        <c:out value="${lang } " />
         </c:forEach>
         <br>
         <h4>学びたいこと：</h4>
         <c:set var="sendPurp" value="" />
         <c:forEach var="purp" items="${user.purpose}">
         <c:set var="sendPurp" value="${sendPurp},${purp}" />
-        <c:out value="${purp }" />
+        <c:out value="${purp } " />
         </c:forEach>
         <br>
         <h4>現時点でのスキル：</h4>
@@ -90,7 +90,7 @@
         <p>ヘルプはこちらから</p>
         <p>&copy;2023 Sakuraiya. All rights reserved.</p>
     </div>
-    </div>    
+    </div>
 
 </body>
 </html>
