@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.ArticleDAO;
+import dao.ArticleDao;
 import model.Article;
 /**
  * Servlet implementation class EditServlet
@@ -29,8 +29,8 @@ public class EditServlet extends HttpServlet {
 	      int articleId = Integer.parseInt(request.getParameter("articleId"));
 
       //DAOのメソッドを呼び出して編集対象の記事を取得
-	  ArticleDAO articleDAO=new ArticleDAO();
-      Article article = articleDAO.getArticleById(articleId);
+	  ArticleDao aDao=new ArticleDao();
+      Article article = aDao.getArticleById(articleId);
       request.setAttribute("article", article);
 
 		// 編集ページにフォワードする
@@ -43,7 +43,7 @@ public class EditServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 	throws ServletException, IOException {
-
+		ArticleDao aDao=new ArticleDao();
 		//リクエストパラメータの文字コードを指定
 	      request.setCharacterEncoding("UTF-8");
 
@@ -58,16 +58,23 @@ public class EditServlet extends HttpServlet {
 	      String[] articleCertification=request.getParameterValues("certification");
 	      String articleCareer=request.getParameter("career");
 	      String articleText=request.getParameter("text");
+	      String articleImg1=request.getParameter("img1");
+	      String articleImg2=request.getParameter("img2");
+	      String articleImg3=request.getParameter("img3");
+
 
 	   // リクエスト属性に編集対象の記事をセット
 	      Article article = new Article();
-	      article.setId(articleId);
-	      article.setTitle(articleTitle);
-	      article.setLanguage(articleLanguage);
-	      article.setPurpose(articlePurpose);
-	      article.setCertification(articleCertification);
-	      article.setCareer(articleCareer);
-	      article.setText(articleText);
+	      article.setArticleId(articleId);
+	      article.setArticleTitle(articleTitle);
+	      article.setArticleLanguage(articleLanguage);
+	      article.setArticlePurpose(articlePurpose);
+	      article.setArticleCertification(articleCertification);
+	      article.setArticleCareer(articleCareer);
+	      article.setArticleText(articleText);
+	      article.setArticleImg1(articleImg1);
+	      article.setArticleImg2(articleImg2);
+	      article.setArticleImg3(articleImg3);
 
 	      request.setAttribute("article", article);
 
@@ -79,20 +86,13 @@ public class EditServlet extends HttpServlet {
 	      }
 	      else if(request.getParameter("SUBMIT").equals("削除")) {
 	    	  int articleId=Integer.parseInt(request.getParameter("articleId"));
-	    	  if (articleDao.delete(articleId)) {	// 削除成功
-					request.setAttribute("result",
-					new Result("削除成功！", "記事を削除しました。"));
-				}
-				else {						// 削除失敗
-					request.setAttribute("result",
-					new Result("削除失敗！", "記事を削除できませんでした。"));
-				}
+	    	  aDao.delete(articleId);
+
+	    //topページにレスポンス
+	    	  response.sendRedirect("/product_D2/top");
 
 	      }
 
-	      //記事削除完了ページにフォワードする
-	      RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/edit_result.jsp");
-			dispatcher.forward(request, response);
 
 	}
 
