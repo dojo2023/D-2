@@ -23,7 +23,7 @@ public class ArticleDao {
 			Class.forName("org.h2.Driver");
 
 			// データベースに接続する
-			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/myBC", "sa", "");
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/src/Data", "sa", "");
 
 			//本文、タイトルで検索をかける
 
@@ -284,7 +284,7 @@ public class ArticleDao {
 			Class.forName("org.h2.Driver");
 
 			//データベースに接続する
-			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/mybc", "sa", "");
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/src/Data", "sa", "");
 
 			//配列になっている使用言語をフラグ形式に変換。
 			language = Flag.languageFlag(data.getArticleLanguage());
@@ -354,7 +354,7 @@ public class ArticleDao {
 			Class.forName("org.h2.Driver");
 
 			//データベースに接続する
-			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/mybc", "sa", "");
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/src/Data", "sa", "");
 
 			//配列になっている使用言語をフラグ形式に変換。
 			language = Flag.languageFlag(data.getArticleLanguage());
@@ -422,7 +422,7 @@ public class ArticleDao {
 			Class.forName("org.h2.Driver");
 
 			//データベースに接続する
-			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/mybc", "sa", "");
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/src/Data", "sa", "");
 
 			//SQL文を準備する
 			String sql = "select * from article where article_id = ?";
@@ -496,7 +496,7 @@ public class ArticleDao {
 			Class.forName("org.h2.Driver");
 
 			//データベースに接続する
-			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/mybc", "sa", "");
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/src/Data", "sa", "");
 
 			//SQL文を準備する
 			String sql = "delete from article where article_id = ?";
@@ -541,7 +541,7 @@ public class ArticleDao {
 			Class.forName("org.h2.Driver");
 
 			//データベースに接続する
-			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/mybc", "sa", "");
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/src/Data", "sa", "");
 
 			//SQL文を準備する
 			String sql = "select * from article where user_id = ? order by article_id asc;";
@@ -632,7 +632,7 @@ public class ArticleDao {
 			Class.forName("org.h2.Driver");
 
 			//データベースに接続する
-			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/mybc", "sa", "");
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/src/Data", "sa", "");
 
 			//SQL文を準備する
 			String sql = "update article set article_favs = article_favs+1 where ?";
