@@ -18,42 +18,47 @@
 <h1>検索結果</h1>
 <hr>
  <div class="search_contents">
-<c:if test="${empty cardList}">
+<c:if test="${empty communityResults}">
 <p>一致するデータなし</p>
 </c:if>
 
-<c:forEach var="e" items="${cardList}" >
-	<input type="hidden" name="community_name" value="${name}">
-    ${name}<br>
+<c:forEach var="community" items="${communityResults}" >
+
+    ${community.communityName}<br>
     <c:set var="sendLang" value="" />
-            <c:forEach var="e" items="${language}">
-            ${e}<br>
+            <c:forEach var="lang" items="${community.communityLanguage}">
+
             <c:set var="sendLang" value="${sendLang},${lang} "/>
+            <c:out value="${lang } " />
             </c:forEach>
 
     <c:set var="sendPurp" value="" />
-            <c:forEach var="e" items="${porpuse}">
-            ${e}<br>
-            <c:set var="sendPurp" value="${sendPurp},${e} "/>
+            <c:forEach var="purp" items="${purpose}">
+
+            <c:set var="sendPurp" value="${sendPurp},${purp} "/>
+            <c:out value="${purp } " />
             </c:forEach>
 
 	<c:set var="sendCert" value="" />
-            <c:forEach var="e" items="${certification}">
-            ${e}<br>
-            <c:set var="sendCert" value="${sendCert},${e} "/>
+            <c:forEach var="cert" items="${certification}">
+
+            <c:set var="sendCert" value="${sendCert},${cert} "/>
+            <c:out value="${cert } " />
             </c:forEach>
 
-	${career}<br>
-    ${summary}<br>
+	${community.communityCareer}<br>
+    ${community.communitySummary}<br>
+	<form action="/product_D2/CommunityServlet" method="GET">
+	<input type="hidden" name="communityId" value="${community.communityId }">
 	<input type="submit" name="SUBMIT" value="参加">
-	<hr>
+	</form><hr>
 </c:forEach>
 </div></div>
 </body>
 
 <div class="footer_all">
 <footer class="footer">
-	<img class="footer_logo" src="image/logo2.png"  width="10%" height="10%">
+	<img class="footer_logo" src="image/logo.png"  width="10%" height="10%">
 	<div class="footer_contents">
 		<b><p>コンテンツ</p></b>
 		<ul>
