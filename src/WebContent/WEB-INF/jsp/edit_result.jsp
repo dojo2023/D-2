@@ -8,8 +8,12 @@
 </head>
 <body>
 <div>更新完了しました！</div>
+<!-- 更新した記事のページに飛ぶために記事idを取得して記事ページのサーブレットに飛ばす -->
 <div>更新した記事を読みますか？</div>
-<button onclick="lication.href='">はい</button>
-<button onclick="lication.href='location.href='/product_sample/top">いいえ</button>
+<form method="POST" action="/product_D2/ArticleServlet.java">
+<input type="hidden" name="article_id" value="${article_data.articleId}">
+<input type="submit" name="GoArticle" value="はい">
+</form>
+<input type="button" name="GoTop" value="いいえ" onclick="location.href='/product_D2/TopServlet.java'">
 </body>
 </html>

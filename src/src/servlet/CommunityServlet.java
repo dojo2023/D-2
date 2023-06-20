@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.CommunityDao;
+import model.Community;
 import model.Remark;
 
 /**
@@ -19,12 +21,29 @@ import model.Remark;
 public class CommunityServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+	//メッセージ表示
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 
+		request.setCharacterEncoding("UTF-8");
+		int communityId=Integer.parseInt(request.getParameter("community_id"));
+		CommunityDao cDao=new CommunityDao();
+
+		Community community_data=cDao.getCommunityById(communityId);
+		//コミュニティid、コミュニティ名、コミュニティタグ、
+
+		ArrayList<Remark> chat_data=cDao.getRemarks(communityId);
+		//ユーザー名、日付時間、テキスト内容
+
+		Member member_data=cDao.getMember(communityId);
+		//ユーザー名
+
+		request.setAttribute("chat_data", chat_data);
+		request.setAttribute("community_data", community_data);
+		request.setAttribute("member_data",member_data);
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/community_xxxx.jsp");
 		dispatcher.forward(request, response);
@@ -33,22 +52,28 @@ public class CommunityServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
+
+	//メッセージ送信
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 
 		request.setCharacterEncoding("UTF-8");
-		//Int remarkId = request.getParameter("REMARKID");
-		//Int communityId  = request.getParameter("COMMUNITYID");
-		//String userId  = request.getParameter("USERID");
-		String remarkText = request.getParameter("REMARKTEXT");
-		//String remarkDate  = request.getParameter("REMARKDATE");
 
-		CommunityDao bDao = new CommunityDao();
-		 //bDao.insert(new Remark(remarkId,communityId,userId,remarkText,remarkDate));
-		bDao.insert(new Remark(remarkText));
+		String community_id=request.getParameter("community_id");
+		String user_id=request.getParameter("user_id");
+		String remark_text=request.getParameter("remark_text");
+
+		request.setAttribute("community_id",community_id);
+		request.setAttribute("user_id",user_id);
+		request.setAttribute("remark",remark_text);
+
+		CommunityDao cDao = new CommunityDao();
+		Remark remark＝new Remark(community_id,user_id,remark_text);
+
+		cDao.insert(remark);
 		// メニューページにフォワードする
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/community.jsp");
-				dispatcher.forward(request, response);
+		//RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/community.jsp");
+		//dispatcher.forward(request, response);
 		}
 
 

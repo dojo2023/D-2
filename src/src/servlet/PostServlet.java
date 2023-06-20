@@ -4,11 +4,13 @@ import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.servlet.http.Part;
 
 import model.Article;
 
@@ -16,9 +18,9 @@ import model.Article;
  * Servlet implementation class PostServlet
  */
 @WebServlet("/PostServlet")
+@MultipartConfig
 public class PostServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -34,9 +36,28 @@ public class PostServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+		String img1Path="", img2Path="", img3Path="";
+		//仮に記事を作成
+
 		//リクエストパラメータを取得する。（Article型の変数に格納）
 		HttpSession session = request.getSession();
 		request.setCharacterEncoding("UTF-8");
+		//name属性ごとにファイルをPartオブジェクトとして取得
+		Part part1=request.getPart("img1");
+		Part part2=request.getPart("img2");
+		Part part3=request.getPart("img3");
+
+		if(part1 != null) {
+			//ファイル名を取得
+			String img1Name=getFileName(part1);
+
+			//新しいファイル名を設定
+			String newimg1Name=""
+
+		} else {
+			img1Path = "";
+		}
+
 
 		Article article_data = new Article(
 				0,
@@ -50,9 +71,9 @@ public class PostServlet extends HttpServlet {
 				request.getParameterValues("certification"),
 				0,
 				request.getParameter("text"),
-				"",
-				"",
-				""
+				img1Path,
+				img2Path,
+				img3Path
 				);
 
 		//リクエストスコープに格納
@@ -61,6 +82,7 @@ public class PostServlet extends HttpServlet {
 		//確認ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/PostConfirmServlet.java");
 		dispatcher.forward(request, response);
+
 
 
 		/* 以下登録機能はPostConfirmServlet.javaにて行う
@@ -82,4 +104,22 @@ public class PostServlet extends HttpServlet {
 		*/
 
 	}
+
+	// ファイル名を取得するメソッド
+    private String getFileName(Part part) {
+        String contentDisposition = part.getHeader("content-disposition");
+        String[] elements = contentDisposition.split(";");
+        for (String element : elements) {
+            if (element.trim().startsWith("filename")) {
+                return element.substring(element.indexOf('=') + 1).trim().replace("\"", "");
+            }
+        }
+        return null;
+    }
+
+
+
+
 }
+
+
