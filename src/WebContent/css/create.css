@@ -1,6 +1,7 @@
 @charset "UTF-8";
 
-/* 6/15 13:10update */
+/* 6/20 17:28 update by yahaba */
+
 /* メインコンテンツすべてに適用 */
 .create_main {
     color: #35416b;
@@ -24,7 +25,7 @@
     text-shadow: none;
     border-radius: 0.25em;
     height: 35px;
-    width: 350px;
+    width: 250px;
 }
 .btn:hover {
     background: linear-gradient(to bottom, #52c2cf, #369ca0);
@@ -34,6 +35,9 @@
 }
 .btn_wrap {
     text-align: center;
+}
+.no {
+    background: linear-gradient(to bottom, #8a8383, #535050);
 }
 
 /* インプット｜テキストボックス */
@@ -64,7 +68,7 @@
     color:#35416b;
 }
 
-/* communitycreateのみに適用 */
+/* communitycreate・sign_upに適用 */
 .contentA, .contentB {
     width: 50%;
     height: auto;
@@ -77,10 +81,46 @@
 }
 .contentC {
     width: 100%;
-    margin-bottom: 25px;
+   
 }
 .contentD {
     width: 100%;
 }
 
+/* communitycreateに適用 */
 
+
+/* sign_upのみに適用 */
+.D_title {
+    display:inline-block;
+   
+}
+.userInf {
+    margin: 10px auto; 
+}
+.alertMsg {
+    color: #f33333;
+}
+.sign_btn {
+    background: linear-gradient(to bottom, #52639c, #35416b);
+    color: #ffffff;
+    border: none;
+    text-shadow: none;
+    border-radius: 0.25em;
+    height: 35px;
+    width: 150px;
+    display: inline-block;
+    text-align: center;
+}
+.sign_btn:hover {
+    background: linear-gradient(to bottom, #52c2cf, #369ca0);
+}
+.sign_btn:active {
+    transform: translateY(2px);
+}
+.sign_btn_wrap {
+    text-align: center;
+}
+.sign_no {
+    background: linear-gradient(to bottom, #8a8383, #535050);
+}
