@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
  <link rel="stylesheet" href="css/common.css?20230615">
- <link rel="stylesheet" href="css/community.css?20230616">
+ <link rel="stylesheet" href="css/community.css?20230620">
 <head>
 
 <meta charset="UTF-8">
