@@ -9,7 +9,7 @@
 <title>検索結果</title>
 <header>
 <div class="header">
-	<a href="/product_D2/TopServlet"><img src="image/logo.png" class="logo_contents" width="10%" height="10%"></a>
+	<a href="/product_D2/TopServlet"><img src="image/logo2.png" class="logo_contents" width="10%" height="10%"></a>
 </div>
 </header>
 </head>
@@ -21,11 +21,12 @@
 <c:if test="${empty communityResults}">
 <p>一致するデータなし</p>
 </c:if>
-
+<div class="cp_card01">
+    <div class="photo"><div class="photo1"></div></div>
 <c:forEach var="community" items="${communityResults}" >
-
-    ${community.communityName}<br>
-    <c:set var="sendLang" value="" />
+    <div class="description">
+    <h2>${community.communityName}</h2><br>
+    <div class="worddisplay"><c:set var="sendLang" value="" />
             <c:forEach var="lang" items="${community.communityLanguage}">
 
             <c:set var="sendLang" value="${sendLang},${lang} "/>
@@ -46,13 +47,14 @@
             <c:out value="${cert } " />
             </c:forEach>
 
-	${community.communityCareer}<br>
-    ${community.communitySummary}<br>
+	${community.communityCareer}<br></div>
+    <p class="text" id="limited-text">${community.communitySummary}</p><br><br>
 	<form action="/product_D2/CommunityServlet" method="GET">
 	<input type="hidden" name="communityId" value="${community.communityId }">
 	<input type="submit" name="SUBMIT" value="参加">
 	</form><hr>
 </c:forEach>
+</div>
 </div></div>
 </body>
 
@@ -76,5 +78,5 @@
 	<p>&copy;2023 Sakuraiya. All rights reserved.</p>
 </div>
 </div>
-
+<script src="./community.js?20230619"></script>
 </html>
