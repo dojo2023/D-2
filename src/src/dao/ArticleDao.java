@@ -29,15 +29,18 @@ public class ArticleDao {
 
 			//sql文を準備
 			String sql = "select * from article where";
-			PreparedStatement pStmt = conn.prepareStatement(sql);
+			String[] setStr = new String[queryArray.length];
+
 
 			//sql文を完成させる
 			for(int i=0; i<queryArray.length; i++) {
+				sql += " ?";
 				sql += " concat(article_title, article_text) like %"+ queryArray[i] +"%";
 				if(i < queryArray.length-1) {
 					sql += " and";
 				}
 			}
+			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			//sql文を実行
 			ResultSet rs = pStmt.executeQuery();
