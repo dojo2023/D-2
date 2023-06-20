@@ -1,34 +1,34 @@
-login.css
+login.css（中島）
 	login.jsp〇
-	sign_up.jsp
 
-create.css
+create.css（矢羽々）
 	post.jsp
 	edit.jsp
 	community_create.jsp
+	sign_up.jsp
 
-confirm.css
+confirm.css（矢羽々）
 	sign_up_confirm.jsp
 	post_confirm.jsp
 	edit_confirm.jsp
 	community_confirm.jsp
 
-result.css
+result.css（矢羽々）
 	post_result.jsp
 	edit_result.jsp
 	sign_up_result.jsp
 
-search.css
+search.css（中島）
 	article_search.jsp△
 	community_search.jsp△
 
-top.css
+top.css（矢羽々）
 	top.jsp
 
-article.css
+article.css（中島）
 	article.jsp
 
-community.css
+community.css（中島）
 	community_xxxx.jsp△
 
 
