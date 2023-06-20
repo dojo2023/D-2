@@ -1,5 +1,40 @@
+login.css（中島）
+	login.jsp〇
+
+create.css（矢羽々）
+	post.jsp
+	edit.jsp
+	community_create.jsp
+	sign_up.jsp
+
+confirm.css（矢羽々）
+	sign_up_confirm.jsp
+	post_confirm.jsp
+	edit_confirm.jsp
+	community_confirm.jsp
+
+result.css（矢羽々）
+	post_result.jsp
+	edit_result.jsp
+	sign_up_result.jsp
+
+search.css（中島）
+	article_search.jsp△
+	community_search.jsp△
+
+top.css（矢羽々）
+	top.jsp
+
+article.css（中島）
+	article.jsp
+
+community.css（中島）
+	community_xxxx.jsp△
+
+
+ーーーーーーーーーーーーーーーーーーーーーーー
 ログイン系
-・ログインページ
+・ログインページ〇
 ・新規ユーザー登録ページ
 ・ユーザー登録確認ページ
 ・登録通知ページ
@@ -26,3 +61,5 @@
 ・トップページ
 ・記事ページ
 ・コミュニティページ
+
+	
