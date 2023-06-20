@@ -35,12 +35,15 @@ public class ArticleDao {
 			//sql文を完成させる
 			for(int i=0; i<queryArray.length; i++) {
 				sql += " ?";
-				sql += " concat(article_title, article_text) like %"+ queryArray[i] +"%";
+				setStr[i] = "concat(article_title, article_text) like %"+ queryArray[i] +"%";
 				if(i < queryArray.length-1) {
 					sql += " and";
 				}
 			}
 			PreparedStatement pStmt = conn.prepareStatement(sql);
+			for (int i=0; i<setStr.length; i++) {
+				pStmt.setString(i, setStr[i]);
+			}
 
 			//sql文を実行
 			ResultSet rs = pStmt.executeQuery();
