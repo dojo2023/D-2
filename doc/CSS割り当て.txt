@@ -4,14 +4,14 @@ login.css（中島）
 create.css（矢羽々）
 	post.jsp
 	edit.jsp
-	community_create.jsp
+	community_create.jsp〇
 	sign_up.jsp
 
 confirm.css（矢羽々）
-	sign_up_confirm.jsp
+	sign_up_confirm.jsp〇
 	post_confirm.jsp
 	edit_confirm.jsp
-	community_confirm.jsp
+	community_confirm.jsp〇
 
 result.css（矢羽々）
 	post_result.jsp
