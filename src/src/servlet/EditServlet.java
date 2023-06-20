@@ -30,7 +30,7 @@ public class EditServlet extends HttpServlet {
 
       //DAOのメソッドを呼び出して編集対象の記事を取得
 	  ArticleDao aDao=new ArticleDao();
-      Article article = aDao.getArticleById(articleId);
+      Article article = aDao.load(articleId);
       request.setAttribute("article", article);
 
 		// 編集ページにフォワードする
@@ -43,9 +43,10 @@ public class EditServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 	throws ServletException, IOException {
-		ArticleDao aDao=new ArticleDao();
+
 		//リクエストパラメータの文字コードを指定
 	      request.setCharacterEncoding("UTF-8");
+	      ArticleDao aDao=new ArticleDao();
 
 	      if(request.getParameter("SUBMIT").equals("プレビュー")) {
 
