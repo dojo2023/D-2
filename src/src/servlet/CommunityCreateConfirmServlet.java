@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dao.CommunityDao;
 import model.Community;
 
 /**
@@ -48,7 +49,7 @@ public class CommunityCreateConfirmServlet extends HttpServlet {
 
 
 
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/community_"+communityId+".jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/product_D2/CommunityServlet");
 		dispatcher.forward(request, response);
 
 
