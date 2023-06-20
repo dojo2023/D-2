@@ -33,10 +33,17 @@ public class CommunityServlet extends HttpServlet {
 		CommunityDao cDao=new CommunityDao();
 
 		Community community_data=cDao.getCommunityById(communityId);
+		//コミュニティid、コミュニティ名、コミュニティタグ、
+
 		ArrayList<Remark> chat_data=cDao.getRemarks(communityId);
+		//ユーザー名、日付時間、テキスト内容
+
+		Member member_data=cDao.getMember(communityId);
+		//ユーザー名
 
 		request.setAttribute("chat_data", chat_data);
 		request.setAttribute("community_data", community_data);
+		request.setAttribute("member_data",member_data);
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/community_xxxx.jsp");
 		dispatcher.forward(request, response);
