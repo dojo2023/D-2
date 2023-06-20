@@ -27,7 +27,7 @@
 	</div>
 	<p></p>
 	<form action="/product_D2/ArticleServlet" method="post" id="fav_form">
-		<input type="submit" value="1" name="favs" id="fav">
+		<input type="submit" value="favs" name="favs" id="fav">
 		${article.articleFavs}
 	</form>
 	<h4>コメント</h4>
@@ -36,7 +36,8 @@
 	${comment.commentText}
 	<form action="/product_D2/ArticleServlet" method="post">
 		<textarea id="comment" name="comment" rows="4" cols="50"></textarea>
-		<input type="submit" value="送信" name="comment" id="comment">
+		<input type="hidden" name="articleId" value="${article.articleId}">
+		<input type="submit" value="コメント" name="comment" id="comment">
 	</form>
 </div>
 
