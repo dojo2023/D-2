@@ -10,8 +10,9 @@
 <h1>記事編集</h1>
 <main>
 <!-- 編集前の記事（チェックボックス部分）をjsで持ってくる？ -->
+
 記事タイトル<br>
-<form method="POST" action="sampled2/EditResultServlet" id="form">
+<form method="POST" action="product_D2/EditServlet" id="form">
 <label><input type="text" name="title" value="${article.articleTitle}" placeholder="記事タイトル"></label>
 <h2>タグ選択</h2>
 言語<br>
@@ -184,8 +185,9 @@
 </tr>
 <tr>
 <td>
-<label>本文<br>
-<textarea name="text" placeholder="本文">${article.text}</textarea></label>
+本文<br>
+<input type="file" name="img" style="display:none"><img src="/D2sample/img/image.png" width="30px">
+<textarea name="text" placeholder="本文">${article.text}</textarea>
 </td>
 </tr>
 <tr>
