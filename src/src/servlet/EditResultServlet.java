@@ -27,36 +27,37 @@ public class EditResultServlet extends HttpServlet {
 	      request.setCharacterEncoding("UTF-8");
 
 		//リクエストパラメータの取得
+
 	      int articleId=Integer.parseInt(request.getParameter("articleId"));
 	      String articleTitle=request.getParameter("title");
-	      String[] articleLanguage=request.getParameterValues("language");
-	      String[] articlePurpose=request.getParameterValues("purpose");
-	      String[] articleCertification=request.getParameterValues("certification");
+	      String userId=request.getParameter("userId");
+	      String articleCreate=request.getParameter("articleCreate");
+	      String articleUpdate=request.getParameter("articleUpdate");
+
+	      String sendLang=request.getParameter("sendLang");
+	      String[] articleLanguage=sendLang.substring(1).split(",");
+	      String sendPurp=request.getParameter("sendPurp");
+	      String[] articlePurpose=sendPurp.substring(1).split(",");
+	      String sendCert=request.getParameter("sendCert");
+	      String[] articleCertification=sendCert.substring(1).split(",");
 	      String articleCareer=request.getParameter("career");
+	      int articleFavs=Integer.parseInt(request.getParameter("articleFavs"));
 	      String articleText=request.getParameter("text");
 	      String articleImg1=request.getParameter("img1");
 	      String articleImg2=request.getParameter("img2");
 	      String articleImg3=request.getParameter("img3");
 
 	   // リクエスト属性に編集対象の記事をセット
-	      Article article = new Article();
-	      article.setArticleId(articleId);
-	      article.setArticleTitle(articleTitle);
-	      article.setArticleLanguage(articleLanguage);
-	      article.setArticlePurpose(articlePurpose);
-	      article.setArticleCertification(articleCertification);
-	      article.setArticleCareer(articleCareer);
-	      article.setArticleText(articleText);
-	      article.setArticleImg1(articleImg1);
-	      article.setArticleImg2(articleImg2);
-	      article.setArticleImg3(articleImg3);
+	      Article article = new Article(articleId,articleTitle,userId,articleCreate,articleUpdate,
+	    		  articleLanguage,articlePurpose,articleCareer,articleCertification,articleFavs,
+	    		  articleText,articleImg1,articleImg2,articleImg3);
 
        //DAOを作ってDAOのメソッドを使って更新
 	      ArticleDao aDao=new ArticleDao();
 	      aDao.update(article);
 
 	    //編集完了通知ページにフォワードする
-
+request.setAttribute("article_data",article);
 	        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/edit_result.jsp");
 			dispatcher.forward(request, response);
 	}
