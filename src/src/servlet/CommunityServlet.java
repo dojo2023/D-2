@@ -9,10 +9,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.CommunityDao;
+import dao.UserDao;
 import model.Community;
 import model.Remark;
+import model.User;
 
 /**
  * Servlet implementation class CommunityServlet
@@ -40,11 +43,16 @@ public class CommunityServlet extends HttpServlet {
 
 		ArrayList<String> member_data=cDao.getMember(communityId);
 		//ユーザー名
+        ArrayList<String> speaker_data=new ArrayList<String>();
 
+        UserDao uDao=new UserDao();
+        for(Remark r:chat_data) {
+        	speaker_data.add(uDao.getUserNameById(r.getUserId()));
+        }
 		request.setAttribute("chat_data", chat_data);
 		request.setAttribute("community_data", community_data);
 		request.setAttribute("member_data",member_data);
-
+		request.setAttribute("speaker_data",speaker_data);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/community_xxxx.jsp");
 		dispatcher.forward(request, response);
 	}
@@ -56,11 +64,12 @@ public class CommunityServlet extends HttpServlet {
 	//メッセージ送信
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-
+        HttpSession session=request.getSession();
 		request.setCharacterEncoding("UTF-8");
 
 		int community_id=Integer.parseInt(request.getParameter("community_id"));
-		String user_id=request.getParameter("user_id");
+		User user=(User)session.getAttribute("user");
+		String user_id=user.getUserId();
 		String remark_text=request.getParameter("remark_text");
 
 		request.setAttribute("community_id",community_id);

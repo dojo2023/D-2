@@ -279,7 +279,7 @@ public class CommunityDao {
 				communityCertification = Flag.certificationFlag(data.getCommunityCertification());
 
 				//SQL文を準備する
-				String sql = "insert into community( FORMATDATETIME(now(), 'yyyy/MM/dd (EE) HH:mm:ss', community_name, community_language, community_purpose, community_career, community_certification, community_summary ) values(?,?,?,?,?,?,?);";
+				String sql = "insert into community( community_date, community_name, community_language, community_purpose, community_career, community_certification, community_summary ) values(FORMATDATETIME(now(), 'yyyy/MM/dd (EE) HH:mm:ss'),?,?,?,?,?,?);";
 				PreparedStatement pStmt = conn.prepareStatement(sql);
 
 				//SQL文を完成させる
@@ -516,10 +516,9 @@ public class CommunityDao {
 	}
 
 
-	public boolean insert(Remark card) {
+	public boolean insert(Remark remark) {
 		Connection conn = null;
 		boolean result = false;
-
 		try {
 			// JDBCドライバを読み込む
 			Class.forName("org.h2.Driver");
@@ -528,17 +527,16 @@ public class CommunityDao {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/src/Data", "sa", "");
 
 			// SQL文を準備する
-			String sql = "insert into chat (remark_id, community_id, user_id, remark_text, remark_date) values (?, ?, ?, ?, ?)";
+			String sql = "insert into chat ( community_id, user_id, remark_text, remark_date) values (?, ?, ?, FORMATDATETIME(now(), 'yyyy/MM/dd (EE) HH:mm:ss'))";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
 
 
-				pStmt.setInt(1, card.getRemarkId());
-				pStmt.setInt(2, card.getCommunityId());
-				pStmt.setString(3, card.getUserId());
-				pStmt.setString(4, card.getRemarkText());
-				pStmt.setString(5, card.getRemarkDate());
+				pStmt.setInt(1, remark.getCommunityId());
+				pStmt.setString(2, remark.getUserId());
+				pStmt.setString(3, remark.getRemarkText());
+
 
 
 
