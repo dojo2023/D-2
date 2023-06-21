@@ -79,8 +79,19 @@ public class CommunityServlet extends HttpServlet {
 
 		cDao.insert(remark);
 		//コミュニティページにフォワードする
-        request.setAttribute("community_id",communityIdStr);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/product_D2/CommunityServlet");
+		Community community_data=cDao.getCommunityById(community_id);
+		ArrayList<Remark> chat_data=cDao.getRemarks(community_id);
+		ArrayList<String> member_data=cDao.getMember(community_id);
+        ArrayList<String> speaker_data=new ArrayList<String>();
+        UserDao uDao=new UserDao();
+        for(Remark r:chat_data) {
+        	speaker_data.add(uDao.getUserNameById(r.getUserId()));
+        }
+		request.setAttribute("chat_data", chat_data);
+		request.setAttribute("community_data", community_data);
+		request.setAttribute("member_data",member_data);
+		request.setAttribute("speaker_data",speaker_data);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/community_xxxx.jsp");
 		dispatcher.forward(request, response);
 		}
 
