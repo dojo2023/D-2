@@ -1,0 +1,136 @@
+@charset "UTF-8";
+
+/* トップのメインコンテンツすべてに適用 */
+.top_main {
+    display: flex;
+    color: #4684a6;
+}
+.top_main a {
+    text-decoration: none;
+    display: inline-block;
+}
+
+/* カラム左 */
+/* タブ関連 */
+.contents_left {
+    width: 70%;
+    flex-wrap: wrap;
+    display: flex;
+  }
+   
+  .tab_container {
+    padding-bottom: 1em;
+    background-color: #fff;
+    border:1px solid #77cbff;
+    width: 400px;
+    width: -webkit-fill-available;
+    margin: 15px;
+  }
+  .tab_item {
+    width: calc(100%/2);    
+    padding:15px 0;
+    border-bottom: 3px solid #77cbff ;
+    background-color: #ececec;
+    text-align: center;
+    color: #77cbff ;
+    display: block;
+    float: left;
+    text-align: center;
+    font-weight: bold;
+    transition: all 0.2s ease;
+    height: 40px;
+    font-size: x-large;
+  }
+  .tab_item:hover {
+    opacity: 0.75;
+  }
+  input[name="tab_item"] {
+    display: none;
+  }
+  .tab_content {
+    display: none;
+    padding: 1em 1em 0;
+    clear: both;
+    overflow: hidden;
+  }
+  #tab1:checked ~ #tab1_content,
+  #tab2:checked ~ #tab2_content {  
+    display: block;
+  }
+  .tab_container input:checked + .tab_item {
+    background-color: #77cbff ;
+    color: #fff;
+  }
+
+/* カラム右 */
+.contents_right {
+    width: 30%;
+    float: right;
+}
+.contents_user, .contents_myarticle, .contents_community {
+  background-color: #fff;
+  border:1px solid #77cbff;
+  margin: 15px;
+}
+.right_title {
+  background-color: #77cbff;
+  margin: 0;
+  text-align: center;
+  color: white;
+  font-size: 17px;
+}
+.txt {
+  font-size: 12px;
+  color: #77cbff;
+  text-align: center;
+}
+.chara {
+  width:20%;
+  height:auto;
+  display: block;
+  text-align: center;
+  margin: 0 auto;
+}
+.btn_post {
+  color: #77cbff;
+  border-bottom: 1px solid #77cbff;
+}
+.btn_post:hover{
+  color: #4684a6;
+}
+
+/* ボタン */
+.btn {
+    background-color: #77cbff;
+    color: #ffffff;
+    border: none;
+    text-shadow: none;
+    border-radius: 0.25em;
+    height: fit-content;
+    width: 125px;
+    text-align: center;
+    font-size: 20px;
+    margin: 10px 5px;
+}
+.btn:hover {
+    background-color:#4684a6;
+}
+.btn_wrap {
+  text-align: center;
+}
+
+.btn_b {
+  background-color: #77cbff;
+  color: #ffffff;
+  border: none;
+  text-shadow: none;
+  border-radius: 0.25em;
+  height: fit-content;
+  width: 250px;
+  text-align: center;
+  font-size: 20px;
+  margin: 10px 0;
+}
+.btn_b:hover {
+  background-color:#4684a6;
+}

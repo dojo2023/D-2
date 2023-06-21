@@ -5,7 +5,7 @@ create.css（矢羽々）
 	post.jsp
 	edit.jsp
 	community_create.jsp〇
-	sign_up.jsp
+	sign_up.jsp〇
 
 confirm.css（矢羽々）
 	sign_up_confirm.jsp〇
@@ -23,7 +23,7 @@ search.css（中島）
 	community_search.jsp△
 
 top.css（矢羽々）
-	top.jsp
+	top.jsp〇
 
 article.css（中島）
 	article.jsp
