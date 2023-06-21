@@ -8,6 +8,11 @@
 <title>記事編集確認</title>
 </head>
 <body>
+<header>
+<div class="header">
+	<a href="/product_D2/TopServlet"><img src="image/logo.png" class="logo_contents" width="10%" height="10%"></a>
+</div>
+</header>
 <h1>記事編集確認</h1>
 <main>
 
@@ -66,5 +71,25 @@ ${article.text}<br>
 </form>
 <button type="button" onclick="history.back()">戻る</button>
 </main>
+ <div class="footer_all">
+        <footer class="footer">
+            <img class="footer_logo" src="image/logo2.png"  width="15%" height="15%">
+            <div class="footer_contents">
+                コンテンツ
+                <ul>
+                    <li>投稿</li>
+                    <li>コミュニティ</li>
+                    <li>ログイン</li>
+                    <li>ログアウト</li>
+                    <li>新規作成</li>
+                    <li>トップページ</li>
+                </ul>
+                </div>
+        </footer>
+        <div class="footer_bottom">
+            <p>ヘルプはこちらから</p>
+            <p>&copy;2023 Sakuraiya. All rights reserved.</p>
+        </div>
+        </div>
 </body>
 </html>
