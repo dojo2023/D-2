@@ -3,11 +3,11 @@ import java.io.Serializable;
 public class Remark implements Serializable{
     private int    remarkId;
     private int communityId;
-    private int userId;
+    private String userId;
     private String remarkText;
     private String remarkDate;
 
-        public Remark(int remarkId, int communityId, int userId, String remarkText, String remarkDate) {
+        public Remark(int remarkId, int communityId, String userId, String remarkText, String remarkDate) {
 
 		this.remarkId = remarkId;
 		this.communityId = communityId;
@@ -20,7 +20,7 @@ public class Remark implements Serializable{
 
 			this.remarkId =0;
 			this.communityId = 0;
-			this.userId = 0;
+			this.userId = "";
 			this.remarkText = "";
 			this.remarkDate ="";
 	}
@@ -41,11 +41,11 @@ public class Remark implements Serializable{
 			this.communityId = communityId;
 		}
 
-         public int getUserId() {
+         public String getUserId() {
 			return userId;
 		}
 
-		public void setUserId(int userId) {
+		public void setUserId(String userId) {
 			this.userId = userId;
 		}
 
