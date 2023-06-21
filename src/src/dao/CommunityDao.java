@@ -406,7 +406,7 @@ public class CommunityDao {
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
-
+            pStmt.setInt(1,id);
 
 
 
