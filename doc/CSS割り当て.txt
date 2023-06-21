@@ -10,7 +10,7 @@ create.css（矢羽々）
 confirm.css（矢羽々）
 	sign_up_confirm.jsp〇
 	post_confirm.jsp
-	edit_confirm.jsp
+	edit_confirm.jsp△（article.cssが出来上がってから着手したい）
 	community_confirm.jsp〇
 
 result.css（矢羽々）
