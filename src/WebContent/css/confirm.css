@@ -55,8 +55,20 @@ h4 {
 .btn_wrap {
     text-align: center;
 }
-
-/* community_confirm.jspにのみ適用 */
 .no {
     background: linear-gradient(to bottom, #8a8383, #535050);
+}
+
+/* edit_confirm.jspにのみ適用 */
+.article_title {
+    display: block;
+    font-size: 20px;
+    text-align: left;
+    margin: 10px 10px;
+}
+.article_tag {
+    display: block;
+    color:#8e939a;
+    text-align: left;
+    margin: 10px 10px;
 }

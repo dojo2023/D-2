@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import model.Article;
+import model.Comment;
 import model.User;
 
 public class ArticleDao {
@@ -676,4 +677,113 @@ public class ArticleDao {
 
 
 	}
+
+	//コメントを追加する機能
+		public boolean setComment(int article_id, int user_id, String comment_text) {
+			Connection conn = null;
+			boolean result = false;
+
+			try {
+				//JDBCドライバを読み込む
+				Class.forName("org.h2.Driver");
+
+				//データベースに接続する
+				conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/src/Data", "sa", "");
+
+				//SQL文を準備する
+				String sql = "insert into comment (article_id, user_id, comment_date, comment_text) values(?, ?, ?, ?);";
+				PreparedStatement pStmt = conn.prepareStatement(sql);
+
+				//SQL文を完成させる
+				pStmt.setInt(1, article_id);
+				pStmt.setInt(2, user_id);
+				pStmt.setString(3, "current_timestump");
+				pStmt.setString(4, comment_text);
+
+				//SQLを実行する
+				pStmt.executeUpdate();
+				result = true;
+			}
+			catch (SQLException e) {
+				e.printStackTrace();
+				result = false;
+			}
+			catch (ClassNotFoundException e) {
+				e.printStackTrace();
+				result = false;
+			}
+			finally {
+				// データベースを切断
+				if (conn != null) {
+					try {
+						conn.close();
+					}
+					catch (SQLException e) {
+						e.printStackTrace();
+						result = false;
+					}
+				}
+			}
+
+			return result;
+		}
+
+		//article_idを引数とし、その記事のコメントをすべて取り出す。
+		public ArrayList<Comment> getComment(int article_id){
+			Connection conn = null;
+			ArrayList<Comment> result = new ArrayList<Comment>();
+
+			try {
+				//JDBCドライバを読み込む
+				Class.forName("org.h2.Driver");
+
+				//データベースに接続する
+				conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/src/Data", "sa", "");
+
+				//SQL文を準備する
+				String sql = "select * from comment where article_id = ? order by comment_date asc;";
+				PreparedStatement pStmt = conn.prepareStatement(sql);
+
+				//SQL文を完成させる
+				pStmt.setInt(1, article_id);
+
+				//SQLを実行する
+				ResultSet rs = pStmt.executeQuery();
+
+				while(rs.next()) {
+					Comment comment = new Comment(
+						rs.getInt("comment_id"),
+						rs.getInt("article_id"),
+						rs.getString("user_id"),
+						rs.getString("comment_date"),
+						rs.getString("comment_text")
+						);
+					result.add(comment);
+				}
+			}
+			catch (SQLException e) {
+				e.printStackTrace();
+				result = null;
+			}
+			catch (ClassNotFoundException e) {
+				e.printStackTrace();
+				result = null;
+			}
+			finally {
+				// データベースを切断
+				if (conn != null) {
+					try {
+						conn.close();
+					}
+					catch (SQLException e) {
+						e.printStackTrace();
+						result = null;
+					}
+				}
+			}
+
+			return result;
+
+
+		}
 }

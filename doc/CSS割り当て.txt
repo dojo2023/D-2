@@ -5,12 +5,12 @@ create.css（矢羽々）
 	post.jsp
 	edit.jsp
 	community_create.jsp〇
-	sign_up.jsp
+	sign_up.jsp〇
 
 confirm.css（矢羽々）
 	sign_up_confirm.jsp〇
 	post_confirm.jsp
-	edit_confirm.jsp
+	edit_confirm.jsp△（article.cssが出来上がってから着手したい）
 	community_confirm.jsp〇
 
 result.css（矢羽々）
@@ -23,7 +23,7 @@ search.css（中島）
 	community_search.jsp△
 
 top.css（矢羽々）
-	top.jsp
+	top.jsp〇
 
 article.css（中島）
 	article.jsp
@@ -34,7 +34,7 @@ community.css（中島）
 
 ーーーーーーーーーーーーーーーーーーーーーーー
 ログイン系
-・ログインページ〇
+・ログインページ
 ・新規ユーザー登録ページ
 ・ユーザー登録確認ページ
 ・登録通知ページ
