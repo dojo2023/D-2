@@ -253,9 +253,146 @@ public class CommunityDao {
 
 
 	// 引数cardで指定されたレコードを登録し、成功したらtrueを返す
-	public boolean insert(Community card) {
+		public boolean addCommunity(Community data) {
+			String communityName;
+			String communityLanguage;
+			String communityPurpose;
+			String communityCertification;
+			String communitySummary;
+			Connection conn = null;
+			boolean result = false;
+
+
+			try {
+				//JDBCドライバを読み込む
+				Class.forName("org.h2.Driver");
+
+				//データベースに接続する
+				conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/src/Data", "sa", "");
+
+				//配列になっている使用言語をフラグ形式に変換。
+				communityLanguage = Flag.languageFlag(data.getCommunityLanguage());
+
+				//配列になっている使用理由をフラグ形式に変換。
+				communityPurpose = Flag.purposeFlag(data.getCommunityPurpose());
+
+				//配列になっている使用理由をフラグ形式に変換。
+				communityCertification = Flag.certificationFlag(data.getCommunityCertification());
+
+				//SQL文を準備する
+				String sql = "insert into community( FORMATDATETIME(now(), 'yyyy/MM/dd (EE) HH:mm:ss', community_name, community_language, community_purpose, community_career, community_certification, community_summary ) values(?,?,?,?,?,?,?);";
+				PreparedStatement pStmt = conn.prepareStatement(sql);
+
+				//SQL文を完成させる
+				pStmt.setString(1, data.getCommunityName());
+
+				pStmt.setString(2, communityLanguage);
+				pStmt.setString(3,  communityPurpose);
+				pStmt.setString(4, data.getCommunityCareer());
+				pStmt.setString(5, communityCertification);
+				pStmt.setString(6, data.getCommunitySummary());
+				pStmt.executeUpdate();
+				result = true;
+
+			}
+			catch (SQLException e) {
+				e.printStackTrace();
+			}
+			catch(ClassNotFoundException e) {
+				e.printStackTrace();
+			}
+			finally {
+				//データベース切断
+				if(conn != null) {
+					try {
+						conn.close();
+					}
+					catch(SQLException e) {
+						e.printStackTrace();
+						result = false;
+					}
+				}
+			}
+
+			//結果を返す
+			return result;
+		}
+
+		//コミュニティidから一致するコミュニティのデータを持ってくる
+		public Community getCommunityById(int id){
+			String language, purpose, certification;
+			String lang_data[] = new String[16];
+			String purp_data[] = new String[11];
+			String cert_data[] = new String[14];
+			Connection conn = null;
+			Community data;
+
+			try {
+				//JDBCドライバを読み込む
+				Class.forName("org.h2.Driver");
+
+				//データベースに接続する
+				conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/src/Data", "sa", "");
+
+				//SQL文を準備する
+				String sql = "select * from community where community_id = ?";
+				PreparedStatement pStmt = conn.prepareStatement(sql);
+
+				//SQL文を完成させる
+				pStmt.setInt(1,id);
+				ResultSet rs = pStmt.executeQuery();
+
+				//フラグ形式のデータをString型の変数に入れる
+				language = rs.getString("community_language");
+				purpose = rs.getString("community_purpose");
+				certification = rs.getString("community_certification");
+
+				//フラグ形式のデータを日本語に戻し、配列に入れる。
+				lang_data = ReFlag.languageReFlag(language);
+				purp_data = ReFlag.purposeReFlag(purpose);
+				cert_data = ReFlag.certificationReFlag(certification);
+
+				//結果表をCommunity型の変数にコピー
+					data = new Community(
+							rs.getInt("community_id"),
+							rs.getString("community_date"),
+							rs.getString("community_name"),
+							lang_data,
+							purp_data,
+							rs.getString("community_career"),
+							cert_data,
+							rs.getString("community_summary")
+							);
+			}
+			catch(SQLException e) {
+				e.printStackTrace();
+				data = null;
+			}
+			catch(ClassNotFoundException e) {
+				e.printStackTrace();
+				data = null;
+			}
+			finally {
+				//データベースを切断
+				if(conn != null) {
+					try {
+						conn.close();
+					} catch (SQLException e) {
+						e.printStackTrace();
+						data = null;
+					}
+				}
+			}
+
+			//結果を返す
+			return data;
+
+		}
+
+
+	public List<Remark> getRemarks(int id) {
 		Connection conn = null;
-		boolean result = false;
+		List<Remark> RemarkResult = new ArrayList<Remark>();
 
 		try {
 			// JDBCドライバを読み込む
@@ -265,65 +402,39 @@ public class CommunityDao {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/src/Data", "sa", "");
 
 			// SQL文を準備する
-			String sql = "insert into community (community_name, community_language, community_purpose, community_career, community_certification, community_summary) values (?, ?, ?, ?, ?, ?)";
+			String sql = "SELECT * FROM chat where community_id = ?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
 
-			if (card.getCommunityName() != null) {
-				pStmt.setString(1, card.getCommunityName());
-			}
-			else if(!card.getCommunityName().equals("")) {
-				pStmt.setString(1, "");
-		}
-
-			if (card.getCommunityLanguage() != null) {
-				pStmt.setObject(2, card.getCommunityLanguage());
-			}
-			else if(!card.getCommunityLanguage().equals("")) {
-				pStmt.setString(2, "");
-			}
-
-			if (card.getCommunityPurpose() != null) {
-				pStmt.setObject(3, card.getCommunityPurpose());
-			}
-			else if(!card.getCommunityPurpose().equals("")) {
-				pStmt.setString(3, "");
-			}
-
-			if (card.getCommunityCareer() != null) {
-				pStmt.setString(4, card.getCommunityCareer());
-			}
-			else if(!card.getCommunityCareer().equals("")) {
-				pStmt.setString(4, "");
-			}
-
-			if (card.getCommunityCertification() != null) {
-				pStmt.setObject(5, card.getCommunityCertification());
-			}
-			else if(!card.getCommunityCertification().equals("")) {
-				pStmt.setString(5, "");
-			}
-
-			if (card.getCommunitySummary() != null) {
-				pStmt.setString(6, card.getCommunitySummary());
-			}
-			else if(!card.getCommunitySummary().equals("")) {
-				pStmt.setString(6, "");
-			}
 
 
 
-			// SQL文を実行する
-			if (pStmt.executeUpdate() == 1) {
-				result = true;
+
+
+			// SQL文を実行し、結果表を取得する
+			ResultSet rs = pStmt.executeQuery();
+
+			// 結果表をコレクションにコピーする
+			while (rs.next()) {
+				Remark card = new Remark(
+				rs.getInt("remark_id"),
+				rs.getInt("community_id"),
+				rs.getString("user_id"),
+				rs.getString("remark_text"),
+				rs.getString("remark_date"))
+
+				;
+				RemarkResult.add(card);
 			}
 		}
 		catch (SQLException e) {
 			e.printStackTrace();
+			RemarkResult = null;
 		}
 		catch (ClassNotFoundException e) {
 			e.printStackTrace();
+			RemarkResult = null;
 		}
 		finally {
 			// データベースを切断
@@ -333,13 +444,15 @@ public class CommunityDao {
 				}
 				catch (SQLException e) {
 					e.printStackTrace();
+					RemarkResult = null;
 				}
 			}
 		}
 
 		// 結果を返す
-		return result;
+		return RemarkResult;
 	}
+
 
 	public boolean insert(Remark card) {
 		Connection conn = null;
@@ -399,65 +512,8 @@ public class CommunityDao {
 		return result;
 	}
 
-	public List<Remark> selectall() {
-		Connection conn = null;
-		List<Remark> cardList = new ArrayList<Remark>();
-
-		try {
-			// JDBCドライバを読み込む
-			Class.forName("org.h2.Driver");
-
-			// データベースに接続する
-			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/src/Data", "sa", "");
-
-			// SQL文を準備する
-			String sql = "SELECT * FROM chat ";
-			PreparedStatement pStmt = conn.prepareStatement(sql);
-
-			// SQL文を完成させる
 
 
 
 
-
-
-			// SQL文を実行し、結果表を取得する
-			ResultSet rs = pStmt.executeQuery();
-
-			// 結果表をコレクションにコピーする
-			while (rs.next()) {
-				Remark card = new Remark(
-				rs.getInt("REMARK_ID"),
-				rs.getInt("COMMUNITY_ID"),
-				rs.getString("USER_ID"),
-				rs.getString("REMARK_TEXT"),
-				rs.getString("REMARK_DATE"))
-
-				;
-				cardList.add(card);
-			}
-		}
-		catch (SQLException e) {
-			e.printStackTrace();
-			cardList = null;
-		}
-		catch (ClassNotFoundException e) {
-			e.printStackTrace();
-			cardList = null;
-		}
-		finally {
-			// データベースを切断
-			if (conn != null) {
-				try {
-					conn.close();
-				}
-				catch (SQLException e) {
-					e.printStackTrace();
-					cardList = null;
-				}
-			}
-		}
-
-		// 結果を返す
-		return cardList;
-	}
+}
