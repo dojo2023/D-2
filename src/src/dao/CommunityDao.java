@@ -5,7 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 
 import model.Community;
 import model.Remark;
@@ -390,9 +389,9 @@ public class CommunityDao {
 		}
 
 
-	public List<Remark> getRemarks(int id) {
+	public ArrayList<Remark> getRemarks(int id) {
 		Connection conn = null;
-		List<Remark> RemarkResult = new ArrayList<Remark>();
+		ArrayList<Remark> RemarkResult = new ArrayList<Remark>();
 
 		try {
 			// JDBCドライバを読み込む
@@ -451,6 +450,69 @@ public class CommunityDao {
 
 		// 結果を返す
 		return RemarkResult;
+	}
+
+
+	public ArrayList<String> getMember(int id) {
+		Connection conn = null;
+		ArrayList<String> Result = new ArrayList<String>();
+
+		UserDao uDao= new UserDao();
+		try {
+			// JDBCドライバを読み込む
+			Class.forName("org.h2.Driver");
+
+			// データベースに接続する
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/src/Data", "sa", "");
+
+			// SQL文を準備する
+			String sql = "SELECT * FROM member where community_id = ?";
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+
+			// SQL文を完成させる
+            pStmt.setInt(1,id);
+
+
+
+
+
+			// SQL文を実行し、結果表を取得する
+			ResultSet rs = pStmt.executeQuery();
+
+			// 結果表をコレクションにコピーする
+			String userName= null;
+			while (rs.next()) {
+
+				;
+				userName=uDao.getUserNameById(rs.getString("user_id"));
+
+
+				Result.add(userName);
+			}
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+			Result = null;
+		}
+		catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			Result = null;
+		}
+		finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				}
+				catch (SQLException e) {
+					e.printStackTrace();
+					Result = null;
+				}
+			}
+		}
+
+		// 結果を返す
+		return Result;
 	}
 
 
