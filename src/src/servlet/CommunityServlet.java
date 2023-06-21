@@ -66,22 +66,21 @@ public class CommunityServlet extends HttpServlet {
 		// TODO Auto-generated method stub
         HttpSession session=request.getSession();
 		request.setCharacterEncoding("UTF-8");
-
-		int community_id=Integer.parseInt(request.getParameter("community_id"));
+        String communityIdStr=request.getParameter("community_id");
+		int community_id=Integer.parseInt(communityIdStr);
 		User user=(User)session.getAttribute("user");
 		String user_id=user.getUserId();
 		String remark_text=request.getParameter("remark_text");
 
-		request.setAttribute("community_id",community_id);
-		request.setAttribute("user_id",user_id);
-		request.setAttribute("remark",remark_text);
+
 
 		CommunityDao cDao = new CommunityDao();
 		Remark remark=new Remark(0,community_id,user_id,remark_text,"");
 
 		cDao.insert(remark);
 		//コミュニティページにフォワードする
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/community_xxxx.jsp");
+        request.setAttribute("community_id",communityIdStr);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/product_D2/CommunityServlet");
 		dispatcher.forward(request, response);
 		}
 
