@@ -45,7 +45,7 @@ public class CommunityCreateConfirmServlet extends HttpServlet {
 
 		Community community=new Community(name,language,purpose,career,certification,summary);
 		CommunityDao cyDao=new CommunityDao();
-		String communityId= cyDao.addCommunity(community);
+		cyDao.addCommunity(community);
 
 
 
