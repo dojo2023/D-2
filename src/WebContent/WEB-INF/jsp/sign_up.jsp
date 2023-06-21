@@ -20,22 +20,22 @@
 	<h4>ID/パスワード/ユーザー名</h4>
 	<form method="POST" action="/product_D2/sign_up" name="suForm" id="su_form">
 
-	ID <span id="userid_error"></span><br>
+	ID <span id="userid_error" class="alertMsg"></span><br>
 	<input type="text" name="userid" id="user_id" placeholder="16文字以内" class="textform userInf"><br>
-	
-	ユーザー名 <span id="username_error"></span><br>
+
+	ユーザー名 <span id="username_error" class="alertMsg"></span><br>
 	<input type="text" name="username" id="user_name" placeholder="ニックネームを入力してください 16文字以内" class="textform userInf"><br>
 
-	パスワード <span id="password_error"></span><br>
+	パスワード <span id="password_error" class="alertMsg"></span><br>
 	<input type="password" name="pw_first" id="pw_first" placeholder="16文字以内" class="textform userInf"><br>
 
-	パスワード（確認）<span id="password_confirm_error"></span><br>
+	パスワード（確認）<span id="password_confirm_error" class="alertMsg"></span><br>
 	<input type="password" name="password" id="password" placeholder="もう一度パスワードを入力してください" class="textform userInf"><br>
 
 	<hr>
 	<h4>お客様の基本情報</h4>
 	<div class="contentA">
-		使用中または興味のある言語 <span id="language_error"></span><br>
+		使用中または興味のある言語 <span id="language_error" class="alertMsg"></span><br>
 		<table>
 		<tr>
 			<td><input type="checkbox" name="language" value="Java">Java</td>
@@ -64,7 +64,7 @@
 		</table>
 	</div>
 	<div class="contentB">
-	学びたいこと <span id="purpose_error"></span><br>
+	学びたいこと <span id="purpose_error" class="alertMsg"></span><br>
 		<table>
 		<tr>
 			<td><input type="checkbox" name="purpose" value="プログラミング">プログラミング</td>
@@ -87,7 +87,7 @@
 	</div>
 
 	<div class="contentC">
-	取りたい資格 <span id="certification_error"></span><br>
+	取りたい資格 <span id="certification_error" class="alertMsg"></span><br>
 		<table>
 		<tr>
 			<td><input type="checkbox" name="certification" value="ITパスポート">ITパスポート</td>
@@ -135,9 +135,9 @@
 		<c:if test="${isExistingId == 't'}">
 		<p class="alertMsg">すでに登録されているユーザーIDです</p><br>
 		</c:if>
-	</div>	
+	</div>
 	</form>
-	
+
 </div>
 
 <div class="footer_all">
