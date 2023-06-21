@@ -51,7 +51,9 @@
 		${article_data.text}<br>
 
 <!-- 画像ファイル↓ -->
-		${}
+		<img src="${article_img1}">
+		<img src="${article_img2}">
+		<img src="${article_img3}">
 
 	</div>
 	<div class="confirm_msg">
