@@ -33,12 +33,12 @@ public class CommunityServlet extends HttpServlet {
 		CommunityDao cDao=new CommunityDao();
 
 		Community community_data=cDao.getCommunityById(communityId);
-		//コミュニティid、コミュニティ名、コミュニティタグ、
+		//コミュニティid、コミュニティ名、コミュニティタグ
 
 		ArrayList<Remark> chat_data=cDao.getRemarks(communityId);
 		//ユーザー名、日付時間、テキスト内容
 
-		Member member_data=cDao.getMember(communityId);
+		ArrayList<String> member_data=cDao.getMember(communityId);
 		//ユーザー名
 
 		request.setAttribute("chat_data", chat_data);
@@ -59,8 +59,8 @@ public class CommunityServlet extends HttpServlet {
 
 		request.setCharacterEncoding("UTF-8");
 
-		String community_id=request.getParameter("community_id");
-		String user_id=request.getParameter("user_id");
+		int community_id=Integer.parseInt(request.getParameter("community_id"));
+		int user_id=Integer.parseInt(request.getParameter("user_id"));
 		String remark_text=request.getParameter("remark_text");
 
 		request.setAttribute("community_id",community_id);
@@ -68,7 +68,7 @@ public class CommunityServlet extends HttpServlet {
 		request.setAttribute("remark",remark_text);
 
 		CommunityDao cDao = new CommunityDao();
-		Remark remark＝new Remark(community_id,user_id,remark_text);
+		Remark remark=new Remark(0,community_id,user_id,remark_text,"");
 
 		cDao.insert(remark);
 		// メニューページにフォワードする

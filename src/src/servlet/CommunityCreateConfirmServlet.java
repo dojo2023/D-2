@@ -43,7 +43,7 @@ public class CommunityCreateConfirmServlet extends HttpServlet {
 		String career = request.getParameter("career");
 		String summary = request.getParameter("community_summary");
 
-		Community community=new Community(name,language,purpose,career,certification,summary);
+		Community community=new Community(0,"",name,language,purpose,career,certification,summary);
 		CommunityDao cyDao=new CommunityDao();
 		cyDao.addCommunity(community);
 

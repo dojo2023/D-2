@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.Arrays;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
+import dao.ArticleDao;
 import model.Article;
 
 /**
@@ -36,51 +38,56 @@ public class PostServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		String img1Path="", img2Path="", img3Path="";
-		//仮に記事を作成
-
 		//リクエストパラメータを取得する。（Article型の変数に格納）
 		HttpSession session = request.getSession();
 		request.setCharacterEncoding("UTF-8");
-		//name属性ごとにファイルをPartオブジェクトとして取得
-		Part part1=request.getPart("img1");
-		Part part2=request.getPart("img2");
-		Part part3=request.getPart("img3");
+		String img1Path="", img2Path="", img3Path="";
 
-		if(part1 != null) {
-			//ファイル名を取得
-			String img1Name=getFileName(part1);
+		//仮に記事を作成
+				Article tentative = new Article();
+				String tentativeLang[] = new String[16];
+				String tentativePurp[] = new String[11];
+				String tentativeCert[] = new String[14];
+				Arrays.fill(tentativeLang,"");
+				Arrays.fill(tentativePurp, "");
+				Arrays.fill(tentativeCert,"");
 
-			//新しいファイル名を設定
-			String newimg1Name=""
+				tentative.setArticleLanguage(tentativeLang);
+				tentative.setArticlePurpose(tentativePurp);
+				tentative.setArticleCertification(tentativeCert);
 
-		} else {
-			img1Path = "";
-		}
+				ArticleDao aDao = new ArticleDao();
+				aDao.insert(tentative);
 
 
-		Article article_data = new Article(
-				0,
-				request.getParameter("title"),
-				(String)session.getAttribute("user"),
-				"",
-				"",
-				request.getParameterValues("language"),
-				request.getParameterValues("purpose"),
-				request.getParameter("career"),
-				request.getParameterValues("certification"),
-				0,
-				request.getParameter("text"),
-				img1Path,
-				img2Path,
-				img3Path
-				);
+		//各値を取得
+				String articleTitle = request.getParameter("title");
+				String userId = (String)session.getAttribute("user");
+				String[] articleLanguage = request.getParameterValues("language");
+				String[] articlePurpose = request.getParameterValues("purpose");
+				String articleCareer = request.getParameter("career");
+				String[] articleCertification = request.getParameterValues("certification");
+				String articleText = request.getParameter("text");
+				//name属性ごとにファイルをPartオブジェクトとして取得
+				Part articleImg1 = request.getPart("img1");
+				Part articleImg2 = request.getPart("img2");
+				Part articleImg3 = request.getPart("img3");
 
 		//リクエストスコープに格納
-		request.setAttribute("article_data",article_data);
+		request.setAttribute("articleTitle",articleTitle);
+		request.setAttribute("userId",userId);
+		request.setAttribute("articleLanguage",articleLanguage);
+		request.setAttribute("articlePurpose",articlePurpose);
+		request.setAttribute("articleCareer",articleCareer);
+		request.setAttribute("articleCertification",articleCertification);
+		request.setAttribute("articleText",articleText);
+		request.setAttribute("articleImg1",articleImg1);
+		request.setAttribute("articleImg2",articleImg2);
+		request.setAttribute("articleImg3",articleImg3);
+
 
 		//確認ページにフォワードする
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/PostConfirmServlet.java");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/PostResult.jsp");
 		dispatcher.forward(request, response);
 
 
