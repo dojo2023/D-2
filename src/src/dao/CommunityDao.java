@@ -5,9 +5,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import model.Community;
 import model.Remark;
+import model.User;
 
 public class CommunityDao {
 	// 引数paramで検索項目を指定し、検索結果のリストを返す
@@ -572,7 +574,141 @@ public class CommunityDao {
 		return result;
 	}
 
+	public ArrayList<Community> getRecommendCommunity() {
+		ArrayList<Community> recommendCommunities = new ArrayList<Community>();
+		Connection conn = null;
+		Community community = new Community();
+		try {
+			Class.forName("org.h2.Driver");
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/product_sample", "sa", "");
+			String sql = "select * from article order by article_update desc";
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+			ResultSet rs = pStmt.executeQuery();
+			while (rs.next()) {
+				community.setCommunityId(rs.getInt("community_id"));
+				community.setCommunityDate(rs.getString("community_date"));
+				community.setCommunityName(rs.getString("community_name"));
+				community.setCommunityLanguage(ReFlag.languageReFlag(rs.getString("community_language")));
+				community.setCommunityPurpose(ReFlag.purposeReFlag(rs.getString("community_purpose")));
+				community.setCommunityCareer(rs.getString("community_career"));
+				community.setCommunityCertification(ReFlag.certificationReFlag(rs.getString("community_certification")));
+				community.setCommunitySummary(rs.getString("community_summary"));
+				recommendCommunities.add(community);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} finally {
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		return recommendCommunities;
+	}
 
+	public ArrayList<Community> getRecommendCommunity(User user) {
+		ArrayList<Community> recommendCommunities = new ArrayList<Community>();
+		Connection conn = null;
+		String langFlag = Flag.languageFlag(user.getLanguage());
+		String purpFlag = Flag.purposeFlag(user.getPurpose());
+		String certFlag = Flag.certificationFlag(user.getCertification());
+		ArrayList<Community> results = new ArrayList<Community>();
+		String notLikeLang = langFlag.replaceAll("0", "_");
+		notLikeLang = notLikeLang.replaceAll("[1-9A-Z]", "0");
+		String notLikePurp = purpFlag.replaceAll("0", "_");
+		notLikePurp = notLikePurp.replaceAll("[1-9A-Z]", "0");
+		String notLikeCert = certFlag.replaceAll("0", "_");
+		notLikeCert = notLikeCert.replaceAll("[1-9A-Z]", "0");
+		Community community = new Community();
+
+		try {
+			Class.forName("org.h2.Driver");
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/product_sample", "sa", "");
+			String sql = "select * from community where community_language not like ? "
+					+ "or community_purpose not like ? "
+					+ "or community_certification not like ?"
+					+ "or community_career = '?' order by community_date desc";
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+			pStmt.setString(1, notLikeLang);
+			pStmt.setString(2, notLikePurp);
+			pStmt.setString(3, notLikeCert);
+			pStmt.setString(4, user.getCareer());
+			ResultSet rs = pStmt.executeQuery();
+			while (rs.next()) {
+				community.setCommunityId(rs.getInt("community_id"));
+				community.setCommunityDate(rs.getString("community_date"));
+				community.setCommunityName(rs.getString("community_name"));
+				community.setCommunityLanguage(ReFlag.languageReFlag(rs.getString("community_language")));
+				community.setCommunityPurpose(ReFlag.purposeReFlag(rs.getString("community_purpose")));
+				community.setCommunityCareer(rs.getString("community_career"));
+				community.setCommunityCertification(ReFlag.certificationReFlag(rs.getString("community_certification")));
+				community.setCommunitySummary(rs.getString("community_summary"));
+				results.add(community);
+			}
+			int[] matchRate = new int[results.size()];
+			int maxRate = 0;
+			int[][] ratedCommunityId = new int[results.size()][2];
+			int[] resultIdArray = new int[5];
+			int resultCount = 0;
+			Arrays.fill(matchRate, 0);
+			for (int i=0; i<results.size(); i++) {
+				for (int j=0; j<user.getLanguage().length; j++) {
+					if (user.getLanguage()[j].equals(results.get(i).getCommunityLanguage()[j])) {
+						matchRate[i]++;
+					}
+				}
+				for (int j=0; j<user.getPurpose().length; j++) {
+					if (user.getPurpose()[j].equals(results.get(i).getCommunityPurpose()[j])) {
+						matchRate[i]++;
+					}
+				}
+				for (int j=0; j<user.getCertification().length; j++) {
+					if (user.getCertification()[j].equals(results.get(i).getCommunityCertification()[j])) {
+						matchRate[i]++;
+					}
+				}
+				if (user.getCareer().equals(results.get(i).getCommunityCareer())) {
+					matchRate[i]++;
+				}
+				ratedCommunityId[i][0] = results.get(i).getCommunityId();
+				ratedCommunityId[i][1] = matchRate[i];
+				if (maxRate < matchRate[i]) {
+					maxRate = matchRate[i];
+				}
+			}
+			for (int i=maxRate; i<0; i--) {
+				for (int[] ratedCommunity: ratedCommunityId) {
+					if (ratedCommunity[1] == i) {
+						resultIdArray[resultCount] = ratedCommunity[0];
+						resultCount++;
+						if (resultCount == 5) break;
+					}
+				}
+				if (resultCount == 5) break;
+			}
+			for (int id: resultIdArray) {
+				recommendCommunities.add(getCommunityById(id));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} finally {
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		return recommendCommunities;
+	}
 
 
 

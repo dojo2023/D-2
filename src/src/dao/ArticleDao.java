@@ -624,9 +624,152 @@ public class ArticleDao {
 
 
 	//引数User型で自分にオススメの記事をサイズ5の配列に入れて戻す。
-	public Article[] getrecommended(User data) {
-		Article result[] = new Article[5];
+	public ArrayList<Article> getRecommendArticle(User user) {
+		ArrayList<Article> recommendArticles = new ArrayList<Article>();
+		Connection conn = null;
+		String langFlag = Flag.languageFlag(user.getLanguage());
+		String purpFlag = Flag.purposeFlag(user.getPurpose());
+		String certFlag = Flag.certificationFlag(user.getCertification());
+		ArrayList<Article> results = new ArrayList<Article>();
+		String notLikeLang = langFlag.replaceAll("0", "_");
+		notLikeLang = notLikeLang.replaceAll("[1-9A-Z]", "0");
+		String notLikePurp = purpFlag.replaceAll("0", "_");
+		notLikePurp = notLikePurp.replaceAll("[1-9A-Z]", "0");
+		String notLikeCert = certFlag.replaceAll("0", "_");
+		notLikeCert = notLikeCert.replaceAll("[1-9A-Z]", "0");
+		Article article = new Article();
 
+		try {
+			Class.forName("org.h2.Driver");
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/product_sample", "sa", "");
+			String sql = "select * from article where article_language not like ? "
+					+ "or article_purpose not like ? "
+					+ "or article_certification not like ?"
+					+ "or article_career = '?' order by article_update desc";
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+			pStmt.setString(1, notLikeLang);
+			pStmt.setString(2, notLikePurp);
+			pStmt.setString(3, notLikeCert);
+			pStmt.setString(4, user.getCareer());
+			ResultSet rs = pStmt.executeQuery();
+			while (rs.next()) {
+				article.setArticleId(rs.getInt("article_id"));
+				article.setArticleTitle(rs.getString("article_title"));
+				article.setUserId(rs.getString("user_id"));
+				article.setArticleCreate(rs.getString("article_create"));
+				article.setArticleUpdate(rs.getString("article_update"));
+				article.setArticleLanguage(ReFlag.languageReFlag(rs.getString("article_language")));
+				article.setArticlePurpose(ReFlag.purposeReFlag(rs.getString("article_purpose")));
+				article.setArticleCareer(rs.getString("article_career"));
+				article.setArticleCertification(ReFlag.certificationReFlag(rs.getString("article_certification")));
+				article.setArticleFavs(rs.getInt("article_favs"));
+				article.setArticleText(rs.getString("article_text"));
+				article.setArticleImg1(rs.getString("article_img1"));
+				article.setArticleImg2(rs.getString("article_img2"));
+				article.setArticleImg3(rs.getString("article_img3"));
+				results.add(article);
+			}
+			int[] matchRate = new int[results.size()];
+			int maxRate = 0;
+			int[][] ratedArticleId = new int[results.size()][2];
+			int[] resultIdArray = new int[5];
+			int resultCount = 0;
+			Arrays.fill(matchRate, 0);
+			for (int i=0; i<results.size(); i++) {
+				for (int j=0; j<user.getLanguage().length; j++) {
+					if (user.getLanguage()[j].equals(results.get(i).getArticleLanguage()[j])) {
+						matchRate[i]++;
+					}
+				}
+				for (int j=0; j<user.getPurpose().length; j++) {
+					if (user.getPurpose()[j].equals(results.get(i).getArticlePurpose()[j])) {
+						matchRate[i]++;
+					}
+				}
+				for (int j=0; j<user.getCertification().length; j++) {
+					if (user.getCertification()[j].equals(results.get(i).getArticleCertification()[j])) {
+						matchRate[i]++;
+					}
+				}
+				if (user.getCareer().equals(results.get(i).getArticleCareer())) {
+					matchRate[i]++;
+				}
+				ratedArticleId[i][0] = results.get(i).getArticleId();
+				ratedArticleId[i][1] = matchRate[i];
+				if (maxRate < matchRate[i]) {
+					maxRate = matchRate[i];
+				}
+			}
+			for (int i=maxRate; i<0; i--) {
+				for (int[] ratedArticle: ratedArticleId) {
+					if (ratedArticle[1] == i) {
+						resultIdArray[resultCount] = ratedArticle[0];
+						resultCount++;
+						if (resultCount == 5) break;
+					}
+				}
+				if (resultCount == 5) break;
+			}
+			for (int id: resultIdArray) {
+				recommendArticles.add(load(id));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} finally {
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		return recommendArticles;
+	}
+
+	public ArrayList<Article> getRecommendArticle() {
+		ArrayList<Article> recommendArticles = new ArrayList<Article>();
+		Connection conn = null;
+		Article article = new Article();
+		try {
+			Class.forName("org.h2.Driver");
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/product_sample", "sa", "");
+			String sql = "select * from article order by article_update desc";
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+			ResultSet rs = pStmt.executeQuery();
+			while (rs.next()) {
+				article.setArticleId(rs.getInt("article_id"));
+				article.setArticleTitle(rs.getString("article_title"));
+				article.setUserId(rs.getString("user_id"));
+				article.setArticleCreate(rs.getString("article_create"));
+				article.setArticleUpdate(rs.getString("article_update"));
+				article.setArticleLanguage(ReFlag.languageReFlag(rs.getString("article_language")));
+				article.setArticlePurpose(ReFlag.purposeReFlag(rs.getString("article_purpose")));
+				article.setArticleCareer(rs.getString("article_career"));
+				article.setArticleCertification(ReFlag.certificationReFlag(rs.getString("article_certification")));
+				article.setArticleFavs(rs.getInt("article_favs"));
+				article.setArticleText(rs.getString("article_text"));
+				article.setArticleImg1(rs.getString("article_img1"));
+				article.setArticleImg2(rs.getString("article_img2"));
+				article.setArticleImg3(rs.getString("article_img3"));
+				recommendArticles.add(article);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} finally {
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		return recommendArticles;
 	}
 
 	//引数(int)1をもらってfavを1増やす
