@@ -11,11 +11,19 @@
 <div class="header">
 	<a href="/product_D2/TopServlet"><img src="image/logo2.png" class="logo_contents" width="10%" height="10%"></a>
 </div>
+<div class="header_bottom">
+	<div class="search">
+		<form action="/product_D2/TopServlet" method="get">
+			<input type="search" name="search" placeholder="キーワードを入力" class="search_input">
+				<input class="article_search" type="submit" name="search" value="記事検索">
+				<input class="community_search" type="submit" name="search" value="コミュニティ検索">
+		</form></div>
+</div>
 </header>
 </head>
 <body>
 <div class="search_main">
-<h1>検索結果</h1>
+<h1 class="searchresult">検索結果</h1>
 <hr>
  <div class="search_contents">
 <c:if test="${empty communityResults}">
@@ -51,7 +59,7 @@
     <div id="limitedtext">${community.communitySummary}</div><br><br>
 	<form action="/product_D2/CommunityServlet" method="GET">
 	<input type="hidden" name="communityId" value="${community.communityId }">
-	<input type="submit" name="SUBMIT" value="参加">
+	<input class="join" type="submit" name="SUBMIT" value="参加">
 	</form><hr>
 </c:forEach>
 </div>

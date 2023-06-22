@@ -34,7 +34,7 @@ h2{
     margin: 10px;
 }
 .search_contents{
-    background-color: white;
+
     border-radius: 2em;
 
     color: #3d9d8f;
@@ -235,7 +235,7 @@ p.text{
     word-break: break-word;
 }
 
-input[type="submit"]{
+.join{
     background: linear-gradient(to bottom, #52639C, #35416B);
     color: #FFFFFF;
     border: none;
@@ -247,6 +247,6 @@ input[type="submit"]{
     right:-300px;
 }
 
-input[type="submit"]:hover{
+.join:hover{
     background: linear-gradient(to bottom, #52C2CF, #369CA0);
 }
