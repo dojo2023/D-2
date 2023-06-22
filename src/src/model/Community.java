@@ -66,7 +66,7 @@ public class Community implements Serializable{
 		return communityLanguage;
 	}
 
-	public void setCommnunityLanguage(String[] communityLanguage) {
+	public void setCommunityLanguage(String[] communityLanguage) {
 		this.communityLanguage = communityLanguage;
 	}
 
