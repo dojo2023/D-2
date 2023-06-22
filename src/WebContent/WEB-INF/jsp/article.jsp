@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,7 +12,7 @@
 
 <header>
 <div class="header">
-	<a href="/product_D2/TopServlet"><img src="image/logo.png" class="logo_contents" width="10%" height="10%"></a>
+	<a href="/product_D2/TopServlet"><img src="image/logo2.png" class="logo_contents" width="10%" height="10%"></a>
 </div>
 </header>
 
@@ -64,3 +66,6 @@
 </div>
 
 <script src="/product_D2/js/article.js"></script>
+
+</body>
+</html>
