@@ -1,9 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" href="css/common.css">
+<link rel="stylesheet" href="css/article.css">
 <title>タイトル｜with IT</title>
 </head>
 <body>
@@ -16,30 +16,31 @@
 
 <div class="main">
 	<div class="article_details">
+		<h4 class="minifont">作成日：${article.articleCreate}</h4>
+		<h4 class="minifont">作成者：${article.userName}</h4>
+
 		<h2>「${article.articleTitle}」</h2>
-		<h4>作成日：${article.articleCreate}</h4>
-		<h4>作成者：${article.userName}</h4>
-		<h4>#${article.articleLanguage} #${article.articlePurpose} #${article.articleCareer} #${article.articleCertificaiton}</h4>
-		<p>${article.articleText}</p>
-		${article.ariticleImg1}
-		${article.ariticleImg2}
-		${article.ariticleImg3}
+		<h4 class="minifont">#${article.articleLanguage} #${article.articlePurpose} #${article.articleCareer} #${article.articleCertificaiton}</h4><hr>
+		<div class="box1"><p>${article.articleText}</p></div>
+		<div class="box2">${article.ariticleImg1}</div>
+		<div class="box2">${article.ariticleImg2}</div>
+		<div class="box2">${article.ariticleImg3}</div>
 	</div>
 	<p></p>
 	<form action="/product_D2/ArticleServlet" method="post" id="fav_form">
-		<input type="submit" value="favs" name="favs" id="fav">
-		${article.articleFavs}
+		<input type="submit" value="1" name="favs" id="fav">
+		<div class="good">${article.articleFavs}</div>
 	</form>
-	<h4>コメント</h4>
+	<div class="box3">
+	<h4>コメント</h4><hr>
 	${comment.userId}
-	${comment.commentDate}
+	<div class="minifont">${comment.commentDate}</div><br>
 	${comment.commentText}
 	<form action="/product_D2/ArticleServlet" method="post">
 		<textarea id="comment" name="comment" rows="4" cols="50"></textarea>
-		<input type="hidden" name="articleId" value="${article.articleId}">
-		<input type="submit" value="コメント" name="comment" id="comment">
+		<input class="btn" type="submit" value="送信" name="comment" id="comment">
 	</form>
-</div>
+</div></div>
 
 <div class="footer_all">
 <footer class="footer">
@@ -63,6 +64,3 @@
 </div>
 
 <script src="/product_D2/js/article.js"></script>
-
-</body>
-</html>
