@@ -1,0 +1,48 @@
+ArticleDaoについて
+
+・select(String query)
+引数ストリング型の変数1つ、戻り値はArticle型のArrayList
+引数は検索欄に入力された文字列であり、それをもとに合致する記事を検索しArrayListに入れて返す。
+
+・insert(Article data)
+引数Article型の変数1つ、戻り値はboolean型で成功すればtrue、失敗したらfalseが帰ってくる。
+引数にArticle型の変数を入れ、その中身をもとに新しい記事を作成します。
+なので記事作成画面で入力された各項目の値をArticle型の変数に入れてあげてください。
+この時、article_id, article_create, article_updateは引数からは持ってこないので適当な値を入れておいてください。
+
+
+・update(Article data)
+引数Article型の変数1つ、戻り値はboolean型で成功すればtrue、失敗したらfalseが帰ってくる。
+引数にArticle型の変数を入れ、その中身をもとに記事を更新します。
+なので記事更新画面で入力された各項目の値をArticle型の変数に入れてあげてください。
+この時、article_id, article_create, article_updateは引数からは持ってこないので適当な値を入れておいてください。
+
+・Article load(int id)
+引数int型の変数1つ、戻り値はArticle型。
+引数の記事idをもとにその記事の情報をすべてArticle型に入れて返します。
+
+・delete(int id)
+引数int型の変数1つ、戻り値はboolean型。
+引数の記事idをもとにその記事を削除します。
+成功すればtrue、失敗すればfalseが返ってきます。
+
+・getmyArticle(int user_id)
+引数はint型の変数1つ、戻り値はArticle型の配列。
+引数のuser_idをもとに自分の作成した記事をすべて配列に入れて返します。
+配列の各要素がArticle型となっているので要素1つにつき記事1つはいっている感じです。
+
+・addFavs(int article_id)
+引数はint型の変数1つ、戻り値はboolean型。
+引数のarticle_idをもとに記事を探し、その記事のいいね数を1増やします。
+成功すればtrue,失敗するとfalseが返ってきます。
+
+
+・setComment(int article_id, int user_id, String comment_text)
+引数int型,int型,String型の計3つ、戻り値はboolean型。
+引数のartile_idは記事を特定するため、user_id,comment_textはコメントをデータベースに保存するのに必要な情報です。
+これらの情報をもとに入力されたコメントをデータベースに保存します。
+
+・getComment(int article_id)
+引数int型の変数1つ、戻り値はComment型のArrayList
+引数のarticle_idをもとにその記事に書き込まれたコメントを日付の古い順にArrayListに格納されます。
+ここからはコメントした人のuser_id、コメントした日時comment_date,コメント本文comment_textを持ってくることができます。
