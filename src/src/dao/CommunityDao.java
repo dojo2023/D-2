@@ -580,7 +580,7 @@ public class CommunityDao {
 		Community community = new Community();
 		try {
 			Class.forName("org.h2.Driver");
-			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/product_sample", "sa", "");
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/src/Data", "sa", "");
 			String sql = "select * from article order by article_update desc";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 			ResultSet rs = pStmt.executeQuery();
@@ -628,7 +628,7 @@ public class CommunityDao {
 
 		try {
 			Class.forName("org.h2.Driver");
-			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/product_sample", "sa", "");
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/src/Data", "sa", "");
 			String sql = "select * from community where community_language not like ? "
 					+ "or community_purpose not like ? "
 					+ "or community_certification not like ?"
