@@ -641,7 +641,7 @@ public class ArticleDao {
 
 		try {
 			Class.forName("org.h2.Driver");
-			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/product_sample", "sa", "");
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/src/Data", "sa", "");
 			String sql = "select * from article where article_language not like ? "
 					+ "or article_purpose not like ? "
 					+ "or article_certification not like ?"
@@ -735,7 +735,7 @@ public class ArticleDao {
 		Article article = new Article();
 		try {
 			Class.forName("org.h2.Driver");
-			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/product_sample", "sa", "");
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/src/Data", "sa", "");
 			String sql = "select * from article order by article_update desc";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 			ResultSet rs = pStmt.executeQuery();
