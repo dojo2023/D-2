@@ -91,7 +91,7 @@ margin-top:150px;
 	position: absolute;
 	bottom: 60px;
 	right: -20px;
-	color:white;
+	color:transparent;
 	font-size: 180px;
 	transform: rotate(-26deg);
 	z-index: 0;
@@ -203,7 +203,7 @@ margin-top:150px;
 	;
 }
 .cp_card01 .description a {
-	float: right;
+
 	margin-bottom: auto;
 	color: #283593;
 	text-decoration: none;
