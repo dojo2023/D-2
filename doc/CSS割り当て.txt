@@ -3,7 +3,7 @@ login.css（中島）
 
 create.css（矢羽々）
 	post.jsp
-	edit.jsp
+	edit.jsp〇
 	community_create.jsp〇
 	sign_up.jsp〇
 
