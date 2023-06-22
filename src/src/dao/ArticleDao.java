@@ -812,7 +812,7 @@ public class ArticleDao {
 	}
 
 	//コメントを追加する機能
-		public boolean setComment(int article_id, int user_id, String comment_text) {
+		public boolean setComment(int article_id, String user_id, String comment_text) {
 			Connection conn = null;
 			boolean result = false;
 
@@ -829,7 +829,7 @@ public class ArticleDao {
 
 				//SQL文を完成させる
 				pStmt.setInt(1, article_id);
-				pStmt.setInt(2, user_id);
+				pStmt.setString(2, user_id);
 				pStmt.setString(3, "current_timestump");
 				pStmt.setString(4, comment_text);
 
