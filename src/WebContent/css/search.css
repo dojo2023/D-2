@@ -234,3 +234,19 @@ p.text{
 .worddisplay{
     word-break: break-word;
 }
+
+input[type="submit"]{
+    background: linear-gradient(to bottom, #52639C, #35416B);
+    color: #FFFFFF;
+    border: none;
+    text-shadow: none;
+    border-radius: 0.25em;
+    height: 35px;
+    width: 80px;
+    position: relative;
+    right:-300px;
+}
+
+input[type="submit"]:hover{
+    background: linear-gradient(to bottom, #52C2CF, #369CA0);
+}
