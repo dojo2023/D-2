@@ -44,11 +44,10 @@ public class ArticleServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		request.setCharacterEncoding("UTF-8");
-		
+		ArticleDao aDao = new ArticleDao();
 		//いいねとコメントの処理
 		String target = request.getParameter("search");
 		if(target.equals("favs")) {
-			ArticleDao aDao = new ArticleDao();
 			int articleId = Integer.parseInt(request.getParameter("articleId"));
 			aDao.addFavs(articleId);
 		}else if(target.equals("コメント")){
@@ -61,8 +60,8 @@ public class ArticleServlet extends HttpServlet {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/article.jsp");
 			dispatcher.forward(request, response);
 		}
-		
-		
+
+
 	}
 
 }
