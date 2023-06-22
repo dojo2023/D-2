@@ -67,12 +67,12 @@ public class TopServlet extends HttpServlet {
 		String target = request.getParameter("search");
 		if (target.equals("記事検索")) {
 			ArticleDao aDao = new ArticleDao();
-			ArrayList<Article> articleResults = aDao.searchArticle(query);
+			ArrayList<Article> articleResults = aDao.select(query);
 			session.setAttribute("articleResults", articleResults);
 			response.sendRedirect("/WEB-INF/jsp/article_search.jsp");
 		} else if (target.equals("コミュニティ検索")) {
 			CommunityDao cDao = new CommunityDao();
-			ArrayList<Community> communityResults = cDao.searchCommunity(query);
+			ArrayList<Community> communityResults = cDao.select(query);
 			session.setAttribute("communityResults", communityResults);
 			response.sendRedirect("/WEB-INF/jsp/community_search.jsp");
 		}
