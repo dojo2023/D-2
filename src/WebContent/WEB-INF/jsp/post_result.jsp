@@ -6,7 +6,7 @@
 		<meta charset="UTF-8">
         <link rel="stylesheet" href="css/common.css">
         <link rel="stylesheet" href="css/result.css">
-		<title>投稿確認通知</title>
+		<title>投稿確認通知|with IT</title>
 	</head>
 <body>
 	<header>
@@ -14,20 +14,22 @@
             <a href="/product_D2/TopServlet"><img src="image/logo.png" class="logo_contents" width="10%" height="10%"></a>
         </div>
     </header>
-<hr>
-<!-- 通知ページの画像 -->
-<img src="" class="" >
 
-<!-- 作成された記事のページに飛ぶために記事idを取得して記事ページのサーブレットに飛ばす -->
-<p>投稿した記事を見ますか？</p>
-<form method="POST" action="/product_D2/ArticleServlet.java">
-<input type="hidden" name="article_id" value="${article_data.id}">
-<input type="submit" name="GoArticle" value="はい">
-</form>
-
-<input type="button" name="GoTop" value="いいえ" onclick="location.href='/product_D2/TopServlet.java'">
-
-<hr>
+<div class="result_main">
+    <h4>投稿完了しました！</h4>
+    <img src="image/result.png" class="result_img">
+    <!-- 作成された記事のページに飛ぶために記事idを取得して記事ページのサーブレットに飛ばす -->
+    <div class="result_q">
+        <p>投稿した記事を読みますか？</p>
+        <div class="btn_wrap">
+        <form method="POST" action="/product_D2/ArticleServlet.java">
+        <input type="hidden" name="article_id" value="${article_data.id}">
+        <input class="btn" type="submit" name="GoArticle" value="はい">
+        </form>
+        <input class="btn no" type="button" name="GoTop" value="いいえ" onclick="location.href='/product_D2/TopServlet.java'">
+        </div>
+    </div>
+</div>
 
     <div class="footer_all">
         <footer class="footer">
