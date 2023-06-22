@@ -1,6 +1,11 @@
 @charset "UTF-8";
 
-/* 6/22 17:15 update by yahaba */
+/* 6/22 17:40 update by yahaba */
+
+/* 背景色 */
+body {
+  background-color: #e1e8eb;
+}
 
 /* トップのメインコンテンツすべてに適用 */
 .top_main {
