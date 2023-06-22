@@ -52,8 +52,11 @@
 
 <!-- 画像ファイル↓ -->
 		<img src="${article_img1}">
+		${errorMessage}
 		<img src="${article_img2}">
+		${errorMessage}
 		<img src="${article_img3}">
+		${errorMessage}
 
 	</div>
 	<div class="confirm_msg">
