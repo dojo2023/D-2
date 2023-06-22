@@ -23,7 +23,7 @@
 </head>
 <body>
 <div class="search_main">
-<h1 class="searchresult">検索結果</h1>
+<h2 class="searchresult">検索結果</h2>
 <hr>
  <div class="search_contents">
 <c:if test="${empty communityResults}">
@@ -31,8 +31,9 @@
 </c:if>
 <div class="cp_card01">
     <div class="photo"><div class="photo1"></div></div>
+<div class="description">
 <c:forEach var="community" items="${communityResults}" >
-    <div class="description">
+
     <h2>${community.communityName}</h2>
     <div class="worddisplay"><c:set var="sendLang" value="" />
             <c:forEach var="lang" items="${community.communityLanguage}">
