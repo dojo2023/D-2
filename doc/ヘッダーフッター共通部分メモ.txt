@@ -12,22 +12,21 @@
 </header>
 
 
-【ヘッダー部分HTML（検索欄・タブ選択あり）】
+【ヘッダー部分HTML（検索欄あり）】
 
+<header>
 <div class="header">
 	<a href="/product_D2/TopServlet"><img src="image/logo.png" class="logo_contents" width="10%" height="10%"></a>
 </div>
-</header>
 <div class="header_bottom">
-	<a href="/product_D2/ArticleServlet"><h1 class="tab_article">記事</h1></a>
-	<a href="/product_D2/CommunityServlet"><h1 class="tab_community">コミュニティ</h1></a>
 	<div class="search">
-		<form action="サイトURL" method="get">
-			<input type="search" name="search" placeholder="キーワードを入力">
-				<input class="article_search" type="submit" name="article_search" value="記事検索">
-				<input class="community_search" type="submit" name="community_search" value="コミュニティ検索">
+		<form action="/product_D2/TopServlet" method="get">
+			<input type="search" name="search" placeholder="キーワードを入力" class="search_input">
+				<input class="article_search" type="submit" name="search" value="記事検索">
+				<input class="community_search" type="submit" name="search" value="コミュニティ検索">
 		</form></div>
 </div>
+</header>
 
 
 【フッター部分HTML】

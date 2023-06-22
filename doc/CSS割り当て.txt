@@ -20,16 +20,16 @@ result.css（矢羽々）
 
 search.css（中島）
 	article_search.jsp△
-	community_search.jsp△
+	community_search.jsp〇
 
 top.css（矢羽々）
 	top.jsp〇
 
 article.css（中島）
-	article.jsp
+	article.jsp△
 
 community.css（中島）
-	community_xxxx.jsp△
+	community_xxxx.jsp〇
 
 
 ーーーーーーーーーーーーーーーーーーーーーーー
