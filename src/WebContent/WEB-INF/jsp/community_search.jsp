@@ -25,7 +25,7 @@
     <div class="photo"><div class="photo1"></div></div>
 <c:forEach var="community" items="${communityResults}" >
     <div class="description">
-    <h2>${community.communityName}</h2><br>
+    <h2>${community.communityName}</h2>
     <div class="worddisplay"><c:set var="sendLang" value="" />
             <c:forEach var="lang" items="${community.communityLanguage}">
 
@@ -47,8 +47,8 @@
             <c:out value="${cert } " />
             </c:forEach>
 
-	${community.communityCareer}<br></div>
-    <p class="text" id="limited-text">${community.communitySummary}</p><br><br>
+	${community.communityCareer}<br><br></div>
+    <div id="limitedtext">${community.communitySummary}</div><br><br>
 	<form action="/product_D2/CommunityServlet" method="GET">
 	<input type="hidden" name="communityId" value="${community.communityId }">
 	<input type="submit" name="SUBMIT" value="参加">
@@ -78,5 +78,13 @@
 	<p>&copy;2023 Sakuraiya. All rights reserved.</p>
 </div>
 </div>
-<script src="./community.js?20230619"></script>
+<script>const applyTextLimit = () => {
+    let maxLength = 100; //上限文字数
+    let limitedText = document.getElementById('limitedtext');
+    let originalText = limitedText.innerText;
+    if (originalText.length > maxLength) {
+      limitedText.innerText = originalText.substr(0, maxLength) + '...';
+    }
+  }
+  applyTextLimit();</script>
 </html>
