@@ -38,9 +38,9 @@ ${member}&nbsp;
 </div>
 <div class="a">
 <c:forEach var="e" items="${chat_data}" varStatus="st" >
-${speaker_data[st.index]}
-${e.remarkDate}
-<p class="message"><input type="text" value="${e.remarkText}" disabled></p><br><br>
+${speaker_data[st.index]}&nbsp;&nbsp;
+<div class="minifont">${e.remarkDate}</div>
+<p class="message">${e.remarkText}aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p><br><br>
 
 </c:forEach>
 

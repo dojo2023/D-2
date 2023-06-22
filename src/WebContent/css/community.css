@@ -1,4 +1,6 @@
 @charset "UTF-8";
+
+
 html{
 
     font-weight: bold;
@@ -22,13 +24,13 @@ h1 {
     font-size:medium;
     font-size: 20px;
 
+
 }
 .a{overflow-y: scroll;
     border: 2px solid #000000 ; /* 太さ2px、実践、黒色*/
 
     width: 700px ; /* 幅200px*/
     height:360px ; /* 高さ30px */
-    text-align: center ; /* 中央寄せ */
     margin:auto;
     background:none;
 
@@ -37,6 +39,7 @@ h1 {
   border: 8px solid #96cbcb;
   box-shadow: 2px 2px 4px #a2d0ff, 2px 2px 2px #96cbcb inset;
   border-radius: 24px;
+  word-wrap:break-word;
 
 
 }
@@ -46,6 +49,11 @@ h1 {
 }
 .c{text-align: center ; /* 中央寄せ */
 	margin:auto;
+
+}
+
+input[type="text"]{
+    outline:none;
 
 }
 .btn {
@@ -69,6 +77,8 @@ input[type="textarea"]{
     height: 35px;
     color: #35416b;
     font-weight: bold;
+
+
 }
 
 .message{
@@ -78,6 +88,7 @@ input[type="textarea"]{
   border-radius: 12px;
   background: #edf1ee;
   font-weight: bold;
+
 }
 
 .ctitle{
@@ -96,6 +107,11 @@ input[type="textarea"]{
 
 #btn{
 	background:none;
+}
+
+.minifont{
+    font-size: small;
+    display:inline;
 }
 
 
@@ -184,4 +200,4 @@ input[type="textarea"]{
 /* とりあえずプレビュー（後で移動） */
 body {
     background-color: #e1e8eb;
-}
+}}
