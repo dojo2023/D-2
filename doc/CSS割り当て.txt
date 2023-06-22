@@ -14,9 +14,9 @@ confirm.css（矢羽々）
 	community_confirm.jsp〇
 
 result.css（矢羽々）
-	post_result.jsp
-	edit_result.jsp
-	sign_up_result.jsp
+	post_result.jsp〇
+	edit_result.jsp〇
+	sign_up_result.jsp〇
 
 search.css（中島）
 	article_search.jsp△

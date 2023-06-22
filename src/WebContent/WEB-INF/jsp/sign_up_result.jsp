@@ -4,10 +4,49 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>登録完了</title>
+<link rel="stylesheet" href="css/common.css">
+<link rel="stylesheet" href="css/result.css">
+<title>ユーザー登録完了|with IT</title>
 </head>
 <body>
-<h1>登録しました！</h1>
-<button type="submit" onclick="location.href='/product_sample/login'">ログインページへ</button>
+
+<header>
+    <div class="header">
+        <a href="/product_D2/TopServlet"><img src="image/logo.png" class="logo_contents" width="10%" height="10%"></a>
+    </div>
+</header>
+
+<div class="result_main">
+    <h4>ユーザー登録完了しました！</h4>
+    <img src="image/result.png" class="result_img">
+    <div class="result_q">
+        <p>ログインして記事投稿機能やコミュニティ機能を使いましょう！</p>
+    <div class="btn_wrap">
+    <button class="btn" type="submit" onclick="location.href='/product_sample/login'">ログインページへ</button>
+    </div>
+    </div>
+</div>
+
+<div class="footer_all">
+    <footer class="footer">
+        <img class="footer_logo" src="image/logo2.png"  width="15%" height="15%">
+        <div class="footer_contents">
+            コンテンツ
+            <ul>
+                <li>投稿</li>
+                <li>コミュニティ</li>
+                <li>ログイン</li>
+                <li>ログアウト</li>
+                <li>新規作成</li>
+                <li>トップページ</li>
+            </ul>
+            </div>
+    </footer>
+    <div class="footer_bottom">
+        <p>ヘルプはこちらから</p>
+        <p>&copy;2023 Sakuraiya. All rights reserved.</p>
+    </div>
+    </div>
+
 </body>
 </html>

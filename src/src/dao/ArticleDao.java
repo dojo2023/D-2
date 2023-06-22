@@ -537,7 +537,7 @@ public class ArticleDao {
 	}
 
 	//引数user_idで自分の記事の一覧を配列に入れて戻す。
-	public Article[] myArticle(int user_id) {
+	public Article[] getmyArticle(int user_id) {
 		int i = 0;
 		Connection conn = null;
 		int number_of_row;
@@ -624,7 +624,7 @@ public class ArticleDao {
 
 
 	//引数User型で自分にオススメの記事をサイズ5の配列に入れて戻す。
-	public Article[] recommended(User data) {
+	public Article[] getrecommended(User data) {
 		Article result[] = new Article[5];
 
 	}
