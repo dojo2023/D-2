@@ -537,11 +537,11 @@ public class ArticleDao {
 	}
 
 	//引数user_idで自分の記事の一覧を配列に入れて戻す。
-	public Article[] getmyArticle(int user_id) {
+	public ArrayList<Article> getmyArticle(String user_id) {
 		int i = 0;
 		Connection conn = null;
 		int number_of_row;
-		Article result[] = null;
+		ArrayList<Article> result = new ArrayList<Article>();
 
 		try {
 			//JDBCドライバを読み込む
@@ -555,18 +555,10 @@ public class ArticleDao {
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			//SQL文を完成させる
-			pStmt.setInt(1, user_id);
+			pStmt.setString(1, user_id);
 
 			//SQL文を実行する
 			ResultSet rs = pStmt.executeQuery();
-
-			//行数を得る
-			rs.last();						//最後の行に飛ぶ
-			number_of_row = rs.getRow();	//行の数をint型の変数に入れる
-			rs.beforeFirst();				//最初の行に戻す
-
-			//返す配列を宣言
-			result = new Article[number_of_row];
 
 			//結果表をArticleに保存し、配列に順次入れていく
 			while(rs.next()) {
@@ -592,13 +584,11 @@ public class ArticleDao {
 						rs.getString("article_img2"),
 						rs.getString("article_img3")
 						);
-				result[i] = data;
-				i++;
+				result.add(data);
 			}
 		}
 			catch (SQLException e) {
 				e.printStackTrace();
-				Arrays.fill(result, null);
 			}
 			catch (ClassNotFoundException e) {
 				e.printStackTrace();
