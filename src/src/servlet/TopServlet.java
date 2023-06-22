@@ -41,7 +41,7 @@ public class TopServlet extends HttpServlet {
 			user = (User)session.getAttribute("user");
 			recommendArticle = aDao.getRecommendArticle(user);
 			recommendCommunity = cDao.getRecommendCommunity(user);
-			writtenArticle = aDao.getWrittenArticle(user.getUserId());
+			writtenArticle = aDao.getmyArticle(user.getUserId());
 		} catch (NullPointerException e) {
 			user = new User("ゲスト");
 			session.setAttribute("user", user);
