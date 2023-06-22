@@ -36,9 +36,13 @@
 				<div class="c-txtsp">
 					<hr>
 					<c:forEach var="recommendArticle" items="${recArticle}">
+						<a href="javascript:form.submit();">${article.articleTitle}</a><br>
 						<h4>「${article.articleTitle}」</h4><br>
 						<p>作成者：${article.userId}<br>作成日時：${article.articleCreate}</p>
 						<hr>
+						<form action="/product_D2/ArticleServlet" name="form" method="get">
+						<input type="hidden" name="articleId" value="${article.articleId}">
+						</form>
 					</c:forEach>
 			  	</div>
 				</div>
@@ -52,6 +56,9 @@
 						<p>最終発言日時：${community.communityDate}<br>
 						コミュニティの説明：${community.communitySummary}</p>
 					<hr>
+					<form action="/product_D2/CommunityServlet" name="form" method="get">
+					<input type="hidden" name="communityId" value="${community.communityId}">
+					</form>
 					</c:forEach>
 					</div>
 			  </div>
