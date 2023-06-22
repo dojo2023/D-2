@@ -12,7 +12,7 @@
 
 <header>
     <div class="header">
-        <a href="/product_D2/TopServlet"><img src="image/logo.png" class="logo_contents" width="10%" height="10%"></a>
+        <img src="image/logo.png" class="logo_contents" width="10%" height="10%">
     </div>
 </header>
 
@@ -22,7 +22,7 @@
     <div class="result_q">
         <p>ログインして記事投稿機能やコミュニティ機能を使いましょう！</p>
     <div class="btn_wrap">
-    <button class="btn" type="submit" onclick="location.href='/product_sample/login'">ログインページへ</button>
+    <button class="btn" type="submit" onclick="location.href='/product_D2/login'">ログインページへ</button>
     </div>
     </div>
 </div>
