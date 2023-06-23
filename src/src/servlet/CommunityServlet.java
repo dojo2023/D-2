@@ -20,7 +20,7 @@ import model.User;
 /**
  * Servlet implementation class CommunityServlet
  */
-@WebServlet("/CommunityServlet")
+@WebServlet("/community")
 public class CommunityServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

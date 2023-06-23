@@ -40,7 +40,7 @@
 						<h4>「${article.articleTitle}」</h4><br>
 						<p>作成者：${article.userId}<br>作成日時：${article.articleCreate}</p>
 						<hr>
-						<form action="/product_D2/ArticleServlet" name="form" method="get">
+						<form action="/product_D2/article" name="form" method="get">
 						<input type="hidden" name="articleId" value="${article.articleId}">
 						</form>
 					</c:forEach>
@@ -56,7 +56,7 @@
 						<p>コミュニティ作成日時：${community.communityDate}<br>
 						コミュニティの説明：${community.communitySummary}</p>
 					<hr>
-					<form action="/product_D2/CommunityServlet" name="form" method="get">
+					<form action="/product_D2/community" name="form" method="get">
 					<input type="hidden" name="community_id" value="${community.communityId}">
 					</form>
 					</c:forEach>
@@ -65,7 +65,7 @@
 			</div>
 		  </div>
 		</div>
-		
+
 		<div class="contents_right">
 			<div class="contents_user">
 				<h3 class="right_title">ようこそ${user.userName}さん！</h3>
@@ -75,36 +75,36 @@
 				<a href="/product_D2/login"><p class="btn">ログイン</p></a> <a href="/product_D2/sign_up"><p class="btn">新規登録</p></a>
 				</div>
 			</div>
-			
+
 			<div class="contents_myarticle">
 				<h3 class="right_title">自分が投稿した記事</h3>
 				<p class="txt">あなたがこれまでに投稿した記事の一覧です。<br>みんなの疑問を即解決！</p>
-				
+
 				<c:if test="${empty articleResults}">
 				<p>記事は投稿されていません</p>
 				</c:if>
-				
+
 				<c:forEach var="article" items="${articleResults}">
 					<p>${article.articleTitle}</p>
 					<div class="btn_wrap">
-						<form action="/product_D2/EditServlet" method="get">
+						<form action="/product_D2/edit" method="get">
 							<input type="hidden" name="article_id" value="${article.articleId}">
 							<input type="submit" value="編集" class="btn">
 						</form>
-						<form action="/product_D2/ArticleServlet" method="get">
+						<form action="/product_D2/article" method="get">
 							<input type="hidden" name="article_id" value="${article.articleId}">
 							<input type="submit" value="閲覧" class="btn">
 						</form>
 					</div>
 				</c:forEach>
-				
-				<a href="/product_D2/PostServlet"><p class="btn_post">→記事を新規投稿する</p></a>
+
+				<a href="/product_D2/post"><p class="btn_post">→記事を新規投稿する</p></a>
 			</div>
 			<div class="contents_community">
 				<h3 class="right_title">コミュニティ新規作成</h3>
 				<p class="txt">コミュニティ機能で疑問を即解決！</p>
 				<div class="btn_wrap">
-				<a href="/product_D2/CommunityCreateServlet"><p class="btn_b">さっそく話しに行く！</p></a>
+				<a href="/product_D2/community_create"><p class="btn_b">さっそく話しに行く！</p></a>
 				</div>
 			</div>
 		</div>
@@ -126,7 +126,7 @@
 		</div>
 </footer>
 <div class="footer_bottom">
-	<a href=""><p>ヘルプはこちらから</p></a>
+	<a href="/product_D2/help"><p>ヘルプはこちらから</p></a>
 	<p>&copy;2023 Sakuraiya. All rights reserved.</p>
 </div>
 </div>

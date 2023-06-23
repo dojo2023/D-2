@@ -12,7 +12,7 @@
 
 <header>
 <div class="header">
-	<a href="/product_D2/TopServlet"><img src="image/logo2.png" class="logo_contents" width="10%" height="10%"></a>
+	<a href="/product_D2/top"><img src="image/logo2.png" class="logo_contents" width="10%" height="10%"></a>
 </div>
 </header>
 
@@ -49,7 +49,7 @@
 	${comment.userId}
 	<div class="minifont">${comment.commentDate}</div><br>
 	${comment.commentText}
-	<form action="/product_D2/ArticleServlet" method="post">
+	<form action="/product_D2/article" method="post">
 		<textarea id="comment" name="comment" rows="4" cols="50"></textarea>
 		<input class="btn" type="submit" value="送信" name="comment" id="comment">
 	</form>

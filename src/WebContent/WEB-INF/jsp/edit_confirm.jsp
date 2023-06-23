@@ -12,7 +12,7 @@
 <body>
 <header>
 <div class="header">
-	<a href="/product_D2/TopServlet"><img src="image/logo.png" class="logo_contents" width="10%" height="10%"></a>
+	<a href="/product_D2/top"><img src="image/logo.png" class="logo_contents" width="10%" height="10%"></a>
 </div>
 </header>
 

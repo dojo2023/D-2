@@ -58,7 +58,7 @@
 
 	${community.communityCareer}<br><br></div>
     <div id="limitedtext">${community.communitySummary}</div><br><br>
-	<form action="/product_D2/CommunityServlet" method="GET">
+	<form action="/product_D2/community" method="GET">
 	<input type="hidden" name="communityId" value="${community.communityId }">
 	<input class="join" type="submit" name="SUBMIT" value="参加">
 	</form><hr>

@@ -13,7 +13,7 @@
 	<body>
 
 		<main>
-			<form id="form" method="POST" action="/product_D2/PostServlet" enctype="multipart/form-data">
+			<form id="form" method="POST" action="/product_D2/post" enctype="multipart/form-data">
 				<h2>タイトル</h2>
 				<input type="text" name="article_title" id="article_title" onkeyup="counter('article_title','count1')">
 				<span id="count1">0</span>/50
