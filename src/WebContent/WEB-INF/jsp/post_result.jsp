@@ -23,7 +23,7 @@
         <p>投稿した記事を読みますか？</p>
         <div class="btn_wrap">
         <form method="POST" action="/product_D2/ArticleServlet.java">
-        <input type="hidden" name="article_id" value="${article_data.id}">
+        <input type="hidden" name="article_id" value="${article.articleId}">
         <input class="btn" type="submit" name="GoArticle" value="はい">
         </form>
         <input class="btn no" type="button" name="GoTop" value="いいえ" onclick="location.href='/product_D2/TopServlet.java'">

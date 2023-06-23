@@ -45,13 +45,13 @@ public class PostServlet extends HttpServlet {
 
 
 		//各値を取得
-		String articleTitle = request.getParameter("title");
+		String articleTitle = request.getParameter("article_title");
 		String userId = (String)session.getAttribute("user");
 		String[] articleLanguage = request.getParameterValues("language");
 		String[] articlePurpose = request.getParameterValues("purpose");
 		String articleCareer = request.getParameter("career");
 		String[] articleCertification = request.getParameterValues("certification");
-		String articleText = request.getParameter("text");
+		String articleText = request.getParameter("article_text");
 
 		//リクエストスコープに格納
 		request.setAttribute("articleTitle",articleTitle);
@@ -64,6 +64,7 @@ public class PostServlet extends HttpServlet {
 		session.setAttribute("articleImg1",articleImg1);
 		session.setAttribute("articleImg2",articleImg2);
 		session.setAttribute("articleImg3",articleImg3);
+		System.out.printf("%s",articleText);
 
 		try {
 			//name属性ごとにファイルをPartオブジェクトとして取得
@@ -76,7 +77,7 @@ public class PostServlet extends HttpServlet {
 				ImgName1 += extName;
 				articleImg1.write(ImgName1);
 				//System.out.printf("%s\n",ImgName1 );	//確認用
-				articleImg1Path = "/product_D2/upload/"+ImgName1;
+				articleImg1Path = "/D2sample/upload/"+ImgName1;
 			}else if (articleImg1.getSize()==0) {
 					articleImg1Path = "";
 				}
@@ -96,7 +97,7 @@ public class PostServlet extends HttpServlet {
 				ImgName2 += extName;
 				articleImg1.write(ImgName2);
 				//System.out.printf("%s\n",ImgName1 );	//確認用
-				articleImg2Path = "/product_D2/upload/"+ImgName2;
+				articleImg2Path = "/D2sample/upload/"+ImgName2;
 			} else if (articleImg2.getSize()==0) {
 				articleImg2Path = "";
 			}
@@ -116,7 +117,7 @@ public class PostServlet extends HttpServlet {
 				ImgName3 += extName;
 				articleImg1.write(ImgName3);
 				//System.out.printf("%s\n",ImgName1 );	//確認用
-				articleImg3Path = "/product_D2/upload/"+ImgName3;
+				articleImg3Path = "/D2sample/upload/"+ImgName3;
 			}else if (articleImg3.getSize()==0) {
 				articleImg3Path = "";
 				}
