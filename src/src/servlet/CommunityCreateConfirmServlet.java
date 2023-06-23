@@ -49,7 +49,7 @@ public class CommunityCreateConfirmServlet extends HttpServlet {
 
 
 
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/product_D2/CommunityServlet");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/community");
 		dispatcher.forward(request, response);
 
 

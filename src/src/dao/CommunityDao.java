@@ -254,14 +254,14 @@ public class CommunityDao {
 
 
 	// 引数cardで指定されたレコードを登録し、成功したらtrueを返す
-		public boolean addCommunity(Community data) {
+		public int addCommunity(Community data) {
 			String communityName;
 			String communityLanguage;
 			String communityPurpose;
 			String communityCertification;
 			String communitySummary;
 			Connection conn = null;
-			boolean result = false;
+			int result=-1;
 
 
 			try {
@@ -293,8 +293,13 @@ public class CommunityDao {
 				pStmt.setString(5, communityCertification);
 				pStmt.setString(6, data.getCommunitySummary());
 				pStmt.executeUpdate();
-				result = true;
 
+				sql= "select community_id from community order by community_date desc";
+				pStmt=conn.prepareStatement(sql);
+				ResultSet rs=pStmt.executeQuery();
+
+				rs.next();
+				result=rs.getInt("community_id");
 			}
 			catch (SQLException e) {
 				e.printStackTrace();
@@ -310,7 +315,7 @@ public class CommunityDao {
 					}
 					catch(SQLException e) {
 						e.printStackTrace();
-						result = false;
+						result = -1;
 					}
 				}
 			}
