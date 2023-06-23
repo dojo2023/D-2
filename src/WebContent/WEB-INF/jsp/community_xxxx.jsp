@@ -38,10 +38,24 @@ ${member}&nbsp;
 </div>
 <div class="a">
 <c:forEach var="e" items="${chat_data}" varStatus="st" >
+<!-- 自分の発言 -->
+<c:choose >
+<c:when test="${user.user_id==e.userId}">
+<div class="ore">
 ${speaker_data[st.index]}&nbsp;&nbsp;
 <div class="minifont">${e.remarkDate}</div>
-<p class="message">${e.remarkText}aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p><br><br>
-
+<p class="message">${e.remarkText}</p><br><br>
+</div>
+</c:when>
+<!-- 他人の発言 -->
+<c:otherwise>
+<div class="oreigai">
+${speaker_data[st.index]}&nbsp;&nbsp;
+<div class="minifont">${e.remarkDate}</div>
+<p class="message">${e.remarkText}</p><br><br>
+</div>
+</c:otherwise>
+</c:choose>
 </c:forEach>
 
 </div>
