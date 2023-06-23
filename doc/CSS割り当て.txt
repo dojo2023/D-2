@@ -19,14 +19,14 @@ result.css（矢羽々）
 	sign_up_result.jsp〇
 
 search.css（中島）
-	article_search.jsp△
+	article_search.jsp〇
 	community_search.jsp〇
 
 top.css（矢羽々）
 	top.jsp〇
 
 article.css（中島）
-	article.jsp△
+	article.jsp〇
 
 community.css（中島）
 	community_xxxx.jsp〇
