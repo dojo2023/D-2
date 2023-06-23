@@ -14,7 +14,7 @@ import model.Article;
 /**
  * Servlet implementation class EditConfirmServlet
  */
-@WebServlet("/EditResultServlet")
+@WebServlet("/edit_result")
 public class EditResultServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

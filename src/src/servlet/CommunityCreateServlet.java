@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class CommunityCreateServlet
  */
-@WebServlet("/CommunityCreateServlet")
+@WebServlet("/community_create")
 public class CommunityCreateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

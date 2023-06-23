@@ -15,7 +15,7 @@ import model.Community;
 /**
  * Servlet implementation class CommunityCreateConfirmServlet
  */
-@WebServlet("/CommunityCreateConfirmServlet")
+@WebServlet("/community_create_confirm")
 public class CommunityCreateConfirmServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

@@ -15,7 +15,7 @@ import javax.servlet.http.Part;
 /**
  * Servlet implementation class PostServlet
  */
-@WebServlet("/PostServlet")
+@WebServlet("/post")
 @MultipartConfig (location = "C:\\dojo6\\product_D2\\WebContent\\upload",maxFileSize=700000) // アップロードファイルの一時的な保存先
 public class PostServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;

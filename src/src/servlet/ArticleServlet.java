@@ -18,7 +18,7 @@ import model.Comment;
 /**
  * Servlet implementation class ArticleServlet
  */
-@WebServlet("/ArticleServlet")
+@WebServlet("/article")
 public class ArticleServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

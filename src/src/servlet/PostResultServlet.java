@@ -18,7 +18,7 @@ import model.Article;
 /**
  * Servlet implementation class PostResultServlet
  */
-@WebServlet("/PostResultServlet")
+@WebServlet("/post_result")
 public class PostResultServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
