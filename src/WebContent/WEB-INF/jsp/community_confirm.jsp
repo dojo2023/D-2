@@ -51,7 +51,7 @@
         <div class="confirm_msg">
             <p>以上の内容でよろしいですか？</p><br>
             <!--  confirmServletへ送信 -->
-            <form method="POST" action="/product_D2/community_create_confirm">
+            <form method="POST" action="/product_D2/CommunityServlet">
 
             <input type="hidden" name="community_name" value="${name}">
             <input type="hidden" name="sendLang" value="${sendLang}" >
