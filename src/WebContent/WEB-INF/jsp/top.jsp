@@ -126,7 +126,7 @@
 		</div>
 </footer>
 <div class="footer_bottom">
-	<a href=""><p>ヘルプはこちらから</p></a>
+	<a href="/product_D2/HelpServlet"><p>ヘルプはこちらから</p></a>
 	<p>&copy;2023 Sakuraiya. All rights reserved.</p>
 </div>
 </div>
