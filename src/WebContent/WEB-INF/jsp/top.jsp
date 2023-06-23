@@ -11,11 +11,11 @@
 <body>
 <header>
 <div class="header">
-	<a href="/product_D2/TopServlet"><img src="image/logo.png" class="logo_contents" width="10%" height="10%"></a>
+	<a href="/product_D2/top"><img src="image/logo.png" class="logo_contents" width="10%" height="10%"></a>
 </div>
 <div class="header_bottom">
 	<div class="search">
-		<form action="/product_D2/TopServlet" method="get">
+		<form action="/product_D2/top" method="post">
 			<input type="search" name="search" placeholder="キーワードを入力" class="search_input">
 				<input class="article_search" type="submit" name="search" value="記事検索">
 				<input class="community_search" type="submit" name="search" value="コミュニティ検索">
@@ -53,11 +53,11 @@
 					<hr>
 					<c:forEach var="recommendCommunity" items="${recCommunity}">
 						<h4>「${community.communityName}」</h4><br>
-						<p>最終発言日時：${community.communityDate}<br>
+						<p>コミュニティ作成日時：${community.communityDate}<br>
 						コミュニティの説明：${community.communitySummary}</p>
 					<hr>
 					<form action="/product_D2/CommunityServlet" name="form" method="get">
-					<input type="hidden" name="communityId" value="${community.communityId}">
+					<input type="hidden" name="community_id" value="${community.communityId}">
 					</form>
 					</c:forEach>
 					</div>
@@ -72,7 +72,7 @@
 				<p class="txt">「今知りたい」を即解決！with ITへようこそ！</p>
 				<img src="image/character.png" class="chara">
 				<div class="btn_wrap">
-				<a href="/product_D2/LoginServlet"><p class="btn">ログイン</p></a> <a href="/product_D2/SignUpServlet"><p class="btn">新規登録</p></a>
+				<a href="/product_D2/login"><p class="btn">ログイン</p></a> <a href="/product_D2/sign_up"><p class="btn">新規登録</p></a>
 				</div>
 			</div>
 			

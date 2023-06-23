@@ -7,7 +7,7 @@
 
 <header>
 <div class="header">
-	<a href="/product_D2/TopServlet"><img src="image/logo.png" class="logo_contents" width="10%" height="10%"></a>
+	<a href="/product_D2/top"><img src="image/logo.png" class="logo_contents" width="10%" height="10%"></a>
 </div>
 </header>
 
@@ -16,11 +16,11 @@
 
 <header>
 <div class="header">
-	<a href="/product_D2/TopServlet"><img src="image/logo.png" class="logo_contents" width="10%" height="10%"></a>
+	<a href="/product_D2/top"><img src="image/logo.png" class="logo_contents" width="10%" height="10%"></a>
 </div>
 <div class="header_bottom">
 	<div class="search">
-		<form action="/product_D2/TopServlet" method="get">
+		<form action="/product_D2/top" method="post">
 			<input type="search" name="search" placeholder="キーワードを入力" class="search_input">
 				<input class="article_search" type="submit" name="search" value="記事検索">
 				<input class="community_search" type="submit" name="search" value="コミュニティ検索">
