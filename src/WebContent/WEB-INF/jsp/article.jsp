@@ -33,10 +33,11 @@
 
 	<!-- 変更前
 	 <form action="/product_D2/ArticleServlet" method="post" id="fav_form">
-		<input type="submit" value="1" name="favs" id="fav"> -->
+		<input type="submit" value="${article.articleId}" name="favs" id="fav"> -->
 
 		<form id="fav_form">
-		<button type="button" id="btnfav">♡</button>
+		<input type=hidden id="aId" value="${article.articleId}">
+		<input type="button" id="btnfav" value="♡">
 
 
 		</form>

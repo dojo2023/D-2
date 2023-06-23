@@ -6,32 +6,29 @@
 var judge=true;
 var fav_color;
 
+document.getElementById('fav_form').onclick=function(){
 
-
-
-/**document.getElementById('fav_form').onsubmit=function()  */
-document.getElementById("btnfav").addEventListener("click", function(){
-
-	var formD=document.getElementById("fav_form");
-	var Data=new FromData(formD);
-
-	var send=new XMLHttpRequest();
-
-	if(judge===true){
-		fav_color=document.getElementById('fav');
+	if(judge=true){
+		fav_color=document.getElementById('btnfav');
 		fav_color.style.backgroundColor="pink";
 		judge=false;
+		/**下のコメントアウトを動かす場合この一文を削除 */
+		document.getElementById('btnfav').setAttribute("disabled");
 
-		Data.append("favs",1);
-		send.send(Data);
+		var formDatas = document.getElementById("fav_form");
+		var mixedDatas = new FormData(formDatas);
+
+		var aid=document.getElementById('aId').value;
+
+		mixedDatas.append("favs", aid);
+
+		var XHR = new XMLHttpRequest();
+		XHR.open("POST", "/product_D2/ArticleServlet", true);
+		XHR.send(mixedDatas);
 
 
 
-
-		/**下を動かす場合この一文を削除 */
-		document.getElementById('fav').setAttribute("disabled");
-
-	/** 色がピンクの状態でもう一度押すと白になる
+	/** 色がピンクの状態でもう一度押すと白になる、
 	}else{
 		fav_color=document.getElementById('fav');
 		fav_color.style.backgroundColor=white;
@@ -41,7 +38,8 @@ document.getElementById("btnfav").addEventListener("click", function(){
 	}
 
 
-})
+}
+
 
 /** ログイン状態でコメント欄の活性、非活性*/
 /** jspでログイン状態を判別してvalueの値を変える、EL式でif文作って分岐、
