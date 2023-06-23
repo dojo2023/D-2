@@ -29,10 +29,20 @@
 		<div class="box2">${article.ariticleImg3}</div>
 	</div>
 	<p></p>
-	<form action="/product_D2/ArticleServlet" method="post" id="fav_form">
-		<input type="submit" value="1" name="favs" id="fav">
+
+
+	<!-- 変更前
+	 <form action="/product_D2/ArticleServlet" method="post" id="fav_form">
+		<input type="submit" value="1" name="favs" id="fav"> -->
+
+		<form id="fav_form">
+		<button type="button" id="btnfav">♡</button>
+
+
+		</form>
 		<div class="good">${article.articleFavs}</div>
-	</form>
+
+
 	<div class="box3">
 	<h4>コメント</h4><hr>
 	${comment.userId}
