@@ -1,0 +1,42 @@
+@charset "UTF-8";
+
+.help_main *{
+    text-align: center;
+}
+.help_main h1{
+    font-size: 20px;
+    color: white;
+    background: linear-gradient(to right, #52c2cf, #ffd83a);
+    border-radius: 1em;
+    padding: 10px;
+    display: flex;
+    margin-bottom: 30px;
+}
+.help_main h2 {
+    background-color: #71d7ff;
+    border-radius: 0.5em;
+    display: inline;
+    padding: 5px 80px;
+    color:white;
+    margin: 20px;
+}
+.help_main h3 {
+    color: #52c2cf;
+    margin: 30px 30px;
+    border-top: 2px dotted #52c2cf;
+    border-bottom: 2px dotted #52c2cf;
+}
+.help_main h4, p{
+    color:#5c8fa4;
+}
+.help_h{
+    width: 50%;
+    height: auto;
+}
+.help_r {
+    width: auto;
+    height: 50%;
+}
+.community_help {
+    margin: 60px 0 30px 0;
+}
