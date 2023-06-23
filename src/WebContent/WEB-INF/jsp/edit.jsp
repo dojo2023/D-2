@@ -12,7 +12,7 @@
 <body>
 	<header>
 		<div class="header">
-			<a href="/product_D2/TopServlet"><img src="image/logo.png" class="logo_contents" width="10%" height="10%"></a>
+			<a href="/product_D2/top"><img src="image/logo.png" class="logo_contents" width="10%" height="10%"></a>
 		</div>
 	</header>
 <div class="create_main">
@@ -40,7 +40,7 @@
 
 	<hr>
 	<h4>タイトル</h4><br>
-	<form method="POST" action="product_D2/EditServlet" id="form">
+	<form method="POST" action="product_D2/edit" id="form">
 	<label><input class="textform" type="text" name="title" value="${article.articleTitle}" placeholder="記事タイトル"></label>
 
 	<hr>

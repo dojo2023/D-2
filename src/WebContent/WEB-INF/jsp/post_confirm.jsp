@@ -11,7 +11,7 @@
 	<body>
 	<header>
         <div class="header">
-            <a href="/product_D2/TopServlet"><img src="image/logo.png" class="logo_contents" width="10%" height="10%"></a>
+            <a href="/product_D2/top"><img src="image/logo.png" class="logo_contents" width="10%" height="10%"></a>
         </div>
     </header>
 <hr>
@@ -61,7 +61,7 @@
 	</div>
 	<div class="confirm_msg">
 		<p>以上の内容でよろしいですか？</p><br>
-		<form method="POST" action="/product_D2/PostConfirmServlet.java">
+		<form method="POST" action="/product_D2/post_confirm">
 		<input type="hidden" name="article_title" value="${ariticle_data.title}">
 		<input type="hidden" name="article_user" value="${article_data.user}">
         <input type="hidden" name="sendLang" value="${sendLang}" >

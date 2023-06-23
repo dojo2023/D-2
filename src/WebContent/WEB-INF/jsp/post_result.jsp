@@ -11,7 +11,7 @@
 <body>
 	<header>
         <div class="header">
-            <a href="/product_D2/TopServlet"><img src="image/logo.png" class="logo_contents" width="10%" height="10%"></a>
+            <a href="/product_D2/top"><img src="image/logo.png" class="logo_contents" width="10%" height="10%"></a>
         </div>
     </header>
 
@@ -22,11 +22,11 @@
     <div class="result_q">
         <p>投稿した記事を読みますか？</p>
         <div class="btn_wrap">
-        <form method="POST" action="/product_D2/ArticleServlet.java">
+        <form method="POST" action="/product_D2/article">
         <input type="hidden" name="article_id" value="${article.articleId}">
         <input class="btn" type="submit" name="GoArticle" value="はい">
         </form>
-        <input class="btn no" type="button" name="GoTop" value="いいえ" onclick="location.href='/product_D2/TopServlet.java'">
+        <input class="btn no" type="button" name="GoTop" value="いいえ" onclick="location.href='/product_D2/top'">
         </div>
     </div>
 </div>

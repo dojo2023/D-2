@@ -12,7 +12,7 @@
 
     <header>
         <div class="header">
-            <a href="/product_D2/TopServlet"><img src="image/logo.png" class="logo_contents" width="10%" height="10%"></a>
+            <a href="/product_D2/top"><img src="image/logo.png" class="logo_contents" width="10%" height="10%"></a>
         </div>
     </header>
 
@@ -51,7 +51,7 @@
         <div class="confirm_msg">
             <p>以上の内容でよろしいですか？</p><br>
             <!--  confirmServletへ送信 -->
-            <form method="POST" action="/product_D2/CommunityCreateConfirmServlet.java">
+            <form method="POST" action="/product_D2/community_create_confirm">
 
             <input type="hidden" name="community_name" value="${name}">
             <input type="hidden" name="sendLang" value="${sendLang}" >

@@ -10,7 +10,7 @@
 <meta charset="UTF-8">
 <title>コミュニティ</title>
 <div class="header">
-	<a href="/product_D2/TopServlet"><img src="image/logo2.png" class="logo_contents" width="10%" height="10%"></a>
+	<a href="/product_D2/top"><img src="image/logo2.png" class="logo_contents" width="10%" height="10%"></a>
 </div>
 </head>
 <body>
@@ -60,7 +60,7 @@ ${speaker_data[st.index]}&nbsp;&nbsp;
 
 </div>
 <div class="b">
- <form method="POST" action="/product_D2mmm/CommunityServlet">
+ <form method="POST" action="/product_D2/community">
  <input type="hidden" name="community_id" value="${community_data.communityId}">
 <input type="textarea" id="messagetext" name="remark_text" placeholder="メッセージを入力してください">
 <input class="btn" id="messagesubmit"type="submit" name="SUBMIT" value="送　信" disabled>

@@ -24,7 +24,7 @@
 	<div class="help_wrapper">
 	<div class="article_help">
 		<h2>記事機能</h2>
-		
+
 		<h3>記事機能では、記事の閲覧・投稿を行うことが出来ます。<br>
 		また、投稿した記事に対して編集や削除を行うことも出来ます。<br>
 		知識を共有することでスキルアップ！</h3>
@@ -55,7 +55,7 @@
 		</div>
 	</div>
 </div>
-	
+
 </div>
 
 <div class="footer_all">
@@ -74,7 +74,7 @@
 		</div>
 </footer>
 <div class="footer_bottom">
-	<a href="/product_D2/help.jsp"><p>ヘルプはこちらから</p></a>
+	<a href="/product_D2/help"><p>ヘルプはこちらから</p></a>
 	<p>&copy;2023 Sakuraiya. All rights reserved.</p>
 </div>
 </div>

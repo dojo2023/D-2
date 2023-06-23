@@ -57,7 +57,7 @@
             <c:out value="${cert } " />
             </c:forEach>
 		${article.articleFavs}<br><br></div>
-		<form action="/product_D2/ArticleServlet" name="form" method="get">
+		<form action="/product_D2/article" name="form" method="get">
 		<input type="hidden" name="articleId" value="${article.articleId}">
 		</form>
 	</c:forEach>
