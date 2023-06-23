@@ -60,16 +60,16 @@
     <!-- edit_result.jspに送信 -->
     <div class="confirm_msg">
         <p>以上の内容で更新してよろしいですか？</p><br>
-        <form method="post" action="/sample_d2/edit_result">
+        <form method="post" action="/product_D2/edit_result">
         <input type="hidden" name="articleId" value="${article.articleId}">
         <input type="hidden" name="articleTitle" value="${article.articleTitle}">
         <input type="hidden" name="userId" value="${article.userId}">
         <input type="hidden" name="articleCreate" value="${article.articleCreate}">
         <input type="hidden" name="articleUpdate" value="${article.articleUpdate}">
-        <input type="hidden" name="articleLang" value="${article.articleLang}">
-        <input type="hidden" name="articlePurp" value="${article.articlePurp}">
+        <input type="hidden" name="sendLang" value="${sendLang}">
+        <input type="hidden" name="sendPurp" value="${sendPurp}">
         <input type="hidden" name="articleCareer" value="${article.articleCareer}">
-        <input type="hidden" name="articleCert" value="${article.articleCert}">
+        <input type="hidden" name="sendCert" value="${sendCert}">
         <input type="hidden" name="articleFavs" value="${article.articleFavs}">
         <input type="hidden" name="articleText" value="${article.articleText}">
         <input type="hidden" name="articleImg1" value="${article.articleImg1}">
