@@ -415,6 +415,71 @@ public class ArticleDao {
 		return result;
 	}
 
+	//引数無しでからの記事を作り、その記事idを返す。
+		public int insertGetId() {
+			int article_id = 0;
+			Connection conn = null;
+
+			try {
+				//JDBCドライバを読み込む
+				Class.forName("org.h2.Driver");
+
+				//データベースに接続する
+				conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/src/Data", "sa", "");
+
+				//SQL文を準備する
+				String sql = "insert into article( article_title, user_id, article_create, article_update, article_language, article_purpose, article_career, article_certification, article_favs, article_text, article_img1, article_img2, article_img3) values(?,?,?,?,?,?,?,?,?,?,?,?,?);";
+				PreparedStatement pStmt = conn.prepareStatement(sql);
+
+				//SQL文を完成させる
+				pStmt.setString(1, "''");
+				pStmt.setString(2, "'temp'");
+				pStmt.setString(3, "current_timestamp");
+				pStmt.setString(4, "current_timestamp");
+				pStmt.setString(5, "''");
+				pStmt.setString(6, "''");
+				pStmt.setString(7, "''");
+				pStmt.setString(8, "''");
+				pStmt.setInt(9, 0);
+				pStmt.setString(10, "''");
+				pStmt.setString(11, "''");
+				pStmt.setString(12,	"''");
+				pStmt.setString(13, "''");
+				pStmt.executeUpdate();
+
+
+				//article_idを取り出すためのsqlを準備
+				sql = "select article_id from article where user_id = 'temp' order by article_create asc;";
+				pStmt = conn.prepareStatement(sql);
+				ResultSet rs = pStmt.executeQuery();
+
+				//値の取得
+				article_id = rs.getInt("article_id");
+			}
+			catch (SQLException e) {
+				e.printStackTrace();
+				article_id = 0;
+			}
+			catch(ClassNotFoundException e) {
+				e.printStackTrace();
+			}
+			finally {
+				//データベース切断
+				if(conn != null) {
+					try {
+						conn.close();
+					}
+					catch(SQLException e) {
+						e.printStackTrace();
+						article_id = 0;
+					}
+				}
+			}
+
+			//結果を返す
+			return article_id;
+		}
+
 	//記事idから一致する記事のデータを持ってくる
 	public Article load(int id){
 		String language, purpose, certification;
