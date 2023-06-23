@@ -17,7 +17,7 @@ document.getElementById("btnfav").addEventListener("click", function(){
 
 	var send=new XMLHttpRequest();
 
-	if(judge=true){
+	if(judge===true){
 		fav_color=document.getElementById('fav');
 		fav_color.style.backgroundColor="pink";
 		judge=false;
