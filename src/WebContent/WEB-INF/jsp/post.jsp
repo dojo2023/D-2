@@ -139,13 +139,13 @@
 				<span id="count2">0</span>/10000
 				<p id="output2">
 
-				<input type="file" name="img1" id="img1" onchange="previewImage1(event)"><input type="button" value="ファイルを追加" id="addimg2"><br>
-				<img id="img1-preview" src="#" alt="Image1 Preview"><br>
-				<input type="hidden" name="img2" id="img2" onchange="previewImage2(event)"><input type="hidden" value="ファイルを追加" id="addimg3"><br>
-				<img id="img2-preview" src="#" alt="Image2 Preview"><br>
-				<input type="hidden" name="img3" id="img3" onchange="previewImage3(event)"><br>
-				<img id="img3-preview" src="#" alt="Image3 Preview"><br>
-				<!-- <input type="hidden" name="userid" value="{$userId}"> -->
+				<input type="file" name="img1" id="img1" accept="image/*" onchange="previewImage1(this);"><input type="button" value="ファイルを追加" id="addimg2"><br>
+				<canvas id="preview1" style="max-width:200px;"></canvas><br>
+				<input type="hidden" name="img2" id="img2" accept="image/*" onchange="previewImage2(this);"><input type="hidden" value="ファイルを追加" id="addimg3"><br>
+				<canvas id="preview2" style="max-width:200px;"></canvas><br>
+				<input type="hidden" name="img3" id="img3" accept="image/*" onchange="previewImage3(this);"><br>
+				<canvas id="preview3" style="max-width:200px;"></canvas>
+
 				</div>
 
 				<div class="btn_wrap">
@@ -177,5 +177,81 @@
 		</main>
 
 		<script src="/product_D2/js/post.js"></script>
+		<script>
+			function previewImage1(obj){
+
+				var fileReader = new FileReader();
+
+				// 読み込み後に実行する処理
+				fileReader.onload = (function() {
+
+					// canvas にプレビュー画像を表示
+					var canvas = document.getElementById('preview1');
+					var ctx = canvas.getContext('2d');
+					var image = new Image();
+					image.src = fileReader.result;
+					console.log(fileReader.result) // ← (確認用)
+
+					image.onload = (function () {
+						canvas.width = image.width;
+						canvas.height = image.height;
+						ctx.drawImage(image, 0, 0);
+					});
+				});
+				// 画像読み込み
+				fileReader.readAsDataURL(obj.files[0]);
+				console.log(fileReader.result) // ← (確認用)null
+			}
+
+			function previewImage2(obj){
+
+				var fileReader = new FileReader();
+
+				// 読み込み後に実行する処理
+				fileReader.onload = (function() {
+
+					// canvas にプレビュー画像を表示
+					var canvas = document.getElementById('preview2');
+					var ctx = canvas.getContext('2d');
+					var image = new Image();
+					image.src = fileReader.result;
+					console.log(fileReader.result) // ← (確認用)
+
+					image.onload = (function () {
+						canvas.width = image.width;
+						canvas.height = image.height;
+						ctx.drawImage(image, 0, 0);
+					});
+				});
+				// 画像読み込み
+				fileReader.readAsDataURL(obj.files[0]);
+				console.log(fileReader.result) // ← (確認用)null
+			}
+
+			function previewImage3(obj){
+
+				var fileReader = new FileReader();
+
+				// 読み込み後に実行する処理
+				fileReader.onload = (function() {
+
+					// canvas にプレビュー画像を表示
+					var canvas = document.getElementById('preview3');
+					var ctx = canvas.getContext('2d');
+					var image = new Image();
+					image.src = fileReader.result;
+					console.log(fileReader.result) // ← (確認用)
+
+					image.onload = (function () {
+						canvas.width = image.width;
+						canvas.height = image.height;
+						ctx.drawImage(image, 0, 0);
+					});
+				});
+				// 画像読み込み
+				fileReader.readAsDataURL(obj.files[0]);
+				console.log(fileReader.result) // ← (確認用)null
+			}
+		</script>
 	</body>
 </html>

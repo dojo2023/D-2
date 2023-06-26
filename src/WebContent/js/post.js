@@ -3,30 +3,6 @@
  */
 "use strict"
 
-function previewImage1(event) {
-	         var reader = new FileReader();
-	         reader.onload = function() {
-	             var preview = document.getElementById('img1-preview');
-	             preview.src = reader.result;
-	         };
-	         reader.readAsDataURL(event.target.files[0]);
-	     }
-		function previewImage2(event) {
-	         var reader = new FileReader();
-	         reader.onload = function() {
-	             var preview = document.getElementById('img2-preview');
-	             preview.src = reader.result;
-	         };
-	         reader.readAsDataURL(event.target.files[0]);
-	     }
-		function previewImage3(event) {
-	         var reader = new FileReader();
-	         reader.onload = function() {
-	             var preview = document.getElementById('img3-preview');
-	             preview.src = reader.result;
-	         };
-	         reader.readAsDataURL(event.target.files[0]);
-	     }
  document.getElementById("addimg2").onclick=function(){
  	document.getElementById("img2").setAttribute("type","file");
  	document.getElementById("addimg3").setAttribute("type","button");
