@@ -39,10 +39,12 @@ public class TopServlet extends HttpServlet {
 		ArrayList<Article> writtenArticle = new ArrayList<Article>();
 		try {
 			user = (User)session.getAttribute("user");
+			System.out.println("User ID is "+user.getUserId());
 			recommendArticle = aDao.getRecommendArticle(user);
 			recommendCommunity = cDao.getRecommendCommunity(user);
 			writtenArticle = aDao.getmyArticle(user.getUserId());
 		} catch (NullPointerException e) {
+			System.out.println("User ID is NULL");
 			user = new User("ゲスト");
 			session.setAttribute("user", user);
 			recommendArticle = aDao.getRecommendArticle();
