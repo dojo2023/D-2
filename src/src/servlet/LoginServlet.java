@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.Objects;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -25,6 +26,10 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		HttpSession session = request.getSession();
+		if (!Objects.isNull(session.getAttribute("user"))) {
+			session.removeAttribute("user");
+		}
 		request.setAttribute("isError", "f");
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/login.jsp");
 		dispatcher.forward(request, response);
@@ -40,9 +45,10 @@ public class LoginServlet extends HttpServlet {
 		String pw = request.getParameter("pw");
 		User user = new User(id, pw);
 		UserDao uDao = new UserDao();
-		if (uDao.isLoginOK(user)) {
+		User sendUser = uDao.isLoginOK(user);
+		if (!sendUser.getUserId().equals("")) {
 			HttpSession session = request.getSession();
-			session.setAttribute("user", user);
+			session.setAttribute("user", sendUser);
 			response.sendRedirect("/product_D2/top");
 		} else {
 			request.setAttribute("isError", "t");

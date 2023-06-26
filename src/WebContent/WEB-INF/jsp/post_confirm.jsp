@@ -9,6 +9,10 @@
 		<title>記事投稿確認画面</title>
 	</head>
 	<body>
+    <!--画面上にスクロール-->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.4/css/all.css">
+	<div id="page_top"><a href="#"></a></div>
+    <!--スクロール終わり-->
 	<header>
         <div class="header">
             <a href="/product_D2/top"><img src="image/logo.png" class="logo_contents" width="10%" height="10%"></a>
@@ -51,12 +55,12 @@
 		${article_data.text}<br>
 
 <!-- 画像ファイル↓ -->
-		<img src="${article_img1}">
-		${errorMessage}
-		<img src="${article_img2}">
-		${errorMessage}
-		<img src="${article_img3}">
-		${errorMessage}
+		<c:if test="${not empty articleImg1Path}" >
+        <img src="${articleImg1Path}" style="max-width:200px;"></c:if><br>
+        <c:if test="${not empty articleImg2Path}" >
+        <img src="${articleImg2Path}" style="max-width:200px;"></c:if><br>
+        <c:if test="${not empty articleImg3Path}" >
+        <img src="${articleImg3Path}" style="max-width:200px;"></c:if><br>
 
 	</div>
 	<div class="confirm_msg">
@@ -84,26 +88,26 @@
 
         <hr>
 
-    <div class="footer_all">
-        <footer class="footer">
-            <img class="footer_logo" src="image/logo2.png"  width="15%" height="15%">
-            <div class="footer_contents">
-                <b><p>コンテンツ</p></b>
-                <ul>
-                    <li>投稿</li>
-                    <li>コミュニティ</li>
-                    <li>ログイン</li>
-                    <li>ログアウト</li>
-                    <li>新規作成</li>
-                    <li>トップページ</li>
-                </ul>
-                </div>
-        </footer>
-        <div class="footer_bottom">
-            <p>ヘルプはこちらから</p>
-            <p>&copy;2023 Sakuraiya. All rights reserved.</p>
-        </div>
-        </div>
+   <div class="footer_all">
+<footer class="footer">
+	<img class="footer_logo" src="image/logo2.png"  width="15%" height="15%">
+	<div class="footer_contents">
+		<b><p>コンテンツ</p></b>
+		<ul>
+			<li>投稿</li>
+			<li>コミュニティ</li>
+			<li>ログイン</li>
+			<li>ログアウト</li>
+			<li>新規作成</li>
+			<li>トップページ</li>
+		</ul>
+		</div>
+</footer>
+<div class="footer_bottom">
+	<a href="/product_D2/help"><p>ヘルプはこちらから</p></a>
+	<p>&copy;2023 Sakuraiya. All rights reserved.</p>
+</div>
+</div>
 
     </body>
 

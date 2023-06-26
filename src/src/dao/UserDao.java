@@ -9,10 +9,9 @@ import java.sql.SQLException;
 import model.User;
 
 public class UserDao {
-	public boolean isLoginOK(User user) {
+	public User isLoginOK(User user) {
 		Connection conn = null;
-		boolean loginResult = false;
-		String name;
+		User userResult = new User();
 
 		try {
 			Class.forName("org.h2.Driver");
@@ -22,27 +21,32 @@ public class UserDao {
 			pStmt.setString(1, user.getUserId());
 			pStmt.setString(2, user.getPassword());
 			ResultSet rs = pStmt.executeQuery();
-			if (rs.next())
-				loginResult = true;
-			name = rs.getString("user_name");
-			user.setUserName(name);
+			if (rs.next()) {
+				userResult = new User(
+						rs.getString("user_id"),
+						rs.getString("password"),
+						rs.getString("user_name"),
+						ReFlag.languageReFlag(rs.getString("language")),
+						ReFlag.languageReFlag(rs.getString("purpose")),
+						rs.getString("career"),
+						ReFlag.certificationReFlag(rs.getString("certification")));
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-			loginResult = false;
+
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
-			loginResult = false;
+
 		} finally {
 			if (conn != null) {
 				try {
 					conn.close();
 				} catch (SQLException e) {
 					e.printStackTrace();
-					loginResult = false;
 				}
 			}
 		}
-		return loginResult;
+		return userResult;
 	}
 
 	public boolean addUser(User user) {
