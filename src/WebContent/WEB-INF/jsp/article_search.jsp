@@ -78,4 +78,24 @@
 </div>
 </div>
 </body>
+<div class="footer_all">
+<footer class="footer">
+	<img class="footer_logo" src="image/logo2.png"  width="15%" height="15%">
+	<div class="footer_contents">
+		<b><p>コンテンツ</p></b>
+		<ul>
+			<li>投稿</li>
+			<li>コミュニティ</li>
+			<li>ログイン</li>
+			<li>ログアウト</li>
+			<li>新規作成</li>
+			<li>トップページ</li>
+		</ul>
+		</div>
+</footer>
+<div class="footer_bottom">
+	<a href="/product_D2/help"><p>ヘルプはこちらから</p></a>
+	<p>&copy;2023 Sakuraiya. All rights reserved.</p>
+</div>
+</div>
 </html>
