@@ -209,9 +209,9 @@ margin-top:150px;
 	text-decoration: none;
 }
 .cp_card01 .description a::after {
-	font-family: FontAwesome;
+   color:#52c2cf;
 	margin-left: -10px;
-	content: '\f061';
+	content: '>>>';
 	-webkit-transition: all 0.3s ease;
 	        transition: all 0.3s ease;
 	vertical-align: middle;
