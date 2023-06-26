@@ -33,7 +33,7 @@
     font-size: 15px;
     border: 0.5px;
 }
-.community_search_active {
+.community_search:active {
     transform: translateY(2px);
 }
 .search {
@@ -43,7 +43,7 @@
     background-color:  #77cbff;
     text-align: end;
     height: 30px;
-    
+
 }
 .search_input {
     height: 30px;
