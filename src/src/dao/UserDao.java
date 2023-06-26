@@ -43,7 +43,6 @@ public class UserDao {
 				}
 			}
 		}
-		System.out.println("loginResult is "+loginResult );
 		return loginResult;
 	}
 
