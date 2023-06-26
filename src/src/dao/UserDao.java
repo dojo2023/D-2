@@ -22,8 +22,10 @@ public class UserDao {
 			pStmt.setString(1, user.getUserId());
 			pStmt.setString(2, user.getPassword());
 			ResultSet rs = pStmt.executeQuery();
-			if (rs.next())
+			if (rs.next()) {
 				loginResult = true;
+				System.out.println("loginResult is true");
+			}
 			name = rs.getString("user_name");
 			user.setUserName(name);
 		} catch (SQLException e) {
