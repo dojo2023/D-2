@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
+import model.User;
 /**
  * Servlet implementation class PostServlet
  */
@@ -46,7 +47,7 @@ public class PostServlet extends HttpServlet {
 
 		//各値を取得
 		String articleTitle = request.getParameter("article_title");
-		String userId = (String)session.getAttribute("user");
+		String userId = ((User)session.getAttribute("user")).getUserId();
 		String[] articleLanguage = request.getParameterValues("language");
 		String[] articlePurpose = request.getParameterValues("purpose");
 		String articleCareer = request.getParameter("career");
