@@ -33,8 +33,8 @@
 </c:if>
 <div class="cp_card01">
 <div class="photo"><div class="photo1"></div></div>
-	<c:forEach var="comment" items="${articleResults}">
-		<div class="description">
+	<div class="description"><c:forEach var="comment" items="${articleResults}">
+
 		<a href="javascript:form.submit();">${article.articleTitle}</a><br>
 		<div class="worddisplay"><c:set var="sendLang" value="" />
 		<c:forEach var="lang" items="${community.communityLanguage}">
