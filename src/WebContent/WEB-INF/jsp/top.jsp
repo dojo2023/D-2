@@ -16,9 +16,9 @@
 <div class="header_bottom">
 	<div class="search">
 		<form action="/product_D2/search" method="get">
-			<input type="search" name="query" placeholder="キーワードを入力" class="search_input">
-				<input class="article_search" type="submit" name="search" value="記事検索">
-				<input class="community_search" type="submit" name="search" value="コミュニティ検索">
+			<input type="search" name="query" id="query_id" placeholder="キーワードを入力" class="search_input">
+				<input class="article_search" type="submit" name="search" id="searchArt" value="記事検索" disabled>
+				<input class="community_search" type="submit" name="search" id="searchCom" value="コミュニティ検索" disabled>
 		</form></div>
 </div>
 </header>
@@ -72,10 +72,18 @@
 				<p class="txt">「今知りたい」を即解決！with ITへようこそ！</p>
 				<img src="image/character.png" class="chara">
 				<div class="btn_wrap">
-				<a href="/product_D2/login"><p class="btn">ログイン</p></a> <a href="/product_D2/sign_up"><p class="btn">新規登録</p></a>
+				<c:choose>
+				<c:when test="${empty user.userId}">
+					<a href="/product_D2/login"><p class="btn">ログイン</p></a> <a href="/product_D2/sign_up"><p class="btn">新規登録</p></a>
+				</c:when>
+				<c:otherwise>
+					<a href="/product_D2/login"><p class="btn">ログアウト</p></a>
+				</c:otherwise>
+				</c:choose>
 				</div>
 			</div>
 
+			<c:if test="${not empty user.userId}">
 			<div class="contents_myarticle">
 				<h3 class="right_title">自分が投稿した記事</h3>
 				<p class="txt">あなたがこれまでに投稿した記事の一覧です。<br>みんなの疑問を即解決！</p>
@@ -107,6 +115,7 @@
 				<a href="/product_D2/community_create"><p class="btn_b">さっそく話しに行く！</p></a>
 				</div>
 			</div>
+			</c:if>
 		</div>
 	</div>
 
@@ -130,6 +139,21 @@
 	<p>&copy;2023 Sakuraiya. All rights reserved.</p>
 </div>
 </div>
+<script>
+var query = document.getElementById('query_id');
+const searchArticle = document.getElementById('searchArt');
+const searchCommunity = document.getElementById('searchCom');
+query.addEventListener('keyup', (e) => {
+	if (1 <= e.target.value.trim().length) {
+		searchArticle.disabled = false;
+    	searchCommunity.disabled = false;
+	}
+	if (e.target.value.trim().length == 0) {
+		searchArticle.disabled = true;
+		searchCommunity.disabled = true;
+	}
+})
 
+</script>
 </body>
 </html>
