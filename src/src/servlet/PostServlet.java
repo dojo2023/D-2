@@ -95,7 +95,7 @@ public class PostServlet extends HttpServlet {
 				int idx = extName.lastIndexOf(".");
 				extName = extName.substring(idx);
 				ImgName2 += extName;
-				articleImg1.write(ImgName2);
+				articleImg2.write(ImgName2);
 				//System.out.printf("%s\n",ImgName1 );	//確認用
 				articleImg2Path = "/D2sample/upload/"+ImgName2;
 			} else if (articleImg2.getSize()==0) {
@@ -115,7 +115,7 @@ public class PostServlet extends HttpServlet {
 				int idx = extName.lastIndexOf(".");
 				extName = extName.substring(idx);
 				ImgName3 += extName;
-				articleImg1.write(ImgName3);
+				articleImg3.write(ImgName3);
 				//System.out.printf("%s\n",ImgName1 );	//確認用
 				articleImg3Path = "/D2sample/upload/"+ImgName3;
 			}else if (articleImg3.getSize()==0) {
