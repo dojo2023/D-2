@@ -51,12 +51,12 @@
 		${article_data.text}<br>
 
 <!-- 画像ファイル↓ -->
-		<img src="${article_img1}">
-		${errorMessage}
-		<img src="${article_img2}">
-		${errorMessage}
-		<img src="${article_img3}">
-		${errorMessage}
+		<c:if test="${not empty articleImg1Path}" >
+        <img src="${articleImg1Path}" style="max-width:200px;"></c:if><br>
+        <c:if test="${not empty articleImg2Path}" >
+        <img src="${articleImg2Path}" style="max-width:200px;"></c:if><br>
+        <c:if test="${not empty articleImg3Path}" >
+        <img src="${articleImg3Path}" style="max-width:200px;"></c:if><br>
 
 	</div>
 	<div class="confirm_msg">
