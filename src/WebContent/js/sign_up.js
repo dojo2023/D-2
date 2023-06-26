@@ -1,6 +1,6 @@
 window.onload = function (){
 document.getElementById('su_form').onsubmit = function(event) {
-	const langCheck = document.getElementsByName('language');
+	var langCheck = document.getElementsByName('language');
 	var langChecked = false;
 	for (let i=0; i<langCheck.length; i++) {
 		if (langCheck[i].checked) {
@@ -8,7 +8,7 @@ document.getElementById('su_form').onsubmit = function(event) {
 			break;
 		}
 	}
-	const purpCheck = document.getElementsByName('purpose');
+	var purpCheck = document.getElementsByName('purpose');
 	var purpChecked = false;
 	for (let i=0; i<purpCheck.length; i++) {
 		if (purpCheck[i].checked) {
@@ -16,7 +16,7 @@ document.getElementById('su_form').onsubmit = function(event) {
 			break;
 		}
 	}
-	const certCheck = document.getElementsByName('certification');
+	var certCheck = document.getElementsByName('certification');
 	var certChecked = false;
 	for (let i=0; i<certCheck.length; i++) {
 		if (certCheck[i].checked) {
@@ -35,10 +35,8 @@ document.getElementById('su_form').onsubmit = function(event) {
 	document.getElementById('language_error').textContent = '';
 	document.getElementById('purpose_error').textContent = '';
 	document.getElementById('certification_error').textContent = '';
-	if (Boolean(!suForm.userid.value || !suForm.pw_first.value || !suForm.password.value ||
-		!suForm.username.value || !langCheck || !purpCheck || !certCheck)) {
-			console.log(Boolean(suForm.userid.value && suForm.pw_first.value && suForm.password.value &&
-		!suForm.username.value && langChecked && purpChecked && certChecked));
+	if (!Boolean(suForm.userid.value && suForm.pw_first.value && suForm.password.value &&
+		suForm.username.value && langChecked && purpChecked && certChecked)) {
 		if (!suForm.userid.value) {
 			document.getElementById('user_id').style.outline = '3px solid red';
 			document.getElementById('userid_error').textContent = '必須項目です';

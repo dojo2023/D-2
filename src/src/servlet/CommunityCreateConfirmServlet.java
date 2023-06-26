@@ -45,11 +45,12 @@ public class CommunityCreateConfirmServlet extends HttpServlet {
 
 		Community community=new Community(0,"",name,language,purpose,career,certification,summary);
 		CommunityDao cyDao=new CommunityDao();
-		cyDao.addCommunity(community);
+		int communityId =cyDao.addCommunity(community);
+		request.setAttribute("community_id", communityId);
 
 
 
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/product_D2/CommunityServlet");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/community");
 		dispatcher.forward(request, response);
 
 

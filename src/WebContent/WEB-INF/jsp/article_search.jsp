@@ -16,8 +16,8 @@
 </div>
 <div class="header_bottom">
 	<div class="search">
-		<form action="/product_D2/top" method="post">
-			<input type="search" name="search" placeholder="キーワードを入力" class="search_input">
+		<form action="/product_D2/search" method="get">
+			<input type="search" name="query" placeholder="キーワードを入力" class="search_input">
 				<input class="article_search" type="submit" name="search" value="記事検索">
 				<input class="community_search" type="submit" name="search" value="コミュニティ検索">
 		</form></div>
