@@ -55,27 +55,4 @@ public class TopServlet extends HttpServlet {
 			dispatcher.forward(request, response);
 		}
 	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		request.setCharacterEncoding("UTF-8");
-		HttpSession session = request.getSession();
-		String query = request.getParameter("query");
-		String target = request.getParameter("search");
-		if (target.equals("記事検索")) {
-			ArticleDao aDao = new ArticleDao();
-			ArrayList<Article> articleResults = aDao.select(query);
-			session.setAttribute("articleResults", articleResults);
-			response.sendRedirect("/WEB-INF/jsp/article_search.jsp");
-		} else if (target.equals("コミュニティ検索")) {
-			CommunityDao cDao = new CommunityDao();
-			ArrayList<Community> communityResults = cDao.select(query);
-			session.setAttribute("communityResults", communityResults);
-			response.sendRedirect("/WEB-INF/jsp/community_search.jsp");
-		}
-	}
-
 }
