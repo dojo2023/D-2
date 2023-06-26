@@ -45,7 +45,7 @@ public class LoginServlet extends HttpServlet {
 		String pw = request.getParameter("pw");
 		User user = new User(id, pw);
 		UserDao uDao = new UserDao();
-		if (uDao.isLoginOK(user)) {
+		if (!uDao.isLoginOK(user).getUserId().equals("")) {
 			HttpSession session = request.getSession();
 			session.setAttribute("user", user);
 			response.sendRedirect("/product_D2/top");
