@@ -24,7 +24,6 @@ public class UserDao {
 			ResultSet rs = pStmt.executeQuery();
 			if (rs.next()) {
 				loginResult = true;
-				System.out.println("loginResult is true");
 			}
 			name = rs.getString("user_name");
 			user.setUserName(name);
@@ -44,6 +43,7 @@ public class UserDao {
 				}
 			}
 		}
+		System.out.println("loginResult is "+loginResult );
 		return loginResult;
 	}
 
