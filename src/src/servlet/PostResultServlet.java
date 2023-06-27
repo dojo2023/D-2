@@ -46,6 +46,7 @@ public class PostResultServlet extends HttpServlet {
 		//各値を取得
 		String articleTitle = request.getParameter("article_title");
 		String userId = ((User)session.getAttribute("user")).getUserId();
+		System.out.println("ユーザーID"+userId);
 		String sendLang = request.getParameter("sendLang");
 		System.out.println("sendLang;"+sendLang);
 		String[] articleLanguage=sendLang.substring(1).split(",");
@@ -126,6 +127,7 @@ public class PostResultServlet extends HttpServlet {
 		} else {
 			errormessage = "sql error";
 		}
+		System.out.println("errormessage:"+errormessage);
 
 		//通知ページにarticle_idを渡すため変数articleをリクエストスコープに保存
 		request.setAttribute("article", article);

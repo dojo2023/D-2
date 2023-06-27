@@ -12,9 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dao.ArticleDao;
-import dao.UserDao;
 import model.Article;
 import model.Comment;
+import dao.UserDao;
 
 /**
  * Servlet implementation class ArticleServlet
