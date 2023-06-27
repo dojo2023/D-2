@@ -36,10 +36,10 @@
 			#${tag}&nbsp;
 			</c:forEach>
 		</h4><hr>
-		<div class="box1"><p>${article.articleText}</p></div>
-		<div class="box2"><img src="${article.articleImg1}" style="max-width:200px;"></div>
-		<div class="box2"><img src="${article.articleImg2}" style="max-width:200px;"></div>
-		<div class="box2"><img src="${article.articleImg3}" style="max-width:200px;"></div>
+		<div class="box1">${article.articleText}</div>
+		<img src="${article.articleImg1}" style="max-width:200px;">
+		<img src="${article.articleImg2}" style="max-width:200px;">
+		<img src="${article.articleImg3}" style="max-width:200px;">
 	</div>
 	<p></p>
 
