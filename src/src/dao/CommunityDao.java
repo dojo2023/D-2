@@ -36,13 +36,16 @@ public class CommunityDao {
 
 				//sql文を完成させる
 				for(int i=0; i<queryArray.length; i++) {
-					sql += " ?";
-					sql += " concat(community_name, community_summary) like %"+ queryArray[i] +"%";
+					sql += " concat(community_name, community_summary) like %?%";
 					if(i < queryArray.length-1) {
 						sql += " and";
 					}
 				}
 				PreparedStatement pStmt = conn.prepareStatement(sql);
+				for (int i=0; i<queryArray.length; i++) {
+					pStmt.setString(i, queryArray[i]);
+				}
+
 
 				//sql文を実行
 				ResultSet rs = pStmt.executeQuery();
@@ -543,24 +546,26 @@ public class CommunityDao {
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
-
-
-				pStmt.setInt(1, remark.getCommunityId());
-				pStmt.setString(2, remark.getUserId());
-				pStmt.setString(3, remark.getRemarkText());
-				pStmt.setTimestamp(4, new Timestamp(System.currentTimeMillis()));
-
-
-
-
-
-
-
-
+			pStmt.setInt(1, remark.getCommunityId());
+			pStmt.setString(2, remark.getUserId());
+			pStmt.setString(3, remark.getRemarkText());
+			pStmt.setTimestamp(4, new Timestamp(System.currentTimeMillis()));
 
 			// SQL文を実行する
 			if (pStmt.executeUpdate() == 1) {
 				result = true;
+			}
+			sql = "select * from member where community_id = ? and user_id = ?";
+			pStmt = conn.prepareStatement(sql);
+			pStmt.setInt(1, remark.getCommunityId());
+			pStmt.setString(2, remark.getUserId());
+			ResultSet rs = pStmt.executeQuery();
+			if (!rs.next()) {
+				sql = "insert into member (community_id, user_id) values (?, ?)";
+				pStmt = conn.prepareStatement(sql);
+				pStmt.setInt(1, remark.getCommunityId());
+				pStmt.setString(2, remark.getUserId());
+				pStmt.executeUpdate();
 			}
 		}
 		catch (SQLException e) {
