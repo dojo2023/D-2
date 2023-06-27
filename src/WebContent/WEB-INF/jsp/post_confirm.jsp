@@ -26,7 +26,7 @@
 	<h4>タイトル</h4>
 		${article_data.articleTitle}<br>
 
-	<h4>作成者</h4>>
+	<h4>作成者</h4>
 		${article_data.userId}<br>
 
 	<h4>タグ</h4>
