@@ -387,7 +387,7 @@ public class ArticleDao {
 			pStmt.setString(8, data.getArticleImg1());
 			pStmt.setString(9, data.getArticleImg2());
 			pStmt.setString(10, data.getArticleImg3());
-			pStmt.setString(11, data.getArticleImg3());
+			pStmt.setInt(11, data.getArticleId());
 			pStmt.executeUpdate();
 			result = true;
 

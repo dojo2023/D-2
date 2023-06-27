@@ -2907,3 +2907,14 @@ Invalid value "4" for parameter "parameterIndex" [90008-199]
 org.h2.jdbc.JdbcSQLDataException: データ変換中にエラーが発生しました 
 Data conversion error converting ; SQL statement:
 update article set article_title=?, article_language=?, article_purpose=?, article_career=?, article_certification=?, article_favs=?, article_text=?, article_img1=?, article_img2=?, article_img3=? where article_id=? [22018-199]
+2023-06-27 11:30:24 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: データ変換中にエラーが発生しました 
+Data conversion error converting ; SQL statement:
+update article set article_title=?, article_language=?, article_purpose=?, article_career=?, article_certification=?, article_favs=?, article_text=?, article_img1=?, article_img2=?, article_img3=? where article_id=? [22018-199]
+2023-06-27 11:32:06 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: データ変換中にエラーが発生しました 
+Data conversion error converting ; SQL statement:
+update article set article_title=?, article_language=?, article_purpose=?, article_career=?, article_certification=?, article_favs=?, article_text=?, article_img1=?, article_img2=?, article_img3=? where article_id=? [22018-199]
+2023-06-27 11:32:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: 有効なデータがありません
+No data is available [2000-199]
