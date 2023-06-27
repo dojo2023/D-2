@@ -47,6 +47,7 @@ public class PostResultServlet extends HttpServlet {
 		String articleTitle = request.getParameter("article_title");
 		String userId = ((User)session.getAttribute("user")).getUserId();
 		String sendLang = request.getParameter("sendLang");
+		System.out.println("sendLang;"+sendLang);
 		String[] articleLanguage=sendLang.substring(1).split(",");
 		String sendPurp=request.getParameter("sendPurp");
 	    String[] articlePurpose=sendPurp.substring(1).split(",");
@@ -58,7 +59,7 @@ public class PostResultServlet extends HttpServlet {
 		String article_img2 = request.getParameter("article_img2");
 		String article_img3 = request.getParameter("article_img3");
 		System.out.println(articleTitle);
-		System.out.println(sendLang);
+
 		System.out.println(sendPurp);
 		System.out.println(sendCert);
 

@@ -31,7 +31,7 @@
 
 	<h4>タグ</h4>
 		<c:set var="sendLang" value="" />
-        <c:forEach var="e" items="${ariticle_data.articleLanguage}">
+        <c:forEach var="e" items="${article_data.articleLanguage}">
         ${e},
         <c:set var="sendLang" value="${sendLang},${e} "/>
         </c:forEach>
