@@ -65,7 +65,7 @@
 	</div>
 	<div class="confirm_msg">
 		<p>以上の内容でよろしいですか？</p><br>
-		<form method="POST" action="/product_D2/post_confirm">
+		<form method="POST" action="/product_D2/post_result">
 		<input type="hidden" name="article_title" value="${ariticle_data.title}">
 		<input type="hidden" name="article_user" value="${article_data.user}">
         <input type="hidden" name="sendLang" value="${sendLang}" >

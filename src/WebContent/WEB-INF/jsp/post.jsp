@@ -135,7 +135,7 @@
 			<div class="edit_contents">
 				<hr>
 				<h4>本文</h4><!-- cssでdisplay:inline -->
-				<textarea class="edit_txt" name="text" id="article_text" placeholder="本文を入力してください" onkeyup="counter('article_text','count2')"></textarea>
+				<textarea class="edit_txt" name="article_text" id="article_text" placeholder="本文を入力してください" onkeyup="counter('article_text','count2')"></textarea>
 				<br>
 				<span id="count2">0</span>/10000
 				<p id="output2">
