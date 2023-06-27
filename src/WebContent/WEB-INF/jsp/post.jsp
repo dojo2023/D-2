@@ -129,7 +129,7 @@
 					</select>
 				</div>
 
-				<p id=outputTag></p>
+				<p id="outputTag"></p>
 
 
 			<div class="edit_contents">

@@ -89,7 +89,7 @@ body {
 }
 .contentC {
     width: 100%;
-   
+
 }
 .contentD {
     width: 100%;
@@ -113,10 +113,10 @@ body {
 /* sign_upのみに適用 */
 .D_title {
     display:inline-block;
-   
+
 }
 .userInf {
-    margin: 10px 0 10px 20px; 
+    margin: 10px 0 10px 20px;
 }
 .alertMsg {
     color: #f33333;
