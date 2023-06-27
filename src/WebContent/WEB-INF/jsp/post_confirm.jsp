@@ -52,7 +52,7 @@
 
 
 	<h4>本文</h4>
-		${article_data.text}<br>
+		${article_data.articleText}<br>
 
 <!-- 画像ファイル↓ -->
 		<c:if test="${not empty articleImg1Path}" >
@@ -66,7 +66,7 @@
 	<div class="confirm_msg">
 		<p>以上の内容でよろしいですか？</p><br>
 		<form method="POST" action="/product_D2/post_result">
-		<input type="hidden" name="article_title" value="${ariticle_data.articleTitle}">
+		<input type="hidden" name="article_title" value="${article_data.articleTitle}">
 		<input type="hidden" name="article_user" value="${article_data.userId}">
         <input type="hidden" name="sendLang" value="${sendLang}" >
         <input type="hidden" name="sendPurp" value="${sendPurp}" >
