@@ -98,3 +98,15 @@ textarea{
 .btn:active {
     transform: translateY(2px);
 }
+
+#btnfav{
+
+    color:rgba(42, 201, 230, 0.737);
+    background-color: white;
+    border-radius: 0.5em;
+    border-color: rgba(42, 201, 230, 0.737);
+}
+#btnfav:hover{
+   color:white;
+    background-color: #f991ca;
+}
