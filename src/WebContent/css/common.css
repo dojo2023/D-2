@@ -1,12 +1,19 @@
 @charset "UTF-8";
 
-/* 6/23 14:58 update by yahaba */
+/* 6/27 11:38 update by yahaba */
+
+.header a, .footer a {
+    text-decoration: none;
+    color:white;
+}
 
 /* 共通部分ヘッダー(ロゴのみ) */
 .header {
     /*background-color: #4472c4;*/
     background: linear-gradient(-225deg, rgba(27, 77, 184, 0.7) 0%, rgba(70, 236, 254, 0.7) 100%), url(../image/texture.jpg);
     text-align: center;
+    background-repeat: no-repeat;
+    background-size:cover;
 }
 
 /* 検索部分 */
@@ -52,21 +59,6 @@
     border: 1px solid #cccccc;
     color:#405ab9;
 }
-/*.header_bottom  h1{
-    font-size: 20px;
-    display: inline-block;
-    color: rgb(205, 234, 255);
-}
-.header_bottom h1:hover {
-    color: white;
-}
-.tab_article {
-    margin: 0 100px;
-}
-.tab_community {
-    margin: 0 100px;
-}*/
-
 
 /* 共通部分フッター */
 .footer_all {
@@ -91,6 +83,7 @@
     color: white;
     text-align: center;
     font-size: 10px;
+    text-decoration: none;
 }
 
 /* 画面上にスクロールする機能 */

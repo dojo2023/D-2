@@ -2,15 +2,15 @@ login.css（中島）
 	login.jsp〇
 
 create.css（矢羽々）
-	post.jsp
+	post.jsp〇
 	edit.jsp〇
 	community_create.jsp〇
 	sign_up.jsp〇
 
 confirm.css（矢羽々）
 	sign_up_confirm.jsp〇
-	post_confirm.jsp
-	edit_confirm.jsp△（article.cssが出来上がってから着手したい）
+	post_confirm.jsp〇
+	edit_confirm.jsp〇
 	community_confirm.jsp〇
 
 result.css（矢羽々）

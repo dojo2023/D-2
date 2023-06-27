@@ -2,6 +2,9 @@
 <link rel="stylesheet" href="css/common.css">
 
 ーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+ファビコン搭載
+<link rel="icon" href="favicon.ico">
+
 
 【ヘッダー部分HTML（ロゴのみ）】※スクロール機能あり
 <!--画面上にスクロール-->
