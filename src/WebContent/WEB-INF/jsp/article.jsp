@@ -37,9 +37,9 @@
 			</c:forEach>
 		</h4><hr>
 		<div class="box1"><p>${article.articleText}</p></div>
-		<div class="box2">${article.articleImg1}</div>
-		<div class="box2">${article.articleImg2}</div>
-		<div class="box2">${article.articleImg3}</div>
+		<div class="box2"><img src="${article.articleImg1}" style="max-width:200px;"></div>
+		<div class="box2"><img src="${article.articleImg2}" style="max-width:200px;"></div>
+		<div class="box2"><img src="${article.articleImg3}" style="max-width:200px;"></div>
 	</div>
 	<p></p>
 

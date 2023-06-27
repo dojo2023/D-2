@@ -56,11 +56,11 @@
 
 <!-- 画像ファイル↓ -->
 		<c:if test="${not empty articleImg1Path}" >
-        <img src="${articleImg1Path}" style="max-width:200px;"></c:if><br>
+        <img src="${article_data.articleImg1Path}" style="max-width:200px;"></c:if><br>
         <c:if test="${not empty articleImg2Path}" >
-        <img src="${articleImg2Path}" style="max-width:200px;"></c:if><br>
+        <img src="${article_data.articleImg2Path}" style="max-width:200px;"></c:if><br>
         <c:if test="${not empty articleImg3Path}" >
-        <img src="${articleImg3Path}" style="max-width:200px;"></c:if><br>
+        <img src="${article_data.articleImg3Path}" style="max-width:200px;"></c:if><br>
 
 	</div>
 	<div class="confirm_msg">
