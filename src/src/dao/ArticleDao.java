@@ -690,7 +690,7 @@ public class ArticleDao {
 			String sql = "select * from article where article_language not like ? "
 					+ "or article_purpose not like ? "
 					+ "or article_certification not like ?"
-					+ "or article_career = '?' order by article_update desc";
+					+ "or article_career = ? order by article_update desc";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 			pStmt.setString(1, notLikeLang);
 			pStmt.setString(2, notLikePurp);

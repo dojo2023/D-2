@@ -122,10 +122,10 @@
 					<select class="select" name="career" class="tag" id="tag">
 						<option value ="">---</option>
 						<option value="入門：文法を勉強中">入門：文法を勉強中</option>
-						<option value="初級：簡単なプログラムを書ける">初級：簡単なプログラムを書ける></option>
-						<option value="中級：業務経験がある">中級：業務経験がある></option>
-						<option value="上級：上流工程の仕事も担当できる">上級：上流工程の仕事も担当できる></option>
-						<option value="エキスパート：リーダーとして開発できる">エキスパート：リーダーとして開発できる></option>
+						<option value="初級：簡単なプログラムを書ける">初級：簡単なプログラムを書ける</option>
+						<option value="中級：業務経験がある">中級：業務経験がある</option>
+						<option value="上級：上流工程の仕事も担当できる">上級：上流工程の仕事も担当できる</option>
+						<option value="エキスパート：リーダーとして開発できる">エキスパート：リーダーとして開発できる</option>
 					</select>
 				</div>
 
@@ -135,7 +135,7 @@
 			<div class="edit_contents">
 				<hr>
 				<h4>本文</h4><!-- cssでdisplay:inline -->
-				<textarea class="edit_txt" name="text" id="article_text" placeholder="本文を入力してください" onkeyup="counter('article_text','count2')"></textarea>
+				<textarea class="edit_txt" name="article_text" id="article_text" placeholder="本文を入力してください" onkeyup="counter('article_text','count2')"></textarea>
 				<br>
 				<span id="count2">0</span>/10000
 				<p id="output2">

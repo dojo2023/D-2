@@ -14,6 +14,7 @@ import javax.servlet.http.Part;
 
 import dao.ArticleDao;
 import model.Article;
+import model.User;
 
 /**
  * Servlet implementation class PostResultServlet
@@ -43,19 +44,24 @@ public class PostResultServlet extends HttpServlet {
 
 
 		//各値を取得
-		String articleTitle = request.getParameter("articleTitle");
-		String userId = (String)session.getAttribute("user");
-		String sendLang = request.getParameter("articleLang");
+		String articleTitle = request.getParameter("article_title");
+		String userId = ((User)session.getAttribute("user")).getUserId();
+		String sendLang = request.getParameter("sendLang");
+		System.out.println("sendLang;"+sendLang);
 		String[] articleLanguage=sendLang.substring(1).split(",");
-		String sendPurp=request.getParameter("articlePurp");
+		String sendPurp=request.getParameter("sendPurp");
 	    String[] articlePurpose=sendPurp.substring(1).split(",");
-	    String sendCert=request.getParameter("articleCert");
+	    String sendCert=request.getParameter("sendCert");
 	    String[] articleCertification=sendCert.substring(1).split(",");
-		String articleCareer = request.getParameter("articleCareer");
-		String articleText = request.getParameter("articleText");
-		String article_img1 = request.getParameter("articleImg1Path");
-		String article_img2 = request.getParameter("articleImg2Path");
-		String article_img3 = request.getParameter("articleImg3Path");
+		String articleCareer = request.getParameter("article_career");
+		String articleText = request.getParameter("article_text");
+		String article_img1 = request.getParameter("article_img1");
+		String article_img2 = request.getParameter("article_img2");
+		String article_img3 = request.getParameter("article_img3");
+		System.out.println(articleTitle);
+
+		System.out.println(sendPurp);
+		System.out.println(sendCert);
 
 		//空の記事の作成
 		articleId = aDao.insertGetId();	//空の記事idがarticle_idに入った。
