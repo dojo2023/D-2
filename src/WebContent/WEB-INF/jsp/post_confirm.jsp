@@ -24,26 +24,26 @@
 	 <div class="confirm_contents">
 
 	<h4>タイトル</h4>
-		${article_data.title}<br>
+		${article_data.articleTitle}<br>
 
 	<h4>作成者</h4>>
-		${article.user}<br>
+		${article.userId}<br>
 
 	<h4>タグ</h4>
 		<c:set var="sendLang" value="" />
-        <c:forEach var="e" items="${ariticle_data.language}">
+        <c:forEach var="e" items="${ariticle_data.articleLanguage}">
         ${e},
         <c:set var="sendLang" value="${sendLang},${e} "/>
         </c:forEach>
 
         <c:set var="sendPurp" value="" />
-         <c:forEach var="e" items="${article_data.purpose}">
+         <c:forEach var="e" items="${article_data.articlePurpose}">
          ${e},
          <c:set var="sendPurp" value="${sendPurp},${e} "/>
          </c:forEach>
 
          <c:set var="sendCert" value="" />
-         <c:forEach var="e" items="${article_data.certification}">
+         <c:forEach var="e" items="${article_data.articleCertification}">
          ${e},
          <c:set var="sendCert" value="${sendCert},${e} "/>
          </c:forEach>
@@ -66,17 +66,17 @@
 	<div class="confirm_msg">
 		<p>以上の内容でよろしいですか？</p><br>
 		<form method="POST" action="/product_D2/post_result">
-		<input type="hidden" name="article_title" value="${ariticle_data.title}">
-		<input type="hidden" name="article_user" value="${article_data.user}">
+		<input type="hidden" name="article_title" value="${ariticle_data.articleTitle}">
+		<input type="hidden" name="article_user" value="${article_data.userId}">
         <input type="hidden" name="sendLang" value="${sendLang}" >
         <input type="hidden" name="sendPurp" value="${sendPurp}" >
-        <input type="hidden" name="article_career" value="${article_data.career}">
+        <input type="hidden" name="article_career" value="${article_data.articleCareer}">
         <input type="hidden" name="sendCert" value="${sendCert}" >
         <input type="hidden" name="article_favs" value=0>
-        <input type="hidden" name="article_text" value="${article_data.text}">
-        <input type="hidden" name="article_img1" value="${article_data.img1}">
-        <input type="hidden" name="article_img2" value="${article_data.img2}">
-        <input type="hidden" name="article_img3" value="${article_data.img3}">
+        <input type="hidden" name="article_text" value="${article_data.articleText}">
+        <input type="hidden" name="article_img1" value="${article_data.articleImg1}">
+        <input type="hidden" name="article_img2" value="${article_data.articleImg2}">
+        <input type="hidden" name="article_img3" value="${article_data.articleImg3}">
 	    <input class="btn" type="submit" name="SUBMIT" value="投稿"><br>
         </form>
 
