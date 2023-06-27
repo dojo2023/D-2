@@ -47,9 +47,11 @@
 
 	<div class="box3">
 	<h4>コメント</h4><hr>
-	${comment.userId}
-	<div class="minifont">${comment.commentDate}</div><br>
-	${comment.commentText}
+	<c:forEach var="com" items="${comment}">
+		${com.userId}
+		<div class="minifont">${com.commentDate}</div><br>
+		${com.commentText}
+	</c:forEach>
 	<form action="/product_D2/article" method="post">
 		<textarea id="comment" name="comment" rows="4" cols="50"></textarea>
 		<input class="btn" type="submit" value="送信" name="comment" id="comment">

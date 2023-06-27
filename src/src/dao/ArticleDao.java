@@ -364,7 +364,10 @@ public class ArticleDao {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/src/Data", "sa", "");
 
 			//配列になっている使用言語をフラグ形式に変換。
+			System.out.println(data.getArticleLanguage());
+			System.out.println(Flag.languageFlag(data.getArticleLanguage()));
 			language = Flag.languageFlag(data.getArticleLanguage());
+
 
 			//配列になっている使用理由をフラグ形式に変換。
 			purpose = Flag.purposeFlag(data.getArticlePurpose());
