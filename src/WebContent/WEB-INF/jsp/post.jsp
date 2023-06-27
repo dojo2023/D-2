@@ -10,6 +10,12 @@
 		<title>投稿ページ | with IT</title>
 	<link rel="icon" href="image/favicon.ico">
 
+	<!--<style>
+            *{
+                outline: 1px solid #ff0000;
+            }
+        </style>-->
+
 	</head>
 
 	<body>
@@ -112,23 +118,32 @@
 
 						<tr>
 							<td><label><input type="checkbox" class="tag" name="certification" value="情報処理安全確保支援士試験">情報処理安全確保支援士試験</label></td>
-							<td></td>
-							<td></td>
-							<td></td>
+							<td> </td>
+							<td> </td>
+							<td> </td>
 						</tr>
 					</table>
 				</div>
 
 				<div class="contentD">
-					対象となるプログラミング歴<br>
+				<table>
+				<tr>
+					<td>対象となるプログラミング歴</td>
+				</tr>
+				<tr>
+				<td>
 					<select class="select" name="career" class="tag" id="tag">
-						<option value ="">---</option>
-						<option value="入門：文法を勉強中">入門：文法を勉強中</option>
-						<option value="初級：簡単なプログラムを書ける">初級：簡単なプログラムを書ける</option>
-						<option value="中級：業務経験がある">中級：業務経験がある</option>
-						<option value="上級：上流工程の仕事も担当できる">上級：上流工程の仕事も担当できる</option>
-						<option value="エキスパート：リーダーとして開発できる">エキスパート：リーダーとして開発できる</option>
+					<option value ="">---</option>
+					<option value="入門：文法を勉強中">入門：文法を勉強中</option>
+					<option value="初級：簡単なプログラムを書ける">初級：簡単なプログラムを書ける</option>
+					<option value="中級：業務経験がある">中級：業務経験がある</option>
+					<option value="上級：上流工程の仕事も担当できる">上級：上流工程の仕事も担当できる</option>
+					<option value="エキスパート：リーダーとして開発できる">エキスパート：リーダーとして開発できる</option>
 					</select>
+					</td>
+				</tr>
+				</table>
+
 				</div>
 				<p id="outputTag"></p>
 
