@@ -347,30 +347,32 @@ public class CommunityDao {
 				//SQL文を完成させる
 				pStmt.setInt(1,id);
 				ResultSet rs = pStmt.executeQuery();
-				rs.next();
 
-				//フラグ形式のデータをString型の変数に入れる
-				language = rs.getString("community_language");
-				System.out.println(language);
-				purpose = rs.getString("community_purpose");
-				certification = rs.getString("community_certification");
+				if (rs.next()) {
+					//フラグ形式のデータをString型の変数に入れる
+					language = rs.getString("community_language");
+					purpose = rs.getString("community_purpose");
+					certification = rs.getString("community_certification");
 
-				//フラグ形式のデータを日本語に戻し、配列に入れる。
-				lang_data = ReFlag.languageReFlag(language);
-				purp_data = ReFlag.purposeReFlag(purpose);
-				cert_data = ReFlag.certificationReFlag(certification);
+					//フラグ形式のデータを日本語に戻し、配列に入れる。
+					lang_data = ReFlag.languageReFlag(language);
+					purp_data = ReFlag.purposeReFlag(purpose);
+					cert_data = ReFlag.certificationReFlag(certification);
 
-				//結果表をCommunity型の変数にコピー
-					data = new Community(
-							rs.getInt("community_id"),
-							rs.getString("community_date"),
-							rs.getString("community_name"),
-							lang_data,
-							purp_data,
-							rs.getString("community_career"),
-							cert_data,
-							rs.getString("community_summary")
-							);
+					//結果表をCommunity型の変数にコピー
+						data = new Community(
+								rs.getInt("community_id"),
+								rs.getString("community_date"),
+								rs.getString("community_name"),
+								lang_data,
+								purp_data,
+								rs.getString("community_career"),
+								cert_data,
+								rs.getString("community_summary")
+								);
+				} else {
+					data = null;
+				}
 			}
 			catch(SQLException e) {
 				e.printStackTrace();
