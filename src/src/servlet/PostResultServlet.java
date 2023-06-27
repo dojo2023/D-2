@@ -14,6 +14,7 @@ import javax.servlet.http.Part;
 
 import dao.ArticleDao;
 import model.Article;
+import model.User;
 
 /**
  * Servlet implementation class PostResultServlet
@@ -44,7 +45,7 @@ public class PostResultServlet extends HttpServlet {
 
 		//各値を取得
 		String articleTitle = request.getParameter("articleTitle");
-		String userId = (String)session.getAttribute("user");
+		String userId = ((User)session.getAttribute("user")).getUserId();
 		String sendLang = request.getParameter("articleLang");
 		String[] articleLanguage=sendLang.substring(1).split(",");
 		String sendPurp=request.getParameter("articlePurp");
