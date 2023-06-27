@@ -499,35 +499,38 @@ public class ArticleDao {
 			//SQL文を完成させる
 			pStmt.setInt(1,id);
 			ResultSet rs = pStmt.executeQuery();
-			rs.next();
+			if (rs.next()) {
 
-			//フラグ形式のデータをString型の変数に入れる
-			language = rs.getString("article_language");
-			purpose = rs.getString("article_purpose");
-			certification = rs.getString("article_certification");
+				//フラグ形式のデータをString型の変数に入れる
+				language = rs.getString("article_language");
+				purpose = rs.getString("article_purpose");
+				certification = rs.getString("article_certification");
 
-			//フラグ形式のデータを日本語に戻し、配列に入れる。
-			lang_data = ReFlag.languageReFlag(language);
-			purp_data = ReFlag.purposeReFlag(purpose);
-			cert_data = ReFlag.certificationReFlag(certification);
+				//フラグ形式のデータを日本語に戻し、配列に入れる。
+				lang_data = ReFlag.languageReFlag(language);
+				purp_data = ReFlag.purposeReFlag(purpose);
+				cert_data = ReFlag.certificationReFlag(certification);
 
-			//結果表をArticle型の変数にコピー
-				data = new Article(
-					rs.getInt("article_id"),
-					rs.getString("article_title"),
-					rs.getString("user_id"),
-					rs.getString("article_create"),
-					rs.getString("article_update"),
-					lang_data,
-					purp_data,
-					rs.getString("article_career"),
-					cert_data,
-					rs.getInt("article_favs"),
-					rs.getString("article_text"),
-					rs.getString("article_img1"),
-					rs.getString("article_img2"),
-					rs.getString("article_img3")
-					);
+				//結果表をArticle型の変数にコピー
+					data = new Article(
+							rs.getInt("article_id"),
+							rs.getString("article_title"),
+							rs.getString("user_id"),
+							rs.getString("article_create"),
+							rs.getString("article_update"),
+							lang_data,
+							purp_data,
+							rs.getString("article_career"),
+							cert_data,
+							rs.getInt("article_favs"),
+							rs.getString("article_text"),
+							rs.getString("article_img1"),
+							rs.getString("article_img2"),
+							rs.getString("article_img3")
+							);
+			} else {
+				data = null;
+			}
 		}
 		catch(SQLException e) {
 			e.printStackTrace();

@@ -351,6 +351,7 @@ public class CommunityDao {
 
 				//フラグ形式のデータをString型の変数に入れる
 				language = rs.getString("community_language");
+				System.out.println(language);
 				purpose = rs.getString("community_purpose");
 				certification = rs.getString("community_certification");
 
