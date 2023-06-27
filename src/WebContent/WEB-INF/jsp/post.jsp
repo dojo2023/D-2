@@ -8,7 +8,7 @@
 		<link rel="stylesheet" href="css/common.css">
 		<link rel="stylesheet" href="css/create.css">
 		<title>投稿ページ | with IT</title>
-
+	<link rel="icon" href="image/favicon.ico">
 
 	</head>
 
