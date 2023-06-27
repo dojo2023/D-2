@@ -20,10 +20,22 @@
 <div class="main">
 	<div class="article_details">
 		<h4 class="minifont">作成日：${article.articleCreate}</h4>
-		<h4 class="minifont">作成者：${article.userName}</h4>
+		<h4 class="minifont">作成者：${writerName}</h4>
 
 		<h2>「${article.articleTitle}」</h2>
-		<h4 class="minifont">#${article.articleLanguage} #${article.articlePurpose} #${article.articleCareer} #${article.articleCertificaiton}</h4><hr>
+
+		<h4 class="minifont">
+			<c:forEach var="tag" items="${article.articleLanguage}">
+			#${tag}&nbsp;
+			</c:forEach>
+			<c:forEach var="tag" items="${article.articlePurpose}">
+			#${tag}&nbsp;
+			</c:forEach>
+			#${article.articleCareer}&nbsp;
+			<c:forEach var="tag" items="${article.articleCertificaiton}">
+			#${tag}&nbsp;
+			</c:forEach>
+		</h4><hr>
 		<div class="box1"><p>${article.articleText}</p></div>
 		<div class="box2">${article.ariticleImg1}</div>
 		<div class="box2">${article.ariticleImg2}</div>
