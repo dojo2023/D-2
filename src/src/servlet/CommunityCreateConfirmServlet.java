@@ -35,11 +35,20 @@ public class CommunityCreateConfirmServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		String name = request.getParameter("community_name");
 		String sendLang = request.getParameter("sendLang");
-		String[] language = sendLang.substring(1).split(",");
+		String[] language= {};
+		if(sendLang.length()!=0) {
+			language = sendLang.substring(1).split(",");
+		}
 		String sendPurp = request.getParameter("sendPurp");
-		String[] purpose = sendPurp.substring(1).split(",");
+		String[] purpose= {};
+		if(sendPurp.length()!=0) {
+			purpose = sendPurp.substring(1).split(",");
+		}
 		String sendCert = request.getParameter("sendCert");
-		String[] certification = sendCert.substring(1).split(",");
+		String[]certification= {};
+		if(sendCert.length()!=0) {
+			certification = sendCert.substring(1).split(",");
+		}
 		String career = request.getParameter("career");
 		String summary = request.getParameter("community_summary");
 
