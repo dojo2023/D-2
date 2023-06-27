@@ -347,6 +347,7 @@ public class CommunityDao {
 				//SQL文を完成させる
 				pStmt.setInt(1,id);
 				ResultSet rs = pStmt.executeQuery();
+				rs.next();
 
 				//フラグ形式のデータをString型の変数に入れる
 				language = rs.getString("community_language");
