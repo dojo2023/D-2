@@ -208,6 +208,12 @@ margin-top:150px;
 	color: #283593;
 	text-decoration: none;
 }
+
+.cp_card01 .description a:hover {
+    color:#52C2CF;
+
+
+}
 .cp_card01 .description a::after {
 	font-family: FontAwesome;
 	margin-left: -10px;
