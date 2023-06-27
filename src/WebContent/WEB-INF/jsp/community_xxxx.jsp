@@ -45,7 +45,7 @@ ${member}&nbsp;
 <div class="a">
 <c:forEach var="e" items="${chat_data}" varStatus="st" >
 <c:choose>
-<c:when test="${user.user_id==e.userId}">
+<c:when test="${user.userId==e.userId}">
 <div class="ore">
 ${speaker_data[st.index]}&nbsp;&nbsp;
 <div class="minifont">${e.remarkDate}</div>
@@ -79,12 +79,24 @@ ${speaker_data[st.index]}&nbsp;&nbsp;
 	<div class="footer_contents">
 		<b><p>コンテンツ</p></b>
 		<ul>
-			<li>投稿</li>
-			<li>コミュニティ</li>
+			<c:choose>
+			<c:when test="${not empty user.userId}">
+			<li><a href="/product_D2/top">トップ</a></li>
+			<li><a href="/product_D2/post">記事投稿</a></li>
+			<li><a href="/product_D2/community_create">コミュニティ作成</a></li>
 			<li>ログイン</li>
+			<li><a href="/product_D2/login">ログアウト</a></li>
+			<li>ユーザー登録</li>
+			</c:when>
+			<c:otherwise>
+			<li><a href="/product_D2/top">トップ</a></li>
+			<li>記事投稿</li>
+			<li>コミュニティ作成</li>
+			<li><a href="/product_D2/login">ログイン</a></li>
 			<li>ログアウト</li>
-			<li>新規作成</li>
-			<li>トップページ</li>
+			<li><a href="/product_D2/sign_up">ユーザー登録</a></li>
+			</c:otherwise>
+			</c:choose>
 		</ul>
 		</div>
 </footer>
