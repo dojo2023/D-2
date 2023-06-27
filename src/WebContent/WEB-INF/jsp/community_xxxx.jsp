@@ -27,7 +27,9 @@
 <c:forEach var="tag" items="${community_data.communityPurpose}">
 #${tag}&nbsp;
 </c:forEach>
+<c:if test="${not empty community_data.communityCareer}">
 #${community_data.communityCareer}&nbsp;
+</c:if>
 <c:forEach var="tag" items="${community_data.communityCertification}">
 #${tag}&nbsp;
 </c:forEach>
