@@ -64,6 +64,8 @@
 .footer_all {
     /*background-color: #4472c4;*/
     background: linear-gradient(-225deg, rgba(27, 77, 184, 0.7) 0%, rgba(70, 236, 254, 0.7) 100%), url(../image/texture.jpg);
+    background-repeat: no-repeat;
+    background-size:cover;
 }
 .footer {
     color: white;
