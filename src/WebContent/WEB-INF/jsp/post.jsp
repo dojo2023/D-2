@@ -8,7 +8,7 @@
 		<link rel="stylesheet" href="css/common.css">
 		<link rel="stylesheet" href="css/create.css">
 		<title>投稿ページ | with IT</title>
-
+	<link rel="icon" href="image/favicon.ico">
 
 	</head>
 
@@ -25,8 +25,8 @@
 
 		<main>
 			<div class="create_main">
-			<hr>
 			<form id="form" method="POST" action="/product_D2/post" enctype="multipart/form-data">
+			<hr>
 				<h4>タイトル</h4>
 				<input class="textform" type="text" name="article_title" id="article_title" onkeyup="counter('article_title','count1')">
 				<span id="count1">0</span>/50
@@ -36,7 +36,7 @@
 				<h4>タグ</h4>
 
 				<div class="contentA">
-					<p>対象言語</p>
+					対象言語<br>
 
 					<table>
 						<tr>
@@ -58,15 +58,15 @@
 						<tr>
 							<td><label><input type="checkbox" class="tag" name="language" value="Swift">Swift</label></td>
 							<td><label><input type="checkbox" class="tag" name="language" value="Ruby">Ruby</label></td>
-
 							<td><label><input type="checkbox" class="tag" name="language" value="R">R</label></td>
 							<td><label><input type="checkbox" class="tag" name="language" value="Kotlin">Kotlin</label></td>
-							<td><label><input type="checkbox" class="tag" name="language" value="Go">Go</label></td></tr>
+							<td><label><input type="checkbox" class="tag" name="language" value="Go">Go</label></td>
+						</tr>
 					</table>
 				</div>
 
 				<div class="contentB">
-					<p>ジャンル</p>
+					ジャンル<br>
 					<table>
 						<tr>
 							<td><label><input type="checkbox" class="tag" name="purpose" value="プログラミング">プログラミング</label></td>
@@ -87,7 +87,7 @@
 				</div>
 
 				<div class="contentC">
-					<p>対象となる資格</p>
+					対象となる資格<br>
 					<table>
 						<tr>
 							<td><label><input type="checkbox" class="tag" name="certification" value="ITパスポート">ITパスポート</label></td>
@@ -106,19 +106,21 @@
 						<tr>
 							<td><label><input type="checkbox" class="tag" name="certification" value="データベーススペシャリスト試験">データベーススペシャリスト試験</label></td>
 							<td><label><input type="checkbox" class="tag" name="certification" value="エンベデッドシステムスペシャリスト試験">エンベデッドシステムスペシャリスト試験</label></td>
-							<td><label><input type="checkbox" class="tag" name="certification" value="ITサービスマネージャ試験">ITサービスマネージャ試験</label>
-							</td>
+							<td><label><input type="checkbox" class="tag" name="certification" value="ITサービスマネージャ試験">ITサービスマネージャ試験</label></td>
 							<td><label><input type="checkbox" class="tag" name="certification" value="システム監査技術者試験">システム監査技術者試験</label></td>
 						</tr>
 
 						<tr>
 							<td><label><input type="checkbox" class="tag" name="certification" value="情報処理安全確保支援士試験">情報処理安全確保支援士試験</label></td>
+							<td></td>
+							<td></td>
+							<td></td>
 						</tr>
 					</table>
 				</div>
 
 				<div class="contentD">
-					<p>対象となるプログラミング歴</p>
+					対象となるプログラミング歴<br>
 					<select class="select" name="career" class="tag" id="tag">
 						<option value ="">---</option>
 						<option value="入門：文法を勉強中">入門：文法を勉強中</option>
@@ -128,31 +130,30 @@
 						<option value="エキスパート：リーダーとして開発できる">エキスパート：リーダーとして開発できる</option>
 					</select>
 				</div>
+				<p id="outputTag"></p>
 
-				<p id=outputTag></p>
-
-
+			<hr>
 			<div class="edit_contents">
-				<hr>
-				<h4>本文</h4><!-- cssでdisplay:inline -->
+				<h4>本文</h4>
 				<textarea class="edit_txt" name="article_text" id="article_text" placeholder="本文を入力してください" onkeyup="counter('article_text','count2')"></textarea>
 				<br>
 				<span id="count2">0</span>/10000
 				<p id="output2">
 
 				<input type="file" name="img1" id="img1" accept="image/*" onchange="previewImage1(this);"><input type="button" value="ファイルを追加" id="addimg2"><br>
-				<canvas id="preview1" style="max-width:200px;"></canvas><br>
 				<input type="hidden" name="img2" id="img2" accept="image/*" onchange="previewImage2(this);"><input type="hidden" value="ファイルを追加" id="addimg3"><br>
-				<canvas id="preview2" style="max-width:200px;"></canvas><br>
 				<input type="hidden" name="img3" id="img3" accept="image/*" onchange="previewImage3(this);"><br>
+				<canvas id="preview1" style="max-width:200px;"></canvas>
+				<canvas id="preview2" style="max-width:200px;"></canvas>
 				<canvas id="preview3" style="max-width:200px;"></canvas>
 
-				</div>
+			</div>
 
-				<div class="btn_wrap">
-				<input class="btn" type="submit" value="プレビュー画面へ"></div>
+			<div class="btn_wrap">
+				<input class="btn" type="submit" value="プレビュー画面へ">
+			</div>
 
-				</form>
+			</form>
 			</div>
 
 		<div class="footer_all">

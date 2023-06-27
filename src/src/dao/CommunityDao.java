@@ -4,6 +4,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -281,17 +282,17 @@ public class CommunityDao {
 				communityCertification = Flag.certificationFlag(data.getCommunityCertification());
 
 				//SQL文を準備する
-				String sql = "insert into community( community_date, community_name, community_language, community_purpose, community_career, community_certification, community_summary ) values(FORMATDATETIME(now(), 'yyyy/MM/dd (EE) HH:mm:ss'),?,?,?,?,?,?);";
+				String sql = "insert into community( community_date, community_name, community_language, community_purpose, community_career, community_certification, community_summary ) values(?,?,?,?,?,?,?);";
 				PreparedStatement pStmt = conn.prepareStatement(sql);
 
 				//SQL文を完成させる
-				pStmt.setString(1, data.getCommunityName());
-
-				pStmt.setString(2, communityLanguage);
-				pStmt.setString(3,  communityPurpose);
-				pStmt.setString(4, data.getCommunityCareer());
-				pStmt.setString(5, communityCertification);
-				pStmt.setString(6, data.getCommunitySummary());
+				pStmt.setTimestamp(1, new Timestamp(System.currentTimeMillis()));
+				pStmt.setString(2, data.getCommunityName());
+				pStmt.setString(3, communityLanguage);
+				pStmt.setString(4,  communityPurpose);
+				pStmt.setString(5, data.getCommunityCareer());
+				pStmt.setString(6, communityCertification);
+				pStmt.setString(7, data.getCommunitySummary());
 				pStmt.executeUpdate();
 
 				sql= "select community_id from community order by community_date desc";
@@ -347,29 +348,32 @@ public class CommunityDao {
 				//SQL文を完成させる
 				pStmt.setInt(1,id);
 				ResultSet rs = pStmt.executeQuery();
-				rs.next();
 
-				//フラグ形式のデータをString型の変数に入れる
-				language = rs.getString("community_language");
-				purpose = rs.getString("community_purpose");
-				certification = rs.getString("community_certification");
+				if (rs.next()) {
+					//フラグ形式のデータをString型の変数に入れる
+					language = rs.getString("community_language");
+					purpose = rs.getString("community_purpose");
+					certification = rs.getString("community_certification");
 
-				//フラグ形式のデータを日本語に戻し、配列に入れる。
-				lang_data = ReFlag.languageReFlag(language);
-				purp_data = ReFlag.purposeReFlag(purpose);
-				cert_data = ReFlag.certificationReFlag(certification);
+					//フラグ形式のデータを日本語に戻し、配列に入れる。
+					lang_data = ReFlag.languageReFlag(language);
+					purp_data = ReFlag.purposeReFlag(purpose);
+					cert_data = ReFlag.certificationReFlag(certification);
 
-				//結果表をCommunity型の変数にコピー
-					data = new Community(
-							rs.getInt("community_id"),
-							rs.getString("community_date"),
-							rs.getString("community_name"),
-							lang_data,
-							purp_data,
-							rs.getString("community_career"),
-							cert_data,
-							rs.getString("community_summary")
-							);
+					//結果表をCommunity型の変数にコピー
+						data = new Community(
+								rs.getInt("community_id"),
+								rs.getString("community_date"),
+								rs.getString("community_name"),
+								lang_data,
+								purp_data,
+								rs.getString("community_career"),
+								cert_data,
+								rs.getString("community_summary")
+								);
+				} else {
+					data = null;
+				}
 			}
 			catch(SQLException e) {
 				e.printStackTrace();
@@ -535,7 +539,7 @@ public class CommunityDao {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/src/Data", "sa", "");
 
 			// SQL文を準備する
-			String sql = "insert into chat ( community_id, user_id, remark_text, remark_date) values (?, ?, ?, FORMATDATETIME(now(), 'yyyy/MM/dd (EE) HH:mm:ss'))";
+			String sql = "insert into chat ( community_id, user_id, remark_text, remark_date) values (?, ?, ?,?)";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
@@ -544,6 +548,7 @@ public class CommunityDao {
 				pStmt.setInt(1, remark.getCommunityId());
 				pStmt.setString(2, remark.getUserId());
 				pStmt.setString(3, remark.getRemarkText());
+				pStmt.setTimestamp(4, new Timestamp(System.currentTimeMillis()));
 
 
 
@@ -638,7 +643,7 @@ public class CommunityDao {
 			String sql = "select * from community where community_language not like ? "
 					+ "or community_purpose not like ? "
 					+ "or community_certification not like ?"
-					+ "or community_career = '?' order by community_date desc";
+					+ "or community_career = ? order by community_date desc";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 			pStmt.setString(1, notLikeLang);
 			pStmt.setString(2, notLikePurp);
@@ -662,20 +667,31 @@ public class CommunityDao {
 			int[] resultIdArray = new int[5];
 			int resultCount = 0;
 			Arrays.fill(matchRate, 0);
+			// 検索マッチ数分ループ
 			for (int i=0; i<results.size(); i++) {
+				// 各ユーザータグ分ループ
 				for (int j=0; j<user.getLanguage().length; j++) {
-					if (user.getLanguage()[j].equals(results.get(i).getCommunityLanguage()[j])) {
-						matchRate[i]++;
+					// マッチ記事1件に含まれるタグ分回してmatchRate加算
+					for (int k=0; k<results.get(i).getCommunityLanguage().length; k++) {
+						if (user.getLanguage()[j].equals(results.get(i).getCommunityLanguage()[k])) {
+							matchRate[i]++;
+						}
 					}
 				}
 				for (int j=0; j<user.getPurpose().length; j++) {
-					if (user.getPurpose()[j].equals(results.get(i).getCommunityPurpose()[j])) {
-						matchRate[i]++;
+					// マッチ記事1件に含まれるタグ分回してmatchRate加算
+					for (int k=0; k<results.get(i).getCommunityPurpose().length; k++) {
+						if (user.getPurpose()[j].equals(results.get(i).getCommunityPurpose()[k])) {
+							matchRate[i]++;
+						}
 					}
 				}
 				for (int j=0; j<user.getCertification().length; j++) {
-					if (user.getCertification()[j].equals(results.get(i).getCommunityCertification()[j])) {
-						matchRate[i]++;
+					// マッチ記事1件に含まれるタグ分回してmatchRate加算
+					for (int k=0; k<results.get(i).getCommunityCertification().length; k++) {
+						if (user.getCertification()[j].equals(results.get(i).getCommunityCertification()[k])) {
+							matchRate[i]++;
+						}
 					}
 				}
 				if (user.getCareer().equals(results.get(i).getCommunityCareer())) {

@@ -499,35 +499,38 @@ public class ArticleDao {
 			//SQL文を完成させる
 			pStmt.setInt(1,id);
 			ResultSet rs = pStmt.executeQuery();
-			rs.next();
+			if (rs.next()) {
 
-			//フラグ形式のデータをString型の変数に入れる
-			language = rs.getString("article_language");
-			purpose = rs.getString("article_purpose");
-			certification = rs.getString("article_certification");
+				//フラグ形式のデータをString型の変数に入れる
+				language = rs.getString("article_language");
+				purpose = rs.getString("article_purpose");
+				certification = rs.getString("article_certification");
 
-			//フラグ形式のデータを日本語に戻し、配列に入れる。
-			lang_data = ReFlag.languageReFlag(language);
-			purp_data = ReFlag.purposeReFlag(purpose);
-			cert_data = ReFlag.certificationReFlag(certification);
+				//フラグ形式のデータを日本語に戻し、配列に入れる。
+				lang_data = ReFlag.languageReFlag(language);
+				purp_data = ReFlag.purposeReFlag(purpose);
+				cert_data = ReFlag.certificationReFlag(certification);
 
-			//結果表をArticle型の変数にコピー
-				data = new Article(
-					rs.getInt("article_id"),
-					rs.getString("article_title"),
-					rs.getString("user_id"),
-					rs.getString("article_create"),
-					rs.getString("article_update"),
-					lang_data,
-					purp_data,
-					rs.getString("article_career"),
-					cert_data,
-					rs.getInt("article_favs"),
-					rs.getString("article_text"),
-					rs.getString("article_img1"),
-					rs.getString("article_img2"),
-					rs.getString("article_img3")
-					);
+				//結果表をArticle型の変数にコピー
+					data = new Article(
+							rs.getInt("article_id"),
+							rs.getString("article_title"),
+							rs.getString("user_id"),
+							rs.getString("article_create"),
+							rs.getString("article_update"),
+							lang_data,
+							purp_data,
+							rs.getString("article_career"),
+							cert_data,
+							rs.getInt("article_favs"),
+							rs.getString("article_text"),
+							rs.getString("article_img1"),
+							rs.getString("article_img2"),
+							rs.getString("article_img3")
+							);
+			} else {
+				data = null;
+			}
 		}
 		catch(SQLException e) {
 			e.printStackTrace();
@@ -727,20 +730,31 @@ public class ArticleDao {
 			int[] resultIdArray = new int[5];
 			int resultCount = 0;
 			Arrays.fill(matchRate, 0);
+			// 検索マッチ数分ループ
 			for (int i=0; i<results.size(); i++) {
+				// 各ユーザータグ分ループ
 				for (int j=0; j<user.getLanguage().length; j++) {
-					if (user.getLanguage()[j].equals(results.get(i).getArticleLanguage()[j])) {
-						matchRate[i]++;
+					// マッチ記事1件に含まれるタグ分回してmatchRate加算
+					for (int k=0; k<results.get(i).getArticleLanguage().length; k++) {
+						if (user.getLanguage()[j].equals(results.get(i).getArticleLanguage()[k])) {
+							matchRate[i]++;
+						}
 					}
 				}
 				for (int j=0; j<user.getPurpose().length; j++) {
-					if (user.getPurpose()[j].equals(results.get(i).getArticlePurpose()[j])) {
-						matchRate[i]++;
+					// マッチ記事1件に含まれるタグ分回してmatchRate加算
+					for (int k=0; k<results.get(i).getArticlePurpose().length; k++) {
+						if (user.getPurpose()[j].equals(results.get(i).getArticlePurpose()[k])) {
+							matchRate[i]++;
+						}
 					}
 				}
 				for (int j=0; j<user.getCertification().length; j++) {
-					if (user.getCertification()[j].equals(results.get(i).getArticleCertification()[j])) {
-						matchRate[i]++;
+					// マッチ記事1件に含まれるタグ分回してmatchRate加算
+					for (int k=0; k<results.get(i).getArticleCertification().length; k++) {
+						if (user.getCertification()[j].equals(results.get(i).getArticleCertification()[k])) {
+							matchRate[i]++;
+						}
 					}
 				}
 				if (user.getCareer().equals(results.get(i).getArticleCareer())) {
