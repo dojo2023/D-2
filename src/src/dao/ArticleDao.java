@@ -364,7 +364,9 @@ public class ArticleDao {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/src/Data", "sa", "");
 
 			//配列になっている使用言語をフラグ形式に変換。
-			System.out.println(data.getArticleLanguage());
+			for(String lang: data.getArticleLanguage()) {
+				System.out.println(lang);
+			}
 			System.out.println(Flag.languageFlag(data.getArticleLanguage()));
 			language = Flag.languageFlag(data.getArticleLanguage());
 
@@ -496,6 +498,7 @@ public class ArticleDao {
 			//SQL文を完成させる
 			pStmt.setInt(1,id);
 			ResultSet rs = pStmt.executeQuery();
+			rs.next();
 
 			//フラグ形式のデータをString型の変数に入れる
 			language = rs.getString("article_language");
@@ -510,7 +513,7 @@ public class ArticleDao {
 			//結果表をArticle型の変数にコピー
 				data = new Article(
 					rs.getInt("article_id"),
-					rs.getString("artcile_title"),
+					rs.getString("article_title"),
 					rs.getString("user_id"),
 					rs.getString("article_create"),
 					rs.getString("article_update"),

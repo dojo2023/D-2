@@ -43,7 +43,7 @@
 							<td><label><input type="checkbox" class="tag" name="language" value="Java">Java</label></td>
 							<td><label><input type="checkbox" class="tag" name="language" value="JavaScript">JavaScript</label></td>
 							<td><label><input type="checkbox" class="tag" name="language" value="TypeScript">TypeScript</label></td>
-							<td><label><input type="checkbox" class="tag" name="language" value="C++(C)">C++(C)</label></td>
+							<td><label><input type="checkbox" class="tag" name="language" value="C/C++">C/C++</label></td>
 							<td><label><input type="checkbox" class="tag" name="language" value="C#">C#</label></td>
 						</tr>
 
@@ -59,8 +59,8 @@
 							<td><label><input type="checkbox" class="tag" name="language" value="Swift">Swift</label></td>
 							<td><label><input type="checkbox" class="tag" name="language" value="Ruby">Ruby</label></td>
 
-							<td><label><input type="checkbox" class="tag" name="language" value="R言語">R言語</label></td>
-							<td><label><input type="checkbox" class="tag" name="language" value="Kotolin">Kotlin</label></td>
+							<td><label><input type="checkbox" class="tag" name="language" value="R">R</label></td>
+							<td><label><input type="checkbox" class="tag" name="language" value="Kotlin">Kotlin</label></td>
 							<td><label><input type="checkbox" class="tag" name="language" value="Go">Go</label></td></tr>
 					</table>
 				</div>
