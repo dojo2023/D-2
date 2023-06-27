@@ -27,7 +27,7 @@
 		${article_data.articleTitle}<br>
 
 	<h4>作成者</h4>>
-		${article.userId}<br>
+		${article_data.userId}<br>
 
 	<h4>タグ</h4>
 		<c:set var="sendLang" value="" />
@@ -48,7 +48,7 @@
          <c:set var="sendCert" value="${sendCert},${e} "/>
          </c:forEach>
 
-         ${article_data.career}<br>
+         ${article_data.articleCareer}<br>
 
 
 	<h4>本文</h4>
