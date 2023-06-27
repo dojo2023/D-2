@@ -36,7 +36,7 @@
             <td><input type="checkbox" class="tag" name="language" value="Java">Java</td>
             <td><input type="checkbox" class="tag" name="language" value="JavaScript">JavaScript</td>
             <td><input type="checkbox" class="tag" name="language" value="TypeScript">TypeScript</td>
-            <td><input type="checkbox" class="tag" name="language" value="C++(C)">C++(C)</td>
+            <td><input type="checkbox" class="tag" name="language" value="C/C++">C++(C)</td>
             </tr>
             <tr>
             <td><input type="checkbox" class="tag" name="language" value="C#">C#</td>
@@ -51,7 +51,7 @@
             <td><input type="checkbox" class="tag" name="language" value="Ruby">Ruby</td>
             </tr>
             <tr>
-            <td><input type="checkbox" class="tag" name="language" value="R言語">R言語</td>
+            <td><input type="checkbox" class="tag" name="language" value="R">R言語</td>
             <td><input type="checkbox" class="tag" name="language" value="Kotlin">Kotlin</td>
             <td><input type="checkbox" class="tag" name="language" value="Go">Go</td>
             <td><input type="checkbox" class="tag" name="language" value="その他">その他</td>
@@ -92,7 +92,7 @@
             <td><input type="checkbox" class="tag" name="certification" value="応用情報技術者試験">応用情報技術者試験</td>
             </tr>
             <tr>
-            <td><input type="checkbox" class="tag" name="certification" value="ストラテジスト試験">ITストラテジスト試験</td>
+            <td><input type="checkbox" class="tag" name="certification" value="ITストラテジスト試験">ITストラテジスト試験</td>
             <td><input type="checkbox" class="tag" name="certification" value="システムアーキテクト試験">システムアーキテクト試験</td>
             <td><input type="checkbox" class="tag" name="certification" value="プロジェクトマネージャ試験">プロジェクトマネージャ試験</td>
             <td><input type="checkbox" class="tag" name="certification" value="ネットワークスペシャリスト試験">ネットワークスペシャリスト試験</td>
