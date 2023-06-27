@@ -639,7 +639,7 @@ public class CommunityDao {
 			String sql = "select * from community where community_language not like ? "
 					+ "or community_purpose not like ? "
 					+ "or community_certification not like ?"
-					+ "or community_career = '?' order by community_date desc";
+					+ "or community_career = ? order by community_date desc";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 			pStmt.setString(1, notLikeLang);
 			pStmt.setString(2, notLikePurp);
