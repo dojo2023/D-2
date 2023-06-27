@@ -12,8 +12,13 @@
 <title>登録確認|with IT</title>
 </head>
 <body>
+<!--画面上にスクロール-->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.4/css/all.css">
+	<div id="page_top"><a href="#"></a></div>
+<!--スクロール終わり-->
 
 <header>
+
     <div class="header">
         <img src="image/logo.png" class="logo_contents" width="10%" height="10%">
     </div>

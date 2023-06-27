@@ -11,6 +11,10 @@
     <body>
 <header>
 <div class="header">
+<!--画面上にスクロール-->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.4/css/all.css">
+	<div id="page_top"><a href="#"></a></div>
+<!--スクロール終わり-->
 	<a href="/product_D2/top"><img src="image/logo.png" class="logo_contents" width="10%" height="10%"></a>
 </div>
 </header>
