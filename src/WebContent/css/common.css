@@ -1,6 +1,12 @@
 @charset "UTF-8";
 
-/* 6/27 11:38 update by yahaba */
+/* 6/27 11:54 update by yahaba */
+
+body {
+	min-width:1020px;
+	margin: 0px;
+   -webkit-text-size-adjust: 100%;
+}
 
 .header a, .footer a {
     text-decoration: none;
