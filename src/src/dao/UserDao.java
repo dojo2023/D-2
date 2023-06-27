@@ -27,7 +27,7 @@ public class UserDao {
 						rs.getString("password"),
 						rs.getString("user_name"),
 						ReFlag.languageReFlag(rs.getString("language")),
-						ReFlag.languageReFlag(rs.getString("purpose")),
+						ReFlag.purposeReFlag(rs.getString("purpose")),
 						rs.getString("career"),
 						ReFlag.certificationReFlag(rs.getString("certification")));
 			}
