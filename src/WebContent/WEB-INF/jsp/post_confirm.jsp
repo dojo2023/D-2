@@ -7,6 +7,7 @@
         <link rel="stylesheet" href="css/common.css">
         <link rel="stylesheet" href="css/confirm.css">
 		<title>記事投稿確認画面</title>
+		<link rel="icon" href="image/favicon.ico">
 	</head>
 	<body>
     <!--画面上にスクロール-->

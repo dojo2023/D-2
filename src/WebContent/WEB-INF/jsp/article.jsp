@@ -8,9 +8,13 @@
 <link rel="stylesheet" href="css/common.css">
 <link rel="stylesheet" href="css/article.css">
 <title>タイトル｜with IT</title>
+<link rel="icon" href="image/favicon.ico">
 </head>
 <body>
-
+<!--画面上にスクロール-->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.4/css/all.css">
+	<div id="page_top"><a href="#"></a></div>
+<!--スクロール終わり-->
 <header>
 <div class="header">
 	<a href="/product_D2/top"><img src="image/logo.png" class="logo_contents" width="10%" height="10%"></a>
@@ -36,10 +40,10 @@
 			#${tag}&nbsp;
 			</c:forEach>
 		</h4><hr>
-		<div class="box1"><p>${article.articleText}</p></div>
-		<div class="box2"><img src="${article.articleImg1}" style="max-width:200px;"></div>
-		<div class="box2"><img src="${article.articleImg2}" style="max-width:200px;"></div>
-		<div class="box2"><img src="${article.articleImg3}" style="max-width:200px;"></div>
+		<div class="box1">${article.articleText}</div>
+		<img src="${article.articleImg1}" style="max-width:200px;">
+		<img src="${article.articleImg2}" style="max-width:200px;">
+		<img src="${article.articleImg3}" style="max-width:200px;">
 	</div>
 	<p></p>
 

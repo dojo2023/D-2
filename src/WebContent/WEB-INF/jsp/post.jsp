@@ -8,7 +8,7 @@
 		<link rel="stylesheet" href="css/common.css">
 		<link rel="stylesheet" href="css/create.css">
 		<title>投稿ページ | with IT</title>
-
+	<link rel="icon" href="image/favicon.ico">
 
 	</head>
 
@@ -141,10 +141,10 @@
 				<p id="output2">
 
 				<input type="file" name="img1" id="img1" accept="image/*" onchange="previewImage1(this);"><input type="button" value="ファイルを追加" id="addimg2"><br>
-				<canvas id="preview1" style="max-width:200px;"></canvas><br>
 				<input type="hidden" name="img2" id="img2" accept="image/*" onchange="previewImage2(this);"><input type="hidden" value="ファイルを追加" id="addimg3"><br>
-				<canvas id="preview2" style="max-width:200px;"></canvas><br>
 				<input type="hidden" name="img3" id="img3" accept="image/*" onchange="previewImage3(this);"><br>
+				<canvas id="preview1" style="max-width:200px;"></canvas>
+				<canvas id="preview2" style="max-width:200px;"></canvas>
 				<canvas id="preview3" style="max-width:200px;"></canvas>
 
 				</div>

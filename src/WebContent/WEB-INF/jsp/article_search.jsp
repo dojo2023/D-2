@@ -7,12 +7,14 @@
 <link rel="stylesheet" href="css/common.css">
 <link rel="stylesheet" href="css/search.css">
 <title>記事検索結果一覧｜with IT</title>
+<link rel="icon" href="image/favicon.ico">
 </head>
 <body>
 
 <header>
+
 <div class="header">
-	<a href="/product_D2/top"><img src="image/logo2.png" class="logo_contents" width="10%" height="10%"></a>
+	<a href="/product_D2/top"><img src="image/logo.png" class="logo_contents" width="10%" height="10%"></a>
 </div>
 <div class="header_bottom">
 	<div class="search">
