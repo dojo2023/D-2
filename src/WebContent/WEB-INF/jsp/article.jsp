@@ -32,14 +32,14 @@
 			#${tag}&nbsp;
 			</c:forEach>
 			#${article.articleCareer}&nbsp;
-			<c:forEach var="tag" items="${article.articleCertificaiton}">
+			<c:forEach var="tag" items="${article.articleCertification}">
 			#${tag}&nbsp;
 			</c:forEach>
 		</h4><hr>
 		<div class="box1"><p>${article.articleText}</p></div>
-		<div class="box2">${article.ariticleImg1}</div>
-		<div class="box2">${article.ariticleImg2}</div>
-		<div class="box2">${article.ariticleImg3}</div>
+		<div class="box2">${article.articleImg1}</div>
+		<div class="box2">${article.articleImg2}</div>
+		<div class="box2">${article.articleImg3}</div>
 	</div>
 	<p></p>
 
