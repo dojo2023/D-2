@@ -85,6 +85,22 @@ public class Flag {
 		} else {
 			flag += "0";
 		}
+		System.out.println(Arrays.asList(language).contains("Java"));
+		System.out.println(Arrays.asList(language).contains("JavaScript"));
+		System.out.println(Arrays.asList(language).contains("TypeScript"));
+		System.out.println(Arrays.asList(language).contains("C/C++"));
+		System.out.println(Arrays.asList(language).contains("C#"));
+		System.out.println(Arrays.asList(language).contains("Python"));
+		System.out.println(Arrays.asList(language).contains("SQL"));
+		System.out.println(Arrays.asList(language).contains("HTML&CSS"));
+		System.out.println(Arrays.asList(language).contains("PHP"));
+		System.out.println(Arrays.asList(language).contains("Scala"));
+		System.out.println(Arrays.asList(language).contains("Swift"));
+		System.out.println(Arrays.asList(language).contains("Ruby"));
+		System.out.println(Arrays.asList(language).contains("R"));
+		System.out.println(Arrays.asList(language).contains("Kotlin"));
+		System.out.println(Arrays.asList(language).contains("Go"));
+		System.out.println(Arrays.asList(language).contains("その他"));
 		return flag;
 	}
 
