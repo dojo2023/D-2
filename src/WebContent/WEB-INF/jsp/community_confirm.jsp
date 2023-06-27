@@ -31,19 +31,19 @@
             <h4>タグ：</h4>
                 <c:set var="sendLang" value="" />
                 <c:forEach var="e" items="${language}">
-                ${e},
+                ${e}&nbsp;
                 <c:set var="sendLang" value="${sendLang},${e} "/>
                 </c:forEach>
 
                 <c:set var="sendPurp" value="" />
                 <c:forEach var="e" items="${purpose}">
-                ${e},
+                ${e}&nbsp;
                 <c:set var="sendPurp" value="${sendPurp},${e} "/>
                 </c:forEach>
 
                 <c:set var="sendCert" value="" />
                 <c:forEach var="e" items="${certification}">
-                ${e},
+                ${e}&nbsp;
                 <c:set var="sendCert" value="${sendCert},${e} "/>
                 </c:forEach>
                 ${career}<br>
