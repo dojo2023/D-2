@@ -727,20 +727,31 @@ public class ArticleDao {
 			int[] resultIdArray = new int[5];
 			int resultCount = 0;
 			Arrays.fill(matchRate, 0);
+			// 検索マッチ数分ループ
 			for (int i=0; i<results.size(); i++) {
+				// 各ユーザータグ分ループ
 				for (int j=0; j<user.getLanguage().length; j++) {
-					if (user.getLanguage()[j].equals(results.get(i).getArticleLanguage()[j])) {
-						matchRate[i]++;
+					// マッチ記事1件に含まれるタグ分回してmatchRate加算
+					for (int k=0; k<results.get(i).getArticleLanguage().length; k++) {
+						if (user.getLanguage()[j].equals(results.get(i).getArticleLanguage()[k])) {
+							matchRate[i]++;
+						}
 					}
 				}
 				for (int j=0; j<user.getPurpose().length; j++) {
-					if (user.getPurpose()[j].equals(results.get(i).getArticlePurpose()[j])) {
-						matchRate[i]++;
+					// マッチ記事1件に含まれるタグ分回してmatchRate加算
+					for (int k=0; k<results.get(i).getArticlePurpose().length; k++) {
+						if (user.getPurpose()[j].equals(results.get(i).getArticlePurpose()[k])) {
+							matchRate[i]++;
+						}
 					}
 				}
 				for (int j=0; j<user.getCertification().length; j++) {
-					if (user.getCertification()[j].equals(results.get(i).getArticleCertification()[j])) {
-						matchRate[i]++;
+					// マッチ記事1件に含まれるタグ分回してmatchRate加算
+					for (int k=0; k<results.get(i).getArticleCertification().length; k++) {
+						if (user.getCertification()[j].equals(results.get(i).getArticleCertification()[k])) {
+							matchRate[i]++;
+						}
 					}
 				}
 				if (user.getCareer().equals(results.get(i).getArticleCareer())) {
