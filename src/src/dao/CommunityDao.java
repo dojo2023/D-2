@@ -539,7 +539,7 @@ public class CommunityDao {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/src/Data", "sa", "");
 
 			// SQL文を準備する
-			String sql = "insert into chat ( community_id, user_id, remark_text, remark_date) values (?, ?, ?, FORMATDATETIME(now(), 'yyyy/MM/dd (EE) HH:mm:ss'))";
+			String sql = "insert into chat ( community_id, user_id, remark_text, remark_date) values (?, ?, ?,?)";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
@@ -548,6 +548,7 @@ public class CommunityDao {
 				pStmt.setInt(1, remark.getCommunityId());
 				pStmt.setString(2, remark.getUserId());
 				pStmt.setString(3, remark.getRemarkText());
+				pStmt.setTimestamp(4, new Timestamp(System.currentTimeMillis()));
 
 
 
