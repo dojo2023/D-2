@@ -53,6 +53,21 @@ public class PostServlet extends HttpServlet {
 		String articleCareer = request.getParameter("career");
 		String[] articleCertification = request.getParameterValues("certification");
 		String articleText = request.getParameter("article_text");
+		//確認用にコンソールに表示
+		System.out.printf("articleTitle=%s\n",articleTitle);
+		System.out.printf("UserId=%s\n",userId);
+		System.out.printf("articleCareer=%s\n",articleCareer);
+		System.out.printf("articleText=%s\n",articleText);
+		for(int i=0; i<articleLanguage.length; i++) {
+			System.out.printf("articleLanguage=%s\n",articleLanguage[i]);
+		}
+		for(int i=0; i<articlePurpose.length; i++) {
+			System.out.printf("article_purpose=%s\n",articlePurpose[i]);
+		}
+		for(int i=0; i<articleCertification.length; i++) {
+			System.out.printf("article_Certification=%s\n",articleCertification[i]);
+		}
+
 
 		//リクエストスコープに格納
 		request.setAttribute("articleTitle",articleTitle);
