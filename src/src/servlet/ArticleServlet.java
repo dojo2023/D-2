@@ -28,7 +28,7 @@ public class ArticleServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		request.setCharacterEncoding("UTF-8");
-		int articleId = Integer.parseInt(request.getParameter("articleId"));
+		int articleId = Integer.parseInt(request.getParameter("article_id"));
 		ArticleDao aDao = new ArticleDao();
 		Article article = aDao.load(articleId);
 		ArrayList<Comment> commentData = aDao.getComment(articleId);
