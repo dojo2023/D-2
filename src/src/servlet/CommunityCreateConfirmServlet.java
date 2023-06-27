@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.CommunityDao;
 import model.Community;
@@ -32,6 +33,7 @@ public class CommunityCreateConfirmServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+		HttpSession session=request.getSession();
 		request.setCharacterEncoding("UTF-8");
 		String name = request.getParameter("community_name");
 		String sendLang = request.getParameter("sendLang");
@@ -55,12 +57,12 @@ public class CommunityCreateConfirmServlet extends HttpServlet {
 		Community community=new Community(0,"",name,language,purpose,career,certification,summary);
 		CommunityDao cyDao=new CommunityDao();
 		int communityId =cyDao.addCommunity(community);
-		request.setAttribute("community_id", communityId);
+		String communityIdStr = String.valueOf(communityId);
+		session.setAttribute("community_id_ss", communityIdStr);
+		response.sendRedirect("/product_D2/community");
 
 
 
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/community");
-		dispatcher.forward(request, response);
 
 
 

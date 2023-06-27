@@ -24,15 +24,23 @@ import model.User;
 public class CommunityServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+
 	//メッセージ表示
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-
+		HttpSession session = request.getSession();
 		request.setCharacterEncoding("UTF-8");
-		int communityId=Integer.parseInt(request.getParameter("community_id"));
+		int communityId;
+		String communityIdStr = (String)session.getAttribute("community_id_ss");
+		if (communityIdStr != null) {
+			communityId = Integer.parseInt(communityIdStr);
+			session.removeAttribute("community_id_ss");
+		} else {
+			communityId=Integer.parseInt(request.getParameter("community_id"));
+		}
 		CommunityDao cDao=new CommunityDao();
 
 		Community community_data=cDao.getCommunityById(communityId);
@@ -56,7 +64,6 @@ public class CommunityServlet extends HttpServlet {
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/community_xxxx.jsp");
 		dispatcher.forward(request, response);
 	}
-
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
