@@ -14,6 +14,7 @@ import javax.servlet.http.HttpSession;
 import dao.ArticleDao;
 import model.Article;
 import model.Comment;
+import dao.UserDao;
 
 /**
  * Servlet implementation class ArticleServlet
@@ -30,10 +31,13 @@ public class ArticleServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		int articleId = Integer.parseInt(request.getParameter("article_id"));
 		ArticleDao aDao = new ArticleDao();
+		UserDao uDao = new UserDao();
 		Article article = aDao.load(articleId);
 		ArrayList<Comment> commentData = aDao.getComment(articleId);
 		request.setAttribute("comment", commentData);
 		request.setAttribute("article", article);
+		String writerName = uDao.getUserNameById(article.getUserId());
+		request.setAttribute("writerName",writerName);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/article.jsp");
 		dispatcher.forward(request, response);
 	}

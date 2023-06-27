@@ -3152,3 +3152,398 @@ Column "artcile_title" not found [42122-199]
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.base/java.lang.Thread.run(Thread.java:834)
+2023-06-27 14:17:01 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: "TIMESTAMP" 定数 "2023/06/27 (火) 14:17:01" を解析できません
+Cannot parse "TIMESTAMP" constant "2023/06/27 (火) 14:17:01"; SQL statement:
+insert into community( community_date, community_name, community_language, community_purpose, community_career, community_certification, community_summary ) values(FORMATDATETIME(now(), 'yyyy/MM/dd (EE) HH:mm:ss'),?,?,?,?,?,?) -- (FORMATDATETIME(NOW(), 'yyyy/MM/dd (EE) HH:mm:ss'), ?1, ?2, ?3, ?4, ?5, ?6) [22007-199]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:455)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:427)
+	at org.h2.message.DbException.get(DbException.java:194)
+	at org.h2.value.ValueTimestamp.parse(ValueTimestamp.java:140)
+	at org.h2.value.Value.convertToTimestamp(Value.java:1099)
+	at org.h2.value.Value.convertTo(Value.java:778)
+	at org.h2.value.Value.convertTo(Value.java:735)
+	at org.h2.table.Column.convert(Column.java:199)
+	at org.h2.command.dml.Insert.insertRows(Insert.java:164)
+	at org.h2.command.dml.Insert.update(Insert.java:132)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:133)
+	at org.h2.command.Command.executeUpdate(Command.java:267)
+	at org.h2.jdbc.JdbcPreparedStatement.executeUpdateInternal(JdbcPreparedStatement.java:200)
+	at org.h2.jdbc.JdbcPreparedStatement.executeUpdate(JdbcPreparedStatement.java:154)
+	at dao.CommunityDao.addCommunity(CommunityDao.java:295)
+	at servlet.CommunityCreateConfirmServlet.doPost(CommunityCreateConfirmServlet.java:57)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:652)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:733)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:542)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:143)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:690)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:374)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:868)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1590)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: java.lang.NumberFormatException: For input string: "2023/0"
+	at java.base/java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.base/java.lang.Integer.parseInt(Integer.java:652)
+	at java.base/java.lang.Integer.parseInt(Integer.java:770)
+	at org.h2.util.DateTimeUtils.parseDateValue(DateTimeUtils.java:369)
+	at org.h2.util.DateTimeUtils.parseTimestamp(DateTimeUtils.java:528)
+	at org.h2.value.ValueTimestamp.parse(ValueTimestamp.java:138)
+	... 36 more
+2023-06-27 14:22:59 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: "TIMESTAMP" 定数 "2023/06/27 (火) 14:22:59" を解析できません
+Cannot parse "TIMESTAMP" constant "2023/06/27 (火) 14:22:59"; SQL statement:
+insert into community( community_date, community_name, community_language, community_purpose, community_career, community_certification, community_summary ) values(FORMATDATETIME(now(), 'yyyy/MM/dd (EE) HH:mm:ss'),?,?,?,?,?,?) -- (FORMATDATETIME(NOW(), 'yyyy/MM/dd (EE) HH:mm:ss'), ?1, ?2, ?3, ?4, ?5, ?6) [22007-199]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:455)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:427)
+	at org.h2.message.DbException.get(DbException.java:194)
+	at org.h2.value.ValueTimestamp.parse(ValueTimestamp.java:140)
+	at org.h2.value.Value.convertToTimestamp(Value.java:1099)
+	at org.h2.value.Value.convertTo(Value.java:778)
+	at org.h2.value.Value.convertTo(Value.java:735)
+	at org.h2.table.Column.convert(Column.java:199)
+	at org.h2.command.dml.Insert.insertRows(Insert.java:164)
+	at org.h2.command.dml.Insert.update(Insert.java:132)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:133)
+	at org.h2.command.Command.executeUpdate(Command.java:267)
+	at org.h2.jdbc.JdbcPreparedStatement.executeUpdateInternal(JdbcPreparedStatement.java:200)
+	at org.h2.jdbc.JdbcPreparedStatement.executeUpdate(JdbcPreparedStatement.java:154)
+	at dao.CommunityDao.addCommunity(CommunityDao.java:295)
+	at servlet.CommunityCreateConfirmServlet.doPost(CommunityCreateConfirmServlet.java:57)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:652)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:733)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:542)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:143)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:690)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:374)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:868)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1590)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: java.lang.NumberFormatException: For input string: "2023/0"
+	at java.base/java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.base/java.lang.Integer.parseInt(Integer.java:652)
+	at java.base/java.lang.Integer.parseInt(Integer.java:770)
+	at org.h2.util.DateTimeUtils.parseDateValue(DateTimeUtils.java:369)
+	at org.h2.util.DateTimeUtils.parseTimestamp(DateTimeUtils.java:528)
+	at org.h2.value.ValueTimestamp.parse(ValueTimestamp.java:138)
+	... 36 more
+2023-06-27 14:28:19 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: "TIMESTAMP" 定数 "2023/06/27 (火) 14:28:19" を解析できません
+Cannot parse "TIMESTAMP" constant "2023/06/27 (火) 14:28:19"; SQL statement:
+insert into community( community_date, community_name, community_language, community_purpose, community_career, community_certification, community_summary ) values(FORMATDATETIME(now(), 'yyyy/MM/dd (EE) HH:mm:ss'),?,?,?,?,?,?) -- (FORMATDATETIME(NOW(), 'yyyy/MM/dd (EE) HH:mm:ss'), ?1, ?2, ?3, ?4, ?5, ?6) [22007-199]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:455)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:427)
+	at org.h2.message.DbException.get(DbException.java:194)
+	at org.h2.value.ValueTimestamp.parse(ValueTimestamp.java:140)
+	at org.h2.value.Value.convertToTimestamp(Value.java:1099)
+	at org.h2.value.Value.convertTo(Value.java:778)
+	at org.h2.value.Value.convertTo(Value.java:735)
+	at org.h2.table.Column.convert(Column.java:199)
+	at org.h2.command.dml.Insert.insertRows(Insert.java:164)
+	at org.h2.command.dml.Insert.update(Insert.java:132)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:133)
+	at org.h2.command.Command.executeUpdate(Command.java:267)
+	at org.h2.jdbc.JdbcPreparedStatement.executeUpdateInternal(JdbcPreparedStatement.java:200)
+	at org.h2.jdbc.JdbcPreparedStatement.executeUpdate(JdbcPreparedStatement.java:154)
+	at dao.CommunityDao.addCommunity(CommunityDao.java:295)
+	at servlet.CommunityCreateConfirmServlet.doPost(CommunityCreateConfirmServlet.java:57)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:652)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:733)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:542)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:143)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:690)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:374)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:868)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1590)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: java.lang.NumberFormatException: For input string: "2023/0"
+	at java.base/java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.base/java.lang.Integer.parseInt(Integer.java:652)
+	at java.base/java.lang.Integer.parseInt(Integer.java:770)
+	at org.h2.util.DateTimeUtils.parseDateValue(DateTimeUtils.java:369)
+	at org.h2.util.DateTimeUtils.parseTimestamp(DateTimeUtils.java:528)
+	at org.h2.value.ValueTimestamp.parse(ValueTimestamp.java:138)
+	... 36 more
+2023-06-27 14:42:18 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: "TIMESTAMP" 定数 "2023/06/27 (火) 14:42:18" を解析できません
+Cannot parse "TIMESTAMP" constant "2023/06/27 (火) 14:42:18"; SQL statement:
+insert into community( community_date, community_name, community_language, community_purpose, community_career, community_certification, community_summary ) values(FORMATDATETIME(now(), 'yyyy/MM/dd (EE) HH:mm:ss'),?,?,?,?,?,?) -- (FORMATDATETIME(NOW(), 'yyyy/MM/dd (EE) HH:mm:ss'), ?1, ?2, ?3, ?4, ?5, ?6) [22007-199]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:455)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:427)
+	at org.h2.message.DbException.get(DbException.java:194)
+	at org.h2.value.ValueTimestamp.parse(ValueTimestamp.java:140)
+	at org.h2.value.Value.convertToTimestamp(Value.java:1099)
+	at org.h2.value.Value.convertTo(Value.java:778)
+	at org.h2.value.Value.convertTo(Value.java:735)
+	at org.h2.table.Column.convert(Column.java:199)
+	at org.h2.command.dml.Insert.insertRows(Insert.java:164)
+	at org.h2.command.dml.Insert.update(Insert.java:132)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:133)
+	at org.h2.command.Command.executeUpdate(Command.java:267)
+	at org.h2.jdbc.JdbcPreparedStatement.executeUpdateInternal(JdbcPreparedStatement.java:200)
+	at org.h2.jdbc.JdbcPreparedStatement.executeUpdate(JdbcPreparedStatement.java:154)
+	at dao.CommunityDao.addCommunity(CommunityDao.java:295)
+	at servlet.CommunityCreateConfirmServlet.doPost(CommunityCreateConfirmServlet.java:57)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:652)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:733)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:542)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:143)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:690)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:374)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:868)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1590)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: java.lang.NumberFormatException: For input string: "2023/0"
+	at java.base/java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.base/java.lang.Integer.parseInt(Integer.java:652)
+	at java.base/java.lang.Integer.parseInt(Integer.java:770)
+	at org.h2.util.DateTimeUtils.parseDateValue(DateTimeUtils.java:369)
+	at org.h2.util.DateTimeUtils.parseTimestamp(DateTimeUtils.java:528)
+	at org.h2.value.ValueTimestamp.parse(ValueTimestamp.java:138)
+	... 36 more
+2023-06-27 15:04:51 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: パラメータ "parameterIndex" に対する値 "0" が不正です
+Invalid value "0" for parameter "parameterIndex" [90008-199]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:587)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:427)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.getInvalidValueException(DbException.java:280)
+	at org.h2.jdbc.JdbcPreparedStatement.setParameter(JdbcPreparedStatement.java:1573)
+	at org.h2.jdbc.JdbcPreparedStatement.setString(JdbcPreparedStatement.java:427)
+	at dao.ArticleDao.select(ArticleDao.java:46)
+	at servlet.SearchServlet.doGet(SearchServlet.java:35)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:626)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:733)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:542)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:143)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:690)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:374)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:868)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1590)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+2023-06-27 15:13:45 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: 列 """ARTICLE_IMG1"" VARCHAR(30)" の値が長過ぎます: "'/product_D2/upload/article23img1.png' (36)"
+Value too long for column """ARTICLE_IMG1"" VARCHAR(30)": "'/product_D2/upload/article23img1.png' (36)"; SQL statement:
+update article set article_title=?, user_id=?, article_language=?, article_purpose=?, article_career=?, article_certification=?, article_favs=?, article_text=?, article_img1=?, article_img2=?, article_img3=? where article_id=? [22001-199]
+2023-06-27 15:16:56 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "DELETE TABLE[*] FROM ARTICLE"; 期待されるステートメント "identifier"
+Syntax error in SQL statement "DELETE TABLE[*] FROM ARTICLE"; expected "identifier"; SQL statement:
+delete table from article [42001-200]
+2023-06-27 15:18:36 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: テーブル "USER" が見つかりません
+Table "USER" not found; SQL statement:
+select * from USER where user_id = ? and password = ? [42102-199]
+2023-06-27 15:18:41 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: テーブル "USER" が見つかりません
+Table "USER" not found; SQL statement:
+select * from USER where user_id = ? and password = ? [42102-199]
+2023-06-27 15:18:54 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: テーブル "USER" が見つかりません
+Table "USER" not found; SQL statement:
+select * from USER where user_id = ? and password = ? [42102-199]
+2023-06-27 15:20:50 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "CREATE TABLE MEMBER (
+ PARTICIPATION_ID INT AUTO_INCREMENT PRIMARY KEY NOT NULL
+ COMMUNITY_ID[*] (INT) NOT NULL,
+ USER_ID VARCHAR (16) NOT NULL
+)"; 期待されるステートメント "COMMENT, CHECK, REFERENCES, ,, )"
+Syntax error in SQL statement "CREATE TABLE MEMBER (
+ PARTICIPATION_ID INT AUTO_INCREMENT PRIMARY KEY NOT NULL
+ COMMUNITY_ID[*] (INT) NOT NULL,
+ USER_ID VARCHAR (16) NOT NULL
+)"; expected "COMMENT, CHECK, REFERENCES, ,, )"; SQL statement:
+create table member (
+ participation_id int auto_increment primary key not null
+ community_id (int) not null,
+ user_id varchar (16) not null
+) [42001-200]
+2023-06-27 15:21:15 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: 不明なデータ型: 
+Unknown data type: ; SQL statement:
+create table member (
+ participation_id int auto_increment primary key not null,
+ community_id (int) not null,
+ user_id varchar (16) not null
+) [50004-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:505)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.command.Parser.parseColumnWithType(Parser.java:5971)
+	at org.h2.command.Parser.parseColumnForTable(Parser.java:5697)
+	at org.h2.command.Parser.parseTableColumnDefinition(Parser.java:8442)
+	at org.h2.command.Parser.parseCreateTable(Parser.java:8379)
+	at org.h2.command.Parser.parseCreate(Parser.java:6276)
+	at org.h2.command.Parser.parsePrepared(Parser.java:903)
+	at org.h2.command.Parser.parse(Parser.java:843)
+	at org.h2.command.Parser.parse(Parser.java:815)
+	at org.h2.command.Parser.prepareCommand(Parser.java:738)
+	at org.h2.engine.Session.prepareLocal(Session.java:657)
+	at org.h2.engine.Session.prepareCommand(Session.java:595)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1235)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:212)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:201)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1459)
+	at org.h2.server.web.WebApp.query(WebApp.java:1116)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1078)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1065)
+	at org.h2.server.web.WebThread.process(WebThread.java:178)
+	at org.h2.server.web.WebThread.run(WebThread.java:94)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+2023-06-27 15:21:30 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: 不明なデータ型: 
+Unknown data type: ; SQL statement:
+create table member (
+ participation_id (int) auto_increment primary key not null,
+ community_id (int) not null,
+ user_id varchar (16) not null
+) [50004-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:505)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.command.Parser.parseColumnWithType(Parser.java:5971)
+	at org.h2.command.Parser.parseColumnForTable(Parser.java:5697)
+	at org.h2.command.Parser.parseTableColumnDefinition(Parser.java:8442)
+	at org.h2.command.Parser.parseCreateTable(Parser.java:8379)
+	at org.h2.command.Parser.parseCreate(Parser.java:6276)
+	at org.h2.command.Parser.parsePrepared(Parser.java:903)
+	at org.h2.command.Parser.parse(Parser.java:843)
+	at org.h2.command.Parser.parse(Parser.java:815)
+	at org.h2.command.Parser.prepareCommand(Parser.java:738)
+	at org.h2.engine.Session.prepareLocal(Session.java:657)
+	at org.h2.engine.Session.prepareCommand(Session.java:595)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1235)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:212)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:201)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1459)
+	at org.h2.server.web.WebApp.query(WebApp.java:1116)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1078)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1065)
+	at org.h2.server.web.WebThread.process(WebThread.java:178)
+	at org.h2.server.web.WebThread.run(WebThread.java:94)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+2023-06-27 15:24:57 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: 有効なデータがありません
+No data is available [2000-199]
+2023-06-27 15:24:57 jdbc[5]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: 有効なデータがありません
+No data is available [2000-199]
+2023-06-27 15:24:57 jdbc[6]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: 有効なデータがありません
+No data is available [2000-199]
+2023-06-27 15:24:57 jdbc[7]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: 有効なデータがありません
+No data is available [2000-199]
+2023-06-27 15:24:57 jdbc[8]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: 有効なデータがありません
+No data is available [2000-199]
+2023-06-27 15:24:58 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: パラメータ "parameterIndex" に対する値 "4" が不正です
+Invalid value "4" for parameter "parameterIndex" [90008-199]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:587)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:427)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.getInvalidValueException(DbException.java:280)
+	at org.h2.jdbc.JdbcPreparedStatement.setParameter(JdbcPreparedStatement.java:1573)
+	at org.h2.jdbc.JdbcPreparedStatement.setString(JdbcPreparedStatement.java:427)
+	at dao.CommunityDao.getRecommendCommunity(CommunityDao.java:645)
+	at servlet.TopServlet.doGet(TopServlet.java:43)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:626)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:733)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:542)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:143)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:690)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:374)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:868)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1590)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:834)

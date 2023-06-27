@@ -378,21 +378,22 @@ public class ArticleDao {
 			certification = Flag.certificationFlag(data.getArticleCertification());
 
 			//SQL文を準備する
-			String sql = "update article set article_title=?, article_language=?, article_purpose=?, article_career=?, article_certification=?, article_favs=?, article_text=?, article_img1=?, article_img2=?, article_img3=? where article_id=?";
+			String sql = "update article set article_title=?, user_id=?, article_language=?, article_purpose=?, article_career=?, article_certification=?, article_favs=?, article_text=?, article_img1=?, article_img2=?, article_img3=? where article_id=?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			//SQL文を完成させる
 			pStmt.setString(1, data.getArticleTitle());
-			pStmt.setString(2, language);
-			pStmt.setString(3, purpose);
-			pStmt.setString(4, data.getArticleCareer());
-			pStmt.setString(5, certification);
-			pStmt.setInt(6, data.getArticleFavs());
-			pStmt.setString(7, data.getArticleText());
-			pStmt.setString(8, data.getArticleImg1());
-			pStmt.setString(9, data.getArticleImg2());
-			pStmt.setString(10, data.getArticleImg3());
-			pStmt.setInt(11, data.getArticleId());
+			pStmt.setString(2, data.getUserId());
+			pStmt.setString(3, language);
+			pStmt.setString(4, purpose);
+			pStmt.setString(5, data.getArticleCareer());
+			pStmt.setString(6, certification);
+			pStmt.setInt(7, data.getArticleFavs());
+			pStmt.setString(8, data.getArticleText());
+			pStmt.setString(9, data.getArticleImg1());
+			pStmt.setString(10, data.getArticleImg2());
+			pStmt.setString(11, data.getArticleImg3());
+			pStmt.setInt(12, data.getArticleId());
 			pStmt.executeUpdate();
 			result = true;
 

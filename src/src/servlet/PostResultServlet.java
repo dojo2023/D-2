@@ -46,6 +46,7 @@ public class PostResultServlet extends HttpServlet {
 		//各値を取得
 		String articleTitle = request.getParameter("article_title");
 		String userId = ((User)session.getAttribute("user")).getUserId();
+		System.out.println("ユーザーID"+userId);
 		String sendLang = request.getParameter("sendLang");
 		System.out.println("sendLang;"+sendLang);
 		String[] articleLanguage=sendLang.substring(1).split(",");
@@ -67,52 +68,67 @@ public class PostResultServlet extends HttpServlet {
 		articleId = aDao.insertGetId();	//空の記事idがarticle_idに入った。
 		//このarticle_idを使ってarticleImg*Pathを書き換える。
 
-		//画像のパスの書き換え。
+		//画像1のパスの書き換え。
 		if(article_img1 !="") {
-			File fOld = new File(article_img1);
+			String OldName = article_img1.substring(article_img1.lastIndexOf("/")+1);		//古い画像の名前だけを取り出した
+			File fOld =new File("C:\\dojo6\\src\\WebContent\\upload\\"+OldName);	//古い画像のパス（書き換えできる形）を登録
 			int idx = article_img1.lastIndexOf(".");
 			String extName =article_img1.substring(idx);	//extNameに拡張子が入っている 例）.png
+			String NewName ="article"+articleId+"img1"+extName;		//新しいファイル名を設定（後でファイルの名前を変える際に使用）
 			article_img1 = "/product_D2/upload/article"+articleId+"img1"+extName;	//新しいPathがarticle_img1に上書きされた
-			File fNew = new File(article_img1);
 
 			//uploadフォルダの画像の名前の書き換え
+			File fNew =new File("C:\\dojo6\\src\\WebContent\\upload\\"+NewName);
+
 			if(fOld.exists()) {
-				fOld.renameTo(fNew);	//ファイル名変更実行
+				fOld.renameTo(fNew);
+				System.out.println("ファイル名を変更しました。");
+			} else {
+				System.out.println("ファイルが存在しません。");
+				article_img1 ="";
 			}
-		}else {
-			article_img1 = "";
 		}
 
-		//画像のパスの書き換え。
+		//画像2のパスの書き換え。
 		if(article_img2 !="") {
-			File fOld = new File(article_img2);
+			String OldName = article_img2.substring(article_img2.lastIndexOf("/")+1);		//古い画像の名前だけを取り出した
+			File fOld =new File("C:\\dojo6\\src\\WebContent\\upload\\"+OldName);	//古い画像のパス（書き換えできる形）を登録
 			int idx = article_img2.lastIndexOf(".");
 			String extName =article_img2.substring(idx);	//extNameに拡張子が入っている 例）.png
+			String NewName ="article"+articleId+"img2"+extName;		//新しいファイル名を設定（後でファイルの名前を変える際に使用）
 			article_img2 = "/product_D2/upload/article"+articleId+"img2"+extName;	//新しいPathがarticle_img1に上書きされた
-			File fNew = new File(article_img2);
 
 			//uploadフォルダの画像の名前の書き換え
+			File fNew =new File("C:\\dojo6\\src\\WebContent\\upload\\"+NewName);
+
 			if(fOld.exists()) {
-				fOld.renameTo(fNew);	//ファイル名変更実行
+				fOld.renameTo(fNew);
+				System.out.println("ファイル名を変更しました。");
+			} else {
+				System.out.println("ファイルが存在しません。");
+				article_img2 ="";
 			}
-		}else {
-			article_img2 = "";
 		}
 
-		//画像のパスの書き換え。
+		//画像3のパスの書き換え。
 		if(article_img3 !="") {
-			File fOld = new File(article_img3);
+			String OldName = article_img3.substring(article_img3.lastIndexOf("/")+1);		//古い画像の名前だけを取り出した
+			File fOld =new File("C:\\dojo6\\src\\WebContent\\upload\\"+OldName);	//古い画像のパス（書き換えできる形）を登録
 			int idx = article_img3.lastIndexOf(".");
 			String extName =article_img3.substring(idx);	//extNameに拡張子が入っている 例）.png
+			String NewName ="article"+articleId+"img3"+extName;		//新しいファイル名を設定（後でファイルの名前を変える際に使用）
 			article_img3 = "/product_D2/upload/article"+articleId+"img3"+extName;	//新しいPathがarticle_img1に上書きされた
-			File fNew = new File(article_img3);
 
 			//uploadフォルダの画像の名前の書き換え
+			File fNew =new File("C:\\dojo6\\src\\WebContent\\upload\\"+NewName);
+
 			if(fOld.exists()) {
-				fOld.renameTo(fNew);	//ファイル名変更実行
+				fOld.renameTo(fNew);
+				System.out.println("ファイル名を変更しました。");
+			} else {
+				System.out.println("ファイルが存在しません。");
+				article_img3 ="";
 			}
-		}else {
-			article_img3 = "";
 		}
 
 		//登録する記事の内容をArticle型の変数に代入
@@ -126,6 +142,7 @@ public class PostResultServlet extends HttpServlet {
 		} else {
 			errormessage = "sql error";
 		}
+		System.out.println("errormessage:"+errormessage);
 
 		//通知ページにarticle_idを渡すため変数articleをリクエストスコープに保存
 		request.setAttribute("article", article);

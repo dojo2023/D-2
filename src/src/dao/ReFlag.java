@@ -1,263 +1,240 @@
 package dao;
 
+import java.util.ArrayList;
+
 public class ReFlag {
 	//引数はフラグ形式の文字列、戻り値の型はStringの配列
 	//使用言語をフラグ形式から内容に変更する
 	public static String[] languageReFlag(String flag) {
-		String[] language = new String[16];
+		ArrayList<String> langList = new ArrayList<String>();
 		int i = 0;
 		char c = flag.charAt(i);
 
 		if(c == '1') {
-			language[i] = "Java";
-		} else if(c == '0') {
-			language[i] = "";
+			langList.add("Java");
 		}
 		i++;
-		if(c == '1') {
-			language[i] = "JavaScript";
-		} else if(c == '0') {
-			language[i] = "";
+		c = flag.charAt(i);
+		if(c == '2') {
+			langList.add("JavaScript");
 		}
 		i++;
-		if(c == '1') {
-			language[i] = "TypeScript";
-		} else if(c == '0') {
-			language[i] = "";
+		c = flag.charAt(i);
+		if(c == '3') {
+			langList.add("TypeScript");
 		}
 		i++;
-		if(c == '1') {
-			language[i] = "C++(C)";
-		} else if(c == '0') {
-			language[i] = "";
+		c = flag.charAt(i);
+		if(c == '4') {
+			langList.add("C/C++");
 		}
 		i++;
-		if(c == '1') {
-			language[i] = "C#";
-		} else if(c == '0') {
-			language[i] = "";
+		c = flag.charAt(i);
+		if(c == '5') {
+			langList.add("C#");
 		}
 		i++;
-		if(c == '1') {
-			language[i] = "Python";
-		} else if(c == '0') {
-			language[i] = "";
+		c = flag.charAt(i);
+		if(c == '6') {
+			langList.add("Python");
 		}
 		i++;
-		if(c == '1') {
-			language[i] = "SQL";
-		} else if(c == '0') {
-			language[i] = "";
+		c = flag.charAt(i);
+		if(c == '7') {
+			langList.add("SQL");
 		}
 		i++;
-		if(c == '1') {
-			language[i] = "HTML&CSS";
-		} else if(c == '0') {
-			language[i] = "";
+		c = flag.charAt(i);
+		if(c == '8') {
+			langList.add("HTML&CSS");
 		}
 		i++;
-		if(c == '1') {
-			language[i] = "PHP";
-		} else if(c == '0') {
-			language[i] = "";
+		c = flag.charAt(i);
+		if(c == '9') {
+			langList.add("PHP");
 		}
 		i++;
-		if(c == '1') {
-			language[i] = "Scala";
-		} else if(c == '0') {
-			language[i] = "";
+		c = flag.charAt(i);
+		if(c == 'a') {
+			langList.add("Scala");
 		}
 		i++;
-		if(c == '1') {
-			language[i] = "Swift";
-		} else if(c == '0') {
-			language[i] = "";
+		c = flag.charAt(i);
+		if(c == 'b') {
+			langList.add("Swift");
 		}
 		i++;
-		if(c == '1') {
-			language[i] = "Ruby";
-		} else if(c == '0') {
-			language[i] = "";
+		c = flag.charAt(i);
+		if(c == 'c') {
+			langList.add("Ruby");
 		}
 		i++;
-		if(c == '1') {
-			language[i] = "R言語";
-		} else if(c == '0') {
-			language[i] = "";
+		c = flag.charAt(i);
+		if(c == 'd') {
+			langList.add("R");
 		}
 		i++;
-		if(c == '1') {
-			language[i] = "Kotolin";
-		} else if(c == '0') {
-			language[i] = "";
+		c = flag.charAt(i);
+		if(c == 'e') {
+			langList.add("Kotlin");
 		}
 		i++;
-		if(c == '1') {
-			language[i] = "Go";
-		} else if(c == '0') {
-			language[i] = "";
+		c = flag.charAt(i);
+		if(c == 'f') {
+			langList.add("Go");
 		}
 		i++;
-		if(c == '1') {
-			language[i] = "その他";
-		} else if(c == '0') {
-			language[i] = "";
+		c = flag.charAt(i);
+		if(c == 'g') {
+			langList.add("その他");
 		}
 
-		return language;
+		return langList.toArray(new String[langList.size()]);
 
 	}
 
 	//引数はフラグ形式の文字列、戻り値の型はStringの配列
 	//使用目的をフラグ形式から内容に変更する
 	public static String[] purposeReFlag(String flag) {
-		String[] purpose = new String[11];
+		ArrayList<String> purpList = new ArrayList<String>();
 		int i = 0;
 		char c = flag.charAt(i);
 
 		if(c == '1') {
-			purpose[i] = "プログラミング";
-		} else if(c == '0') {
-			purpose[i] = "";
+			purpList.add("プログラミング");
 		}
 		i++;
-		if(c == '1') {
-			purpose[i] = "資格";
-		} else if(c == '0') {
-			purpose[i] = "";
+		c = flag.charAt(i);
+		if(c == '2') {
+			purpList.add("資格");
 		}
-		i++;if(c == '1') {
-			purpose[i] = "システム開発";
-		} else if(c == '0') {
-			purpose[i] = "";
+		i++;
+		c = flag.charAt(i);
+		if(c == '3') {
+			purpList.add("システム開発");
 		}
-		i++;if(c == '1') {
-			purpose[i] = "業界研究";
-		} else if(c == '0') {
-			purpose[i] = "";
+		i++;
+		c = flag.charAt(i);
+		if(c == '4') {
+			purpList.add("業界研究");
 		}
-		i++;if(c == '1') {
-			purpose[i] = "ITニュース";
-		} else if(c == '0') {
-			purpose[i] = "";
+		i++;
+		c = flag.charAt(i);
+		if(c == '5') {
+			purpList.add("ITニュース");
 		}
-		i++;if(c == '1') {
-			purpose[i] = "キャリア";
-		} else if(c == '0') {
-			purpose[i] = "";
+		i++;
+		c = flag.charAt(i);
+		if(c == '6') {
+			purpList.add("キャリア");
 		}
-		i++;if(c == '1') {
-			purpose[i] = "データベース";
-		} else if(c == '0') {
-			purpose[i] = "";
+		i++;
+		c = flag.charAt(i);
+		if(c == '7') {
+			purpList.add("データベース");
 		}
-		i++;if(c == '1') {
-			purpose[i] = "Officeスキル";
-		} else if(c == '0') {
-			purpose[i] = "";
+		i++;
+		c = flag.charAt(i);
+		if(c == '8') {
+			purpList.add("Officeスキル");
 		}
-		i++;if(c == '1') {
-			purpose[i] = "セキュリティ";
-		} else if(c == '0') {
-			purpose[i] = "";
+		i++;
+		c = flag.charAt(i);
+		if(c == '9') {
+			purpList.add("セキュリティ");
 		}
-		i++;if(c == '1') {
-			purpose[i] = "OS";
-		} else if(c == '0') {
-			purpose[i] = "";
+		i++;
+		c = flag.charAt(i);
+		if(c == 'a') {
+			purpList.add("OS");
 		}
-		i++;if(c == '1') {
-			purpose[i] = "その他";
-		} else if(c == '0') {
-			purpose[i] = "";
+		i++;
+		c = flag.charAt(i);
+		if(c == 'b') {
+			purpList.add("その他");
 		}
 
-		return purpose;
+		return purpList.toArray(new String[purpList.size()]);
 
 	}
 
 	//引数はフラグ形式の文字列、戻り値の型はStringの配列
 	//資格をフラグ形式から内容に変更する
 	public static String[] certificationReFlag(String flag) {
-		String[] certification = new String[14];
+		ArrayList<String> certList = new ArrayList<String>();
 		int i = 0;
 		char c = flag.charAt(i);
 
 		if(c == '1') {
-			certification[i] = "ITパスポート";
-		} else if(c == '0') {
-			certification[i] = "";
+			certList.add("ITパスポート");
 		}
 		i++;
-		if(c == '1') {
-			certification[i] = "情報セキュリティマネジメント試験";
-		} else if(c == '0') {
-			certification[i] = "";
+		c = flag.charAt(i);
+		if(c == '2') {
+			certList.add("情報セキュリティマネジメント試験");
 		}
 		i++;
-		if(c == '1') {
-			certification[i] = "基本情報技術者試験";
-		} else if(c == '0') {
-			certification[i] = "";
+		c = flag.charAt(i);
+		if(c == '3') {
+			certList.add("基本情報技術者試験");
 		}
 		i++;
-		if(c == '1') {
-			certification[i] = "応用情報技術者試験";
-		} else if(c == '0') {
-			certification[i] = "";
+		c = flag.charAt(i);
+		if(c == '4') {
+			certList.add("応用情報技術者試験");
 		}
-		i++;if(c == '1') {
-			certification[i] = "ITストラテジスト試験";
-		} else if(c == '0') {
-			certification[i] = "";
+		i++;
+		c = flag.charAt(i);
+		if(c == '5') {
+			certList.add("ITストラテジスト試験");
 		}
-		i++;if(c == '1') {
-			certification[i] = "システムアーキテクト試験";
-		} else if(c == '0') {
-			certification[i] = "";
+		i++;
+		c = flag.charAt(i);
+		if(c == '6') {
+			certList.add("システムアーキテクト試験");
 		}
-		i++;if(c == '1') {
-			certification[i] = "プロジェクトマネージャ試験";
-		} else if(c == '0') {
-			certification[i] = "";
+		i++;
+		c = flag.charAt(i);
+		if(c == '7') {
+			certList.add("プロジェクトマネージャ試験");
 		}
-		i++;if(c == '1') {
-			certification[i] = "ネットワークスペシャリスト試験";
-		} else if(c == '0') {
-			certification[i] = "";
+		i++;
+		c = flag.charAt(i);
+		if(c == '8') {
+			certList.add("ネットワークスペシャリスト試験");
 		}
-		i++;if(c == '1') {
-			certification[i] = "データベーススペシャリスト試験";
-		} else if(c == '0') {
-			certification[i] = "";
+		i++;
+		c = flag.charAt(i);
+		if(c == '9') {
+			certList.add("データベーススペシャリスト試験");
 		}
-		i++;if(c == '1') {
-			certification[i] = "エンベデッドシステムスペシャリスト試験";
-		} else if(c == '0') {
-			certification[i] = "";
+		i++;
+		c = flag.charAt(i);
+		if(c == 'a') {
+			certList.add("エンベデッドシステムスペシャリスト試験");
 		}
-		i++;if(c == '1') {
-			certification[i] = "ITサービスマネージャ試験";
-		} else if(c == '0') {
-			certification[i] = "";
+		i++;
+		c = flag.charAt(i);
+		if(c == 'b') {
+			certList.add("ITサービスマネージャ試験");
 		}
-		i++;if(c == '1') {
-			certification[i] = "システム監査技術者試験";
-		} else if(c == '0') {
-			certification[i] = "";
+		i++;
+		c = flag.charAt(i);
+		if(c == 'c') {
+			certList.add("システム監査技術者試験");
 		}
-		i++;if(c == '1') {
-			certification[i] = "情報処理安全確保支援士試験";
-		} else if(c == '0') {
-			certification[i] = "";
+		i++;
+		c = flag.charAt(i);
+		if(c == 'd') {
+			certList.add("情報処理安全確保支援士試験");
 		}
-		i++;if(c == '1') {
-			certification[i] = "その他";
-		} else if(c == '0') {
-			certification[i] = "";
+		i++;
+		c = flag.charAt(i);
+		if(c == 'e') {
+			certList.add("その他");
 		}
 
-		return certification;
+		return certList.toArray(new String[certList.size()]);
 	}
 
 }

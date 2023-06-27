@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="css/common.css">
         <link rel="stylesheet" href="css/login.css">
 <title>ログイン</title>
+<link rel="icon" href="image/favicon.ico">
 </head>
 <body>
 <div class="loginlogo"><h1><img src="image/logo2.png" class="logo_contents" width="20%" height="20%"></h1></div>
