@@ -4,6 +4,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -281,17 +282,17 @@ public class CommunityDao {
 				communityCertification = Flag.certificationFlag(data.getCommunityCertification());
 
 				//SQL文を準備する
-				String sql = "insert into community( community_date, community_name, community_language, community_purpose, community_career, community_certification, community_summary ) values(FORMATDATETIME(now(), 'yyyy/MM/dd (EE) HH:mm:ss'),?,?,?,?,?,?);";
+				String sql = "insert into community( community_date, community_name, community_language, community_purpose, community_career, community_certification, community_summary ) values(?,?,?,?,?,?,?);";
 				PreparedStatement pStmt = conn.prepareStatement(sql);
 
 				//SQL文を完成させる
-				pStmt.setString(1, data.getCommunityName());
-
-				pStmt.setString(2, communityLanguage);
-				pStmt.setString(3,  communityPurpose);
-				pStmt.setString(4, data.getCommunityCareer());
-				pStmt.setString(5, communityCertification);
-				pStmt.setString(6, data.getCommunitySummary());
+				pStmt.setTimestamp(1, new Timestamp(System.currentTimeMillis()));
+				pStmt.setString(2, data.getCommunityName());
+				pStmt.setString(3, communityLanguage);
+				pStmt.setString(4,  communityPurpose);
+				pStmt.setString(5, data.getCommunityCareer());
+				pStmt.setString(6, communityCertification);
+				pStmt.setString(7, data.getCommunitySummary());
 				pStmt.executeUpdate();
 
 				sql= "select community_id from community order by community_date desc";

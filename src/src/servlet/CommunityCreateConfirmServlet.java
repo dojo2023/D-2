@@ -52,7 +52,7 @@ public class CommunityCreateConfirmServlet extends HttpServlet {
 			certification = sendCert.substring(1).split(",");
 		}
 		String career = request.getParameter("career");
-		String summary = request.getParameter("community_summary");
+		String summary = request.getParameter("summary");
 
 		Community community=new Community(0,"",name,language,purpose,career,certification,summary);
 		CommunityDao cyDao=new CommunityDao();
