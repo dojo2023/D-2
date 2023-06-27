@@ -57,6 +57,10 @@ public class PostResultServlet extends HttpServlet {
 		String article_img1 = request.getParameter("article_img1");
 		String article_img2 = request.getParameter("article_img2");
 		String article_img3 = request.getParameter("article_img3");
+		System.out.println(articleTitle);
+		System.out.println(sendLang);
+		System.out.println(sendPurp);
+		System.out.println(sendCert);
 
 		//空の記事の作成
 		articleId = aDao.insertGetId();	//空の記事idがarticle_idに入った。
