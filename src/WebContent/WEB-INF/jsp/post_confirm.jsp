@@ -33,19 +33,19 @@
 		<c:set var="sendLang" value="" />
         <c:forEach var="e" items="${article_data.articleLanguage}">
         ${e},
-        <c:set var="sendLang" value="${sendLang},${e} "/>
+        <c:set var="sendLang" value="${sendLang},${e}"/>
         </c:forEach>
 
         <c:set var="sendPurp" value="" />
          <c:forEach var="e" items="${article_data.articlePurpose}">
          ${e},
-         <c:set var="sendPurp" value="${sendPurp},${e} "/>
+         <c:set var="sendPurp" value="${sendPurp},${e}"/>
          </c:forEach>
 
          <c:set var="sendCert" value="" />
          <c:forEach var="e" items="${article_data.articleCertification}">
          ${e},
-         <c:set var="sendCert" value="${sendCert},${e} "/>
+         <c:set var="sendCert" value="${sendCert},${e}"/>
          </c:forEach>
 
          ${article_data.articleCareer}<br>
