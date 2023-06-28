@@ -87,11 +87,11 @@
 				<h3 class="right_title">自分が投稿した記事</h3>
 				<p class="txt">あなたがこれまでに投稿した記事の一覧です。<br>みんなの疑問を即解決！</p>
 
-				<c:if test="${empty articleResults}">
+				<c:if test="${empty wriArticle}">
 				<p>記事は投稿されていません</p>
 				</c:if>
 
-				<c:forEach var="article" items="${articleResults}">
+				<c:forEach var="article" items="${wriArticle}">
 					<p>${article.articleTitle}</p>
 					<div class="btn_wrap">
 						<form action="/product_D2/edit" method="get">
