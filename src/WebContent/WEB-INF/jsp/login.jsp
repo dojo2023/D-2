@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="css/common.css">
-        <link rel="stylesheet" href="css/login.css">
+<link rel="stylesheet" href="css/login.css">
 <title>ログイン</title>
 <link rel="icon" href="image/favicon.ico">
 </head>

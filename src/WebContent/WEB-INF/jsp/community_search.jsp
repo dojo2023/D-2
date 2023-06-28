@@ -7,6 +7,7 @@
 <link rel="stylesheet" href="css/common.css">
 <link rel="stylesheet" href="css/search.css">
 <title>検索結果</title>
+<link rel="icon" href="favicon.ico">
 <header>
 <!--画面上にスクロール-->
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.4/css/all.css">

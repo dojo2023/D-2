@@ -8,6 +8,7 @@
         <link rel="stylesheet" href="css/common.css">
         <link rel="stylesheet" href="css/create.css">
         <title>コミュニティ作成|with IT</title>
+        <link rel="icon" href="favicon.ico">
     </head>
     <body>
 <header>
