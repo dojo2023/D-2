@@ -26,7 +26,7 @@ public class EditServlet extends HttpServlet {
 
 
 	   // 編集対象の記事IDを取得
-	      int articleId = Integer.parseInt(request.getParameter("articleId"));
+	      int articleId = Integer.parseInt(request.getParameter("article_id"));
 
       //DAOのメソッドを呼び出して編集対象の記事を取得
 	  ArticleDao aDao=new ArticleDao();
