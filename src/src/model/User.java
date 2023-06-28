@@ -3,7 +3,7 @@ package model;
 import java.io.Serializable;
 
 public class User implements Serializable {
-	private String userId;
+	private String userId = "";
 	private String password;
 	private String userName;
 	private String[] language;
