@@ -29,7 +29,7 @@ public class EditResultServlet extends HttpServlet {
 		//リクエストパラメータの取得
 
 	      int articleId=Integer.parseInt(request.getParameter("articleId"));
-	      String articleTitle=request.getParameter("title");
+	      String articleTitle=request.getParameter("articleTitle");
 	      String userId=request.getParameter("userId");
 	      String articleCreate=request.getParameter("articleCreate");
 	      String articleUpdate=request.getParameter("articleUpdate");
@@ -40,9 +40,9 @@ public class EditResultServlet extends HttpServlet {
 	      String[] articlePurpose=sendPurp.substring(1).split(",");
 	      String sendCert=request.getParameter("sendCert");
 	      String[] articleCertification=sendCert.substring(1).split(",");
-	      String articleCareer=request.getParameter("career");
+	      String articleCareer=request.getParameter("articleCareer");
 	      int articleFavs=Integer.parseInt(request.getParameter("articleFavs"));
-	      String articleText=request.getParameter("text");
+	      String articleText=request.getParameter("articleText");
 	      String articleImg1=request.getParameter("img1");
 	      String articleImg2=request.getParameter("img2");
 	      String articleImg3=request.getParameter("img3");

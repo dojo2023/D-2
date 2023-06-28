@@ -29,7 +29,7 @@
     <div class="result_q">
         <p>更新した記事を読みますか？</p>
         <div class="btn_wrap">
-            <form method="POST" action="/product_D2/article">
+            <form method="GET" action="/product_D2/article">
             <input type="hidden" name="article_id" value="${article_data.articleId}">
             <input type="submit" name="GoArticle" value="はい" class="btn">
             </form>
