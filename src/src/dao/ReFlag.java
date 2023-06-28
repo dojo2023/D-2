@@ -6,7 +6,6 @@ public class ReFlag {
 	//引数はフラグ形式の文字列、戻り値の型はStringの配列
 	//使用言語をフラグ形式から内容に変更する
 	public static String[] languageReFlag(String flag) {
-		System.out.println("langFlag:" + flag);
 		ArrayList<String> langList = new ArrayList<String>();
 		int i = 0;
 		char c = flag.charAt(i);
