@@ -43,7 +43,7 @@ public class ArticleDao {
 			}
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 			for (int i=0; i<setStr.length; i++) {
-				pStmt.setString(i, setStr[i]);
+				pStmt.setString(i+1, setStr[i]);
 			}
 
 			//sql文を実行
