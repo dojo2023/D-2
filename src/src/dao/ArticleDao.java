@@ -708,20 +708,24 @@ public class ArticleDao {
 			pStmt.setString(4, user.getCareer());
 			ResultSet rs = pStmt.executeQuery();
 			while (rs.next()) {
-				article.setArticleId(rs.getInt("article_id"));
-				article.setArticleTitle(rs.getString("article_title"));
-				article.setUserId(rs.getString("user_id"));
-				article.setArticleCreate(rs.getString("article_create"));
-				article.setArticleUpdate(rs.getString("article_update"));
-				article.setArticleLanguage(ReFlag.languageReFlag(rs.getString("article_language")));
-				article.setArticlePurpose(ReFlag.purposeReFlag(rs.getString("article_purpose")));
-				article.setArticleCareer(rs.getString("article_career"));
-				article.setArticleCertification(ReFlag.certificationReFlag(rs.getString("article_certification")));
-				article.setArticleFavs(rs.getInt("article_favs"));
-				article.setArticleText(rs.getString("article_text"));
-				article.setArticleImg1(rs.getString("article_img1"));
-				article.setArticleImg2(rs.getString("article_img2"));
-				article.setArticleImg3(rs.getString("article_img3"));
+				int articleId = rs.getInt("article_id");
+				String articleTitle = rs.getString("article_title");
+				String userId = rs.getString("user_id");
+				String articleCreate = rs.getString("article_create");
+				String articleUpdate = rs.getString("article_update");
+				String[] articleLanguage = ReFlag.languageReFlag(rs.getString("article_language"));
+				String[] articlePurpose = ReFlag.purposeReFlag(rs.getString("article_purpose"));
+				String articleCareer = rs.getString("article_career");
+				String[] articleCertification = ReFlag.certificationReFlag(rs.getString("article_certification"));
+				int articleFavs = rs.getInt("article_favs");
+				String articleText = rs.getString("article_text");
+				String articleImg1 = rs.getString("article_img1");
+				String articleImg2 = rs.getString("article_img2");
+				String articleImg3 = rs.getString("article_img3");
+				article = new Article(articleId, articleTitle, userId, articleCreate,
+						articleUpdate, articleLanguage, articlePurpose, articleCareer,
+						articleCertification, articleFavs, articleText,
+						articleImg1, articleImg2, articleImg3);
 				results.add(article);
 			}
 			int[] matchRate = new int[results.size()];
@@ -798,7 +802,7 @@ public class ArticleDao {
 	public ArrayList<Article> getRecommendArticle() {
 		ArrayList<Article> recommendArticles = new ArrayList<Article>();
 		Connection conn = null;
-		Article article = new Article();
+		Article article;
 		try {
 			Class.forName("org.h2.Driver");
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/src/Data", "sa", "");
@@ -806,20 +810,24 @@ public class ArticleDao {
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 			ResultSet rs = pStmt.executeQuery();
 			while (rs.next()) {
-				article.setArticleId(rs.getInt("article_id"));
-				article.setArticleTitle(rs.getString("article_title"));
-				article.setUserId(rs.getString("user_id"));
-				article.setArticleCreate(rs.getString("article_create"));
-				article.setArticleUpdate(rs.getString("article_update"));
-				article.setArticleLanguage(ReFlag.languageReFlag(rs.getString("article_language")));
-				article.setArticlePurpose(ReFlag.purposeReFlag(rs.getString("article_purpose")));
-				article.setArticleCareer(rs.getString("article_career"));
-				article.setArticleCertification(ReFlag.certificationReFlag(rs.getString("article_certification")));
-				article.setArticleFavs(rs.getInt("article_favs"));
-				article.setArticleText(rs.getString("article_text"));
-				article.setArticleImg1(rs.getString("article_img1"));
-				article.setArticleImg2(rs.getString("article_img2"));
-				article.setArticleImg3(rs.getString("article_img3"));
+				int articleId = rs.getInt("article_id");
+				String articleTitle = rs.getString("article_title");
+				String userId = rs.getString("user_id");
+				String articleCreate = rs.getString("article_create");
+				String articleUpdate = rs.getString("article_update");
+				String[] articleLanguage = ReFlag.languageReFlag(rs.getString("article_language"));
+				String[] articlePurpose = ReFlag.purposeReFlag(rs.getString("article_purpose"));
+				String articleCareer = rs.getString("article_career");
+				String[] articleCertification = ReFlag.certificationReFlag(rs.getString("article_certification"));
+				int articleFavs = rs.getInt("article_favs");
+				String articleText = rs.getString("article_text");
+				String articleImg1 = rs.getString("article_img1");
+				String articleImg2 = rs.getString("article_img2");
+				String articleImg3 = rs.getString("article_img3");
+				article = new Article(articleId, articleTitle, userId,
+						articleCreate, articleUpdate, articleLanguage,
+						articlePurpose, articleCareer, articleCertification,
+						articleFavs, articleText, articleImg1, articleImg2, articleImg3);
 				recommendArticles.add(article);
 			}
 		} catch (SQLException e) {
