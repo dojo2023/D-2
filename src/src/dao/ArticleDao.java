@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Objects;
 
 import model.Article;
 import model.Comment;
@@ -29,22 +30,17 @@ public class ArticleDao {
 			//本文、タイトルで検索をかける
 
 			//sql文を準備
-			String sql = "select * from article where";
-			String[] setStr = new String[queryArray.length];
-
+			String sql = "select * from article where ";
 
 			//sql文を完成させる
 			for(int i=0; i<queryArray.length; i++) {
-				sql += " ?";
-				setStr[i] = "concat(article_title, article_text) like %"+ queryArray[i] +"%";
+				sql += "concat(article_title, article_text) like '%" + queryArray[i] + "%'";
 				if(i < queryArray.length-1) {
 					sql += " and";
 				}
 			}
+
 			PreparedStatement pStmt = conn.prepareStatement(sql);
-			for (int i=0; i<setStr.length; i++) {
-				pStmt.setString(i, setStr[i]);
-			}
 
 			//sql文を実行
 			ResultSet rs = pStmt.executeQuery();
@@ -59,7 +55,7 @@ public class ArticleDao {
 				certification = ReFlag.certificationReFlag(rs.getString("article_certification"));
 				Article data = new Article(
 						rs.getInt("article_id"),
-						rs.getString("artcile_title"),
+						rs.getString("article_title"),
 						rs.getString("user_id"),
 						rs.getString("article_create"),
 						rs.getString("article_update"),
@@ -81,7 +77,7 @@ public class ArticleDao {
 			//検索ワードが含まれるタグが存在するかどうかから。
 
 			for(int i=0; i<queryArray.length; i++) {
-				sql = "select * from language_list where language_item like %" + queryArray[i] +"%";
+				sql = "select * from language_list where language_item like '%" + queryArray[i] +"%'";
 				pStmt = conn.prepareStatement(sql);
 				//sql文を実行
 				rs = pStmt.executeQuery();
@@ -89,7 +85,7 @@ public class ArticleDao {
 					langId[i] += rs.getString("language_id");
 				}
 
-				sql = "select * from purpose_list where purpose_item like %" + queryArray[i] +"%";
+				sql = "select * from purpose_list where purpose_item like '%" + queryArray[i] +"%'";
 				pStmt = conn.prepareStatement(sql);
 				//sql文を実行
 				rs = pStmt.executeQuery();
@@ -97,7 +93,7 @@ public class ArticleDao {
 					purpId[i] += rs.getString("purpose_id");
 				}
 
-				sql = "select * from certification_list where certification_item like %" + queryArray[i] +"%";
+				sql = "select * from certification_list where certification_item like '%" + queryArray[i] +"%'";
 				pStmt = conn.prepareStatement(sql);
 				//sql文を実行
 				rs = pStmt.executeQuery();
@@ -105,39 +101,47 @@ public class ArticleDao {
 					certId[i] += rs.getString("certification_id");
 				}
 			}
-
-			String langIdforSQL="", purpIdforSQL="", certIdforSQL="";
+			String langIdforSQL="0000000000000000";
+			String purpIdforSQL="00000000000";
+			String certIdforSQL="00000000000000";
 			String comp = "123456789ABCDEFG";
+			int head = 0;
 			for(int i=0; i<16; i++) {
 				for(int j=0; j<queryArray.length; j++) {
-					if(langId[j].indexOf(String.valueOf(comp.charAt(i)))!=-1) {
-						langIdforSQL += String.valueOf(comp.charAt(i));
-						break;
-					}
-					if(j==queryArray.length-1) {
-						langIdforSQL += "0";
+					head = 0;
+					if (Objects.nonNull(langId[j])) {
+						for (int k=0; k<langId[j].length(); k++) {
+							if (langId[j].indexOf(comp.charAt(i)) != -1) {
+								head = comp.indexOf(comp.charAt(i));
+								langIdforSQL = langIdforSQL.substring(0, head) + comp.charAt(head) + langIdforSQL.substring(head+1);
+							}
+						}
 					}
 				}
 			}
 			for(int i=0; i<11; i++) {
 				for(int j=0; j<queryArray.length; j++) {
-					if(purpId[j].indexOf(String.valueOf(comp.charAt(i)))!=-1) {
-						purpIdforSQL += String.valueOf(comp.charAt(i));
-						break;
-					}
-					if(j==queryArray.length-1) {
-						purpIdforSQL += "0";
+					head = 0;
+					if (Objects.nonNull(purpId[j])) {
+						for (int k=0; k<purpId[j].length(); k++) {
+							if (purpId[j].indexOf(comp.charAt(i)) != -1) {
+								head = comp.indexOf(comp.charAt(i));
+								purpIdforSQL = purpIdforSQL.substring(0, head) + comp.charAt(head) + purpIdforSQL.substring(head+1);
+							}
+						}
 					}
 				}
 			}
 			for(int i=0; i<14; i++) {
 				for(int j=0; j<queryArray.length; j++) {
-					if(certId[j].indexOf(String.valueOf(comp.charAt(i)))!=-1) {
-						certIdforSQL += String.valueOf(comp.charAt(i));
-						break;
-					}
-					if(j==queryArray.length-1) {
-						certIdforSQL += "0";
+					head = 0;
+					if (Objects.nonNull(certId[j])) {
+						for (int k=0; k<certId[j].length(); k++) {
+							if (certId[j].indexOf(comp.charAt(i)) != -1) {
+								head = comp.indexOf(comp.charAt(i));
+								certIdforSQL = certIdforSQL.substring(0, head) + comp.charAt(head) + certIdforSQL.substring(head+1);
+							}
+						}
 					}
 				}
 			}
@@ -145,7 +149,8 @@ public class ArticleDao {
 			//SQL文を準備
 			sql = "select * from article where article_language like ?";
 
-			langIdforSQL = langIdforSQL.replaceAll("[1-9A-G]", "_");
+			langIdforSQL = langIdforSQL.replaceAll("[1-9a-g]", "_");
+			pStmt = conn.prepareStatement(sql);
 			pStmt.setString(1, langIdforSQL);
 			//SQL文を実行
 			rs = pStmt.executeQuery();
@@ -179,7 +184,8 @@ public class ArticleDao {
 			//SQL文を準備
 			sql = "select * from article where article_purpose like ?";
 
-			purpIdforSQL = purpIdforSQL.replaceAll("[1-9A-G]", "_");
+			purpIdforSQL = purpIdforSQL.replaceAll("[1-9a-g]", "_");
+			pStmt = conn.prepareStatement(sql);
 			pStmt.setString(1, purpIdforSQL);
 			//SQL文を実行
 			rs = pStmt.executeQuery();
@@ -212,7 +218,8 @@ public class ArticleDao {
 			//SQL文を準備
 			sql = "select * from article where article_certification like ?";
 
-			certIdforSQL = certIdforSQL.replaceAll("[1-9A-G]", "_");
+			certIdforSQL = certIdforSQL.replaceAll("[1-9a-g]", "_");
+			pStmt = conn.prepareStatement(sql);
 			pStmt.setString(1, certIdforSQL);
 			//SQL文を実行
 			rs = pStmt.executeQuery();
@@ -635,7 +642,7 @@ public class ArticleDao {
 				certification = ReFlag.certificationReFlag(rs.getString("article_certification"));
 				Article data = new Article(
 						rs.getInt("article_id"),
-						rs.getString("artcile_title"),
+						rs.getString("article_title"),
 						rs.getString("user_id"),
 						rs.getString("article_create"),
 						rs.getString("article_update"),
@@ -654,16 +661,17 @@ public class ArticleDao {
 		}
 			catch (SQLException e) {
 				e.printStackTrace();
+				result = null;
 			}
 			catch (ClassNotFoundException e) {
 				e.printStackTrace();
+				result = null;
 			}
 			finally {
 				// データベースを切断
 				if (conn != null) {
 					try {
 						conn.close();
-						result = null;
 					}
 					catch (SQLException e) {
 						e.printStackTrace();
@@ -708,20 +716,24 @@ public class ArticleDao {
 			pStmt.setString(4, user.getCareer());
 			ResultSet rs = pStmt.executeQuery();
 			while (rs.next()) {
-				article.setArticleId(rs.getInt("article_id"));
-				article.setArticleTitle(rs.getString("article_title"));
-				article.setUserId(rs.getString("user_id"));
-				article.setArticleCreate(rs.getString("article_create"));
-				article.setArticleUpdate(rs.getString("article_update"));
-				article.setArticleLanguage(ReFlag.languageReFlag(rs.getString("article_language")));
-				article.setArticlePurpose(ReFlag.purposeReFlag(rs.getString("article_purpose")));
-				article.setArticleCareer(rs.getString("article_career"));
-				article.setArticleCertification(ReFlag.certificationReFlag(rs.getString("article_certification")));
-				article.setArticleFavs(rs.getInt("article_favs"));
-				article.setArticleText(rs.getString("article_text"));
-				article.setArticleImg1(rs.getString("article_img1"));
-				article.setArticleImg2(rs.getString("article_img2"));
-				article.setArticleImg3(rs.getString("article_img3"));
+				int articleId = rs.getInt("article_id");
+				String articleTitle = rs.getString("article_title");
+				String userId = rs.getString("user_id");
+				String articleCreate = rs.getString("article_create");
+				String articleUpdate = rs.getString("article_update");
+				String[] articleLanguage = ReFlag.languageReFlag(rs.getString("article_language"));
+				String[] articlePurpose = ReFlag.purposeReFlag(rs.getString("article_purpose"));
+				String articleCareer = rs.getString("article_career");
+				String[] articleCertification = ReFlag.certificationReFlag(rs.getString("article_certification"));
+				int articleFavs = rs.getInt("article_favs");
+				String articleText = rs.getString("article_text");
+				String articleImg1 = rs.getString("article_img1");
+				String articleImg2 = rs.getString("article_img2");
+				String articleImg3 = rs.getString("article_img3");
+				article = new Article(articleId, articleTitle, userId, articleCreate,
+						articleUpdate, articleLanguage, articlePurpose, articleCareer,
+						articleCertification, articleFavs, articleText,
+						articleImg1, articleImg2, articleImg3);
 				results.add(article);
 			}
 			int[] matchRate = new int[results.size()];
@@ -798,7 +810,7 @@ public class ArticleDao {
 	public ArrayList<Article> getRecommendArticle() {
 		ArrayList<Article> recommendArticles = new ArrayList<Article>();
 		Connection conn = null;
-		Article article = new Article();
+		Article article;
 		try {
 			Class.forName("org.h2.Driver");
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/src/Data", "sa", "");
@@ -806,20 +818,24 @@ public class ArticleDao {
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 			ResultSet rs = pStmt.executeQuery();
 			while (rs.next()) {
-				article.setArticleId(rs.getInt("article_id"));
-				article.setArticleTitle(rs.getString("article_title"));
-				article.setUserId(rs.getString("user_id"));
-				article.setArticleCreate(rs.getString("article_create"));
-				article.setArticleUpdate(rs.getString("article_update"));
-				article.setArticleLanguage(ReFlag.languageReFlag(rs.getString("article_language")));
-				article.setArticlePurpose(ReFlag.purposeReFlag(rs.getString("article_purpose")));
-				article.setArticleCareer(rs.getString("article_career"));
-				article.setArticleCertification(ReFlag.certificationReFlag(rs.getString("article_certification")));
-				article.setArticleFavs(rs.getInt("article_favs"));
-				article.setArticleText(rs.getString("article_text"));
-				article.setArticleImg1(rs.getString("article_img1"));
-				article.setArticleImg2(rs.getString("article_img2"));
-				article.setArticleImg3(rs.getString("article_img3"));
+				int articleId = rs.getInt("article_id");
+				String articleTitle = rs.getString("article_title");
+				String userId = rs.getString("user_id");
+				String articleCreate = rs.getString("article_create");
+				String articleUpdate = rs.getString("article_update");
+				String[] articleLanguage = ReFlag.languageReFlag(rs.getString("article_language"));
+				String[] articlePurpose = ReFlag.purposeReFlag(rs.getString("article_purpose"));
+				String articleCareer = rs.getString("article_career");
+				String[] articleCertification = ReFlag.certificationReFlag(rs.getString("article_certification"));
+				int articleFavs = rs.getInt("article_favs");
+				String articleText = rs.getString("article_text");
+				String articleImg1 = rs.getString("article_img1");
+				String articleImg2 = rs.getString("article_img2");
+				String articleImg3 = rs.getString("article_img3");
+				article = new Article(articleId, articleTitle, userId,
+						articleCreate, articleUpdate, articleLanguage,
+						articlePurpose, articleCareer, articleCertification,
+						articleFavs, articleText, articleImg1, articleImg2, articleImg3);
 				recommendArticles.add(article);
 			}
 		} catch (SQLException e) {
@@ -900,14 +916,13 @@ public class ArticleDao {
 				conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/src/Data", "sa", "");
 
 				//SQL文を準備する
-				String sql = "insert into comment (article_id, user_id, comment_date, comment_text) values(?, ?, ?, ?);";
+				String sql = "insert into comment (article_id, user_id, comment_date, comment_text) values(?, ?, current_timestamp, ?);";
 				PreparedStatement pStmt = conn.prepareStatement(sql);
 
 				//SQL文を完成させる
 				pStmt.setInt(1, article_id);
 				pStmt.setString(2, user_id);
-				pStmt.setString(3, "current_timestump");
-				pStmt.setString(4, comment_text);
+				pStmt.setString(3, comment_text);
 
 				//SQLを実行する
 				pStmt.executeUpdate();

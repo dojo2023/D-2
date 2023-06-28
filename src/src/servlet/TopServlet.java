@@ -2,6 +2,7 @@ package servlet;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Objects;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -37,23 +38,21 @@ public class TopServlet extends HttpServlet {
 		ArrayList<Article> recommendArticle = new ArrayList<Article>();
 		ArrayList<Community> recommendCommunity = new ArrayList<Community>();
 		ArrayList<Article> writtenArticle = new ArrayList<Article>();
-		try {
+		if (Objects.nonNull(session.getAttribute("user")) && !((User)session.getAttribute("user")).getUserId().equals("")) {
 			user = (User)session.getAttribute("user");
 			recommendArticle = aDao.getRecommendArticle(user);
 			recommendCommunity = cDao.getRecommendCommunity(user);
 			writtenArticle = aDao.getmyArticle(user.getUserId());
-		} catch (NullPointerException e) {
-			e.printStackTrace();
+		} else {
 			user = new User("ゲスト");
 			session.setAttribute("user", user);
 			recommendArticle = aDao.getRecommendArticle();
 			recommendCommunity = cDao.getRecommendCommunity();
-		} finally {
-			session.setAttribute("recArticle", recommendArticle);
-			session.setAttribute("recCommunity", recommendCommunity);
-			session.setAttribute("wriArticle", writtenArticle);
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/top.jsp");
-			dispatcher.forward(request, response);
 		}
+		session.setAttribute("recArticle", recommendArticle);
+		session.setAttribute("recCommunity", recommendCommunity);
+		session.setAttribute("wriArticle", writtenArticle);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/top.jsp");
+		dispatcher.forward(request, response);
 	}
 }

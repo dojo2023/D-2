@@ -35,32 +35,22 @@
 </c:if>
 <div class="cp_card01">
 <div class="photo"><div class="photo1"></div></div>
-	<div class="description"><c:forEach var="comment" items="${articleResults}">
-
-		<a href="javascript:form.submit();">${article.articleTitle}</a><br>
-		<div class="worddisplay"><c:set var="sendLang" value="" />
-		<c:forEach var="lang" items="${community.communityLanguage}">
-
-            <c:set var="sendLang" value="${sendLang},${lang} "/>
-            <c:out value="${lang } " />
+	<div class="description">
+	<c:forEach var="article" items="${articleResults}" varStatus="st">
+		<form action="/product_D2/article" name="form${st.index}" method="get">
+		<a href="javascript:form${st.index}.submit();">${article.articleTitle}</a><br>
+		<div class="worddisplay">
+			<c:forEach var="lang" items="${atricle.communityLanguage}">
+            	<c:out value="${lang} " />
             </c:forEach>
-
-    <c:set var="sendPurp" value="" />
-            <c:forEach var="purp" items="${purpose}">
-
-            <c:set var="sendPurp" value="${sendPurp},${purp} "/>
-            <c:out value="${purp } " />
+            <c:forEach var="purp" items="${article.articlePurpose}">
+            	<c:out value="${purp} " />
             </c:forEach>
-
-	<c:set var="sendCert" value="" />
-            <c:forEach var="cert" items="${certification}">
-
-            <c:set var="sendCert" value="${sendCert},${cert} "/>
-            <c:out value="${cert } " />
+            <c:forEach var="cert" items="${article.articleCertification}">
+            	<c:out value="${cert} " />
             </c:forEach>
-		${article.articleFavs}<br><br></div>
-		<form action="/product_D2/article" name="form" method="get">
-		<input type="hidden" name="articleId" value="${article.articleId}">
+			${article.articleFavs}<br><br></div>
+		<input type="hidden" name="article_id" value="${article.articleId}">
 		</form>
 	</c:forEach>
 	</div></div>

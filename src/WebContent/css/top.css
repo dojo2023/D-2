@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-/* 6/23 11:30 update by yahaba */
+/* 6/28 11:42 update by yahaba */
 
 /* 背景色 */
 body {
@@ -10,7 +10,7 @@ body {
 /* トップのメインコンテンツすべてに適用 */
 .top_main {
     display: flex;
-    color: #4684a6;
+    color: #77cbff;
 }
 .top_main a {
     text-decoration: none;
@@ -24,6 +24,16 @@ body {
     flex-wrap: wrap;
     display: flex;
   }
+.contents_left a,
+.contents_left a:visited,
+.contents_left a:active {
+  	color: #159ef3; 
+  	font-size: 20px;
+}
+
+.contents_left a:hover {
+	color: #77cbff;
+}
    
   .tab_container {
     padding-bottom: 1em;

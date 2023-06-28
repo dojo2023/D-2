@@ -35,13 +35,12 @@
 			  <div class="tab_content_description">
 				<div class="c-txtsp">
 					<hr>
-					<c:forEach var="recommendArticle" items="${recArticle}">
-						<a href="javascript:form.submit();">${article.articleTitle}</a><br>
-						<h4>「${article.articleTitle}」</h4><br>
-						<p>作成者：${article.userId}<br>作成日時：${article.articleCreate}</p>
+					<c:forEach var="recommendArticle" items="${recArticle}" varStatus="st">
+						<form action="/product_D2/article" name="form${st.index}" method="get">
+						<h4><a href="javascript:form${st.index}.submit();">「${recommendArticle.articleTitle}」</a></h4><br>
+						<p>作成者：${recommendArticle.userId}<br>作成日時：${recommendArticle.articleCreate}</p>
 						<hr>
-						<form action="/product_D2/article" name="form" method="get">
-						<input type="hidden" name="articleId" value="${article.articleId}">
+						<input type="hidden" name="article_id" value="${recommendArticle.articleId}">
 						</form>
 					</c:forEach>
 			  	</div>
@@ -52,12 +51,12 @@
 				<div class="c-txtsp">
 					<hr>
 					<c:forEach var="recommendCommunity" items="${recCommunity}">
-						<h4>「${community.communityName}」</h4><br>
-						<p>コミュニティ作成日時：${community.communityDate}<br>
-						コミュニティの説明：${community.communitySummary}</p>
+						<h4>「${recommendCommunity.communityName}」</h4><br>
+						<p>コミュニティ作成日時：${recommendCommunity.communityDate}<br>
+						コミュニティの説明：${recommendCommunity.communitySummary}</p>
 					<hr>
 					<form action="/product_D2/community" name="form" method="get">
-					<input type="hidden" name="community_id" value="${community.communityId}">
+					<input type="hidden" name="community_id" value="${recommendCommunity.communityId}">
 					</form>
 					</c:forEach>
 					</div>
@@ -88,11 +87,11 @@
 				<h3 class="right_title">自分が投稿した記事</h3>
 				<p class="txt">あなたがこれまでに投稿した記事の一覧です。<br>みんなの疑問を即解決！</p>
 
-				<c:if test="${empty articleResults}">
+				<c:if test="${empty wriArticle}">
 				<p>記事は投稿されていません</p>
 				</c:if>
 
-				<c:forEach var="article" items="${articleResults}">
+				<c:forEach var="article" items="${wriArticle}">
 					<p>${article.articleTitle}</p>
 					<div class="btn_wrap">
 						<form action="/product_D2/edit" method="get">

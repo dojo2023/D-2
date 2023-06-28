@@ -85,7 +85,7 @@ textarea{
     text-shadow: none;
     border-radius: 0.25em;
     height: 30px;
-    width: 50px;
+    width: auto;
     position:relative;
     top:-12px;
     position:relative;
@@ -109,4 +109,8 @@ textarea{
 #btnfav:hover{
    color:white;
     background-color: #f991ca;
+}
+
+.pre{
+	white-space: pre;
 }

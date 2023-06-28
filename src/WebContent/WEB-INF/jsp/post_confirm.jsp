@@ -53,7 +53,7 @@
 
 
 	<h4>本文</h4>
-		${article_data.articleText}<br>
+		<div id="limitedtext">${article_data.articleText}</div><br>
 
 <!-- 画像ファイル↓ -->
 		<c:if test="${not empty articleImg1Path}" >
@@ -123,6 +123,14 @@
 </div>
 
     </body>
-
+<script>const applyTextLimit = () => {
+    let maxLength = 99; //上限文字数
+    let limitedText = document.getElementById('limitedtext');
+    let originalText = limitedText.innerText;
+    if (originalText.length > maxLength) {
+      limitedText.innerText = originalText.substr(0, maxLength) + '...';
+    }
+  }
+  applyTextLimit();</script>
 </html>
 
