@@ -48,7 +48,7 @@ public class EditServlet extends HttpServlet {
 	      request.setCharacterEncoding("UTF-8");
 	      ArticleDao aDao=new ArticleDao();
 
-	      if(request.getParameter("SUBMIT").equals("プレビュー")) {
+	      if(request.getParameter("SUBMIT").equals("プレビューへ進む")) {
 
 
 		//リクエストパラメータの取得
@@ -85,7 +85,7 @@ public class EditServlet extends HttpServlet {
         RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/edit_confirm.jsp");
 		dispatcher.forward(request, response);
 	      }
-	      else if(request.getParameter("SUBMIT").equals("削除")) {
+	      else if(request.getParameter("SUBMIT").equals("記事を削除する")) {
 	    	  int articleId=Integer.parseInt(request.getParameter("articleId"));
 	    	  aDao.delete(articleId);
 
