@@ -49,9 +49,6 @@ public class TopServlet extends HttpServlet {
 			recommendArticle = aDao.getRecommendArticle();
 			recommendCommunity = cDao.getRecommendCommunity();
 		}
-		for (Community com: recommendCommunity) {
-			System.out.print(com.getCommunityName());
-		}
 		session.setAttribute("recArticle", recommendArticle);
 		session.setAttribute("recCommunity", recommendCommunity);
 		session.setAttribute("wriArticle", writtenArticle);
