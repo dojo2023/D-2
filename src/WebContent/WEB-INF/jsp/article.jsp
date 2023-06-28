@@ -56,7 +56,7 @@
 
 		<form id="fav_form">
 		<input type=hidden id="aId" value="${article.articleId}">
-		<input type="button" id="btnfav" value="♡">
+		<input type="button"  id="btnfav" value="♡">
 
 
 		</form>
@@ -65,14 +65,15 @@
 
 	<div class="box3">
 	<h4>コメント</h4><hr>
-	<c:forEach var="com" items="${comment}">
-		${com.userId}
+	<c:forEach var="com" items="${comment}" varStatus="st">
+		${commenter[st.index]}
 		<div class="minifont">${com.commentDate}</div><br>
-		${com.commentText}
+		<div class="pre">${com.commentText}</div><br><hr>
 	</c:forEach>
 	<form action="/product_D2/article" method="post">
 		<textarea id="comment" name="comment" rows="4" cols="50"></textarea>
-		<input class="btn" type="submit" value="送信" name="comment" id="comment">
+		<input type="hidden" name="articleId" value="${article.articleId}">
+		<input class="btn" type="submit" value="コメント" name="form" id="comment">
 	</form>
 </div></div>
 
