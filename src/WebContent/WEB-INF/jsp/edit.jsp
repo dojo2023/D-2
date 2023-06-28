@@ -45,7 +45,7 @@
 
 		<hr>
 		<h4>タイトル</h4><br>
-		<form method="POST" action="product_D2/edit" id="form">
+		<form method="POST" action="/product_D2/edit" id="form">
 		<label><input class="textform" type="text" name="title" value="${article.articleTitle}" placeholder="記事タイトル"></label>
 
 		<hr>
