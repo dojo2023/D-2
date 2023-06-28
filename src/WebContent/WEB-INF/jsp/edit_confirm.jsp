@@ -26,19 +26,19 @@
 <h1>記事編集確認</h1>
     <div class="confirm_contents">
         <!-- プレビュー表示 -->
-        <h4 class="article_title">「${article.title}」</h4><br>
+        <h4 class="article_title">「${article.articleTitle}」</h4><br>
 
         <p class="article_tag">
-            ${article.update}<br>
+            ${article.articleUpdate}<br>
 
             <c:set var="sendLang" value="" />
-            <c:forEach var="lang" items="${article.language}">
+            <c:forEach var="lang" items="${article.articleLanguage}">
             <c:set var="sendLang" value="${sendLang},${lang}" />
             #<c:out value="${lang} " />
             </c:forEach>
             <br>
             <c:set var="sendPurp" value="" />
-            <c:forEach var="purp" items="${article.purpose}">
+            <c:forEach var="purp" items="${article.articlePurpose}">
             <c:set var="sendPurp" value="${sendPurp},${purp}" />
             #<c:out value="${purp }" />
             </c:forEach>
@@ -46,14 +46,14 @@
             ${user.career}<br>
 
             <c:set var="sendCert" value="" />
-            <c:forEach var="cert" items="${article.certification}">
+            <c:forEach var="cert" items="${article.articleCertification}">
             <c:set var="sendCert" value="${sendCert},${cert}" />
             #<c:out value="${cert } " />
             </c:forEach>
             <br>
         </p>
 
-        ${article.text}<br>
+        ${article.articleText}<br>
         <c:if test="${not empty article.articleImg1}" >
         <img src="${article.articleImg1}"></c:if><br>
         <c:if test="${not empty article.articleImg2}" >
