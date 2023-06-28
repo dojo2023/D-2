@@ -40,7 +40,7 @@
 						<h4><a href="javascript:form${st.index}.submit();">「${recommendArticle.articleTitle}」</a></h4><br>
 						<p>作成者：${recommendArticle.userId}<br>作成日時：${recommendArticle.articleCreate}</p>
 						<hr>
-						<input type="hidden" name="articleId" value="${recommendArticle.articleId}">
+						<input type="hidden" name="article_id" value="${recommendArticle.articleId}">
 						</form>
 					</c:forEach>
 			  	</div>
