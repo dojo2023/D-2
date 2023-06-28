@@ -36,12 +36,12 @@
 				<div class="c-txtsp">
 					<hr>
 					<c:forEach var="recommendArticle" items="${recArticle}">
-						<a href="javascript:form.submit();">${article.articleTitle}</a><br>
-						<h4>「${article.articleTitle}」</h4><br>
-						<p>作成者：${article.userId}<br>作成日時：${article.articleCreate}</p>
+						<a href="javascript:form.submit();">${recommendArticle.articleTitle}</a><br>
+						<h4>「${recommendArticle.articleTitle}」</h4><br>
+						<p>作成者：${recommendArticle.userId}<br>作成日時：${recommendArticle.articleCreate}</p>
 						<hr>
 						<form action="/product_D2/article" name="form" method="get">
-						<input type="hidden" name="articleId" value="${article.articleId}">
+						<input type="hidden" name="articleId" value="${recommendArticle.articleId}">
 						</form>
 					</c:forEach>
 			  	</div>
