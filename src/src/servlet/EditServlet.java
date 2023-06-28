@@ -8,9 +8,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.ArticleDao;
 import model.Article;
+import model.User;
 /**
  * Servlet implementation class EditServlet
  */
@@ -43,7 +45,8 @@ public class EditServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 	throws ServletException, IOException {
-
+		HttpSession session = request.getSession();
+		User user = (User)session.getAttribute("user");
 		//リクエストパラメータの文字コードを指定
 	      request.setCharacterEncoding("UTF-8");
 	      ArticleDao aDao=new ArticleDao();
@@ -66,6 +69,7 @@ public class EditServlet extends HttpServlet {
 
 	   // リクエスト属性に編集対象の記事をセット
 	      Article article = new Article();
+	      article.setUserId(user.getUserId());
 	      article.setArticleId(articleId);
 	      article.setArticleTitle(articleTitle);
 	      article.setArticleLanguage(articleLanguage);
