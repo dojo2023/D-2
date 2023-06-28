@@ -52,12 +52,12 @@
 				<div class="c-txtsp">
 					<hr>
 					<c:forEach var="recommendCommunity" items="${recCommunity}">
-						<h4>「${community.communityName}」</h4><br>
-						<p>コミュニティ作成日時：${community.communityDate}<br>
-						コミュニティの説明：${community.communitySummary}</p>
+						<h4>「${recommendCommunity.communityName}」</h4><br>
+						<p>コミュニティ作成日時：${recommendCommunity.communityDate}<br>
+						コミュニティの説明：${recommendCommunity.communitySummary}</p>
 					<hr>
 					<form action="/product_D2/community" name="form" method="get">
-					<input type="hidden" name="community_id" value="${community.communityId}">
+					<input type="hidden" name="community_id" value="${recommendCommunity.communityId}">
 					</form>
 					</c:forEach>
 					</div>

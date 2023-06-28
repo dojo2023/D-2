@@ -593,22 +593,24 @@ public class CommunityDao {
 	public ArrayList<Community> getRecommendCommunity() {
 		ArrayList<Community> recommendCommunities = new ArrayList<Community>();
 		Connection conn = null;
-		Community community = new Community();
+		Community community;
 		try {
 			Class.forName("org.h2.Driver");
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/src/Data", "sa", "");
-			String sql = "select * from article order by article_update desc";
+			String sql = "select * from community order by community_date desc";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 			ResultSet rs = pStmt.executeQuery();
 			while (rs.next()) {
-				community.setCommunityId(rs.getInt("community_id"));
-				community.setCommunityDate(rs.getString("community_date"));
-				community.setCommunityName(rs.getString("community_name"));
-				community.setCommunityLanguage(ReFlag.languageReFlag(rs.getString("community_language")));
-				community.setCommunityPurpose(ReFlag.purposeReFlag(rs.getString("community_purpose")));
-				community.setCommunityCareer(rs.getString("community_career"));
-				community.setCommunityCertification(ReFlag.certificationReFlag(rs.getString("community_certification")));
-				community.setCommunitySummary(rs.getString("community_summary"));
+				int communityId = rs.getInt("community_id");
+				String communityDate = rs.getString("community_date");
+				String communityName = rs.getString("community_name");
+				String[] communityLanguage = ReFlag.languageReFlag(rs.getString("community_language"));
+				String[] communityPurpose = ReFlag.purposeReFlag(rs.getString("community_purpose"));
+				String communityCareer = rs.getString("community_career");
+				String[] communityCertification = ReFlag.certificationReFlag(rs.getString("community_certification"));
+				String communitySummary = rs.getString("community_summary");
+				community = new Community(communityId, communityDate, communityName, communityLanguage,
+						communityPurpose, communityCareer, communityCertification, communitySummary);
 				recommendCommunities.add(community);
 			}
 		} catch (SQLException e) {
