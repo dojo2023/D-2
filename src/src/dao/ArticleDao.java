@@ -101,7 +101,6 @@ public class ArticleDao {
 					certId[i] += rs.getString("certification_id");
 				}
 			}
-			System.out.println();
 			String langIdforSQL="0000000000000000";
 			String purpIdforSQL="00000000000";
 			String certIdforSQL="00000000000000";
