@@ -30,7 +30,7 @@ h2 {
     box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
     border-radius: 0.25em;
     line-height:45px;
-    white-space: pre;
+    white-space: pre-wrap;
 }
 
 .box2{
@@ -112,5 +112,5 @@ textarea{
 }
 
 .pre{
-	white-space: pre;
+	white-space: pre-wrap;
 }
