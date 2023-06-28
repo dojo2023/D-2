@@ -50,7 +50,7 @@
             	<c:out value="${cert} " />
             </c:forEach>
 			${article.articleFavs}<br><br></div>
-		<input type="hidden" name="articleId" value="${article.articleId}">
+		<input type="hidden" name="article_id" value="${article.articleId}">
 		</form>
 	</c:forEach>
 	</div></div>
