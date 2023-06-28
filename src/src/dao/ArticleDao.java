@@ -163,7 +163,7 @@ public class ArticleDao {
 				certification = ReFlag.certificationReFlag(rs.getString("article_certification"));
 				Article data = new Article(
 						rs.getInt("article_id"),
-						rs.getString("artcile_title"),
+						rs.getString("article_title"),
 						rs.getString("user_id"),
 						rs.getString("article_create"),
 						rs.getString("article_update"),
@@ -814,7 +814,7 @@ public class ArticleDao {
 		try {
 			Class.forName("org.h2.Driver");
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/src/Data", "sa", "");
-			String sql = "select * from article order by article_update desc";
+			String sql = "select * from article order by article_update desc limit 5";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 			ResultSet rs = pStmt.executeQuery();
 			while (rs.next()) {

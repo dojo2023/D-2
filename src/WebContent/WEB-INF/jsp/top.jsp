@@ -93,14 +93,14 @@
 
 				<c:forEach var="article" items="${wriArticle}">
 					<p>${article.articleTitle}</p>
-					<div class="btn_wrap">
+					<div class="btn_wrap_12">
 						<form action="/product_D2/edit" method="get">
 							<input type="hidden" name="article_id" value="${article.articleId}">
-							<input type="submit" value="編集" class="btn">
+							<input type="submit" value="編集" class="btn1">
 						</form>
 						<form action="/product_D2/article" method="get">
 							<input type="hidden" name="article_id" value="${article.articleId}">
-							<input type="submit" value="閲覧" class="btn">
+							<input type="submit" value="閲覧" class="btn2">
 						</form>
 					</div>
 				</c:forEach>
@@ -110,7 +110,7 @@
 			<div class="contents_community">
 				<h3 class="right_title">コミュニティ新規作成</h3>
 				<p class="txt">コミュニティ機能で疑問を即解決！</p>
-				<div class="btn_wrap">
+				<div class="btn_wrap_b">
 				<a href="/product_D2/community_create"><p class="btn_b">さっそく話しに行く！</p></a>
 				</div>
 			</div>

@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="css/common.css">
-<link rel="stylesheet" href="css/search.css">
+<link rel="stylesheet" href="css/search.css?20230628">
 <title>記事検索結果一覧｜with IT</title>
 <link rel="icon" href="image/favicon.ico">
 </head>
@@ -33,25 +33,26 @@
 <c:if test="${empty articleResults}">
 <p>一致するデータなし</p>
 </c:if>
-<div class="cp_card01">
-<div class="photo"><div class="photo1"></div></div>
-	<div class="description">
+
 	<c:forEach var="article" items="${articleResults}" varStatus="st">
-		<form action="/product_D2/article" name="form${st.index}" method="get">
-		<a href="javascript:form${st.index}.submit();">${article.articleTitle}</a><br>
+		<br>
+		<div class="cp_card01">
+
+	<div class="description"><form action="/product_D2/article" name="form${st.index}" method="get">
+		<a href="javascript:form${st.index}.submit();">${article.articleTitle}</a><br><hr>
 		<div class="worddisplay">
 			<c:forEach var="lang" items="${atricle.communityLanguage}">
-            	<c:out value="${lang} " />
+            	<c:out value="# ${lang} " />
             </c:forEach>
             <c:forEach var="purp" items="${article.articlePurpose}">
-            	<c:out value="${purp} " />
+            	<c:out value="# ${purp} " />
             </c:forEach>
             <c:forEach var="cert" items="${article.articleCertification}">
-            	<c:out value="${cert} " />
-            </c:forEach>
-			${article.articleFavs}<br><br></div>
+            	<c:out value="# ${cert} " />
+            </c:forEach><br>
+			いいね ${article.articleFavs}<br><br></div>
 		<input type="hidden" name="article_id" value="${article.articleId}">
-		</form>
+		</form></div></div>
 	</c:forEach>
 	</div></div>
 	</div>

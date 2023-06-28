@@ -33,30 +33,32 @@
 <c:if test="${empty communityResults}">
 <p>一致するデータなし</p>
 </c:if>
-<div class="cp_card01">
-    <div class="photo"><div class="photo1"></div></div>
-<div class="description">
+
 <c:forEach var="community" items="${communityResults}" >
-	<form action="/product_D2/community" method="GET">
-    <h2>${community.communityName}</h2>
+	<br>
+	<div class="cp_card01">
+
+<div class="description">
+<form action="/product_D2/community" method="GET">
+    ${community.communityName}<hr><br>
     <div class="worddisplay">
 		<c:forEach var="lang" items="${community.communityLanguage}">
-            <c:out value="${lang } " />
+            <c:out value="# ${lang } " />
         </c:forEach>
         <c:forEach var="purp" items="${purpose}">
-            <c:out value="${purp } " />
+            <c:out value="# ${purp } " />
         </c:forEach>
         <c:forEach var="cert" items="${certification}">
-           	<c:out value="${cert } " />
+           	<c:out value="# ${cert } " />
         </c:forEach>
 
-	${community.communityCareer}<br><br></div>
+	#${community.communityCareer}<br><br></div>
     <div id="limitedtext">${community.communitySummary}</div><br><br>
 	<input type="hidden" name="communityId" value="${community.communityId }">
 	<c:if test="${not empty user.userId}">
 		<input class="join" type="submit" name="SUBMIT" value="参加">
 	</c:if>
-	</form><hr>
+	</form></div></div>
 </c:forEach>
 </div>
 </div></div>

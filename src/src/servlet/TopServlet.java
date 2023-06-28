@@ -38,7 +38,12 @@ public class TopServlet extends HttpServlet {
 		ArrayList<Article> recommendArticle = new ArrayList<Article>();
 		ArrayList<Community> recommendCommunity = new ArrayList<Community>();
 		ArrayList<Article> writtenArticle = new ArrayList<Article>();
-		if (Objects.nonNull(session.getAttribute("user")) && !((User)session.getAttribute("user")).getUserId().equals("")) {
+		if (Objects.nonNull(session.getAttribute("user"))) {
+			if (((User)session.getAttribute("user")).getUserId().equals("")) {
+				session.removeAttribute("user");
+			}
+		}
+		if (Objects.nonNull(session.getAttribute("user"))) {
 			user = (User)session.getAttribute("user");
 			recommendArticle = aDao.getRecommendArticle(user);
 			recommendCommunity = cDao.getRecommendCommunity(user);

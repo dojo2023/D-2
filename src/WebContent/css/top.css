@@ -136,7 +136,9 @@ body {
 .btn_wrap {
   text-align: center;
 }
-
+.btn_wrap_b {
+  text-align: center;
+}
 .btn_b {
   background-color: #77cbff;
   color: #ffffff;
@@ -151,4 +153,24 @@ body {
 }
 .btn_b:hover {
   background-color:#4684a6;
+}
+.btn_wrap_12 {
+    text-align: center;
+    display: flex;
+    margin: 0 auto;
+    justify-content: center;
+  	align-items: center;
+}
+.btn1, .btn2 {
+    background-color: #77cbff;
+    color: #ffffff;
+    border: none;
+    text-shadow: none;
+    border-radius: 0.25em;
+    height: fit-content;
+    width: 125px;
+    font-size: 20px;
+}
+.btn1 {
+	margin-right: 10px;
 }
