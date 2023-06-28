@@ -722,7 +722,6 @@ public class ArticleDao {
 				String articleCreate = rs.getString("article_create");
 				String articleUpdate = rs.getString("article_update");
 				String[] articleLanguage = ReFlag.languageReFlag(rs.getString("article_language"));
-				System.out.println("langFlag:" + rs.getString("article_language"));
 				String[] articlePurpose = ReFlag.purposeReFlag(rs.getString("article_purpose"));
 				String articleCareer = rs.getString("article_career");
 				String[] articleCertification = ReFlag.certificationReFlag(rs.getString("article_certification"));
