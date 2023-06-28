@@ -47,20 +47,29 @@ public class PostResultServlet extends HttpServlet {
 		String articleTitle = request.getParameter("article_title");
 		String userId = ((User)session.getAttribute("user")).getUserId();
 		System.out.println("ユーザーID"+userId);
+
 		String sendLang = request.getParameter("sendLang");
-		System.out.println("sendLang;"+sendLang);
-		String[] articleLanguage=sendLang.substring(1).split(",");
-		String sendPurp=request.getParameter("sendPurp");
-	    String[] articlePurpose=sendPurp.substring(1).split(",");
-	    String sendCert=request.getParameter("sendCert");
-	    String[] articleCertification=sendCert.substring(1).split(",");
+		String[] articleLanguage= {};
+		if(sendLang.length()!=0) {
+			articleLanguage = sendLang.substring(1).split(",");
+		}
+		String sendPurp = request.getParameter("sendPurp");
+		String[] articlePurpose= {};
+		if(sendPurp.length()!=0) {
+			articlePurpose = sendPurp.substring(1).split(",");
+		}
+		String sendCert = request.getParameter("sendCert");
+		String[]articleCertification= {};
+		if(sendCert.length()!=0) {
+			articleCertification = sendCert.substring(1).split(",");
+		}
 		String articleCareer = request.getParameter("article_career");
 		String articleText = request.getParameter("article_text");
 		String article_img1 = request.getParameter("article_img1");
 		String article_img2 = request.getParameter("article_img2");
 		String article_img3 = request.getParameter("article_img3");
-		System.out.println(articleTitle);
 
+		System.out.println(articleTitle);
 		System.out.println(sendPurp);
 		System.out.println(sendCert);
 

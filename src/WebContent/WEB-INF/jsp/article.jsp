@@ -35,7 +35,9 @@
 			<c:forEach var="tag" items="${article.articlePurpose}">
 			#${tag}&nbsp;
 			</c:forEach>
+			<c:if test="${not empty article.articleCareer}">
 			#${article.articleCareer}&nbsp;
+			</c:if>
 			<c:forEach var="tag" items="${article.articleCertification}">
 			#${tag}&nbsp;
 			</c:forEach>
