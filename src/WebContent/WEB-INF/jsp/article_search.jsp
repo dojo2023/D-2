@@ -10,7 +10,10 @@
 <link rel="icon" href="image/favicon.ico">
 </head>
 <body>
-
+<!--画面上にスクロール-->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.4/css/all.css">
+	<div id="page_top"><a href="#"></a></div>
+	<!--スクロール終わり-->
 <header>
 
 <div class="header">

@@ -7,15 +7,16 @@
         <link rel="stylesheet" href="css/common.css">
         <link rel="stylesheet" href="css/confirm.css">
         <title>コミュニティ作成確認｜with IT</title>
+        <link rel="icon" href="image/favicon.ico">
     </head>
     <body>
-
-    <header>
-        <div class="header">
+<div class="header">
         <!--画面上にスクロール-->
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.4/css/all.css">
 	<div id="page_top"><a href="#"></a></div>
 <!--スクロール終わり-->
+    <header>
+        
             <a href="/product_D2/top"><img src="image/logo.png" class="logo_contents" width="10%" height="10%"></a>
         </div>
     </header>
