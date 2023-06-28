@@ -582,15 +582,19 @@ public class ArticleDao {
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			//SQL文を完成させる
+			pStmt.setInt(1, id);
+
 			if(pStmt.executeUpdate()==1) {
 				result = true;
 			}
 		}
 		catch(SQLException e) {
 			e.printStackTrace();
+			result = false;
 		}
 		catch(ClassNotFoundException e) {
 			e.printStackTrace();
+			result = false;
 		}
 		finally {
 			//データベースを切断
@@ -599,6 +603,7 @@ public class ArticleDao {
 					conn.close();
 				} catch (SQLException e) {
 					e.printStackTrace();
+					result = false;
 				}
 			}
 		}
