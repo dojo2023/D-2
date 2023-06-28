@@ -635,7 +635,7 @@ public class ArticleDao {
 				certification = ReFlag.certificationReFlag(rs.getString("article_certification"));
 				Article data = new Article(
 						rs.getInt("article_id"),
-						rs.getString("artcile_title"),
+						rs.getString("article_title"),
 						rs.getString("user_id"),
 						rs.getString("article_create"),
 						rs.getString("article_update"),
