@@ -55,7 +55,7 @@ public class PostServlet extends HttpServlet {
 		String[] articleCertification = request.getParameterValues("certification");
 		String articleText = request.getParameter("article_text");
 		//確認用にコンソールに表示
-		System.out.printf("articleTitle=%s\n",articleTitle);
+		/*System.out.printf("articleTitle=%s\n",articleTitle);
 		System.out.printf("UserId=%s\n",userId);
 		System.out.printf("articleCareer=%s\n",articleCareer);
 		System.out.printf("articleText=%s\n",articleText);
@@ -67,7 +67,7 @@ public class PostServlet extends HttpServlet {
 		}
 		for(int i=0; i<articleCertification.length; i++) {
 			System.out.printf("article_Certification=%s\n",articleCertification[i]);
-		}
+		}*/
 
 
 		try {
