@@ -661,9 +661,11 @@ public class ArticleDao {
 		}
 			catch (SQLException e) {
 				e.printStackTrace();
+				result = null;
 			}
 			catch (ClassNotFoundException e) {
 				e.printStackTrace();
+				result = null;
 			}
 			finally {
 				// データベースを切断
@@ -914,14 +916,13 @@ public class ArticleDao {
 				conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/src/Data", "sa", "");
 
 				//SQL文を準備する
-				String sql = "insert into comment (article_id, user_id, comment_date, comment_text) values(?, ?, ?, ?);";
+				String sql = "insert into comment (article_id, user_id, comment_date, comment_text) values(?, ?, current_timestamp, ?);";
 				PreparedStatement pStmt = conn.prepareStatement(sql);
 
 				//SQL文を完成させる
 				pStmt.setInt(1, article_id);
 				pStmt.setString(2, user_id);
-				pStmt.setString(3, "current_timestump");
-				pStmt.setString(4, comment_text);
+				pStmt.setString(3, comment_text);
 
 				//SQLを実行する
 				pStmt.executeUpdate();
