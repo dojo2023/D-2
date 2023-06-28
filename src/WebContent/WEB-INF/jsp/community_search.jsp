@@ -37,34 +37,25 @@
     <div class="photo"><div class="photo1"></div></div>
 <div class="description">
 <c:forEach var="community" items="${communityResults}" >
-
+	<form action="/product_D2/community" method="GET">
     <h2>${community.communityName}</h2>
-    <div class="worddisplay"><c:set var="sendLang" value="" />
-            <c:forEach var="lang" items="${community.communityLanguage}">
-
-            <c:set var="sendLang" value="${sendLang},${lang} "/>
+    <div class="worddisplay">
+		<c:forEach var="lang" items="${community.communityLanguage}">
             <c:out value="${lang } " />
-            </c:forEach>
-
-    <c:set var="sendPurp" value="" />
-            <c:forEach var="purp" items="${purpose}">
-
-            <c:set var="sendPurp" value="${sendPurp},${purp} "/>
+        </c:forEach>
+        <c:forEach var="purp" items="${purpose}">
             <c:out value="${purp } " />
-            </c:forEach>
-
-	<c:set var="sendCert" value="" />
-            <c:forEach var="cert" items="${certification}">
-
-            <c:set var="sendCert" value="${sendCert},${cert} "/>
-            <c:out value="${cert } " />
-            </c:forEach>
+        </c:forEach>
+        <c:forEach var="cert" items="${certification}">
+           	<c:out value="${cert } " />
+        </c:forEach>
 
 	${community.communityCareer}<br><br></div>
     <div id="limitedtext">${community.communitySummary}</div><br><br>
-	<form action="/product_D2/community" method="GET">
 	<input type="hidden" name="communityId" value="${community.communityId }">
-	<input class="join" type="submit" name="SUBMIT" value="参加">
+	<c:if test="${not empty user.userId}">
+		<input class="join" type="submit" name="SUBMIT" value="参加">
+	</c:if>
 	</form><hr>
 </c:forEach>
 </div>
