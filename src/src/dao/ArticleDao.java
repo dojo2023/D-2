@@ -814,7 +814,7 @@ public class ArticleDao {
 		try {
 			Class.forName("org.h2.Driver");
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/src/Data", "sa", "");
-			String sql = "select * from article order by article_update desc";
+			String sql = "select * from article order by article_update desc limit 5";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 			ResultSet rs = pStmt.executeQuery();
 			while (rs.next()) {

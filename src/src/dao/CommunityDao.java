@@ -604,7 +604,7 @@ public class CommunityDao {
 		try {
 			Class.forName("org.h2.Driver");
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/src/Data", "sa", "");
-			String sql = "select * from community order by community_date desc";
+			String sql = "select * from community order by community_date desc limit 5";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 			ResultSet rs = pStmt.executeQuery();
 			while (rs.next()) {

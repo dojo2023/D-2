@@ -39,7 +39,7 @@ public class CommunityServlet extends HttpServlet {
 			communityId = Integer.parseInt(communityIdStr);
 			session.removeAttribute("community_id_ss");
 		} else {
-			communityId=Integer.parseInt(request.getParameter("community_id"));
+			communityId=Integer.parseInt(request.getParameter("communityId"));
 		}
 		CommunityDao cDao=new CommunityDao();
 
