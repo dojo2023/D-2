@@ -28,18 +28,31 @@ let pulldown='';
 		name_red.style.outline="3px red solid";
 		event.preventDefault();
 	}
+	if(name.length>30){
+        document.getElementById('output1').textContent='入力可能文字数がオーバーしています';
+        name_red=document.getElementById('community_name');
+		name_red.style.outline="3px red solid";
+		event.preventDefault();
+	}
 	if(summary===''){
 		document.getElementById('output2').textContent='概要を入力してください';
 		summary_red=document.getElementById('community_summary');
 		summary_red.style.outline="3px red solid";
 		event.preventDefault();
 	}
+	if(summary.length>100){
+		document.getElementById('output2').textContent='入力可能文字数がオーバーしています';
+		summary_red=document.getElementById('community_summary');
+		summary_red.style.outline="3px red solid";
+		event.preventDefault();
+	}
+
 	/**再度ボタンを押したときに注意書きと外の枠線が消える */
-	if(name!==''){
+	if(name!=='' && name.length<31){
 		document.getElementById('output1').textContent=null;
 		name_red.style.outline="none";
 	}
-	if(summary!==''){
+	if(summary!=='' && summary.length<101){
 		document.getElementById('output2').textContent=null;
 		summary_red.style.outline="none";
 	}
