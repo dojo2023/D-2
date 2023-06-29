@@ -14,7 +14,13 @@
 </head>
 <body>
 <%
-String dispDate = ((Article)(request.getAttribute("article"))).getArticleUpdate().substring(0, 16);
+Article art = (Article)(request.getAttribute("article"));
+String dispDate;
+if (art.getArticleUpdate().equals("") || art.getArticleUpdate() == null) {
+	dispDate = art.getArticleCreate().substring(0, 16);
+} else {
+	dispDate = art.getArticleUpdate().substring(0, 16);
+}
 request.setAttribute("dispDate", dispDate);
 %>
 <!--画面上にスクロール-->

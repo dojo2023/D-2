@@ -56,6 +56,8 @@ public class EditServlet extends HttpServlet {
 
 		//リクエストパラメータの取得
 	      int articleId=Integer.parseInt(request.getParameter("articleId"));
+	      String articleCreate=request.getParameter("articleCreate");
+	      String articleUpdate=request.getParameter("articleUpdate");
 	      String articleTitle=request.getParameter("title");
 	      String[] articleLanguage=request.getParameterValues("language");
 	      String[] articlePurpose=request.getParameterValues("purpose");
@@ -70,6 +72,8 @@ public class EditServlet extends HttpServlet {
 	   // リクエスト属性に編集対象の記事をセット
 	      Article article = new Article();
 	      article.setUserId(user.getUserId());
+	      article.setArticleCreate(articleCreate);
+	      article.setArticleUpdate(articleUpdate);
 	      article.setArticleId(articleId);
 	      article.setArticleTitle(articleTitle);
 	      article.setArticleLanguage(articleLanguage);

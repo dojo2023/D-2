@@ -47,6 +47,8 @@
 		<h4>タイトル</h4><br>
 		<form method="POST" action="/product_D2/edit" id="form">
 		<input type="hidden" name="articleId" value="${article.articleId}">
+		<input type="hidden" name="articleCreate" value="${article.articleCreate}">
+		<input type="hidden" name="articleUpdate" value="${article.articleUpdate}">
 		<label><input class="textform" type="text" name="title" value="${article.articleTitle}" placeholder="記事タイトル"></label>
 
 		<hr>
