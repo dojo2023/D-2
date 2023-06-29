@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="model.Article" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,6 +13,10 @@
 <link rel="icon" href="image/favicon.ico">
 </head>
 <body>
+<%
+String dispDate = ((Article)(request.getAttribute("article"))).getArticleCreate().substring(0, 16);
+request.setAttribute("dispDate", dispDate);
+%>
 <!--画面上にスクロール-->
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.4/css/all.css">
 	<div id="page_top"><a href="#"></a></div>
@@ -23,7 +29,7 @@
 
 <div class="main">
 	<div class="article_details">
-		<h4 class="minifont">作成日：${article.articleCreate}</h4>
+		<h4 class="minifont">作成日：${dispDate}</h4>
 		<h4 class="minifont">作成者：${writerName}</h4>
 
 		<h2>「${article.articleTitle}」</h2>
