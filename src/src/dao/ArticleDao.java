@@ -741,6 +741,7 @@ public class ArticleDao {
 						articleImg1, articleImg2, articleImg3);
 				results.add(article);
 			}
+			System.out.println("result size:" + results.size());
 			int[] matchRate = new int[results.size()];
 			int maxRate = 0;
 			int[][] ratedArticleId = new int[results.size()][2];
