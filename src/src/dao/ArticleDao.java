@@ -783,7 +783,7 @@ public class ArticleDao {
 					maxRate = matchRate[i];
 				}
 			}
-			for (int i=maxRate; i<0; i--) {
+			for (int i=maxRate; i>0; i--) {
 				for (int[] ratedArticle: ratedArticleId) {
 					if (ratedArticle[1] == i) {
 						resultIdArray[resultCount] = ratedArticle[0];
