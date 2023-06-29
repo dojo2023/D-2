@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="model.Remark" %>
 
 <!DOCTYPE html>
 <html>
@@ -19,7 +21,17 @@
 </div>
 </head>
 <body>
-
+<%
+String[] dispDate = null;
+ArrayList<Remark> remarks = (ArrayList<Remark>)(request.getAttribute("chat_data"));
+if (remarks.size() != 0) {
+	dispDate = new String[remarks.size()];
+	for (int i=0; i<dispDate.length; i++) {
+		dispDate[i] = remarks.get(i).getRemarkDate().substring(0, 16);
+	}
+}
+request.setAttribute("dispDate", dispDate);
+%>
 <div class="c">
 <div class="ctitle"><h1>${community_data.communityName}</h1></div>
 <c:forEach var="tag" items="${community_data.communityLanguage}">
@@ -49,14 +61,14 @@ ${member}&nbsp;
 <c:when test="${user.userId==e.userId}">
 <div class="ore">
 ${speaker_data[st.index]}&nbsp;&nbsp;
-<div class="minifont">${e.remarkDate}</div>
+<div class="minifont">${dispDate[st.index]}</div>
 <p class="message">${e.remarkText}</p><br><br>
 </div>
 </c:when>
 <c:otherwise>
 <div class="oreigai">
 ${speaker_data[st.index]}&nbsp;&nbsp;
-<div class="minifont">${e.remarkDate}</div>
+<div class="minifont">${dispDate[st.index]}</div>
 <p class="message">${e.remarkText}</p><br><br>
 </div>
 </c:otherwise>
