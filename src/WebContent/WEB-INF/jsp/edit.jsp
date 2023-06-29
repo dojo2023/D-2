@@ -154,7 +154,7 @@
 		<hr>
 		<h4>本文</h4><br>
 		<div class="edit_contents">
-			<input type="file" name="img" style="display:none"><img src="/D2sample/img/image.png" width="30px"><br>
+			<input type="file" name="img" style="display:none"><br>
 			<textarea class="edit_txt" name="text" placeholder="本文">${article.articleText}</textarea><br>
 		</div>
 		<hr>
