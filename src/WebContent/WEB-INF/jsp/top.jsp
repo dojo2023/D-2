@@ -59,7 +59,7 @@ request.setAttribute("dispDateCom", dispDateCom);
 					<hr>
 					<c:forEach var="recommendArticle" items="${recArticle}" varStatus="st">
 						<form action="/product_D2/article" name="form${st.index}" method="get">
-						<h4><a href="javascript:form${st.index}.submit();">「${recommendArticle.articleTitle}」</a></h4><br>
+						<h4><a href="javascript:form${st.index}.item(0).submit()">「${recommendArticle.articleTitle}」</a></h4><br>
 						<p>作成者：${recommendArticle.userId}<br>作成日時：${dispDateArt[st.index]}</p>
 						<hr>
 						<input type="hidden" name="article_id" value="${recommendArticle.articleId}">
