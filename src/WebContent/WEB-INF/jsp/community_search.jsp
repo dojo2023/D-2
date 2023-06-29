@@ -28,7 +28,7 @@
 </head>
 <body>
 <div class="search_main">
-<h2 class="searchresult">検索結果</h2>
+<h2 class="searchresult">コミュニティ検索結果</h2>
 <hr>
  <div class="search_contents">
 <c:if test="${empty communityResults}">
