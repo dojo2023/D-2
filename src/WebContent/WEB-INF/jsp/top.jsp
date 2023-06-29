@@ -14,16 +14,24 @@
 </head>
 <body>
 <%
+String[] dispDateArt = null;
+String[] dispDateCom = null;
 ArrayList<Article> recArt = (ArrayList<Article>)(session.getAttribute("recArticle"));
 ArrayList<Community> recCom = (ArrayList<Community>)(session.getAttribute("recCommunity"));
-String[] dispDateArt = new String[recArt.size()];
-String[] dispDateCom = new String[recCom.size()];
-for (int i=0; i<dispDateArt.length; i++) {
-	dispDateArt[i] = recArt.get(i).getArticleUpdate().substring(0, 16);
+if (recArt != null) {
+	dispDateArt = new String[recArt.size()];
+	for (int i=0; i<dispDateArt.length; i++) {
+		dispDateArt[i] = recArt.get(i).getArticleUpdate().substring(0, 16);
+	}
 }
-for (int i=0; i<dispDateCom.length; i++) {
-	dispDateCom[i] = recCom.get(i).getCommunityDate().substring(0, 16);
+if (recCom != null) {
+	dispDateCom = new String[recCom.size()];
+	for (int i=0; i<dispDateCom.length; i++) {
+		dispDateCom[i] = recCom.get(i).getCommunityDate().substring(0, 16);
+	}
 }
+
+
 request.setAttribute("dispDateArt", dispDateArt);
 request.setAttribute("dispDateCom", dispDateCom);
 %>
