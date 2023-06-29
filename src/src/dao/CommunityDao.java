@@ -682,6 +682,7 @@ public class CommunityDao {
 			int maxRate = 0;
 			int[][] ratedCommunityId = new int[results.size()][2];
 			int[] resultIdArray = new int[5];
+			Arrays.fill(resultIdArray, -1);
 			int resultCount = 0;
 			Arrays.fill(matchRate, 0);
 			// 検索マッチ数分ループ
@@ -731,7 +732,8 @@ public class CommunityDao {
 				if (resultCount == 5) break;
 			}
 			for (int id: resultIdArray) {
-				recommendCommunities.add(getCommunityById(id));
+				if (id > 0)
+					recommendCommunities.add(getCommunityById(id));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
