@@ -55,14 +55,14 @@
 			  <div class="tab_content_description">
 				<div class="c-txtsp">
 					<hr>
-					<c:forEach var="recommendCommunity" items="${recCommunity}">
-						<h4>「${recommendCommunity.communityName}」</h4><br>
+					<c:forEach var="recommendCommunity" items="${recCommunity}" varStatus="st">
+						<form action="/product_D2/community" name="form${st.index}" method="get">
+						<h4><a href="javascript:form${st.index}.submit();">「${recommendCommunity.communityName}」</a></h4><br>
 						<p>コミュニティ作成日時：${recommendCommunity.communityDate}<br>
 						コミュニティの説明：${recommendCommunity.communitySummary}</p>
-					<hr>
-					<form action="/product_D2/community" name="form" method="get">
-					<input type="hidden" name="community_id" value="${recommendCommunity.communityId}">
-					</form>
+						<hr>
+						<input type="hidden" name="community_id" value="${recommendCommunity.communityId}">
+						</form>
 					</c:forEach>
 					</div>
 			  </div>
