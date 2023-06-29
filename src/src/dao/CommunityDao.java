@@ -35,7 +35,7 @@ public class CommunityDao {
 
 				//sql文を完成させる
 				for(int i=0; i<queryArray.length; i++) {
-					sql += "concat(community_name, community_summary) like '%" + queryArray[i] + "%'";
+					sql += "concat(community_name, community_summary) ilike '%" + queryArray[i] + "%'";
 					if(i < queryArray.length-1) {
 						sql += " and";
 					}
@@ -71,7 +71,7 @@ public class CommunityDao {
 				//検索ワードが含まれるタグが存在するかどうかから。
 
 				for(int i=0; i<queryArray.length; i++) {
-					sql = "select * from language_list where language_item like '%" + queryArray[i] +"%'";
+					sql = "select * from language_list where language_item ilike '%" + queryArray[i] +"%'";
 					pStmt = conn.prepareStatement(sql);
 					//sql文を実行
 					rs = pStmt.executeQuery();
@@ -79,7 +79,7 @@ public class CommunityDao {
 						langId[i] += rs.getString("language_id");
 					}
 
-					sql = "select * from purpose_list where purpose_item like '%" + queryArray[i] +"%'";
+					sql = "select * from purpose_list where purpose_item ilike '%" + queryArray[i] +"%'";
 					pStmt = conn.prepareStatement(sql);
 					//sql文を実行
 					rs = pStmt.executeQuery();
@@ -87,7 +87,7 @@ public class CommunityDao {
 						purpId[i] += rs.getString("purpose_id");
 					}
 
-					sql = "select * from certification_list where certification_item like '%" + queryArray[i] +"%'";
+					sql = "select * from certification_list where certification_item ilike '%" + queryArray[i] +"%'";
 					pStmt = conn.prepareStatement(sql);
 					//sql文を実行
 					rs = pStmt.executeQuery();
@@ -140,11 +140,14 @@ public class CommunityDao {
 						}
 					}
 				}
-
+				System.out.println("langIdForSQL:" + langIdforSQL);
+				System.out.println("purpIdForSQL:" + purpIdforSQL);
+				System.out.println("certIdForSQL:" + certIdforSQL);
 				//SQL文を準備
-				sql = "select * from community where community_language like ?";
+				sql = "select * from community where community_language not like ?";
 
-				langIdforSQL = langIdforSQL.replaceAll("[1-9a-g]", "_");
+				langIdforSQL = langIdforSQL.replaceAll("0", "_");
+				langIdforSQL = langIdforSQL.replaceAll("[1-9a-g]", "0");
 				pStmt = conn.prepareStatement(sql);
 				pStmt.setString(1, langIdforSQL);
 				//SQL文を実行
@@ -171,9 +174,9 @@ public class CommunityDao {
 
 
 				//SQL文を準備
-				sql = "select * from community where community_purpose like ?";
-
-				purpIdforSQL = purpIdforSQL.replaceAll("[1-9a-g]", "_");
+				sql = "select * from community where community_purpose not like ?";
+				purpIdforSQL = purpIdforSQL.replaceAll("0", "_");
+				purpIdforSQL = purpIdforSQL.replaceAll("[1-9a-g]", "0");
 				pStmt = conn.prepareStatement(sql);
 				pStmt.setString(1, purpIdforSQL);
 				//SQL文を実行
@@ -199,9 +202,9 @@ public class CommunityDao {
 				}
 
 				//SQL文を準備
-				sql = "select * from community where community_certification like ?";
-
-				certIdforSQL = certIdforSQL.replaceAll("[1-9a-g]", "_");
+				sql = "select * from community where community_certification not like ?";
+				certIdforSQL = certIdforSQL.replaceAll("0", "_");
+				certIdforSQL = certIdforSQL.replaceAll("[1-9a-g]", "0");
 				pStmt = conn.prepareStatement(sql);
 				pStmt.setString(1, certIdforSQL);
 				//SQL文を実行

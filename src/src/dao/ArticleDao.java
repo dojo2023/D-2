@@ -34,7 +34,7 @@ public class ArticleDao {
 
 			//sql文を完成させる
 			for(int i=0; i<queryArray.length; i++) {
-				sql += "concat(article_title, article_text) like '%" + queryArray[i] + "%'";
+				sql += "concat(article_title, article_text) ilike '%" + queryArray[i] + "%'";
 				if(i < queryArray.length-1) {
 					sql += " and";
 				}
@@ -77,7 +77,7 @@ public class ArticleDao {
 			//検索ワードが含まれるタグが存在するかどうかから。
 
 			for(int i=0; i<queryArray.length; i++) {
-				sql = "select * from language_list where language_item like '%" + queryArray[i] +"%'";
+				sql = "select * from language_list where language_item ilike '%" + queryArray[i] +"%'";
 				pStmt = conn.prepareStatement(sql);
 				//sql文を実行
 				rs = pStmt.executeQuery();
@@ -85,7 +85,7 @@ public class ArticleDao {
 					langId[i] += rs.getString("language_id");
 				}
 
-				sql = "select * from purpose_list where purpose_item like '%" + queryArray[i] +"%'";
+				sql = "select * from purpose_list where purpose_item ilike '%" + queryArray[i] +"%'";
 				pStmt = conn.prepareStatement(sql);
 				//sql文を実行
 				rs = pStmt.executeQuery();
@@ -93,7 +93,7 @@ public class ArticleDao {
 					purpId[i] += rs.getString("purpose_id");
 				}
 
-				sql = "select * from certification_list where certification_item like '%" + queryArray[i] +"%'";
+				sql = "select * from certification_list where certification_item ilike '%" + queryArray[i] +"%'";
 				pStmt = conn.prepareStatement(sql);
 				//sql文を実行
 				rs = pStmt.executeQuery();
@@ -147,9 +147,9 @@ public class ArticleDao {
 			}
 
 			//SQL文を準備
-			sql = "select * from article where article_language like ?";
-
-			langIdforSQL = langIdforSQL.replaceAll("[1-9a-g]", "_");
+			sql = "select * from article where article_language not like ?";
+			langIdforSQL = langIdforSQL.replaceAll("0", "_");
+			langIdforSQL = langIdforSQL.replaceAll("[1-9a-g]", "0");
 			pStmt = conn.prepareStatement(sql);
 			pStmt.setString(1, langIdforSQL);
 			//SQL文を実行
@@ -182,9 +182,9 @@ public class ArticleDao {
 
 
 			//SQL文を準備
-			sql = "select * from article where article_purpose like ?";
-
-			purpIdforSQL = purpIdforSQL.replaceAll("[1-9a-g]", "_");
+			sql = "select * from article where article_purpose not like ?";
+			purpIdforSQL = purpIdforSQL.replaceAll("0", "_");
+			purpIdforSQL = purpIdforSQL.replaceAll("[1-9a-g]", "0");
 			pStmt = conn.prepareStatement(sql);
 			pStmt.setString(1, purpIdforSQL);
 			//SQL文を実行
@@ -216,9 +216,9 @@ public class ArticleDao {
 			}
 
 			//SQL文を準備
-			sql = "select * from article where article_certification like ?";
-
-			certIdforSQL = certIdforSQL.replaceAll("[1-9a-g]", "_");
+			sql = "select * from article where article_certification not like ?";
+			certIdforSQL = certIdforSQL.replaceAll("0", "_");
+			certIdforSQL = certIdforSQL.replaceAll("[1-9a-g]", "0");
 			pStmt = conn.prepareStatement(sql);
 			pStmt.setString(1, certIdforSQL);
 			//SQL文を実行
