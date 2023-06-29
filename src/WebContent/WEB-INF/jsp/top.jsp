@@ -19,6 +19,7 @@ String[] dispDateCom = null;
 ArrayList<Article> recArt = (ArrayList<Article>)(session.getAttribute("recArticle"));
 ArrayList<Community> recCom = (ArrayList<Community>)(session.getAttribute("recCommunity"));
 if (recArt.size() != 0) {
+	System.out.println("recArt size:"+recArt.size());
 	dispDateArt = new String[recArt.size()];
 	for (int i=0; i<dispDateArt.length; i++) {
 		dispDateArt[i] = recArt.get(i).getArticleUpdate().substring(0, 16);
