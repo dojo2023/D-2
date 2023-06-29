@@ -18,13 +18,13 @@ String[] dispDateArt = null;
 String[] dispDateCom = null;
 ArrayList<Article> recArt = (ArrayList<Article>)(session.getAttribute("recArticle"));
 ArrayList<Community> recCom = (ArrayList<Community>)(session.getAttribute("recCommunity"));
-if (recArt != null) {
+if (recArt.size() != 0) {
 	dispDateArt = new String[recArt.size()];
 	for (int i=0; i<dispDateArt.length; i++) {
 		dispDateArt[i] = recArt.get(i).getArticleUpdate().substring(0, 16);
 	}
 }
-if (recCom != null) {
+if (recCom.size() != 0) {
 	dispDateCom = new String[recCom.size()];
 	for (int i=0; i<dispDateCom.length; i++) {
 		dispDateCom[i] = recCom.get(i).getCommunityDate().substring(0, 16);
