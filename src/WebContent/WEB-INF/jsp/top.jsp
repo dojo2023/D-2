@@ -1,5 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="model.Article" %>
+<%@ page import="model.Community" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,6 +13,20 @@
 <link rel="icon" href="image/favicon.ico">
 </head>
 <body>
+<%
+ArrayList<Article> recArt = (ArrayList<Article>)(session.getAttribute("recArticle"));
+ArrayList<Community> recCom = (ArrayList<Community>)(session.getAttribute("recCommunity"));
+String[] dispDateArt = new String[recArt.size()];
+String[] dispDateCom = new String[recCom.size()];
+for (int i=0; i<dispDateArt.length; i++) {
+	dispDateArt[i] = recArt.get(i).getArticleUpdate().substring(0, 16);
+}
+for (int i=0; i<dispDateCom.length; i++) {
+	dispDateCom[i] = recCom.get(i).getCommunityDate().substring(0, 16);
+}
+request.setAttribute("dispDateArt", dispDateArt);
+request.setAttribute("dispDateCom", dispDateCom);
+%>
 <!--画面上にスクロール-->
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.4/css/all.css">
 	<div id="page_top"><a href="#"></a></div>
@@ -43,7 +60,7 @@
 					<c:forEach var="recommendArticle" items="${recArticle}" varStatus="st">
 						<form action="/product_D2/article" name="form${st.index}" method="get">
 						<h4><a href="javascript:form${st.index}.submit();">「${recommendArticle.articleTitle}」</a></h4><br>
-						<p>作成者：${recommendArticle.userId}<br>作成日時：${recommendArticle.articleCreate}</p>
+						<p>作成者：${recommendArticle.userId}<br>作成日時：${dispDateArt[st.index]}</p>
 						<hr>
 						<input type="hidden" name="article_id" value="${recommendArticle.articleId}">
 						</form>
@@ -57,8 +74,15 @@
 					<hr>
 					<c:forEach var="recommendCommunity" items="${recCommunity}" varStatus="st">
 						<form action="/product_D2/community" name="form${st.index}" method="get">
-						<h4><a href="javascript:form${st.index}.submit();">「${recommendCommunity.communityName}」</a></h4><br>
-						<p>コミュニティ作成日時：${recommendCommunity.communityDate}<br>
+						<c:choose>
+							<c:when test="${not empty user.userId}">
+							<h4><a href="javascript:form${st.index}.submit();">「${recommendCommunity.communityName}」</a></h4><br>
+							</c:when>
+							<c:otherwise>
+							<h4><a>「${recommendCommunity.communityName}」</a></h4><br>
+							</c:otherwise>
+						</c:choose>
+						<p>コミュニティ作成日時：${dispDateCom[st.index]}<br>
 						コミュニティの説明：${recommendCommunity.communitySummary}</p>
 						<hr>
 						<input type="hidden" name="community_id" value="${recommendCommunity.communityId}">
