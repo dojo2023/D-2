@@ -741,11 +741,11 @@ public class ArticleDao {
 						articleImg1, articleImg2, articleImg3);
 				results.add(article);
 			}
-			System.out.println("result size:" + results.size());
 			int[] matchRate = new int[results.size()];
 			int maxRate = 0;
 			int[][] ratedArticleId = new int[results.size()][2];
 			int[] resultIdArray = new int[5];
+			Arrays.fill(resultIdArray, -1);
 			int resultCount = 0;
 			Arrays.fill(matchRate, 0);
 			// 検索マッチ数分ループ
@@ -795,7 +795,8 @@ public class ArticleDao {
 				if (resultCount == 5) break;
 			}
 			for (int id: resultIdArray) {
-				recommendArticles.add(load(id));
+				if (id > 0)
+					recommendArticles.add(load(id));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
