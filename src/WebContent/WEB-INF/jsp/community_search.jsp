@@ -5,7 +5,7 @@
 
 <meta charset="UTF-8">
 <link rel="stylesheet" href="css/common.css">
-<link rel="stylesheet" href="css/search.css">
+<link rel="stylesheet" href="css/search.css?20230628">
 <title>検索結果</title>
 <link rel="icon" href="favicon.ico">
 <header>
@@ -35,13 +35,13 @@
 <p>一致するデータなし</p>
 </c:if>
 
-<c:forEach var="community" items="${communityResults}" >
+<c:forEach var="community" items="${communityResults}" varStatus="st">
 	<br>
 	<div class="cp_card01">
 
 <div class="description">
-<form action="/product_D2/community" method="GET">
-    ${community.communityName}<hr><br>
+<form action="/product_D2/community" method="GET" name="form${st.index}">
+    <a href="javascript:form${st.index}.submit();">${community.communityName}</a><hr><br>
     <div class="worddisplay">
 		<c:forEach var="lang" items="${community.communityLanguage}">
             <c:out value="# ${lang } " />
