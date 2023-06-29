@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="model.Article" %>
+<%@ page import="model.Comment" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,6 +17,15 @@
 <%
 String dispDate = ((Article)(request.getAttribute("article"))).getArticleCreate().substring(0, 16);
 request.setAttribute("dispDate", dispDate);
+ArrayList<Comment> comments = (ArrayList<Comment>)(request.getAttribute("comment"));
+String[] dispDateCmt = null;
+if (comments.size() > 0) {
+	dispDateCmt = new String[comments.size()];
+	for (int i=0; i<dispDateCmt.length; i++) {
+		dispDateCmt[i] = comments.get(i).getCommentDate().substring(0, 16);
+	}
+}
+request.setAttribute("dispDateCmt", dispDateCmt);
 %>
 <!--画面上にスクロール-->
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.4/css/all.css">
@@ -73,7 +83,7 @@ request.setAttribute("dispDate", dispDate);
 	<h4>コメント</h4><hr>
 	<c:forEach var="com" items="${comment}" varStatus="st">
 		${commenter[st.index]}
-		<div class="minifont">${com.commentDate}</div><br>
+		<div class="minifont">${dispDateCmt[st.index]}</div><br>
 		<div class="pre">${com.commentText}</div><br><hr>
 	</c:forEach>
 	<form action="/product_D2/article" method="post">
