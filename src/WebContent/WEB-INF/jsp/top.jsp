@@ -18,6 +18,7 @@ String[] dispDateArt = null;
 String[] dispDateCom = null;
 ArrayList<Article> recArt = (ArrayList<Article>)(session.getAttribute("recArticle"));
 ArrayList<Community> recCom = (ArrayList<Community>)(session.getAttribute("recCommunity"));
+Integer recArtSize = recArt.size();
 if (recArt.size() != 0) {
 	dispDateArt = new String[recArt.size()];
 	for (int i=0; i<dispDateArt.length; i++) {
@@ -34,6 +35,7 @@ if (recCom.size() != 0) {
 
 request.setAttribute("dispDateArt", dispDateArt);
 request.setAttribute("dispDateCom", dispDateCom);
+request.setAttribute("recArtSize", recArtSize);
 %>
 <!--画面上にスクロール-->
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.4/css/all.css">
@@ -67,7 +69,7 @@ request.setAttribute("dispDateCom", dispDateCom);
 					<hr>
 					<c:forEach var="recommendArticle" items="${recArticle}" varStatus="st">
 						<form action="/product_D2/article" name="form${st.index}" method="get">
-						<h4><a href="javascript:form${st.index}.item(0).submit()">「${recommendArticle.articleTitle}」</a></h4><br>
+						<h4><a href="javascript:document.forms[${st.index+1}].submit();">「${recommendArticle.articleTitle}」</a></h4><br>
 						<p>作成者：${recommendArticle.userId}<br>作成日時：${dispDateArt[st.index]}</p>
 						<hr>
 						<input type="hidden" name="article_id" value="${recommendArticle.articleId}">
@@ -84,7 +86,7 @@ request.setAttribute("dispDateCom", dispDateCom);
 						<form action="/product_D2/community" name="form${st.index}" method="get">
 						<c:choose>
 							<c:when test="${not empty user.userId}">
-							<h4><a href="javascript:form${st.index}.submit();">「${recommendCommunity.communityName}」</a></h4><br>
+							<h4><a href="javascript:document.forms[${st.index+1+recArtSize}].submit();">「${recommendCommunity.communityName}」</a></h4><br>
 							</c:when>
 							<c:otherwise>
 							<h4><a>「${recommendCommunity.communityName}」</a></h4><br>
@@ -93,7 +95,7 @@ request.setAttribute("dispDateCom", dispDateCom);
 						<p>コミュニティ作成日時：${dispDateCom[st.index]}<br>
 						コミュニティの説明：${recommendCommunity.communitySummary}</p>
 						<hr>
-						<input type="hidden" name="community_id" value="${recommendCommunity.communityId}">
+						<input type="hidden" name="communityId" value="${recommendCommunity.communityId}">
 						</form>
 					</c:forEach>
 					</div>
