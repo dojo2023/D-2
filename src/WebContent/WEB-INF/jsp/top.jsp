@@ -20,10 +20,10 @@ ArrayList<Article> recArt = (ArrayList<Article>)(session.getAttribute("recArticl
 ArrayList<Community> recCom = (ArrayList<Community>)(session.getAttribute("recCommunity"));
 if (recArt.size() != 0) {
 	for (Article a: recArt)
-		System.out.println("Article Update:"+a.getArticleUpdate());
+		System.out.println("Article Create:"+a.getArticleCreate());
 	dispDateArt = new String[recArt.size()];
 	for (int i=0; i<dispDateArt.length; i++) {
-		dispDateArt[i] = recArt.get(i).getArticleUpdate().substring(0, 16);
+		dispDateArt[i] = recArt.get(i).getArticleCreate().substring(0, 16);
 	}
 }
 if (recCom.size() != 0) {
